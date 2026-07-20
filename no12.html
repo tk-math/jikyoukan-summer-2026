@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.12 三角関数 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+        
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.12</span>
+                    <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">三角関数</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 text-slate-700 leading-relaxed mt-4">
+                    <p>$\theta$ の関数</p>
+                    <div class="math-scroll">
+                        \[ y=2\sin\theta\cos\theta+a(\sin\theta-\cos\theta) \]
+                    </div>
+                    <p>がある。ただし，$a$ は実数の定数であり，$\theta$ はすべての実数の範囲を変化する。</p>
+                    <ol class="list-decimal pl-6 mt-3 space-y-4">
+                        <li>$x=\sin\theta-\cos\theta$ とするとき，
+                            <ol class="list-[lower-roman] pl-6 mt-2 space-y-2">
+                                <li>$x$ のとり得る値の範囲を求めよ。</li>
+                                <li>$\sin\theta\cos\theta$ を，$x$ を用いて表せ。</li>
+                            </ol>
+                        </li>
+                        <li>$y$ の最大値が4となる $a$ の値を求めよ。</li>
+                    </ol>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                    <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                        <li><strong>$\theta$ の範囲：</strong> 「すべての実数」であるため、$\sin, \cos$ の合成で生じる新しい角の範囲に制限はかからない。純粋に振幅だけが $x$ の範囲になる。</li>
+                        <li><strong>関数の構造：</strong> $\sin\theta - \cos\theta$ と $\sin\theta\cos\theta$ が含まれている。これは典型的な「対称式（交代式）」のパターンであり、和や差を文字で置くと、積もその文字で表せるという性質を利用する。</li>
+                        <li><strong>求めるもの (2)：</strong> 2次関数に帰着させた後、「最大値が4」という条件から係数 $a$ を逆算する。軸の位置が $a$ によって変わるため、<strong>場合分け</strong>が必要となる。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    問題を解くための考え方から、答案、検算、発展までを順に確認します。
+                </p>
+
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">$\sin\theta \pm \cos\theta$ を含む関数と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                $x = \sin\theta \pm \cos\theta$ と<strong>置き換え</strong>ます。すると、両辺を2乗して $\sin^2\theta + \cos^2\theta = 1$ を用いることで、積 $\sin\theta\cos\theta$ も $x$ で表すことができ、関数全体を $x$ の2次関数に直すことができます。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">文字を置き換えたら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                <strong>「新しい文字の変域」</strong>を必ず調べます。本問では $x = \sin\theta - \cos\theta$ に対して<strong>三角関数の合成</strong>を行い、$x$ の最大値と最小値を求めます。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">軸に文字が含まれる2次関数の最大・最小と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                <strong>軸と定義域の位置関係による場合分け</strong>を行います。今回は $x^2$ の係数が負（上に凸）の最大値を考えるため、「軸が定義域の左外」「軸が定義域の内側」「軸が定義域の右外」の3パターンで場合分けします。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(1)(i) の計算手順</strong><br>
+                            $x = \sin\theta - \cos\theta = \sqrt{2}\sin\left(\theta - \frac{\pi}{4}\right)$ と合成します。$\theta$ に制限がないため、サインは $-1$ から $1$ まで動き、$x$ の範囲は $-\sqrt{2} \le x \le \sqrt{2}$ となります。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(1)(ii) の計算手順</strong><br>
+                            $x = \sin\theta - \cos\theta$ の両辺を2乗します。$x^2 = \sin^2\theta - 2\sin\theta\cos\theta + \cos^2\theta = 1 - 2\sin\theta\cos\theta$。これを $\sin\theta\cos\theta$ について解きます。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(2) の計算手順</strong><br>
+                            $y$ を $x$ の式で表すと $y = -x^2 + ax + 1$ となります。これを平方完成して頂点（軸）を求めます。<br>
+                            軸は $x = \frac{a}{2}$。定義域は $-\sqrt{2} \le x \le \sqrt{2}$。<br>
+                            [1] 軸が $-\sqrt{2}$ より左のとき $\rightarrow$ $x = -\sqrt{2}$ で最大<br>
+                            [2] 軸が定義域内にあるとき $\rightarrow$ 頂点で最大<br>
+                            [3] 軸が $\sqrt{2}$ より右のとき $\rightarrow$ $x = \sqrt{2}$ で最大<br>
+                            それぞれの場合で「最大値 $= 4$」の方程式を立てて $a$ を求め、それが「場合分けの条件（前提）」を満たしているか（適・不適）を必ず確認します。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <!-- (1)(i) -->
+                        <div>
+                            <p class="font-bold text-blue-800 border-b border-slate-200 pb-1">（1）(i)</p>
+                            <p class="mt-2">
+                                三角関数の合成を用いると、
+                            </p>
+                            <div class="math-scroll">
+                                \[ x = \sin\theta - \cos\theta = \sqrt{2}\sin\left(\theta - \frac{\pi}{4}\right) \]
+                            </div>
+                            <p class="mt-2">
+                                $\theta$ はすべての実数をとるので、$-1 \le \sin\left(\theta - \frac{\pi}{4}\right) \le 1$ である。<br>
+                                したがって、$x$ のとり得る値の範囲は
+                            </p>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $-\sqrt{2} \le x \le \sqrt{2}$
+                            </div>
+                        </div>
+
+                        <!-- (1)(ii) -->
+                        <div>
+                            <p class="font-bold text-blue-800 border-b border-slate-200 pb-1">（1）(ii)</p>
+                            <p class="mt-2">
+                                $x = \sin\theta - \cos\theta$ の両辺を2乗すると
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                x^2 &= (\sin\theta - \cos\theta)^2 \\
+                                &= \sin^2\theta - 2\sin\theta\cos\theta + \cos^2\theta \\
+                                &= 1 - 2\sin\theta\cos\theta
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                したがって、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                2\sin\theta\cos\theta &= 1 - x^2 \\
+                                \sin\theta\cos\theta &= \frac{1 - x^2}{2}
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $\sin\theta\cos\theta = \dfrac{1 - x^2}{2}$
+                            </div>
+                        </div>
+
+                        <!-- (2) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold text-blue-800 border-b border-slate-200 pb-1">（2）</p>
+                            <p class="mt-2">
+                                (1)の結果を用いて、$y$ を $x$ の式で表すと
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                y &= 2\left(\frac{1 - x^2}{2}\right) + ax \\
+                                &= 1 - x^2 + ax \\
+                                &= -x^2 + ax + 1
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                $f(x) = -x^2 + ax + 1$ とする。平方完成すると
+                            </p>
+                            <div class="math-scroll">
+                                \[ f(x) = -\left(x - \frac{a}{2}\right)^2 + \frac{a^2}{4} + 1 \]
+                            </div>
+                            <p class="mt-2">
+                                この放物線は上に凸であり、軸は $x = \dfrac{a}{2}$ である。<br>
+                                定義域 $-\sqrt{2} \le x \le \sqrt{2}$ と軸の位置関係により、3つの場合に分けて最大値を考える。
+                            </p>
+                            
+                            <p class="mt-4 font-bold text-blue-800">[1] $\dfrac{a}{2} < -\sqrt{2}$ すなわち $a < -2\sqrt{2}$ のとき</p>
+                            <p class="mt-1">
+                                $f(x)$ は $x = -\sqrt{2}$ で最大となる。
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                f(-\sqrt{2}) &= -(-\sqrt{2})^2 + a(-\sqrt{2}) + 1 \\
+                                &= -2 - \sqrt{2}a + 1 \\
+                                &= -1 - \sqrt{2}a
+                                \end{aligned}
+                            </div>
+                            <p class="mt-1">
+                                最大値が4であるから、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                -1 - \sqrt{2}a &= 4 \\
+                                -\sqrt{2}a &= 5 \\
+                                a &= -\frac{5}{\sqrt{2}} = -\frac{5\sqrt{2}}{2}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-1">
+                                ここで、$-2\sqrt{2} = -\sqrt{8}$、$-\dfrac{5\sqrt{2}}{2} = -\sqrt{\dfrac{50}{4}} = -\sqrt{12.5}$ であるから、<br>
+                                $-\sqrt{12.5} < -\sqrt{8}$ より $a < -2\sqrt{2}$ を満たすため<strong>適する</strong>。
+                            </p>
+
+                            <p class="mt-4 font-bold text-blue-800">[2] $-\sqrt{2} \le \dfrac{a}{2} \le \sqrt{2}$ すなわち $-2\sqrt{2} \le a \le 2\sqrt{2}$ のとき</p>
+                            <p class="mt-1">
+                                $f(x)$ は頂点 $x = \dfrac{a}{2}$ で最大となる。
+                            </p>
+                            <div class="math-scroll">
+                                \[ f\left(\frac{a}{2}\right) = \frac{a^2}{4} + 1 \]
+                            </div>
+                            <p class="mt-1">
+                                最大値が4であるから、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \frac{a^2}{4} + 1 &= 4 \\
+                                \frac{a^2}{4} &= 3 \\
+                                a^2 &= 12 \implies a = \pm 2\sqrt{3}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-1">
+                                ここで、$2\sqrt{3} = \sqrt{12}$、また条件の範囲は $-2\sqrt{2} \le a \le 2\sqrt{2} \iff -\sqrt{8} \le a \le \sqrt{8}$ である。<br>
+                                $a = \pm\sqrt{12}$ はこの範囲に含まれないため<strong>不適</strong>である。
+                            </p>
+
+                            <p class="mt-4 font-bold text-blue-800">[3] $\dfrac{a}{2} > \sqrt{2}$ すなわち $a > 2\sqrt{2}$ のとき</p>
+                            <p class="mt-1">
+                                $f(x)$ は $x = \sqrt{2}$ で最大となる。
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                f(\sqrt{2}) &= -(\sqrt{2})^2 + a(\sqrt{2}) + 1 \\
+                                &= -2 + \sqrt{2}a + 1 \\
+                                &= -1 + \sqrt{2}a
+                                \end{aligned}
+                            </div>
+                            <p class="mt-1">
+                                最大値が4であるから、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                -1 + \sqrt{2}a &= 4 \\
+                                \sqrt{2}a &= 5 \\
+                                a &= \frac{5}{\sqrt{2}} = \frac{5\sqrt{2}}{2}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-1">
+                                $\dfrac{5\sqrt{2}}{2} = \sqrt{12.5}$、条件は $a > 2\sqrt{2} = \sqrt{8}$ であるから、これを満たすため<strong>適する</strong>。
+                            </p>
+                            <p class="mt-4">
+                                以上 [1]〜[3] より、求める $a$ の値は
+                            </p>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $a = \pm\dfrac{5\sqrt{2}}{2}$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化（軸の移動と最大値）</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        定数 $a$ を動かすと、放物線の軸 $x = \dfrac{a}{2}$ が左右に移動し、それに伴ってグラフの頂点も上下に動きます。<br>
+                        青くハイライトされた領域が定義域 $-\sqrt{2} \le x \le \sqrt{2}$ です。<br>
+                        スライダーを動かして、最大値が $y=4$（赤い破線）に到達する瞬間の $a$ の値を視覚的に確認してみましょう。（$a \approx \pm 3.54$ すなわち $\pm \frac{5\sqrt{2}}{2}$ で最大値が4に触れるはずです）
+                    </p>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 sm:p-6 rounded-lg border border-slate-200 flex flex-col items-center">
+                        <div class="w-full max-w-md mb-6 px-2">
+                            <label for="a-slider" class="block text-sm font-medium text-slate-700 mb-2">
+                                定数 $a$ の値: <span id="a-value" class="font-bold text-blue-600 text-lg">0.00</span>
+                            </label>
+                            <input type="range" id="a-slider" min="-5" max="5" step="0.05" value="0" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                            <div class="flex justify-between mt-2 text-xs text-slate-500">
+                                <span>-5</span>
+                                <span>0</span>
+                                <span>5</span>
+                            </div>
+                            <div class="flex justify-center gap-3 mt-4">
+                                <button id="btn-a-neg" class="px-3 py-1.5 bg-blue-100 hover:bg-blue-200 text-blue-700 text-xs font-semibold rounded-lg transition-colors border border-blue-300">
+                                    [1] a = -5√2/2
+                                </button>
+                                <button id="btn-a-zero" class="px-3 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-semibold rounded-lg transition-colors border border-slate-300">
+                                    [2] a = 0
+                                </button>
+                                <button id="btn-a-pos" class="px-3 py-1.5 bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-semibold rounded-lg transition-colors border border-rose-300">
+                                    [3] a = 5√2/2
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="relative w-full max-w-md bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden p-2 flex justify-center">
+                            <svg id="parabola-svg" width="400" height="300" viewBox="0 0 400 300" class="w-full h-auto">
+                                <!-- 座標変換: cx = 200 + x * 50, cy = 250 - y * 30 -->
+                                <defs>
+                                    <clipPath id="graph-clip">
+                                        <!-- x: -4 to 4 -> 0 to 400 -->
+                                        <!-- y: -1 to 8 -> 280 to 10 -->
+                                        <rect x="0" y="0" width="400" height="300" />
+                                    </clipPath>
+                                </defs>
+                                
+                                <!-- 定義域ハイライト (-√2 <= x <= √2 -> 200-70.7 to 200+70.7) -->
+                                <rect x="129.3" y="0" width="141.4" height="300" fill="rgba(59, 130, 246, 0.08)" />
+
+                                <!-- グリッドと軸 -->
+                                <g stroke="#e2e8f0" stroke-width="1">
+                                    <!-- y軸の目盛り線 -->
+                                    <line x1="0" y1="250" x2="400" y2="250" stroke="#94a3b8" stroke-width="1.5" /> <!-- x軸 (y=0) -->
+                                    <line x1="0" y1="190" x2="400" y2="190" /> <!-- y=2 -->
+                                    <line x1="0" y1="130" x2="400" y2="130" /> <!-- y=4 -->
+                                    <line x1="0" y1="70" x2="400" y2="70" /> <!-- y=6 -->
+                                    <!-- x軸の目盛り線 -->
+                                    <line x1="200" y1="0" x2="200" y2="300" stroke="#94a3b8" stroke-width="1.5" /> <!-- y軸 (x=0) -->
+                                    <line x1="100" y1="0" x2="100" y2="300" /> <!-- x=-2 -->
+                                    <line x1="300" y1="0" x2="300" y2="300" /> <!-- x=2 -->
+                                    
+                                    <!-- 定義域の境界線 -->
+                                    <line x1="129.3" y1="0" x2="129.3" y2="300" stroke="#3b82f6" stroke-dasharray="4,4" /> <!-- x=-√2 -->
+                                    <line x1="270.7" y1="0" x2="270.7" y2="300" stroke="#3b82f6" stroke-dasharray="4,4" /> <!-- x=√2 -->
+                                </g>
+
+                                <!-- ラベル -->
+                                <text x="380" y="245" fill="#64748b" font-size="12">x</text>
+                                <text x="205" y="15" fill="#64748b" font-size="12">y</text>
+                                <text x="129.3" y="265" fill="#3b82f6" font-size="11" text-anchor="middle">-√2</text>
+                                <text x="270.7" y="265" fill="#3b82f6" font-size="11" text-anchor="middle">√2</text>
+                                <text x="185" y="135" fill="#ef4444" font-size="12">4</text>
+
+                                <!-- 目標の最大値 y=4 の線 -->
+                                <line x1="0" y1="130" x2="400" y2="130" stroke="#ef4444" stroke-width="2" stroke-dasharray="6,4" />
+
+                                <!-- 放物線 -->
+                                <path id="curve-solid" fill="none" stroke="#2563eb" stroke-width="2.5" clip-path="url(#graph-clip)" />
+                                <!-- 定義域外の放物線 (破線) -->
+                                <path id="curve-dashed-left" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,3" />
+                                <path id="curve-dashed-right" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,3" />
+
+                                <!-- 軸 x=a/2 -->
+                                <line id="axis-line" x1="200" y1="0" x2="200" y2="300" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4,4" />
+                                
+                                <!-- 最大値のポイント -->
+                                <circle id="max-point" cx="200" cy="250" r="5" fill="#ef4444" />
+                                <text id="max-label" x="210" y="250" fill="#ef4444" font-size="12" font-weight="bold">Max</text>
+                            </svg>
+                        </div>
+                        
+                        <div id="status-panel" class="mt-4 p-3 bg-white rounded-lg text-center w-full max-w-md border border-slate-200 shadow-sm">
+                            <div class="text-sm text-slate-700">
+                                軸の位置: <span id="axis-pos" class="font-bold">x = 0</span><br>
+                                最大値: <span id="max-val" class="text-lg font-bold text-rose-600">1.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const slider = document.getElementById('a-slider');
+                            const aValueDisplay = document.getElementById('a-value');
+                            const curveSolid = document.getElementById('curve-solid');
+                            const curveDashedLeft = document.getElementById('curve-dashed-left');
+                            const curveDashedRight = document.getElementById('curve-dashed-right');
+                            const axisLine = document.getElementById('axis-line');
+                            const maxPoint = document.getElementById('max-point');
+                            const maxLabel = document.getElementById('max-label');
+                            const axisPosDisplay = document.getElementById('axis-pos');
+                            const maxValDisplay = document.getElementById('max-val');
+                            const statusPanel = document.getElementById('status-panel');
+                            
+                            const btnNeg = document.getElementById('btn-a-neg');
+                            const btnZero = document.getElementById('btn-a-zero');
+                            const btnPos = document.getElementById('btn-a-pos');
+
+                            const SQRT2 = Math.SQRT2;
+                            
+                            function mapX(x) { return 200 + x * 50; }
+                            function mapY(y) { return 250 - y * 30; }
+                            
+                            function f(x, a) { return -x*x + a*x + 1; }
+                            
+                            function updateVisualization() {
+                                const a = parseFloat(slider.value);
+                                aValueDisplay.textContent = a.toFixed(2);
+                                
+                                // パス生成
+                                let pathSolid = "", pathLeft = "", pathRight = "";
+                                for (let x = -4; x <= 4; x += 0.05) {
+                                    const y = f(x, a);
+                                    const cx = mapX(x);
+                                    const cy = mapY(y);
+                                    
+                                    if (x < -SQRT2) {
+                                        pathLeft += (pathLeft === "" ? "M" : "L") + `${cx} ${cy} `;
+                                    } else if (x <= SQRT2) {
+                                        pathSolid += (pathSolid === "" ? "M" : "L") + `${cx} ${cy} `;
+                                    } else {
+                                        pathRight += (pathRight === "" ? "M" : "L") + `${cx} ${cy} `;
+                                    }
+                                }
+                                // 境界を繋ぐ
+                                pathSolid = `M ${mapX(-SQRT2)} ${mapY(f(-SQRT2, a))} ` + pathSolid + ` L ${mapX(SQRT2)} ${mapY(f(SQRT2, a))}`;
+                                
+                                curveSolid.setAttribute("d", pathSolid);
+                                curveDashedLeft.setAttribute("d", pathLeft);
+                                curveDashedRight.setAttribute("d", pathRight);
+                                
+                                // 軸の更新
+                                const axisX = a / 2;
+                                axisLine.setAttribute("x1", mapX(axisX));
+                                axisLine.setAttribute("x2", mapX(axisX));
+                                
+                                // 最大値の計算と場合分け表示
+                                let maxX, maxVal, caseText, panelClass;
+                                if (axisX < -SQRT2) {
+                                    maxX = -SQRT2;
+                                    maxVal = f(-SQRT2, a);
+                                    caseText = "[1] 左端で最大";
+                                    panelClass = "bg-blue-50 border-blue-200 text-blue-900";
+                                } else if (axisX <= SQRT2) {
+                                    maxX = axisX;
+                                    maxVal = f(axisX, a);
+                                    caseText = "[2] 頂点で最大";
+                                    panelClass = "bg-emerald-50 border-emerald-200 text-emerald-900";
+                                } else {
+                                    maxX = SQRT2;
+                                    maxVal = f(SQRT2, a);
+                                    caseText = "[3] 右端で最大";
+                                    panelClass = "bg-rose-50 border-rose-200 text-rose-900";
+                                }
+                                
+                                maxPoint.setAttribute("cx", mapX(maxX));
+                                maxPoint.setAttribute("cy", mapY(maxVal));
+                                maxLabel.setAttribute("x", mapX(maxX) + 10);
+                                maxLabel.setAttribute("y", mapY(maxVal) - 5);
+                                
+                                axisPosDisplay.textContent = `x = ${axisX.toFixed(2)} (${caseText})`;
+                                maxValDisplay.textContent = maxVal.toFixed(2);
+                                
+                                statusPanel.className = `mt-4 p-3 rounded-lg text-center w-full max-w-md border shadow-sm ${panelClass}`;
+                            }
+                            
+                            slider.addEventListener('input', updateVisualization);
+                            
+                            btnNeg.addEventListener('click', function() {
+                                slider.value = -5 * SQRT2 / 2; // -3.535...
+                                updateVisualization();
+                            });
+                            btnZero.addEventListener('click', function() {
+                                slider.value = 0;
+                                updateVisualization();
+                            });
+                            btnPos.addEventListener('click', function() {
+                                slider.value = 5 * SQRT2 / 2; // 3.535...
+                                updateVisualization();
+                            });
+                            
+                            updateVisualization(); // 初期描画
+                        });
+                    </script>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果と検算</h3>
+                    
+                    <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900">
+                        <ul class="space-y-2 font-bold">
+                            <li>(1)(i) $-\sqrt{2} \le x \le \sqrt{2}$</li>
+                            <li>(1)(ii) $\sin\theta\cos\theta = \dfrac{1 - x^2}{2}$</li>
+                            <li>(2) $a = \pm\dfrac{5\sqrt{2}}{2}$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-slate-700">
+                        <strong>検算ポイント：場合分けの前提条件を満たすか</strong><br>
+                        2次関数の最大・最小の逆算問題では、「出た答えが、場合分けの前提として設定した条件に合致するか」の確認が命です。<br>
+                        答案の [2] では、最大値が4になる条件から $a^2 = 12 \implies a = \pm\sqrt{12}$ が出ました。これをそのまま答えにしてしまうと完全に誤答になります。<br>
+                        [2] の前提条件は $-2\sqrt{2} \le a \le 2\sqrt{2}$、すなわち $-\sqrt{8} \le a \le \sqrt{8}$ です。$\sqrt{12} > \sqrt{8}$ であるため、この解は前提を破綻させており、不適となります。このように、自分で設定した条件に解が収まっているかの「自己チェック」を欠かさないようにしましょう。
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">$\sin\theta - \cos\theta$ の変域の確認漏れ</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                置き換えた文字 $x$ の範囲を $-\sqrt{2} \le x \le \sqrt{2}$ と求めずに、すべての実数として2次関数の最大値を考えようとすると、グラフが上に凸であるため「頂点が常に最大値」という誤った結論（場合分けの[2]のみ）に至ってしまいます。文字を置き換えたら必ず変域を確認してください。
+                            </p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">場合分けの不等号に平方根が含まれるときの比較ミス</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                $-2\sqrt{2}$ と $-\dfrac{5\sqrt{2}}{2}$ の大小を比較する際、頭の中で処理しようとすると間違えやすいです。必ずすべてを「ルートの中に入れる」形（$-\sqrt{8}$ と $-\sqrt{12.5}$ など）に直してから大小を比較するようにしましょう。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+                
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. $\sin\theta \pm \cos\theta$ と $\sin\theta\cos\theta$ の両方を含む関数の最大・最小を考えるときの定石となる変形は何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            $x = \sin\theta \pm \cos\theta$ と置き換えて両辺を2乗し、$\sin\theta\cos\theta$ を $x$ の式で表すことで、元の関数全体を $x$ の2次関数に帰着させます。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. $x = \sin\theta - \cos\theta$ と文字を置き換えた直後に、必ず行わなければならない作業は何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            新しい文字 $x$ の「とり得る値の範囲（変域）」を調べることです。三角関数の合成を用いて $x = \sqrt{2}\sin(\theta - \frac{\pi}{4})$ とし、$x$ の範囲が $-\sqrt{2} \le x \le \sqrt{2}$ に制限されることを必ず確認します。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. 上に凸の2次関数の「最大値」が指定され、係数を逆算する問題で、軸の位置に文字が含まれている場合、どのような3つの場合分けを行いますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            グラフの軸と定義域の位置関係に注目し、①「軸が定義域の左外にある（左端で最大）」、②「軸が定義域の内側にある（頂点で最大）」、③「軸が定義域の右外にある（右端で最大）」の3パターンで場合分けを行います。
+                        </div>
+                    </details>
+                </div>
+            </section>
+            
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="no11.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← No.11へ
+                </a>
+                <a href="no13.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.13 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            自彊館(理系)　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>

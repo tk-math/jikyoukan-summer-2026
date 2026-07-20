@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.8 小問集合 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+        
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.8</span>
+                    <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">小問集合</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 text-slate-700 leading-relaxed mt-4">
+                    <ol class="list-decimal pl-6 space-y-6">
+                        <li>
+                            $a$は実数の定数とする。$x$の方程式 \[ x^2-ax+(a-1)^2=0 \] が異なる2つの実数解をもつとする。
+                            <ol class="list-[lower-roman] pl-6 mt-2 space-y-2">
+                                <li>$a$のとり得る値の範囲を求めよ。</li>
+                                <li>2つの解を $\alpha$ ，$\beta$ とするとき，$\alpha^2\beta+\alpha\beta^2$ のとり得る値の範囲を求めよ。</li>
+                            </ol>
+                        </li>
+                        <li>
+                            <div class="flex flex-col sm:flex-row gap-6 items-start">
+                                <div class="flex-1">
+                                    $\mathrm{OA}=\mathrm{OB}=\mathrm{OC}=\sqrt{35}$ ，$\mathrm{AB}=6$ ，$\mathrm{CA}=4\sqrt{2}$ ，$\angle\mathrm{BAC}=45^\circ$ の四面体$\mathrm{OABC}$がある。
+                                    <ol class="list-[lower-roman] pl-6 mt-2 space-y-2">
+                                        <li>辺$\mathrm{BC}$の長さを求めよ。</li>
+                                        <li>三角形$\mathrm{ABC}$の外接円の半径を求めよ。</li>
+                                        <li>四面体$\mathrm{OABC}$の外接球の体積を求めよ。</li>
+                                    </ol>
+                                </div>
+                                <div class="sm:w-48 flex justify-center">
+                                    <!-- 四面体のイラスト (SVG) -->
+                                    <svg width="140" height="130" viewBox="-15 -10 170 160">
+                                        <polygon points="10,100 110,120 130,50" fill="none" stroke="#64748b" stroke-width="1.5" stroke-dasharray="3,3"/>
+                                        <line x1="10" y1="100" x2="110" y2="120" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="110" y1="120" x2="130" y2="50" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="10" y1="100" x2="70" y2="10" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="110" y1="120" x2="70" y2="10" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="130" y1="50" x2="70" y2="10" stroke="#334155" stroke-width="1.5"/>
+                                        <text x="65" y="5" fill="#334155" font-size="14" font-weight="bold">O</text>
+                                        <text x="-5" y="105" fill="#334155" font-size="14" font-weight="bold">A</text>
+                                        <text x="110" y="140" fill="#334155" font-size="14" font-weight="bold">B</text>
+                                        <text x="135" y="55" fill="#334155" font-size="14" font-weight="bold">C</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                    <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                        <li><strong>(1)のポイント：</strong> 2次方程式の「解と係数の関係」と「判別式」。対称式 $\alpha^2\beta+\alpha\beta^2$ は基本対称式 $\alpha+\beta, \alpha\beta$ で表せるため、$a$ の関数（3次関数）になります。微分して増減を調べます。</li>
+                        <li><strong>(2)のポイント：</strong> 空間図形ですが、(i)(ii) は底面 $\triangle\mathrm{ABC}$ だけの平面図形の問題です。(iii)で空間（高さ）を考えます。<br>
+                        <strong>最重要定理：</strong>「$\mathrm{OA}=\mathrm{OB}=\mathrm{OC}$ のとき、頂点 $\mathrm{O}$ から底面に下ろした垂線の足 $\mathrm{H}$ は、底面の三角形の<strong>外心</strong>になる」</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    問題を解くための考え方から、答案、検算、発展までを順に確認します。
+                </p>
+
+                <!-- 解法選択のトリガー -->
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">解の対称式の最大・最小と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                <strong>「解と係数の関係」</strong>で基本対称式を $a$ で表し、関数 $f(a)$ を作ります。このとき、<strong>「判別式 $D > 0$」</strong>から $a$ の定義域（隠れた範囲）を必ず求めることが最大のポイントです。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">すべての側稜が等しい四面体と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                上から見下ろしたとき、垂線の足 $\mathrm{H}$ から各頂点 $\mathrm{A, B, C}$ までの距離が等しくなります（直角三角形の合同より）。すなわち、<strong>$\mathrm{H}$ は $\triangle\mathrm{ABC}$ の外心であり、$\mathrm{AH}$ は外接円の半径 $R$ </strong>となります。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">外接球の半径と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                空間全体で考えず、<strong>「四面体の高さ（直線 $\mathrm{OH}$）」を含む断面（直角三角形 $\mathrm{OAH}$ など）</strong>を抜き出して平面図形の問題に帰着させます。外接球の中心 $\mathrm{P}$ は直線 $\mathrm{OH}$ 上にあり、$\mathrm{OP} = \mathrm{AP} = r_s$（半径）であることを利用して方程式を立てます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 思考プロセス -->
+                <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(1)の計算手順</strong><br>
+                            判別式 $D = a^2 - 4(a-1)^2 > 0$ を解いて $a$ の範囲を出します。<br>
+                            $\alpha^2\beta+\alpha\beta^2 = \alpha\beta(\alpha+\beta)$。解と係数の関係より $\alpha+\beta=a, \alpha\beta=(a-1)^2$ を代入し、$f(a) = a(a-1)^2$ の増減表を $a$ の範囲内で作成します。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(2)の底面の処理</strong><br>
+                            (i) 余弦定理 $\mathrm{BC}^2 = 6^2 + (4\sqrt{2})^2 - 2 \cdot 6 \cdot 4\sqrt{2} \cdot \cos 45^\circ$ を計算。<br>
+                            (ii) 正弦定理 $2R = \dfrac{\mathrm{BC}}{\sin 45^\circ}$ を計算して $R$ を求める。これがそのまま $\mathrm{AH}$ の長さになる。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(2)の空間の処理</strong><br>
+                            (iii) $\triangle\mathrm{OAH}$ で三平方の定理より高さ $\mathrm{OH}$ を求める（$\mathrm{OH}^2 = \mathrm{OA}^2 - \mathrm{AH}^2$）。<br>
+                            次に外接球の中心 $\mathrm{P}$。$\mathrm{P}$ から $\mathrm{O}$ までの距離と $\mathrm{A}$ までの距離が同じ（球の半径 $r_s$）。<br>
+                            $\triangle\mathrm{APH}$ で三平方の定理 $\mathrm{AP}^2 = \mathrm{AH}^2 + \mathrm{PH}^2$ すなわち $r_s^2 = R^2 + (\mathrm{OH} - r_s)^2$ を立てて $r_s$ を求め、球の体積公式 $V = \frac{4}{3}\pi r_s^3$ に代入する。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 実際の答案 -->
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    
+                    <div class="mt-4 space-y-8 text-slate-700">
+                        <!-- (1)(i) -->
+                        <div>
+                            <p class="font-bold text-blue-800 border-b border-slate-200 pb-1">（1）(i)</p>
+                            <p class="mt-2">
+                                2次方程式 $x^2-ax+(a-1)^2=0$ が異なる2つの実数解をもつ条件は、判別式 $D > 0$ である。
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                D = (-a)^2 - 4 \cdot 1 \cdot (a-1)^2 &> 0 \\
+                                a^2 - 4(a^2 - 2a + 1) &> 0 \\
+                                a^2 - 4a^2 + 8a - 4 &> 0 \\
+                                -3a^2 + 8a - 4 &> 0 \\
+                                3a^2 - 8a + 4 &< 0 \\
+                                (3a - 2)(a - 2) &< 0
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $\dfrac{2}{3} < a < 2$
+                            </div>
+                        </div>
+
+                        <!-- (1)(ii) -->
+                        <div>
+                            <p class="font-bold text-blue-800 border-b border-slate-200 pb-1">（1）(ii)</p>
+                            <p class="mt-2">
+                                解と係数の関係より、$\alpha+\beta=a$ ， $\alpha\beta=(a-1)^2$ である。<br>
+                                求める式を $f(a)$ とおくと、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                f(a) &= \alpha^2\beta + \alpha\beta^2 \\
+                                &= \alpha\beta(\alpha+\beta) \\
+                                &= (a-1)^2 \cdot a \\
+                                &= a^3 - 2a^2 + a
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                $f(a)$ を $a$ で微分すると
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                f'(a) &= 3a^2 - 4a + 1 \\
+                                &= (3a-1)(a-1)
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                $f'(a)=0$ となるのは $a = \dfrac{1}{3}, 1$ である。<br>
+                                (i)で求めた範囲 $\dfrac{2}{3} < a < 2$ における増減表は次のようになる。
+                            </p>
+                            <div class="overflow-x-auto mt-2 mb-4">
+                                <table class="w-full max-w-sm border-collapse border border-slate-300 text-center mx-auto bg-white">
+                                    <thead class="bg-slate-50">
+                                        <tr>
+                                            <th class="border border-slate-300 px-3 py-1">$a$</th>
+                                            <th class="border border-slate-300 px-3 py-1">$\left(\frac{2}{3}\right)$</th>
+                                            <th class="border border-slate-300 px-3 py-1">$\cdots$</th>
+                                            <th class="border border-slate-300 px-3 py-1">$1$</th>
+                                            <th class="border border-slate-300 px-3 py-1">$\cdots$</th>
+                                            <th class="border border-slate-300 px-3 py-1">$(2)$</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-slate-300 px-3 py-1">$f'(a)$</td>
+                                            <td class="border border-slate-300 px-3 py-1 bg-slate-100"></td>
+                                            <td class="border border-slate-300 px-3 py-1">$-$</td>
+                                            <td class="border border-slate-300 px-3 py-1">$0$</td>
+                                            <td class="border border-slate-300 px-3 py-1">$+$</td>
+                                            <td class="border border-slate-300 px-3 py-1 bg-slate-100"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-slate-300 px-3 py-1">$f(a)$</td>
+                                            <td class="border border-slate-300 px-3 py-1 bg-slate-100">$\left(\frac{2}{27}\right)$</td>
+                                            <td class="border border-slate-300 px-3 py-1">$\searrow$</td>
+                                            <td class="border border-slate-300 px-3 py-1">極小 $0$</td>
+                                            <td class="border border-slate-300 px-3 py-1">$\nearrow$</td>
+                                            <td class="border border-slate-300 px-3 py-1 bg-slate-100">$(2)$</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="mt-2">
+                                端点の値は、<br>
+                                $f\left(\dfrac{2}{3}\right) = \dfrac{2}{3} \left( \dfrac{2}{3} - 1 \right)^2 = \dfrac{2}{3} \cdot \dfrac{1}{9} = \dfrac{2}{27}$ <br>
+                                $f(2) = 2(2-1)^2 = 2$ <br>
+                                であり、極小値は $f(1) = 0$ である。<br>
+                                開区間であるため最大値は存在せず、上限は $2$ となる。
+                            </p>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $0 \le \alpha^2\beta+\alpha\beta^2 < 2$
+                            </div>
+                        </div>
+
+                        <!-- (2)(i)(ii) -->
+                        <div>
+                            <p class="font-bold text-blue-800 border-b border-slate-200 pb-1">（2）(i) (ii)</p>
+                            <p class="mt-2">
+                                $\triangle\mathrm{ABC}$ において、余弦定理より
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \mathrm{BC}^2 &= \mathrm{AB}^2 + \mathrm{AC}^2 - 2\mathrm{AB}\cdot\mathrm{AC}\cos 45^\circ \\
+                                &= 6^2 + (4\sqrt{2})^2 - 2 \cdot 6 \cdot 4\sqrt{2} \cdot \frac{1}{\sqrt{2}} \\
+                                &= 36 + 32 - 48 \\
+                                &= 20
+                                \end{aligned}
+                            </div>
+                            <p class="mt-1">
+                                $\mathrm{BC} > 0$ より $\mathrm{BC} = \sqrt{20} = 2\sqrt{5}$。 <br><br>
+                                次に、$\triangle\mathrm{ABC}$ の外接円の半径を $R$ とすると、正弦定理より
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                2R &= \frac{\mathrm{BC}}{\sin 45^\circ} \\
+                                2R &= \frac{2\sqrt{5}}{\frac{1}{\sqrt{2}}} = 2\sqrt{10} \\
+                                R &= \sqrt{10}
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: (i) $\mathrm{BC} = 2\sqrt{5}$ \quad (ii) 半径 $\sqrt{10}$
+                            </div>
+                        </div>
+
+                        <!-- (2)(iii) -->
+                        <div>
+                            <p class="font-bold text-blue-800 border-b border-slate-200 pb-1">（2）(iii)</p>
+                            <p class="mt-2">
+                                $\mathrm{OA}=\mathrm{OB}=\mathrm{OC}$ であるから、頂点 $\mathrm{O}$ から底面 $\triangle\mathrm{ABC}$ に下ろした垂線の足を $\mathrm{H}$ とすると、$\triangle\mathrm{OHA} \equiv \triangle\mathrm{OHB} \equiv \triangle\mathrm{OHC}$ となる。<br>
+                                したがって $\mathrm{AH}=\mathrm{BH}=\mathrm{CH}$ となり、$\mathrm{H}$ は $\triangle\mathrm{ABC}$ の外心に一致する。<br>
+                                ゆえに、$\mathrm{AH}$ は(ii)で求めた外接円の半径 $R$ と等しく、$\mathrm{AH} = \sqrt{10}$ である。<br>
+                            </p>
+                            <p class="mt-2">
+                                直角三角形 $\triangle\mathrm{OAH}$ において、三平方の定理より
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \mathrm{OH}^2 &= \mathrm{OA}^2 - \mathrm{AH}^2 \\
+                                &= (\sqrt{35})^2 - (\sqrt{10})^2 \\
+                                &= 35 - 10 = 25
+                                \end{aligned}
+                            </div>
+                            <p class="mt-1">
+                                $\mathrm{OH} > 0$ より、四面体の高さ $\mathrm{OH} = 5$ である。
+                            </p>
+                            <p class="mt-4">
+                                四面体$\mathrm{OABC}$の外接球の中心を $\mathrm{P}$、半径を $r_s$ とする。<br>
+                                対称性から $\mathrm{P}$ は直線 $\mathrm{OH}$ 上に存在し、$\mathrm{OP} = \mathrm{AP} = r_s$ である。<br>
+                                $\triangle\mathrm{APH}$ は直角三角形であり、$\mathrm{PH} = |\mathrm{OH} - \mathrm{OP}| = |5 - r_s|$ であるから、三平方の定理より
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \mathrm{AP}^2 &= \mathrm{AH}^2 + \mathrm{PH}^2 \\
+                                r_s^2 &= (\sqrt{10})^2 + (5 - r_s)^2 \\
+                                r_s^2 &= 10 + 25 - 10r_s + r_s^2 \\
+                                10r_s &= 35 \\
+                                r_s &= \frac{7}{2}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                したがって、外接球の体積 $V$ は
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                V &= \frac{4}{3}\pi r_s^3 \\
+                                &= \frac{4}{3}\pi \left(\frac{7}{2}\right)^3 \\
+                                &= \frac{4}{3}\pi \cdot \frac{343}{8} \\
+                                &= \frac{343}{6}\pi
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $\dfrac{343}{6}\pi$
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- 図解セクション -->
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化（外接球の中心の捉え方）</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        空間図形で外接球の半径を求める問題は、立体全体を想像するのではなく、<strong>「必要な情報が揃っている平面（断面）を抜き出す」</strong>ことが最大のポイントです。<br>
+                        本問では、高さ $\mathrm{OH}$ と外接円の半径 $\mathrm{AH}$ を含む直角三角形 $\triangle\mathrm{OAH}$ を抜き出して考えます。スライダーを動かして、球の中心 $\mathrm{P}$ がどこにあるべきか（$\mathrm{OP}=\mathrm{AP}$ となる点）を確認しましょう。
+                    </p>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 sm:p-6 rounded-lg border border-slate-200 flex flex-col items-center">
+                        <div class="w-full max-w-sm mb-6 px-2">
+                            <label for="p-slider" class="block text-sm font-medium text-slate-700 mb-2">
+                                中心 $\mathrm{P}$ の $\mathrm{O}$ からの距離 ($r_s$): <span id="p-value" class="font-bold text-violet-600 text-lg">2.00</span>
+                            </label>
+                            <input type="range" id="p-slider" min="1.0" max="6.0" step="0.1" value="2.0" class="w-full h-2 bg-slate-300 rounded-lg appearance-none cursor-pointer accent-violet-600">
+                            <div class="flex justify-between mt-2 text-xs text-slate-500 px-1">
+                                <span>1</span>
+                                <span class="font-bold text-violet-500">正解 3.5</span>
+                                <span>6</span>
+                            </div>
+                            <div id="distance-status" class="mt-3 text-center text-sm font-bold h-6 transition-colors"></div>
+                        </div>
+
+                        <div class="relative w-full max-w-md bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden p-6 flex justify-center">
+                            <!-- 座標系: H(150, 200), O(150, 50) scale=30 -->
+                            <!-- OH=5 (150px), AH=√10≒3.16 (94.8px) -> A(55.2, 200) -->
+                            <svg width="300" height="250" viewBox="0 0 300 250">
+                                <!-- グリッドと背景 -->
+                                <line x1="20" y1="200" x2="280" y2="200" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="2,2" />
+                                <line x1="150" y1="20" x2="150" y2="230" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="2,2" />
+                                <text x="250" y="215" fill="#94a3b8" font-size="12">底面 ABC</text>
+
+                                <!-- 直角三角形 OAH -->
+                                <polygon points="150,50 55.2,200 150,200" fill="rgba(59, 130, 246, 0.1)" stroke="#3b82f6" stroke-width="2" />
+                                <text x="145" y="40" fill="#1e40af" font-size="14" font-weight="bold" text-anchor="middle">O</text>
+                                <text x="45" y="215" fill="#1e40af" font-size="14" font-weight="bold">A</text>
+                                <text x="155" y="215" fill="#1e40af" font-size="14" font-weight="bold">H</text>
+
+                                <!-- 長さのラベル -->
+                                <text x="160" y="130" fill="#3b82f6" font-size="12" font-weight="bold">高さ 5</text>
+                                <text x="100" y="215" fill="#3b82f6" font-size="12" font-weight="bold">外接円半径 √10</text>
+                                <text x="80" y="120" fill="#3b82f6" font-size="12" font-weight="bold" transform="rotate(-57, 102.6, 125)">側稜 √35</text>
+
+                                <!-- 直角マーク -->
+                                <polyline points="140,200 140,190 150,190" fill="none" stroke="#3b82f6" stroke-width="1.5" />
+
+                                <!-- インタラクティブな点 P -->
+                                <!-- Pのy座標: 50 + rs * 30 -->
+                                <circle id="point-p" cx="150" cy="110" r="5" fill="#8b5cf6" />
+                                <text id="label-p" x="160" y="115" fill="#8b5cf6" font-size="14" font-weight="bold">P</text>
+
+                                <!-- 距離 OP, AP の線 -->
+                                <line id="line-op" x1="150" y1="50" x2="150" y2="110" stroke="#8b5cf6" stroke-width="3" />
+                                <line id="line-ap" x1="55.2" y1="200" x2="150" y2="110" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="4,2" />
+
+                                <!-- 比較用円弧 (中心P, 半径OP) -->
+                                <path id="arc-p" d="" fill="none" stroke="rgba(139, 92, 246, 0.4)" stroke-width="2" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const slider = document.getElementById('p-slider');
+                            const pValueDisplay = document.getElementById('p-value');
+                            const pointP = document.getElementById('point-p');
+                            const labelP = document.getElementById('label-p');
+                            const lineOP = document.getElementById('line-op');
+                            const lineAP = document.getElementById('line-ap');
+                            const arcP = document.getElementById('arc-p');
+                            const statusText = document.getElementById('distance-status');
+
+                            const SCALE = 30;
+                            const O_y = 50;
+                            const A_x = 55.2; // 150 - sqrt(10)*30 = 150 - 94.86
+                            const A_y = 200;
+
+                            function updateVisualization() {
+                                const rs = parseFloat(slider.value);
+                                pValueDisplay.textContent = rs.toFixed(1);
+
+                                // Pの座標
+                                const py = O_y + rs * SCALE;
+                                pointP.setAttribute('cy', py);
+                                labelP.setAttribute('y', py + 5);
+
+                                lineOP.setAttribute('y2', py);
+                                lineAP.setAttribute('y2', py);
+
+                                // 距離の計算 (数学的)
+                                const distOP = rs;
+                                const distAP = Math.sqrt(10 + Math.pow(5 - rs, 2));
+
+                                // 円弧 (OPを半径としてPを中心に描く)
+                                const rPx = rs * SCALE;
+                                // SVG Arc: A rx ry x-axis-rotation large-arc-flag sweep-flag x y
+                                // O(150,50) から始めて、左下へ円弧を描く
+                                const endX = 150 - rPx;
+                                const endY = py;
+                                arcP.setAttribute('d', `M 150 50 A ${rPx} ${rPx} 0 0 0 ${endX} ${endY}`);
+
+                                // 判定
+                                if (Math.abs(distOP - distAP) < 0.05) {
+                                    statusText.textContent = "OP = AP になりました！ (外接球の中心)";
+                                    statusText.className = "mt-3 text-center text-sm font-bold h-6 text-violet-600";
+                                    lineAP.setAttribute('stroke-width', '3');
+                                    lineAP.setAttribute('stroke-dasharray', 'none');
+                                    pointP.setAttribute('r', '7');
+                                } else {
+                                    statusText.textContent = `OP = ${distOP.toFixed(2)},  AP = ${distAP.toFixed(2)}`;
+                                    statusText.className = "mt-3 text-center text-sm font-bold h-6 text-slate-500";
+                                    lineAP.setAttribute('stroke-width', '2');
+                                    lineAP.setAttribute('stroke-dasharray', '4,2');
+                                    pointP.setAttribute('r', '5');
+                                }
+                            }
+
+                            slider.addEventListener('input', updateVisualization);
+                            updateVisualization(); // 初期化
+                        });
+                    </script>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果と検算</h3>
+                    
+                    <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900">
+                        <ul class="space-y-2">
+                            <li>(1) (i) $\dfrac{2}{3} < a < 2$ \quad (ii) $0 \le \alpha^2\beta+\alpha\beta^2 < 2$</li>
+                            <li>(2) (i) $\mathrm{BC} = 2\sqrt{5}$ \quad (ii) $\sqrt{10}$ \quad (iii) $\dfrac{343}{6}\pi$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-slate-700">
+                        <strong>検算ポイント：(1)の境界値の意味</strong><br>
+                        (1)(i)で求めた $a$ の範囲の端点 $a=2$ のとき、方程式は $x^2-2x+1=0 \implies (x-1)^2=0$ となり重解を持ちます。このとき解と係数の関係は $\alpha+\beta=2, \alpha\beta=1$ となり、$\alpha^2\beta+\alpha\beta^2 = 1 \cdot 2 = 2$ となります。<br>
+                        問題は「異なる2つの実数解」なので $a=2$ は含まれず、対称式の値も $2$ を含まない「$< 2$」となっていることと完全に整合します。上限の境界値が重解のケースと一致することは、計算が正しいことの良いバロメーターになります。
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">(1) 判別式の条件を忘れて極大値を答えてしまう</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                $f(a)$ の増減表を書くと、$a=1/3$ で極大値 $f(1/3)=4/27$ を持ちます。判別式の条件 $\frac{2}{3} < a < 2$ を求めていない（または忘れている）と、「最小値 $0$、最大値 $4/27$」という全く見当違いな答えを書いてしまいます。変数を文字で置いたときは、必ずその文字の「隠れた定義域」を探す癖をつけましょう。
+                            </p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">(2) 四面体の高さを勘違いする</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                側稜がすべて等しい（$\mathrm{OA=OB=OC}$）四面体において、垂線の足 $\mathrm{H}$ が外心になるという定理を知らないと、(2)(iii) で行き詰まります。「正四面体なら重心に落ちる」と丸暗記している人が、重心と勘違いして高さを間違えるミスも多いので注意が必要です。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+                
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. 方程式の解の対称式の最大・最小を求める問題で、関数を作る前に必ず確認しなければならない「前提条件」は何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            「判別式 $D \ge 0$ （異なる2つの場合は $D > 0$）」を満たす係数の範囲です。実数解を持つという大前提から、係数のとり得る範囲（定義域）が制限されるため、これを見落とすと誤った最大・最小を出してしまいます。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. 「すべての側稜の長さが等しい四面体」において、頂点から底面に下ろした垂線の足は、底面の三角形の何という点に一致しますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            「外心」です。垂線の足 $\mathrm{H}$ から各頂点までの直角三角形がすべて合同になるため、$\mathrm{H}$ から底面の各頂点までの距離が等しくなります（外接円の半径に等しい）。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. 四面体の外接球の半径を求める際、空間全体を想像するのではなく、どのような平面図形を取り出して方程式を立てるのが定石ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            「四面体の高さ」と「底面の外接円の半径」を含む直角三角形の断面を取り出します。外接球の中心は高さの直線上にあり、頂点までの距離（斜辺）が半径 $r_s$ に等しいことを用いて三平方の定理で方程式を立てます。
+                        </div>
+                    </details>
+                </div>
+            </section>
+            
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="no07.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← No.7へ
+                </a>
+                <a href="no09.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.9 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            自彊館(理系)　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>

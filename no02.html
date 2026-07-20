@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.2 確率 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+        
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.2</span>
+                    <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">基礎</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">確率</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：15分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 text-slate-700 leading-relaxed mt-4">
+                    <p>箱の中に0から9までの数字が1つずつ書かれたカードが1枚ずつ合計10枚入っている．この箱の中から同時に3枚のカードを無作為に取り出し，取り出されたカードに書かれた3つの数字を大きいものから順に百の位，十の位，一の位として3桁の整数を作る．その整数を $N$ とする．</p>
+                    <ol class="list-decimal pl-6 mt-3 space-y-2">
+                        <li>$N$が10の倍数となる確率を求めよ．</li>
+                        <li>$N$が2の倍数となる確率を求めよ．</li>
+                        <li>$N$が3の倍数となる確率を求めよ．</li>
+                    </ol>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                    <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                        <li><strong>事象の総数：</strong> 10枚から3枚を「同時に」取り出すため、組合せ ${}_{10}\mathrm{C}_3$ 通りが分母となる。</li>
+                        <li><strong>整数の作られ方：</strong> 取り出した3枚の数字を「大きい順に並べる」というルールがある。つまり、<strong>3枚の組合せが1つ決まれば、作られる整数 $N$ はただ1つに決定する。</strong>（例：{2, 7, 5} が出たら必ず 752 になる）。よって、並び替え（順列）を考慮する必要はない。</li>
+                        <li><strong>百の位が0になることはないか？：</strong> 大きい順に並べるため、3枚のうち最大の数が百の位になる。もし最大の数が0であれば 000 となるが、カードは各1枚しかなく「異なる3つの数字」を取り出すため、最大の数が0になることは絶対にない（最小の組合せでも {2, 1, 0} → 210）。常に必ず3桁の整数になる。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    問題を解くための考え方から、答案、検算、発展までを順に確認します。
+                </p>
+
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">「同時に取り出す」＋「自動的に並び順が決まる」と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                順列（$\mathrm{P}$）は使わず、純粋に<strong>組合せ（$\mathrm{C}$）</strong>だけで考えます。「取り出したカードのセット」と「作られる整数」が1対1に対応しているため、条件を満たす「セットの個数」を数えればよいのです。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">倍数の判定条件</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                <strong>10の倍数：</strong> 一の位が 0<br>
+                                <strong>2の倍数：</strong> 一の位が 偶数 (0, 2, 4, 6, 8)<br>
+                                <strong>3の倍数：</strong> 各位の数の和が 3の倍数
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">「大きい順に並べる」というルールと倍数条件の結びつき</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                $N$ の「一の位」は、取り出した3つの数字の中で<strong>「一番小さい数」</strong>になります。したがって、「10の倍数である」ことは「取り出した3つの数字のうち、最小のものが 0 である」ことと同値です。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(1) 10の倍数になる条件</strong><br>
+                            一の位が 0 になる、つまり「取り出した3枚のうち最小の数が 0 である」ことが条件です。<br>
+                            これはシンプルに「0のカードを含んでいればよい」ということになります。（0より小さい数はないため、0が含まれていれば必ず一の位に配置されます。）<br>
+                            したがって、「0を必ず選び、残り2枚を1〜9から選ぶ」組合せの数を求めます。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(2) 2の倍数になる条件</strong><br>
+                            一の位（＝3枚のうち最小の数）が偶数（0, 2, 4, 6, 8）になる場合を考えます。<br>
+                            最小の数が指定されるので、<strong>「最小の数が $k$ であるような組合せ」</strong>を場合分けして足し合わせます。<br>
+                            例えば、最小の数が 2 の場合、残り2枚は「2より大きい数（3〜9）」から選ばなければなりません。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(3) 3の倍数になる条件</strong><br>
+                            各位の和が3の倍数になる条件です。これは、0から9までの数字を「3で割った余り」でグループ分けして考えるのが定石です。<br>
+                            ・余り0のグループ：{0, 3, 6, 9}<br>
+                            ・余り1のグループ：{1, 4, 7}<br>
+                            ・余り2のグループ：{2, 5, 8}<br>
+                            3つの数の和が3の倍数になるのは、「同じグループから3つ選ぶ」または「各グループから1つずつ選ぶ」のどちらかしかありません。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <div>
+                            <p class="mb-2">10枚のカードから同時に3枚を取り出す方法の総数は</p>
+                            <div class="math-scroll">
+                                \[ {}_{10}\mathrm{C}_3 = \frac{10 \times 9 \times 8}{3 \times 2 \times 1} = 120 \text{ （通り）} \]
+                            </div>
+                            <p class="mt-2">これらは同様に確からしい。</p>
+                        </div>
+
+                        <!-- (1) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（1）</p>
+                            <p class="mt-2">
+                                取り出した3つの数字を $a, b, c \ (a > b > c)$ とすると、$N$ は $100a + 10b + c$ と表される。<br>
+                                $N$ が10の倍数となるのは、一の位 $c$ が 0 のときである。<br>
+                                0から9までの数のうち、0が最小であるから、$c=0$ となる条件は「取り出した3枚の中に0のカードが含まれていること」と同値である。<br>
+                                0のカード1枚を必ず選び、残り2枚を1から9の9枚から選べばよいので、その選び方は
+                            </p>
+                            <div class="math-scroll">
+                                \[ {}_9\mathrm{C}_2 = \frac{9 \times 8}{2 \times 1} = 36 \text{ （通り）} \]
+                            </div>
+                            <p class="mt-2">
+                                したがって、求める確率は
+                            </p>
+                            <div class="math-scroll">
+                                \[ \frac{36}{120} = \frac{3}{10} \]
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $\dfrac{3}{10}$
+                            </div>
+                        </div>
+
+                        <!-- (2) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（2）</p>
+                            <p class="mt-2">
+                                $N$ が2の倍数となるのは、一の位 $c$（取り出した3枚のうち最小の数）が偶数（0, 2, 4, 6, 8）のときである。最小の数 $c$ ごとに場合分けをする。
+                            </p>
+                            <ul class="list-disc pl-5 mt-2 space-y-2">
+                                <li><strong>$c=0$ のとき：</strong> (1)より $36$ 通り。</li>
+                                <li><strong>$c=2$ のとき：</strong> 残り2枚は3から9の7枚から選ぶので、${}_7\mathrm{C}_2 = \dfrac{7 \times 6}{2 \times 1} = 21$ 通り。</li>
+                                <li><strong>$c=4$ のとき：</strong> 残り2枚は5から9の5枚から選ぶので、${}_5\mathrm{C}_2 = \dfrac{5 \times 4}{2 \times 1} = 10$ 通り。</li>
+                                <li><strong>$c=6$ のとき：</strong> 残り2枚は7から9の3枚から選ぶので、${}_3\mathrm{C}_2 = 3$ 通り。</li>
+                                <li><strong>$c=8$ のとき：</strong> 残りは9しかなく、2枚選べないため $0$ 通り。</li>
+                            </ul>
+                            <p class="mt-2">
+                                これらは互いに排反であるから、$N$ が2の倍数となる場合の数は
+                            </p>
+                            <div class="math-scroll">
+                                \[ 36 + 21 + 10 + 3 = 70 \text{ （通り）} \]
+                            </div>
+                            <p class="mt-2">
+                                したがって、求める確率は
+                            </p>
+                            <div class="math-scroll">
+                                \[ \frac{70}{120} = \frac{7}{12} \]
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $\dfrac{7}{12}$
+                            </div>
+                        </div>
+
+                        <!-- (3) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（3）</p>
+                            <p class="mt-2">
+                                $N$ が3の倍数となるのは、取り出した3つの数字の和が3の倍数になるときである。<br>
+                                0から9までの10個の数字を、3で割った余りによって3つのグループに分類する。<br>
+                                $A_0 = \{0, 3, 6, 9\}$ （4個）<br>
+                                $A_1 = \{1, 4, 7\}$ （3個）<br>
+                                $A_2 = \{2, 5, 8\}$ （3個）<br>
+                                3つの数字の和が3の倍数になるのは、次の [I] または [II] の場合である。
+                            </p>
+                            <ul class="list-none pl-0 mt-2 space-y-4">
+                                <li>
+                                    <strong>[I] 同じグループから3つの数字を選ぶ場合</strong><br>
+                                    ・$A_0$ から3つ選ぶ：${}_4\mathrm{C}_3 = 4$ 通り。<br>
+                                    ・$A_1$ から3つ選ぶ：${}_3\mathrm{C}_3 = 1$ 通り。<br>
+                                    ・$A_2$ から3つ選ぶ：${}_3\mathrm{C}_3 = 1$ 通り。<br>
+                                    計 $4 + 1 + 1 = 6$ 通り。
+                                </li>
+                                <li>
+                                    <strong>[II] 3つのグループからそれぞれ1つずつ選ぶ場合</strong><br>
+                                    ・$A_0$ から1つ、$A_1$ から1つ、$A_2$ から1つ選ぶので、<br>
+                                    ${}_4\mathrm{C}_1 \times {}_3\mathrm{C}_1 \times {}_3\mathrm{C}_1 = 4 \times 3 \times 3 = 36$ 通り。
+                                </li>
+                            </ul>
+                            <p class="mt-2">
+                                [I] と [II] は互いに排反であるから、$N$ が3の倍数となる場合の数は
+                            </p>
+                            <div class="math-scroll">
+                                \[ 6 + 36 = 42 \text{ （通り）} \]
+                            </div>
+                            <p class="mt-2">
+                                したがって、求める確率は
+                            </p>
+                            <div class="math-scroll">
+                                \[ \frac{42}{120} = \frac{7}{20} \]
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $\dfrac{7}{20}$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">場合分けの整理（(2) 2の倍数）</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        (2)で「最小の数」ごとに場合分けをしました。なぜそのような計算になるのか、視覚的に整理してみましょう。<br>
+                        最小の数（一の位）が決まると、百の位と十の位になれる数は「それより大きい数」に限定されます。
+                    </p>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 sm:p-6 rounded-lg border border-slate-200">
+                        <div class="overflow-x-auto">
+                            <table class="w-full min-w-max border-collapse border border-slate-300 text-sm text-center">
+                                <thead class="bg-slate-100">
+                                    <tr>
+                                        <th class="border border-slate-300 px-4 py-2 font-bold text-slate-800">一の位 (最小)</th>
+                                        <th class="border border-slate-300 px-4 py-2 font-bold text-slate-800">百の位・十の位になれる候補</th>
+                                        <th class="border border-slate-300 px-4 py-2 font-bold text-slate-800">選び方 (計算)</th>
+                                        <th class="border border-slate-300 px-4 py-2 font-bold text-slate-800">通り数</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-slate-300 px-4 py-3 font-bold text-rose-600 bg-white">0</td>
+                                        <td class="border border-slate-300 px-4 py-3 bg-white text-left">
+                                            <div class="flex flex-wrap gap-1">
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">1</span>
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">2</span>
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">3</span>
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">4</span>
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">5</span>
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">6</span>
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">7</span>
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">8</span>
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">9</span>
+                                                <span class="ml-2 text-slate-500">(9個)</span>
+                                            </div>
+                                        </td>
+                                        <td class="border border-slate-300 px-4 py-3 bg-white">9個から2個選ぶ</td>
+                                        <td class="border border-slate-300 px-4 py-3 bg-white font-bold">36</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-slate-300 px-4 py-3 font-bold text-rose-600 bg-slate-50">2</td>
+                                        <td class="border border-slate-300 px-4 py-3 bg-slate-50 text-left">
+                                            <div class="flex flex-wrap gap-1">
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">3</span>
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">4</span>
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">5</span>
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">6</span>
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">7</span>
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">8</span>
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">9</span>
+                                                <span class="ml-2 text-slate-500">(7個)</span>
+                                            </div>
+                                        </td>
+                                        <td class="border border-slate-300 px-4 py-3 bg-slate-50">7個から2個選ぶ</td>
+                                        <td class="border border-slate-300 px-4 py-3 bg-slate-50 font-bold">21</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-slate-300 px-4 py-3 font-bold text-rose-600 bg-white">4</td>
+                                        <td class="border border-slate-300 px-4 py-3 bg-white text-left">
+                                            <div class="flex flex-wrap gap-1">
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">5</span>
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">6</span>
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">7</span>
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">8</span>
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">9</span>
+                                                <span class="ml-2 text-slate-500">(5個)</span>
+                                            </div>
+                                        </td>
+                                        <td class="border border-slate-300 px-4 py-3 bg-white">5個から2個選ぶ</td>
+                                        <td class="border border-slate-300 px-4 py-3 bg-white font-bold">10</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-slate-300 px-4 py-3 font-bold text-rose-600 bg-slate-50">6</td>
+                                        <td class="border border-slate-300 px-4 py-3 bg-slate-50 text-left">
+                                            <div class="flex flex-wrap gap-1">
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">7</span>
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">8</span>
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">9</span>
+                                                <span class="ml-2 text-slate-500">(3個)</span>
+                                            </div>
+                                        </td>
+                                        <td class="border border-slate-300 px-4 py-3 bg-slate-50">3個から2個選ぶ</td>
+                                        <td class="border border-slate-300 px-4 py-3 bg-slate-50 font-bold">3</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-slate-300 px-4 py-3 font-bold text-slate-400 bg-white">8</td>
+                                        <td class="border border-slate-300 px-4 py-3 bg-white text-left">
+                                            <div class="flex flex-wrap gap-1">
+                                                <span class="inline-block bg-slate-200 rounded px-2 py-0.5 text-slate-700">9</span>
+                                                <span class="ml-2 text-slate-400">(1個) ※2枚選べない</span>
+                                            </div>
+                                        </td>
+                                        <td class="border border-slate-300 px-4 py-3 bg-white text-slate-400">作成不可</td>
+                                        <td class="border border-slate-300 px-4 py-3 bg-white text-slate-400 font-bold">0</td>
+                                    </tr>
+                                    <tr class="bg-rose-50/50">
+                                        <td class="border border-slate-300 px-4 py-3 font-bold text-slate-800 text-right" colspan="3">合計</td>
+                                        <td class="border border-slate-300 px-4 py-3 font-bold text-rose-700 text-lg">70</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果と検算</h3>
+                    
+                    <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900">
+                        <ul class="space-y-2 font-bold">
+                            <li>(1) $\dfrac{3}{10}$</li>
+                            <li>(2) $\dfrac{7}{12}$</li>
+                            <li>(3) $\dfrac{7}{20}$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-slate-700">
+                        <strong>検算ポイント：(2) 奇数になる確率による補集合の確認</strong><br>
+                        (2)で偶数（2の倍数）になる確率を求めましたが、補集合である「奇数になる確率」を求めて和が1になるか確認してみましょう。<br>
+                        奇数になるのは、一の位（最小の数）が奇数 (1, 3, 5, 7, 9) のときです。<br>
+                        ・$c=1$ のとき：${}_8\mathrm{C}_2 = 28$ 通り<br>
+                        ・$c=3$ のとき：${}_6\mathrm{C}_2 = 15$ 通り<br>
+                        ・$c=5$ のとき：${}_4\mathrm{C}_2 = 6$ 通り<br>
+                        ・$c=7$ のとき：${}_2\mathrm{C}_2 = 1$ 通り<br>
+                        ・$c=9$ のとき：作れない（0通り）<br>
+                        合計 $28+15+6+1 = 50$ 通り。<br>
+                        偶数の70通りと合わせると $70 + 50 = 120$ 通りとなり、全体の場合の数 ${}_{10}\mathrm{C}_3$ と完全に一致しました。これで安心して次に進めます。
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">発展・一般化：「大きい順」の強力さ</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        本問の最大のポイントは、「取り出した3つの数字を<strong>大きい順に並べる</strong>」というルールです。もしこのルールがなく「無作為に並べて3桁の整数を作る」であった場合、問題は途端に複雑になります。<br>
+                        なぜなら、「0を選んだ場合、0が百の位になってしまうと2桁の整数になってしまうため、0を含む場合と含まない場合で並べ方の場合分けが必要になる」からです。<br>
+                        本問では、「大きい順に並べる」というルールがあるおかげで、0が必ず一の位に押し出され、<strong>「百の位が0になる例外」を一切考える必要がなくなり</strong>、単純な「組合せ」の計算だけで処理できるようになっています。条件の意図を正しく読み取ることが、解法をシンプルにする鍵です。
+                    </p>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">順列（$\mathrm{P}$）を使って計算を複雑化してしまう</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                「3桁の整数を作る」という言葉につられて、「10枚から3枚選んで並べるから分母は ${}_{10}\mathrm{P}_3$ だ！」としてしまうミスが多発します。「大きい順に並べる」という指定があるため、{2, 5, 8} という組み合わせが出た時点で 852 以外の並び方は発生しません。並び方の自由度がない場合は「組合せ（$\mathrm{C}$）」で考えなければなりません。
+                            </p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">3の倍数の条件を「各グループから1つずつ」だけにしてしまう</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                (3)で「和が3の倍数 $\Rightarrow$ 余り0, 1, 2のグループから1つずつ選ぶ」ことには気づけても、「同じグループから3つ選ぶ（余り0+0+0, 余り1+1+1, 余り2+2+2）」というパターンを完全に抜け落としてしまう誤答が非常に多いです。3の倍数のグループ分けを使う問題では、この「同じグループから3つ」が常に隠れていることを意識しましょう。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+                
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. 「取り出した3つの数字を大きい順に並べて整数を作る」という問題において、順列（$\mathrm{P}$）ではなく組合せ（$\mathrm{C}$）を用いて計算してよい理由は何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            選ばれた3つの数字のセットに対して、それらを大きい順に並べる方法は「ただ1通り」に自動的に決まるためです。並べ方の自由度がないため、単に「3つの数字を選ぶ組合せ」だけを数えれば、作られる整数の個数と一致します。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. 取り出した3つの数字を「大きい順に」並べたとき、その3桁の整数が偶数（2の倍数）になるかどうかの判定は、どこに注目すればよいですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            一の位、すなわち「取り出した3つの数字のうち、最も小さい数」が偶数であるかどうかに注目します。そのため、計算時は「一番小さい数」を固定して場合分けを行うとスムーズに数え上げられます。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. 0から9までの数字から3つを選んで「和が3の倍数」になるようにしたいとき、数字をどのようなグループに分けて考えますか？また、選ぶパターンの大分類は？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            数字を「3で割った余り」によって、余り0、余り1、余り2の3つのグループに分けます。和が3の倍数になるのは、「同じグループから3つの数字を選ぶ」パターンか、「3つのグループからそれぞれ1つずつ選ぶ」パターンのどちらかです。
+                        </div>
+                    </details>
+                </div>
+            </section>
+            
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="no01.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← No.1へ
+                </a>
+                <a href="no03.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.3 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            自彊館(理系)　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>

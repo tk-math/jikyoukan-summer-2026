@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.34 図形と計量 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: { matchFontHeight: false },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: .5rem; margin-bottom: .5rem; }
+        button:focus-visible, summary:focus-visible, a:focus-visible, input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+        ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+        <div class="p-7 sm:p-10">
+            <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+                <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.34</span>
+                <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">基礎</span>
+            </div>
+            <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">図形と計量</h1>
+            <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                問題
+            </h2>
+
+            <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed">
+                <p>三角形ABCにおいて、</p>
+                <div class="math-scroll">
+                    \[
+                    \mathrm{AB}=3,\qquad
+                    \mathrm{AC}=2\sqrt2,\qquad
+                    \angle\mathrm{BAC}=45^\circ
+                    \]
+                </div>
+                <p>である。</p>
+
+                <ol class="mt-4 list-decimal space-y-4 pl-6">
+                    <li>三角形ABCの面積を求めよ。</li>
+                    <li>辺BCの長さを求めよ。</li>
+                    <li>
+                        三角形ABCの外接円において、点Aを含まない方の弧BCを $K$ とする。
+                        <ol class="mt-2 list-[lower-roman] space-y-3 pl-6">
+                            <li>$K$ 上に、点Pを $\mathrm{BP}=\sqrt3$ となるようにとるとき、線分CPの長さを求めよ。</li>
+                            <li>
+                                $K$ 上に、点Qを
+                                \[
+                                [\triangle\mathrm{ABC}]:[\triangle\mathrm{BCQ}]=6:1
+                                \]
+                                となるようにとるとき、線分BQ、CQの長さをそれぞれ求めよ。
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+                <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+                    <li>
+                        2辺とその間の角が分かっているので、
+                        \[
+                        S=\frac12bc\sin A
+                        \]
+                        と余弦定理を使えます。
+                    </li>
+                    <li>
+                        AとP、AとQは弦BCの反対側にあるので、
+                        \[
+                        \angle\mathrm{BPC}
+                        =
+                        \angle\mathrm{BQC}
+                        =
+                        135^\circ
+                        \]
+                        です。
+                    </li>
+                    <li>
+                        （3）（ii）の条件を満たすQは弧K上に2点あり、BQとCQが入れ替わる2通りが生じます。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                解説
+            </h2>
+
+            <p class="mt-4 text-sm leading-8 text-slate-600">
+                面積公式、余弦定理、円に内接する四角形の性質を順につなげます。
+            </p>
+
+            <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+                <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">2辺とその間の角</p>
+                        <p class="mt-1 text-sm text-amber-800">面積には正弦、残りの辺には余弦定理を使います。</p>
+                    </div>
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">同じ弦BCを見込む円周角</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            AとP・Qは弦BCの反対側にあるため、角は等しくなく、和が $180^\circ$ になります。
+                        </p>
+                    </div>
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">面積から2辺の積を作る</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            \[
+                            [\triangle\mathrm{BCQ}]
+                            =
+                            \frac12\mathrm{BQ}\cdot\mathrm{CQ}\sin135^\circ
+                            \]
+                            から積を求め、余弦定理と組み合わせます。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（1）根号と三角比を先に整理する</strong><br>
+                        \[
+                        2\sqrt2\cdot\frac{\sqrt2}{2}=2
+                        \]
+                        となるため、面積は整数になります。
+                    </div>
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（3）（i）未知辺を1文字で置く</strong><br>
+                        $\mathrm{CP}=x$ と置き、三角形BPCに余弦定理を使います。
+                    </div>
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（3）（ii）和と積を作る</strong><br>
+                        面積から積、余弦定理から2乗和を求め、
+                        \[
+                        (\mathrm{BQ}+\mathrm{CQ})^2
+                        \]
+                        を作ります。
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+
+                <div class="mt-4 space-y-8 text-slate-700">
+                    <div>
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）</p>
+                        <p class="mt-2">三角形ABCの面積を $S$ とすると、</p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            S
+                            &=
+                            \frac12\mathrm{AB}\cdot\mathrm{AC}\sin\angle\mathrm{BAC}\\
+                            &=
+                            \frac12\cdot3\cdot2\sqrt2\cdot\frac{\sqrt2}{2}\\
+                            &=3.
+                            \end{aligned}
+                            \]
+                        </div>
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$3$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）</p>
+                        <p class="mt-2">三角形ABCに余弦定理を用いると、</p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \mathrm{BC}^2
+                            &=
+                            \mathrm{AB}^2+\mathrm{AC}^2
+                            -2\mathrm{AB}\cdot\mathrm{AC}\cos\angle\mathrm{BAC}\\
+                            &=
+                            3^2+(2\sqrt2)^2
+                            -2\cdot3\cdot2\sqrt2\cdot\frac{\sqrt2}{2}\\
+                            &=9+8-12\\
+                            &=5.
+                            \end{aligned}
+                            \]
+                        </div>
+                        <p>$\mathrm{BC}&gt;0$ より、</p>
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            \mathrm{BC}=\sqrt5
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）（i）</p>
+                        <p class="mt-2">
+                            A、B、P、Cは同一円周上にあり、AとPは弦BCの反対側にある。
+                            よって、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \angle\mathrm{BPC}
+                            =
+                            180^\circ-\angle\mathrm{BAC}
+                            =
+                            135^\circ.
+                            \]
+                        </div>
+                        <p>$\mathrm{CP}=x$ とする。三角形BPCに余弦定理を用いると、</p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            5
+                            &=
+                            3+x^2-2\sqrt3x\cos135^\circ\\
+                            &=
+                            3+x^2+\sqrt6x.
+                            \end{aligned}
+                            \]
+                        </div>
+                        <p>よって、</p>
+                        <div class="math-scroll">
+                            \[
+                            x^2+\sqrt6x-2=0.
+                            \]
+                        </div>
+                        <p>解の公式より、</p>
+                        <div class="math-scroll">
+                            \[
+                            x
+                            =
+                            \frac{-\sqrt6\pm\sqrt{14}}{2}.
+                            \]
+                        </div>
+                        <p>$x&gt;0$ より、</p>
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            \mathrm{CP}
+                            =
+                            \frac{\sqrt{14}-\sqrt6}{2}
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）（ii）</p>
+                        <p class="mt-2">
+                            （1）より
+                            \[
+                            [\triangle\mathrm{ABC}]=3.
+                            \]
+                            面積比が $6:1$ なので、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            [\triangle\mathrm{BCQ}]
+                            =
+                            \frac16\cdot3
+                            =
+                            \frac12.
+                            \]
+                        </div>
+                        <p>また、Qは弧K上にあるため、</p>
+                        <div class="math-scroll">
+                            \[
+                            \angle\mathrm{BQC}=135^\circ.
+                            \]
+                        </div>
+                        <p>$\mathrm{BQ}=x$、$\mathrm{CQ}=y$ とする。面積公式より、</p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \frac12
+                            &=
+                            \frac12xy\sin135^\circ\\
+                            &=
+                            \frac12xy\cdot\frac{\sqrt2}{2}.
+                            \end{aligned}
+                            \]
+                        </div>
+                        <p>したがって、</p>
+                        <div class="math-scroll">
+                            \[
+                            xy=\sqrt2.
+                            \]
+                        </div>
+                        <p class="mt-3">三角形BCQに余弦定理を用いると、</p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            5
+                            &=
+                            x^2+y^2-2xy\cos135^\circ\\
+                            &=
+                            x^2+y^2+\sqrt2xy.
+                            \end{aligned}
+                            \]
+                        </div>
+                        <p>$xy=\sqrt2$ より、</p>
+                        <div class="math-scroll">
+                            \[
+                            x^2+y^2=3.
+                            \]
+                        </div>
+                        <p>よって、</p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            (x+y)^2
+                            &=
+                            x^2+y^2+2xy\\
+                            &=
+                            3+2\sqrt2\\
+                            &=
+                            (1+\sqrt2)^2.
+                            \end{aligned}
+                            \]
+                        </div>
+                        <p>$x&gt;0$、$y&gt;0$ なので、</p>
+                        <div class="math-scroll">
+                            \[
+                            x+y=1+\sqrt2.
+                            \]
+                        </div>
+                        <p>したがって、$x,y$ は</p>
+                        <div class="math-scroll">
+                            \[
+                            t^2-(1+\sqrt2)t+\sqrt2=0
+                            \]
+                        </div>
+                        <p>の2つの解である。因数分解すると、</p>
+                        <div class="math-scroll">
+                            \[
+                            (t-1)(t-\sqrt2)=0.
+                            \]
+                        </div>
+                        <p>よって、</p>
+                        <div class="math-scroll">
+                            \[
+                            \{x,y\}=\{1,\sqrt2\}.
+                            \]
+                        </div>
+
+                        <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-4 font-bold text-slate-900">
+                            QがBに近い方の点なら
+                            \[
+                            \mathrm{BQ}=1,\qquad
+                            \mathrm{CQ}=\sqrt2.
+                            \]
+                            QがCに近い方の点なら
+                            \[
+                            \mathrm{BQ}=\sqrt2,\qquad
+                            \mathrm{CQ}=1.
+                            \]
+                        </div>
+
+                        <div class="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+                            <strong>注意：</strong>
+                            問題文の条件だけではQは1点に定まりません。
+                            弧K上に条件を満たす点が2点あります。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化① 三角形ABC</h3>
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    Aを原点、ABを $x$ 軸上に置くと、Cは $(2,2)$ に置けます。
+                </p>
+
+                <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="overflow-x-auto">
+                        <svg width="700" height="430" viewBox="0 0 700 430"
+                             class="mx-auto h-auto w-full max-w-[700px] rounded-xl border border-slate-200 bg-white"
+                             aria-label="三角形ABCの座標図">
+                            <line x1="70" y1="350" x2="640" y2="350" stroke="#94a3b8" stroke-width="1.5"></line>
+                            <line x1="110" y1="390" x2="110" y2="50" stroke="#94a3b8" stroke-width="1.5"></line>
+                            <polygon points="110,350 560,350 410,50"
+                                     fill="rgba(37,99,235,.12)"
+                                     stroke="#2563eb"
+                                     stroke-width="3"></polygon>
+                            <line x1="410" y1="50" x2="410" y2="350"
+                                  stroke="#10b981"
+                                  stroke-width="2"
+                                  stroke-dasharray="8 6"></line>
+                            <path d="M170 350 A60 60 0 0 0 152.4 307.6"
+                                  fill="none"
+                                  stroke="#7c3aed"
+                                  stroke-width="3"></path>
+                            <circle cx="110" cy="350" r="7" fill="#111827"></circle>
+                            <circle cx="560" cy="350" r="7" fill="#111827"></circle>
+                            <circle cx="410" cy="50" r="7" fill="#111827"></circle>
+                            <g font-size="15" font-weight="700">
+                                <text x="88" y="375" fill="#111827">A(0,0)</text>
+                                <text x="570" y="375" fill="#111827">B(3,0)</text>
+                                <text x="420" y="42" fill="#111827">C(2,2)</text>
+                                <text x="315" y="375" fill="#1d4ed8">AB = 3</text>
+                                <text x="235" y="180" fill="#1d4ed8">AC = 2√2</text>
+                                <text x="470" y="190" fill="#be123c">BC = √5</text>
+                                <text x="165" y="315" fill="#6d28d9">45°</text>
+                                <text x="420" y="210" fill="#047857">高さ = 2</text>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化② 弧K上を動く点</h3>
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    点Rを弧K上で動かし、BR、CR、三角形BCRの面積を確認できます。
+                </p>
+
+                <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="mx-auto max-w-xl">
+                        <label for="arc-slider" class="mb-2 block text-sm font-medium text-slate-700">
+                            弧上の位置：
+                            <span id="arc-display" class="text-lg font-bold text-blue-700">50.0%</span>
+                        </label>
+
+                        <input id="arc-slider" type="range" min="1" max="99" step="0.1" value="50"
+                               class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600">
+
+                        <div class="mt-3 flex flex-wrap justify-center gap-2">
+                            <button type="button" id="point-p-button"
+                                    class="rounded-lg border border-violet-200 bg-white px-3 py-2 text-sm font-bold text-violet-700 hover:bg-violet-50">
+                                P：BP=√3
+                            </button>
+                            <button type="button" id="point-q1-button"
+                                    class="rounded-lg border border-emerald-200 bg-white px-3 py-2 text-sm font-bold text-emerald-700 hover:bg-emerald-50">
+                                Q₁：Bに近い方
+                            </button>
+                            <button type="button" id="point-q2-button"
+                                    class="rounded-lg border border-rose-200 bg-white px-3 py-2 text-sm font-bold text-rose-700 hover:bg-rose-50">
+                                Q₂：Cに近い方
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 overflow-x-auto">
+                        <svg id="circle-svg" width="700" height="560" viewBox="0 0 700 560"
+                             class="mx-auto h-auto w-full max-w-[700px] rounded-xl border border-slate-200 bg-white"
+                             aria-label="外接円と弧BC上の動点">
+                            <circle cx="350" cy="280" r="190"
+                                    fill="rgba(37,99,235,.03)"
+                                    stroke="#2563eb"
+                                    stroke-width="2.5"></circle>
+                            <path id="arc-k"
+                                  fill="none"
+                                  stroke="#10b981"
+                                  stroke-width="8"
+                                  stroke-linecap="round"></path>
+                            <polygon id="triangle-bcr"
+                                     fill="rgba(124,58,237,.12)"
+                                     stroke="#7c3aed"
+                                     stroke-width="2.5"></polygon>
+                            <line id="bc-line" stroke="#334155" stroke-width="3"></line>
+                            <line id="br-line" stroke="#7c3aed" stroke-width="2.5"></line>
+                            <line id="cr-line" stroke="#e11d48" stroke-width="2.5"></line>
+                            <circle id="point-a" r="7" fill="#111827"></circle>
+                            <circle id="point-b" r="7" fill="#111827"></circle>
+                            <circle id="point-c" r="7" fill="#111827"></circle>
+                            <circle id="point-r" r="9" fill="#f59e0b"></circle>
+                            <g font-size="15" font-weight="700">
+                                <text id="label-a" fill="#111827">A</text>
+                                <text id="label-b" fill="#111827">B</text>
+                                <text id="label-c" fill="#111827">C</text>
+                                <text id="label-r" fill="#b45309">R</text>
+                                <text x="435" y="105" fill="#047857">弧K</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="mt-4 grid gap-3 sm:grid-cols-4">
+                        <div class="rounded-lg border border-violet-200 bg-white p-4 text-center">
+                            <div class="text-xs font-bold text-violet-700">BR</div>
+                            <div id="br-display" class="mt-1 text-lg font-bold text-violet-900"></div>
+                        </div>
+                        <div class="rounded-lg border border-rose-200 bg-white p-4 text-center">
+                            <div class="text-xs font-bold text-rose-700">CR</div>
+                            <div id="cr-display" class="mt-1 text-lg font-bold text-rose-900"></div>
+                        </div>
+                        <div class="rounded-lg border border-blue-200 bg-blue-50 p-4 text-center">
+                            <div class="text-xs font-bold text-blue-700">∠BRC</div>
+                            <div id="angle-display" class="mt-1 text-lg font-bold text-blue-900">135°</div>
+                        </div>
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-center">
+                            <div class="text-xs font-bold text-emerald-700">△BCRの面積</div>
+                            <div id="area-display" class="mt-1 text-lg font-bold text-emerald-900"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const slider = document.getElementById("arc-slider");
+                        const cx = 350;
+                        const cy = 280;
+                        const scale = 120;
+                        const O = {x:1.5, y:0.5};
+                        const radius = Math.sqrt(2.5);
+                        const thetaB = Math.atan2(-0.5,1.5);
+                        const thetaC = thetaB + Math.PI/2;
+
+                        function screen(point) {
+                            return {
+                                x: cx + scale*(point.x-O.x),
+                                y: cy - scale*(point.y-O.y)
+                            };
+                        }
+
+                        function circlePoint(theta) {
+                            return {
+                                x: O.x + radius*Math.cos(theta),
+                                y: O.y + radius*Math.sin(theta)
+                            };
+                        }
+
+                        const A = screen({x:0,y:0});
+                        const B = screen({x:3,y:0});
+                        const C = screen({x:2,y:2});
+
+                        function setPoint(id,p) {
+                            const el = document.getElementById(id);
+                            el.setAttribute("cx",p.x);
+                            el.setAttribute("cy",p.y);
+                        }
+
+                        function setLine(id,p1,p2) {
+                            const el = document.getElementById(id);
+                            el.setAttribute("x1",p1.x);
+                            el.setAttribute("y1",p1.y);
+                            el.setAttribute("x2",p2.x);
+                            el.setAttribute("y2",p2.y);
+                        }
+
+                        function setLabel(id,p,dx,dy) {
+                            const el = document.getElementById(id);
+                            el.setAttribute("x",p.x+dx);
+                            el.setAttribute("y",p.y+dy);
+                        }
+
+                        setPoint("point-a",A);
+                        setPoint("point-b",B);
+                        setPoint("point-c",C);
+                        setLine("bc-line",B,C);
+                        setLabel("label-a",A,-22,20);
+                        setLabel("label-b",B,10,18);
+                        setLabel("label-c",C,10,-10);
+
+                        const arcStart = screen(circlePoint(thetaB));
+                        const arcEnd = screen(circlePoint(thetaC));
+                        document.getElementById("arc-k").setAttribute(
+                            "d",
+                            `M ${arcStart.x} ${arcStart.y} A ${scale*radius} ${scale*radius} 0 0 0 ${arcEnd.x} ${arcEnd.y}`
+                        );
+
+                        function dist(p,q) {
+                            return Math.hypot(p.x-q.x,p.y-q.y);
+                        }
+
+                        function area(p,q,r) {
+                            return Math.abs(
+                                (q.x-p.x)*(r.y-p.y)
+                                -(q.y-p.y)*(r.x-p.x)
+                            )/2;
+                        }
+
+                        function update() {
+                            const t = Number(slider.value)/100;
+                            const theta = thetaB+t*(thetaC-thetaB);
+                            const Rm = circlePoint(theta);
+                            const R = screen(Rm);
+
+                            setPoint("point-r",R);
+                            setLine("br-line",B,R);
+                            setLine("cr-line",C,R);
+                            setLabel("label-r",R,12,-12);
+
+                            document.getElementById("triangle-bcr").setAttribute(
+                                "points",
+                                `${B.x},${B.y} ${R.x},${R.y} ${C.x},${C.y}`
+                            );
+
+                            const BR = dist({x:3,y:0},Rm);
+                            const CR = dist({x:2,y:2},Rm);
+                            const areaBCR = area({x:3,y:0},{x:2,y:2},Rm);
+
+                            document.getElementById("arc-display").textContent = `${(100*t).toFixed(1)}%`;
+                            document.getElementById("br-display").textContent = BR.toFixed(5);
+                            document.getElementById("cr-display").textContent = CR.toFixed(5);
+                            document.getElementById("area-display").textContent = areaBCR.toFixed(5);
+                        }
+
+                        slider.addEventListener("input",update);
+
+                        const tP = (2*Math.asin(Math.sqrt(3)/(2*radius)))/(Math.PI/2);
+                        const tQ1 = (2*Math.asin(1/(2*radius)))/(Math.PI/2);
+                        const tQ2 = 1-tQ1;
+
+                        document.getElementById("point-p-button").addEventListener("click",()=>{
+                            slider.value = 100*tP;
+                            update();
+                        });
+
+                        document.getElementById("point-q1-button").addEventListener("click",()=>{
+                            slider.value = 100*tQ1;
+                            update();
+                        });
+
+                        document.getElementById("point-q2-button").addEventListener("click",()=>{
+                            slider.value = 100*tQ2;
+                            update();
+                        });
+
+                        update();
+                    });
+                </script>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">（3）で円周角を45°とする</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            AとP・Qは弦BCの反対側にあります。したがって角の和が180°となり、135°です。
+                        </p>
+                    </div>
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">（3）（i）の負の解も採用する</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            CPは長さなので正の解だけを採用します。
+                        </p>
+                    </div>
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">（3）（ii）のQが1点だけだと思う</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            条件を満たすQは弧K上に2点あり、BQとCQが入れ替わります。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+            <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+            <p class="mt-4 text-sm text-blue-200">
+                公式名だけでなく、「なぜその公式・性質が使えるか」を説明してから開いてください。
+            </p>
+
+            <div class="mt-6 space-y-3">
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q1. （1）と（2）では同じ条件から、なぜ異なる公式を使うのですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        面積を求めるときは
+                        \[
+                        \frac12bc\sin A
+                        \]
+                        を使い、残りの1辺を求めるときは余弦定理を使います。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q2. なぜ $\angle\mathrm{BPC}$ と $\angle\mathrm{BQC}$ は135°ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        P、QはAと弦BCの反対側にあり、円に内接する四角形の対角の和が180°だからです。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q3. （3）（ii）で面積条件から何が求まりますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \mathrm{BQ}\cdot\mathrm{CQ}=\sqrt2
+                        \]
+                        という2辺の積が求まります。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q4. BQとCQの和を求めるために、どの恒等式を使いますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        (\mathrm{BQ}+\mathrm{CQ})^2
+                        =
+                        \mathrm{BQ}^2+\mathrm{CQ}^2
+                        +2\mathrm{BQ}\cdot\mathrm{CQ}
+                        \]
+                        を使います。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q5. （3）（ii）の答えが2通りになる本質的な理由は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        面積条件はQの弦BCからの距離を定めますが、その距離をもつ点が弧K上にB寄りとC寄りの2点あるためです。
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+            <a href="no33.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                ← No.33へ
+            </a>
+            <a href="no35.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                No.35 →
+            </a>
+        </nav>
+    </main>
+
+    <footer class="py-10 text-center text-sm text-slate-500">
+        自彊館(理系)　夏期数学課題 解説サイト
+    </footer>
+</div>
+</body>
+</html>

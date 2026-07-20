@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.11 高次方程式と軌跡 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+        
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.11</span>
+                    <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">高次方程式と軌跡</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 text-slate-700 leading-relaxed mt-4">
+                    <ol class="list-decimal pl-6 space-y-6">
+                        <li>
+                            $a$ ，$b$ は実数の定数とし，$x$ の方程式
+                            <div class="math-scroll">
+                                \[ x^3+ax^2+2ax+b=0 \quad \cdots(*) \]
+                            </div>
+                            が $x=1$ を解にもつ．
+                            <ol class="list-[lower-roman] pl-6 mt-2 space-y-2">
+                                <li>$b$ を $a$ で表せ．</li>
+                                <li>$a=1$ のとき，$(*)$ を解け．</li>
+                                <li>$(*)$ が虚数解をもつような $a$ の値の範囲を求めよ．</li>
+                            </ol>
+                        </li>
+                        <li>
+                            座標平面上に，定点 $\mathrm{A}(0, -2)$ と2点 $\mathrm{P}$ ，$\mathrm{Q}$ があり，線分 $\mathrm{AP}$ の中点が $\mathrm{Q}$ であるとする．
+                            <ol class="list-[lower-roman] pl-6 mt-2 space-y-2">
+                                <li>$\mathrm{P}$ の座標を $(s, t)$ とするとき，$\mathrm{Q}$ の座標を $s$ ，$t$ で表せ．</li>
+                                <li>$\mathrm{Q}$ が放物線 $y=x^2-4x+3$ 上を動くときの $\mathrm{P}$ の軌跡を求め，図示せよ．</li>
+                            </ol>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                    <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                        <li><strong>(1) の方程式：</strong> 「$x=1$ を解にもつ」という強烈な条件があります。これを代入することで文字を減らし、さらに因数定理で1次式と2次式に分解できることが保証されています。</li>
+                        <li><strong>(2) の軌跡：</strong> 求めたい軌跡上の点を $\mathrm{P}(s, t)$ とおくのが鉄則です。今回は「$\mathrm{AP}$ の中点が $\mathrm{Q}$」であるため、$\mathrm{Q}$ の座標は $\mathrm{A}$ と $\mathrm{P}$ の中点として $s, t$ の式で表されます。</li>
+                        <li><strong>(2) の連動：</strong> 点 $\mathrm{Q}$ が特定の図形（放物線）上を動くという条件を、$\mathrm{Q}$ の座標を代入することで処理し、$s$ と $t$ の関係式（これが $\mathrm{P}$ の軌跡）を導き出します。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    問題を解くための考え方から、答案、検算、発展までを順に確認します。
+                </p>
+
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">3次方程式が虚数解をもつ条件と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                3次方程式を因数定理などで <strong>(1次式) $\times$ (2次式) = 0</strong> に因数分解します。1次式からは実数解しか出ないため、<strong>残りの2次方程式が虚数解をもつ条件（判別式 $D < 0$）</strong>に帰着させます。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">ある点が動くときの、別の点の軌跡（連動点の軌跡）</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                ① 軌跡を求めたい点 $\mathrm{P}$ を $(x, y)$ [または $(s, t)$] とおく。<br>
+                                ② 動く点 $\mathrm{Q}$ を $(X, Y)$ とおき、$\mathrm{P}$ との関係式から $X, Y$ を $x, y$ の式で表す。<br>
+                                ③ $X, Y$ を $\mathrm{Q}$ が動く図形の方程式に代入し、$x, y$ の関係式を得る。<br>
+                                これが軌跡問題の黄金の3ステップです。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(1) の計算手順</strong><br>
+                            (i) $x=1$ を代入して $b$ を $a$ で表す。<br>
+                            (ii) $a=1$ と (i) で求めた $b$ を代入し、3次方程式を因数分解して解く。<br>
+                            (iii) $b$ を消去した3次方程式を組み立てる。$x=1$ を解に持つことがわかっているので、必ず $(x-1)$ で因数分解できる。組立除法などで割り算を行い、現れた2次方程式に $D < 0$ を適用する。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(2) の計算手順</strong><br>
+                            (i) $\mathrm{A}(0, -2)$ と $\mathrm{P}(s, t)$ の中点 $\mathrm{Q}$ の座標を計算する。<br>
+                            (ii) その $\mathrm{Q}$ の座標 $(X, Y)$ を $Y = X^2 - 4X + 3$ に代入する。展開して $t = \dots$ の形に整理すると、$s, t$ が満たすべき方程式、すなわち点 $\mathrm{P}$ の軌跡の方程式が得られる。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <!-- (1)(i) -->
+                        <div>
+                            <p class="font-bold text-blue-800 border-b border-slate-200 pb-1">（1）(i)</p>
+                            <p class="mt-2">
+                                $(*)$ は $x=1$ を解にもつので、$x=1$ を代入すると
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                1^3 + a\cdot 1^2 + 2a\cdot 1 + b &= 0 \\
+                                1 + a + 2a + b &= 0 \\
+                                3a + b + 1 &= 0
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                したがって、$b$ を $a$ で表すと
+                            </p>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $b = -3a - 1$
+                            </div>
+                        </div>
+
+                        <!-- (1)(ii) -->
+                        <div>
+                            <p class="font-bold text-blue-800 border-b border-slate-200 pb-1">（1）(ii)</p>
+                            <p class="mt-2">
+                                $a=1$ のとき、(i)より $b = -3(1) - 1 = -4$。<br>
+                                これらを $(*)$ に代入すると
+                            </p>
+                            <div class="math-scroll">
+                                \[ x^3 + x^2 + 2x - 4 = 0 \]
+                            </div>
+                            <p class="mt-2">
+                                $x=1$ を解にもつことから左辺は $(x-1)$ を因数にもつ。因数分解すると
+                            </p>
+                            <div class="math-scroll">
+                                \[ (x - 1)(x^2 + 2x + 4) = 0 \]
+                            </div>
+                            <p class="mt-2">
+                                よって $x - 1 = 0$ または $x^2 + 2x + 4 = 0$。<br>
+                                $x^2 + 2x + 4 = 0$ を解の公式で解くと
+                            </p>
+                            <div class="math-scroll">
+                                \[ x = \frac{-2 \pm \sqrt{2^2 - 4\cdot 1\cdot 4}}{2} = \frac{-2 \pm \sqrt{-12}}{2} = \frac{-2 \pm 2\sqrt{3}i}{2} = -1 \pm \sqrt{3}i \]
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $x = 1, -1 \pm \sqrt{3}i$
+                            </div>
+                        </div>
+
+                        <!-- (1)(iii) -->
+                        <div>
+                            <p class="font-bold text-blue-800 border-b border-slate-200 pb-1">（1）(iii)</p>
+                            <p class="mt-2">
+                                (i)より $b = -3a - 1$ であるから、$(*)$ は
+                            </p>
+                            <div class="math-scroll">
+                                \[ x^3 + ax^2 + 2ax - 3a - 1 = 0 \]
+                            </div>
+                            <p class="mt-2">
+                                $x=1$ を解にもつので、左辺を $(x-1)$ で因数分解する。
+                            </p>
+                            <div class="math-scroll">
+                                \[ (x - 1)\{x^2 + (a+1)x + 3a + 1\} = 0 \]
+                            </div>
+                            <p class="mt-2">
+                                これが虚数解をもつためには、2次方程式 $x^2 + (a+1)x + 3a + 1 = 0$ が虚数解をもてばよい。<br>
+                                その判別式を $D$ とすると、$D < 0$ であるから
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                D &= (a+1)^2 - 4 \cdot 1 \cdot (3a+1) < 0 \\
+                                &= a^2 + 2a + 1 - 12a - 4 < 0 \\
+                                &= a^2 - 10a - 3 < 0
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                2次方程式 $a^2 - 10a - 3 = 0$ の解は、解の公式より
+                            </p>
+                            <div class="math-scroll">
+                                \[ a = \frac{-(-10) \pm \sqrt{(-10)^2 - 4\cdot 1\cdot (-3)}}{2} = \frac{10 \pm \sqrt{112}}{2} = \frac{10 \pm 4\sqrt{7}}{2} = 5 \pm 2\sqrt{7} \]
+                            </div>
+                            <p class="mt-2">
+                                したがって、不等式の解は
+                            </p>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $5 - 2\sqrt{7} < a < 5 + 2\sqrt{7}$
+                            </div>
+                        </div>
+
+                        <!-- (2)(i) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold text-blue-800 border-b border-slate-200 pb-1">（2）(i)</p>
+                            <p class="mt-2">
+                                定点 $\mathrm{A}(0, -2)$ と $\mathrm{P}(s, t)$ の中点が $\mathrm{Q}$ であるから、中点の座標公式より、$\mathrm{Q}$ の座標は
+                            </p>
+                            <div class="math-scroll">
+                                \[ \left( \frac{0 + s}{2}, \frac{-2 + t}{2} \right) = \left( \frac{s}{2}, \frac{t - 2}{2} \right) \]
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $\left( \dfrac{s}{2}, \dfrac{t - 2}{2} \right)$
+                            </div>
+                        </div>
+
+                        <!-- (2)(ii) -->
+                        <div>
+                            <p class="font-bold text-blue-800 border-b border-slate-200 pb-1">（2）(ii)</p>
+                            <p class="mt-2">
+                                点 $\mathrm{Q}$ は放物線 $y = x^2 - 4x + 3$ 上を動くので、(i)で求めた $\mathrm{Q}$ の座標を代入して
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \frac{t - 2}{2} &= \left( \frac{s}{2} \right)^2 - 4\left( \frac{s}{2} \right) + 3 \\
+                                \frac{t - 2}{2} &= \frac{s^2}{4} - 2s + 3
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                両辺に 2 を掛けて $t$ について整理すると、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                t - 2 &= \frac{s^2}{2} - 4s + 6 \\
+                                t &= \frac{1}{2}s^2 - 4s + 8
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                したがって、点 $\mathrm{P}(s, t)$ は放物線 $y = \dfrac{1}{2}x^2 - 4x + 8$ 上にある。<br>
+                                逆に、この放物線上の任意の点は条件を満たす。
+                            </p>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: 軌跡は放物線 $y = \dfrac{1}{2}x^2 - 4x + 8$
+                            </div>
+                            
+                            <p class="mt-4 font-bold text-slate-800">【図示】</p>
+                            <p class="mt-2 text-sm text-slate-600">
+                                軌跡の放物線を平方完成すると $y = \dfrac{1}{2}(x^2 - 8x) + 8 = \dfrac{1}{2}(x - 4)^2$ となる。<br>
+                                頂点は $(4, 0)$、$y$ 切片は $8$ である。これを図示する。（図は下図の通り）
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化（連動点の軌跡）</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        「$\mathrm{AP}$ の中点が $\mathrm{Q}$ である」ということは、逆に言えば<strong>「点 $\mathrm{P}$ は、定点 $\mathrm{A}$ を基準として点 $\mathrm{Q}$ を2倍に拡大した位置にある」</strong>ということです。<br>
+                        スライダーを動かすと、点 $\mathrm{Q}$ が元の放物線 $C_1$ 上を動き、それに連動して点 $\mathrm{P}$ が新しい放物線 $C_2$（軌跡）を描き出す様子が観察できます。
+                    </p>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 sm:p-6 rounded-lg border border-slate-200 flex flex-col items-center">
+                        <div class="w-full max-w-md mb-6 px-2">
+                            <label for="q-slider" class="block text-sm font-medium text-slate-700 mb-2">
+                                点 $\mathrm{Q}$ の $x$ 座標: <span id="q-value" class="font-bold text-emerald-600 text-lg">2.00</span>
+                            </label>
+                            <input type="range" id="q-slider" min="-0.5" max="4.5" step="0.05" value="2" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                            <div class="flex justify-between mt-2 text-xs text-slate-500 px-1">
+                                <span>-0.5</span>
+                                <span>2.0 (頂点)</span>
+                                <span>4.5</span>
+                            </div>
+                        </div>
+
+                        <div class="relative w-full max-w-md bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden p-4 flex justify-center">
+                            <svg id="locus-svg" width="350" height="350" viewBox="-1 -3 9 13" class="w-full h-auto border border-slate-100 rounded-lg" preserveAspectRatio="xMidYMid meet">
+                                <defs>
+                                    <!-- 座標変換: SVGのy軸は下向きだが viewBox で viewBox="-1 -3 9 13" とし、内部でyの符号を反転させて描画する -->
+                                </defs>
+                                <!-- 背景とグリッド -->
+                                <g stroke="#e2e8f0" stroke-width="0.05">
+                                    <!-- 縦線 -->
+                                    <line x1="0" y1="-12" x2="0" y2="4" stroke="#94a3b8" stroke-width="0.1"/> <!-- y軸 -->
+                                    <line x1="1" y1="-12" x2="1" y2="4" />
+                                    <line x1="2" y1="-12" x2="2" y2="4" />
+                                    <line x1="3" y1="-12" x2="3" y2="4" />
+                                    <line x1="4" y1="-12" x2="4" y2="4" />
+                                    <line x1="5" y1="-12" x2="5" y2="4" />
+                                    <line x1="6" y1="-12" x2="6" y2="4" />
+                                    <line x1="7" y1="-12" x2="7" y2="4" />
+                                    <line x1="8" y1="-12" x2="8" y2="4" />
+                                    <!-- 横線 -->
+                                    <line x1="-1" y1="0" x2="9" y2="0" stroke="#94a3b8" stroke-width="0.1"/> <!-- x軸 -->
+                                    <line x1="-1" y1="-2" x2="9" y2="-2" />
+                                    <line x1="-1" y1="-4" x2="9" y2="-4" />
+                                    <line x1="-1" y1="-6" x2="9" y2="-6" />
+                                    <line x1="-1" y1="-8" x2="9" y2="-8" />
+                                    <line x1="-1" y1="-10" x2="9" y2="-10" />
+                                    <line x1="-1" y1="2" x2="9" y2="2" stroke="#cbd5e1" stroke-dasharray="0.2,0.2"/> <!-- Aのy座標 -->
+                                </g>
+
+                                <!-- 目盛り -->
+                                <g fill="#64748b" font-size="0.4" font-family="sans-serif">
+                                    <text x="8.5" y="0.5">x</text>
+                                    <text x="-0.8" y="-11.5">y</text>
+                                    <text x="1.9" y="0.5">2</text>
+                                    <text x="3.9" y="0.5">4</text>
+                                    <text x="-0.8" y="-3.8">4</text>
+                                    <text x="-0.8" y="-7.8">8</text>
+                                </g>
+
+                                <!-- 放物線 Q: y = x^2 - 4x + 3 -->
+                                <path id="curve-q" fill="none" stroke="#10b981" stroke-width="0.1" stroke-dasharray="0.2, 0.2" />
+                                
+                                <!-- 放物線 P (軌跡): y = 1/2*x^2 - 4x + 8 -->
+                                <path id="curve-p" fill="none" stroke="#3b82f6" stroke-width="0.15" />
+                                <path id="trace-p" fill="none" stroke="#f43f5e" stroke-width="0.2" stroke-linecap="round" />
+
+                                <!-- 定点 A(0, -2) -->
+                                <!-- SVGでは y反転なので y=2 -->
+                                <circle cx="0" cy="2" r="0.15" fill="#334155" />
+                                <text x="-0.6" y="2.5" fill="#334155" font-size="0.5" font-weight="bold">A</text>
+
+                                <!-- 動的要素 -->
+                                <!-- 線分 AP -->
+                                <line id="line-ap" x1="0" y1="2" x2="0" y2="0" stroke="#94a3b8" stroke-width="0.1" />
+                                
+                                <!-- 点 Q -->
+                                <circle id="point-q" cx="0" cy="0" r="0.15" fill="#10b981" />
+                                <text id="label-q" x="0" y="0" fill="#10b981" font-size="0.6" font-weight="bold">Q</text>
+
+                                <!-- 点 P -->
+                                <circle id="point-p" cx="0" cy="0" r="0.15" fill="#3b82f6" />
+                                <text id="label-p" x="0" y="0" fill="#3b82f6" font-size="0.6" font-weight="bold">P</text>
+                            </svg>
+                        </div>
+                        
+                        <div class="mt-4 p-3 bg-white rounded-lg text-center w-full max-w-md border border-slate-200 shadow-sm flex flex-col items-center gap-2">
+                            <div class="text-sm text-slate-700">
+                                $\mathrm{Q}($<span id="coord-qx" class="font-bold text-emerald-600">2.00</span>, <span id="coord-qy" class="font-bold text-emerald-600">-1.00</span>$)$<br>
+                                $\mathrm{P}($<span id="coord-px" class="font-bold text-blue-600">4.00</span>, <span id="coord-py" class="font-bold text-blue-600">0.00</span>$)$
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const slider = document.getElementById('q-slider');
+                            const qValueDisplay = document.getElementById('q-value');
+                            const coordQx = document.getElementById('coord-qx');
+                            const coordQy = document.getElementById('coord-qy');
+                            const coordPx = document.getElementById('coord-px');
+                            const coordPy = document.getElementById('coord-py');
+                            
+                            const curveQ = document.getElementById('curve-q');
+                            const curveP = document.getElementById('curve-p');
+                            const traceP = document.getElementById('trace-p');
+                            
+                            const pointQ = document.getElementById('point-q');
+                            const labelQ = document.getElementById('label-q');
+                            const pointP = document.getElementById('point-p');
+                            const labelP = document.getElementById('label-p');
+                            const lineAP = document.getElementById('line-ap');
+                            
+                            // y座標を反転させるヘルパー (-y)
+                            const revY = (y) => -y;
+                            
+                            // 放物線 Q: y = x^2 - 4x + 3
+                            let pathQ = "";
+                            for (let x = -1; x <= 5.5; x += 0.1) {
+                                const y = x*x - 4*x + 3;
+                                if(revY(y) < -12 || revY(y) > 4) continue;
+                                pathQ += (pathQ === "" ? "M" : "L") + `${x} ${revY(y)} `;
+                            }
+                            curveQ.setAttribute("d", pathQ);
+                            
+                            // 放物線 P: y = 1/2*x^2 - 4x + 8
+                            let pathP = "";
+                            for (let x = -2; x <= 10; x += 0.1) {
+                                const y = 0.5*x*x - 4*x + 8;
+                                if(revY(y) < -12 || revY(y) > 4) continue;
+                                pathP += (pathP === "" ? "M" : "L") + `${x} ${revY(y)} `;
+                            }
+                            curveP.setAttribute("d", pathP);
+                            
+                            function updateVisualization() {
+                                const qx = parseFloat(slider.value);
+                                qValueDisplay.textContent = qx.toFixed(2);
+                                
+                                const qy = qx*qx - 4*qx + 3;
+                                
+                                // Pの座標 (s = 2qx, t = 2qy + 2)
+                                const px = 2 * qx;
+                                const py = 2 * qy + 2;
+                                
+                                // 数値の表示更新
+                                coordQx.textContent = qx.toFixed(2);
+                                coordQy.textContent = qy.toFixed(2);
+                                coordPx.textContent = px.toFixed(2);
+                                coordPy.textContent = py.toFixed(2);
+                                
+                                // SVG要素の更新
+                                pointQ.setAttribute('cx', qx);
+                                pointQ.setAttribute('cy', revY(qy));
+                                labelQ.setAttribute('x', qx + 0.2);
+                                labelQ.setAttribute('y', revY(qy) + 0.2);
+                                
+                                pointP.setAttribute('cx', px);
+                                pointP.setAttribute('cy', revY(py));
+                                labelP.setAttribute('x', px + 0.2);
+                                labelP.setAttribute('y', revY(py) - 0.2);
+                                
+                                lineAP.setAttribute('x2', px);
+                                lineAP.setAttribute('y2', revY(py));
+                                
+                                // 軌跡のアニメーション (Pが通った跡を描画)
+                                // 初期値 (-0.5) から現在の qx までの P の軌跡
+                                let tracePath = "";
+                                for (let curQx = -0.5; curQx <= qx; curQx += 0.05) {
+                                    const curQy = curQx*curQx - 4*curQx + 3;
+                                    const curPx = 2 * curQx;
+                                    const curPy = 2 * curQy + 2;
+                                    tracePath += (tracePath === "" ? "M" : "L") + `${curPx} ${revY(curPy)} `;
+                                }
+                                traceP.setAttribute("d", tracePath);
+                            }
+                            
+                            slider.addEventListener('input', updateVisualization);
+                            updateVisualization(); // 初期描画
+                        });
+                    </script>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果と検算</h3>
+                    
+                    <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900">
+                        <ul class="space-y-2 font-bold">
+                            <li>(1)(i) $b = -3a - 1$</li>
+                            <li>(1)(ii) $x = 1, -1 \pm \sqrt{3}i$</li>
+                            <li>(1)(iii) $5 - 2\sqrt{7} < a < 5 + 2\sqrt{7}$</li>
+                            <li>(2)(i) $\mathrm{Q}\left( \dfrac{s}{2}, \dfrac{t - 2}{2} \right)$</li>
+                            <li>(2)(ii) 軌跡は放物線 $y = \dfrac{1}{2}x^2 - 4x + 8$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-slate-700">
+                        <strong>検算ポイント：特定の点を代入して確認する</strong><br>
+                        (2)で求めた軌跡の式が正しいか、具体的な点を用いて確認します。<br>
+                        放物線 $\mathrm{Q}$ の頂点は $y = (x-2)^2 - 1$ より $(2, -1)$ です。<br>
+                        点 $\mathrm{Q}$ が $(2, -1)$ にいるとき、定点 $\mathrm{A}(0, -2)$ と点 $\mathrm{P}(s, t)$ の中点が $(2, -1)$ になるため、<br>
+                        $\dfrac{0 + s}{2} = 2 \implies s = 4$<br>
+                        $\dfrac{-2 + t}{2} = -1 \implies -2 + t = -2 \implies t = 0$<br>
+                        よって、点 $\mathrm{P}$ は $(4, 0)$ を通るはずです。<br>
+                        求めた軌跡の方程式 $y = \dfrac{1}{2}x^2 - 4x + 8$ に $x=4$ を代入すると、<br>
+                        $y = \dfrac{1}{2}(16) - 16 + 8 = 8 - 16 + 8 = 0$ となり、確かに $(4, 0)$ を通ります。式変形が間違っていないことが証明できました。
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">(1) 因数定理による割り算の実行</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                $x=1$ を解に持つことが分かっているのに、$x^3+ax^2+2ax-3a-1$ を因数分解する際に手が止まってしまう生徒がいます。係数に文字 $a$ が含まれていても、筆算や組立除法で必ず $(x-1)$ で割り切れます（余りが0になります）。信じて計算を進めましょう。
+                            </p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">(2) $s, t$ の代入方向を逆にしてしまう</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                $\mathrm{Q}\left(\dfrac{s}{2}, \dfrac{t-2}{2}\right)$ と求めた後、これを「$x = \dfrac{s}{2}, y = \dfrac{t-2}{2}$」として放物線の式に代入するのが正解ですが、逆に「$s = \dfrac{x}{2}$」のように元の放物線の式に $x, y$ をそのまま残して代入してしまうミスが頻発します。「動く点（今回は $\mathrm{Q}$）の座標を、その点が動く図形の式に代入する」という原則を徹底してください。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+                
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. 3次方程式が「虚数解をもつ」条件を求める際、まず行うべき変形は何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            因数定理などを用いて、方程式を「$(1次式) \times (2次式) = 0$」の形に因数分解します。1次式から出る解は必ず実数になるため、残った「2次方程式の判別式 $D < 0$」を条件として処理します。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. 軌跡の問題において、「点 $\mathrm{Q}$ がある図形上を動くとき、点 $\mathrm{P}$ の軌跡を求めよ」という連動点の軌跡を求める手順（3ステップ）を答えてください。</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            ① 求めたい点 $\mathrm{P}$ を $(s, t)$ とおき、動く点 $\mathrm{Q}$ の座標を $s, t$ を用いて表す。<br>
+                            ② $\mathrm{Q}$ の座標を、$\mathrm{Q}$ が動く図形の方程式（$x, y$）に代入する。<br>
+                            ③ $s, t$ の関係式として整理し、最後に $s \to x, t \to y$ に書き換えて図形の方程式とする。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. 点 $\mathrm{A}(x_A, y_A)$ と 点 $\mathrm{P}(s, t)$ の中点が $\mathrm{Q}$ であるとき、$\mathrm{Q}$ の座標はどのように表されますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            中点の座標公式より、それぞれの $x$ 座標の平均、$y$ 座標の平均をとって $\left( \dfrac{x_A + s}{2}, \dfrac{y_A + t}{2} \right)$ と表されます。
+                        </div>
+                    </details>
+                </div>
+            </section>
+            
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="no10.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← No.10へ
+                </a>
+                <a href="no12.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.12 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            自彊館(理系)　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>

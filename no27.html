@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>夏期課題 No.27 三角関数 - 自彊館(理系)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    MathJax={chtml:{matchFontHeight:false},tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]}};
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Meiryo",sans-serif}
+    .nav-button{transition:transform .16s ease,box-shadow .16s ease}.nav-button:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(15,23,42,.12)}
+    .math-scroll{overflow-x:auto;overflow-y:hidden;padding-bottom:.5rem;margin-bottom:.5rem}
+    button:focus-visible,summary:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid rgba(37,99,235,.35);outline-offset:3px}
+  </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+  <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">← 問題一覧へ戻る</a>
+
+  <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+    <div class="p-7 sm:p-10">
+      <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+      <div class="mt-4 flex flex-wrap items-center gap-3">
+        <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.27</span>
+        <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+      </div>
+      <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">三角関数</h1>
+      <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+      <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900"><span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>問題</h2>
+      <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 leading-relaxed text-slate-700">
+        <p>関数</p>
+        <div class="math-scroll">\[
+          f(x)=\sqrt3\sin2x-\cos2x+\sin x-\sqrt3\cos x
+        \]</div>
+        <p>があり、</p>
+        <div class="math-scroll">\[t=\sin x-\sqrt3\cos x\]</div>
+        <p>とする。以下において、$x$ は $0\le x\le\pi$ の範囲を変化するものとする。</p>
+        <ol class="mt-4 list-decimal space-y-4 pl-6">
+          <li>$t$ を $r\sin(x+\alpha)$（$r,\alpha$ は定数で、$r&gt;0$）の形で表し、$t$ のとり得る値の範囲を求めよ。</li>
+          <li>$t^2$ を $\sin2x,\cos2x$ で表せ。</li>
+          <li>$f(x)$ の最大値、最小値を求めよ。</li>
+        </ol>
+      </div>
+
+      <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+        <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+        <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+          <li>$t$ は $\sin x$ と $\cos x$ の一次結合なので、三角関数の合成を使います。</li>
+          <li>$x$ の範囲が $0\le x\le\pi$ に限定されているため、振幅だけから $-2\le t\le2$ としてはいけません。</li>
+          <li>$t^2$ を展開すると、倍角公式を用いて $\sqrt3\sin2x-\cos2x$ を取り出せます。</li>
+          <li>最終的に $f(x)$ を $t$ の二次関数として表し、$t$ の正しい範囲で最大・最小を調べます。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+      <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900"><span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>解説</h2>
+      <p class="mt-4 text-sm leading-8 text-slate-600">複雑な三角関数を、値域が分かる1つの変数 $t$ の二次関数に置き換える問題です。</p>
+
+      <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+        <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+        <div class="mt-4 space-y-4">
+          <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+            <p class="text-sm font-bold text-amber-900">$\sin x$ と $\cos x$ の一次結合</p>
+            <p class="mt-1 text-sm text-amber-800">係数の平方和から振幅を求め、$t=2\sin\left(x-\dfrac\pi3\right)$ と合成します。</p>
+          </div>
+          <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+            <p class="text-sm font-bold text-amber-900">定義域が指定された合成関数</p>
+            <p class="mt-1 text-sm text-amber-800">角 $x-\dfrac\pi3$ の動く範囲を書いてから、正弦の最大・最小を読み取ります。</p>
+          </div>
+          <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+            <p class="text-sm font-bold text-amber-900">与えられた置換を平方する</p>
+            <p class="mt-1 text-sm text-amber-800">$t^2$ の中に、元の式の倍角部分が符号を変えた形で現れます。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+        <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+        <div class="mt-4 space-y-4">
+          <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900"><strong>（1）合成した後に角の範囲を移す</strong><br>$0\le x\le\pi$ から $-\dfrac\pi3\le x-\dfrac\pi3\le\dfrac{2\pi}3$ を得ます。</div>
+          <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900"><strong>（2）$t^2$ を倍角で整理する</strong><br>$\sin^2x,\cos^2x,2\sin x\cos x$ を倍角公式で置き換えます。</div>
+          <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900"><strong>（3）放物線を区間上で調べる</strong><br>$f(x)=-t^2+t+2$ は上に凸の放物線です。頂点と区間の両端を調べます。</div>
+        </div>
+      </div>
+
+      <div class="mt-10">
+        <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+        <div class="mt-4 space-y-8 text-slate-700">
+          <div>
+            <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）</p>
+            <p class="mt-2">係数の大きさは</p>
+            <div class="math-scroll">\[
+              r=\sqrt{1^2+(-\sqrt3)^2}=2
+            \]</div>
+            <p>である。また、</p>
+            <div class="math-scroll">\[
+              \begin{aligned}
+              2\sin\left(x-\frac\pi3\right)
+              &=2\left(\sin x\cos\frac\pi3-\cos x\sin\frac\pi3\right)\\
+              &=\sin x-\sqrt3\cos x
+              \end{aligned}
+            \]</div>
+            <p>より、</p>
+            <div class="math-scroll font-bold text-blue-900">\[
+              t=2\sin\left(x-\frac\pi3\right)
+            \]</div>
+            <p class="mt-2">したがって、$r=2,\ \alpha=-\dfrac\pi3$ である。</p>
+
+            <p class="mt-4">ここで、$0\le x\le\pi$ だから、</p>
+            <div class="math-scroll">\[
+              -\frac\pi3\le x-\frac\pi3\le\frac{2\pi}3
+            \]</div>
+            <p>となる。この区間で正弦は、$-\dfrac\pi3$ で最小値 $-\dfrac{\sqrt3}{2}$、$\dfrac\pi2$ で最大値 $1$ をとる。よって、</p>
+            <div class="math-scroll font-bold text-blue-900">\[
+              -\sqrt3\le t\le2
+            \]</div>
+          </div>
+
+          <div class="border-t border-slate-200 pt-6">
+            <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）</p>
+            <p class="mt-2">$t=\sin x-\sqrt3\cos x$ を2乗すると、</p>
+            <div class="math-scroll">\[
+              \begin{aligned}
+              t^2
+              &=\sin^2x+3\cos^2x-2\sqrt3\sin x\cos x\\
+              &=\frac{1-\cos2x}{2}+\frac{3(1+\cos2x)}{2}-\sqrt3\sin2x\\
+              &=2+\cos2x-\sqrt3\sin2x
+              \end{aligned}
+            \]</div>
+            <p>したがって、</p>
+            <div class="math-scroll font-bold text-blue-900">\[
+              t^2=2+\cos2x-\sqrt3\sin2x
+            \]</div>
+          </div>
+
+          <div class="border-t border-slate-200 pt-6">
+            <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）</p>
+            <p class="mt-2">（2）より、</p>
+            <div class="math-scroll">\[
+              \sqrt3\sin2x-\cos2x=2-t^2
+            \]</div>
+            <p>であるから、</p>
+            <div class="math-scroll">\[
+              \begin{aligned}
+              f(x)
+              &=\sqrt3\sin2x-\cos2x+t\\
+              &=2-t^2+t\\
+              &=-\left(t-\frac12\right)^2+\frac94
+              \end{aligned}
+            \]</div>
+            <p>$-\sqrt3\le t\le2$ において、頂点 $t=\dfrac12$ は区間内にあるので、最大値は</p>
+            <div class="math-scroll font-bold text-blue-900">\[
+              \frac94
+            \]</div>
+            <p>である。</p>
+
+            <p class="mt-4">また、上に凸の放物線なので、最小値は区間の端点で比較する。</p>
+            <div class="math-scroll">\[
+              \begin{aligned}
+              f&=-t^2+t+2,\\
+              f(-\sqrt3)&=-3-\sqrt3+2=-1-\sqrt3,\\
+              f(2)&=-4+2+2=0
+              \end{aligned}
+            \]</div>
+            <p>したがって、最小値は</p>
+            <div class="math-scroll font-bold text-blue-900">\[
+              -1-\sqrt3
+            \]</div>
+            <p>である。</p>
+
+            <p class="mt-4 font-bold text-slate-800">以上より、$f(x)$ の最大値は $\dfrac94$、最小値は $-1-\sqrt3$ である。</p>
+            <p class="mt-2 text-sm text-slate-600">最大値は $t=\dfrac12$、すなわち $x=\dfrac\pi3+\sin^{-1}\dfrac14$ のとき、最小値は $x=0$ のときにとる。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10">
+        <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化</h3>
+        <p class="mt-4 text-sm leading-relaxed text-slate-700">$x$ を動かして、$t$ と $f(x)$ の値を確認してください。右のグラフでは、$t$ が $[-\sqrt3,2]$ の範囲だけを動くことが分かります。</p>
+        <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:p-6">
+          <label for="x-slider" class="block text-sm font-medium text-slate-700">$x$：<span id="x-display" class="text-lg font-bold text-blue-700">0.000</span> rad</label>
+          <input id="x-slider" type="range" min="0" max="3.141592653589793" step="0.002" value="0" class="mt-2 h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600">
+          <div class="mt-3 flex flex-wrap justify-center gap-2">
+            <button type="button" data-x="0" class="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-bold text-blue-700 hover:bg-blue-50">最小値 $x=0$</button>
+            <button type="button" data-x="1.299878" class="rounded-lg border border-violet-200 bg-white px-3 py-2 text-sm font-bold text-violet-700 hover:bg-violet-50">最大値の $x$</button>
+            <button type="button" data-x="2.617994" class="rounded-lg border border-emerald-200 bg-white px-3 py-2 text-sm font-bold text-emerald-700 hover:bg-emerald-50">$t=2$</button>
+          </div>
+
+          <div class="mt-5 grid gap-6 lg:grid-cols-2">
+            <div>
+              <h4 class="text-center font-bold text-slate-800">$t=2\sin(x-\pi/3)$</h4>
+              <svg id="tx-svg" width="590" height="390" viewBox="0 0 590 390" class="mt-3 mx-auto h-auto w-full max-w-[590px] rounded-xl border border-slate-200 bg-white" aria-label="xとtの関係">
+                <g id="tx-grid"></g><line id="tx-x-axis" stroke="#64748b" stroke-width="1.5"></line><line id="tx-y-axis" stroke="#64748b" stroke-width="1.5"></line>
+                <path id="tx-path" fill="none" stroke="#2563eb" stroke-width="3"></path><line id="tx-guide" stroke="#e11d48" stroke-width="2" stroke-dasharray="7 5"></line><circle id="tx-point" r="7" fill="#e11d48"></circle>
+                <g font-size="13" font-weight="700" fill="#475569"><text x="66" y="217">0</text><text x="520" y="217">π</text><text x="78" y="58">2</text><text x="78" y="333">−√3</text></g>
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-center font-bold text-slate-800">$f=-t^2+t+2$</h4>
+              <svg id="ft-svg" width="590" height="390" viewBox="0 0 590 390" class="mt-3 mx-auto h-auto w-full max-w-[590px] rounded-xl border border-slate-200 bg-white" aria-label="tとfの関係">
+                <g id="ft-grid"></g><line id="ft-x-axis" stroke="#64748b" stroke-width="1.5"></line><line id="ft-y-axis" stroke="#64748b" stroke-width="1.5"></line>
+                <path id="ft-path" fill="none" stroke="#7c3aed" stroke-width="3"></path><line id="ft-guide" stroke="#e11d48" stroke-width="2" stroke-dasharray="7 5"></line><circle id="ft-point" r="7" fill="#e11d48"></circle>
+                <g font-size="13" font-weight="700" fill="#475569"><text x="62" y="145">0</text><text x="506" y="145">2</text><text x="78" y="335">−√3</text><text x="340" y="36">最大 9/4</text></g>
+              </svg>
+            </div>
+          </div>
+
+          <div class="mt-4 grid gap-3 sm:grid-cols-3">
+            <div class="rounded-lg border border-slate-200 bg-white p-3 text-center"><div class="text-xs font-bold text-slate-500">$x$</div><div id="x-card" class="mt-1 text-lg font-bold text-slate-900"></div></div>
+            <div class="rounded-lg border border-blue-200 bg-blue-50 p-3 text-center"><div class="text-xs font-bold text-blue-700">$t$</div><div id="t-card" class="mt-1 text-lg font-bold text-blue-900"></div></div>
+            <div class="rounded-lg border border-violet-200 bg-violet-50 p-3 text-center"><div class="text-xs font-bold text-violet-700">$f(x)$</div><div id="f-card" class="mt-1 text-lg font-bold text-violet-900"></div></div>
+          </div>
+        </div>
+
+        <script>
+          document.addEventListener("DOMContentLoaded",()=>{
+            const slider=document.getElementById("x-slider");
+            const W=590,H=390;
+            const xMin=0,xMax=Math.PI,tMin=-2.1,tMax=2.3;
+            const sx=x=>(x-xMin)/(xMax-xMin)*470+90, sy=y=>340-(y-tMin)/(tMax-tMin)*290;
+            let grid="";for(let i=0;i<=6;i++){const x=xMin+(xMax-xMin)*i/6;grid+=`<line x1="${sx(x)}" y1="45" x2="${sx(x)}" y2="340" stroke="#f1f5f9"/>`;}for(let y=-2;y<=2;y++)grid+=`<line x1="90" y1="${sy(y)}" x2="560" y2="${sy(y)}" stroke="#f1f5f9"/>`;document.getElementById("tx-grid").innerHTML=grid;
+            const txa=document.getElementById("tx-x-axis"),tya=document.getElementById("tx-y-axis");txa.setAttribute("x1",90);txa.setAttribute("y1",sy(0));txa.setAttribute("x2",560);txa.setAttribute("y2",sy(0));tya.setAttribute("x1",90);tya.setAttribute("y1",45);tya.setAttribute("x2",90);tya.setAttribute("y2",340);
+            let d="";for(let i=0;i<=400;i++){const x=xMin+(xMax-xMin)*i/400,t=2*Math.sin(x-Math.PI/3);d+=`${i?"L":"M"} ${sx(x)} ${sy(t)} `;}document.getElementById("tx-path").setAttribute("d",d);
+
+            const qMin=-Math.sqrt(3),qMax=2,fMin=-3,fMax=2.6;
+            const qs=t=>(t-qMin)/(qMax-qMin)*470+90, fs=f=>340-(f-fMin)/(fMax-fMin)*290;
+            let grid2="";for(let i=0;i<=6;i++){const t=qMin+(qMax-qMin)*i/6;grid2+=`<line x1="${qs(t)}" y1="45" x2="${qs(t)}" y2="340" stroke="#f1f5f9"/>`;}for(let f=-3;f<=2;f++)grid2+=`<line x1="90" y1="${fs(f)}" x2="560" y2="${fs(f)}" stroke="#f1f5f9"/>`;document.getElementById("ft-grid").innerHTML=grid2;
+            const fxa=document.getElementById("ft-x-axis"),fya=document.getElementById("ft-y-axis");fxa.setAttribute("x1",90);fxa.setAttribute("y1",fs(0));fxa.setAttribute("x2",560);fxa.setAttribute("y2",fs(0));fya.setAttribute("x1",qs(0));fya.setAttribute("y1",45);fya.setAttribute("x2",qs(0));fya.setAttribute("y2",340);
+            let d2="";for(let i=0;i<=400;i++){const t=qMin+(qMax-qMin)*i/400,f=-t*t+t+2;d2+=`${i?"L":"M"} ${qs(t)} ${fs(f)} `;}document.getElementById("ft-path").setAttribute("d",d2);
+
+            function line(el,x1,y1,x2,y2){el.setAttribute("x1",x1);el.setAttribute("y1",y1);el.setAttribute("x2",x2);el.setAttribute("y2",y2)}
+            function point(el,x,y){el.setAttribute("cx",x);el.setAttribute("cy",y)}
+            function update(){
+              const x=parseFloat(slider.value),t=2*Math.sin(x-Math.PI/3),f=-t*t+t+2;
+              document.getElementById("x-display").textContent=x.toFixed(3);document.getElementById("x-card").textContent=x.toFixed(5);document.getElementById("t-card").textContent=t.toFixed(5);document.getElementById("f-card").textContent=f.toFixed(5);
+              line(document.getElementById("tx-guide"),sx(x),45,sx(x),340);point(document.getElementById("tx-point"),sx(x),sy(t));
+              line(document.getElementById("ft-guide"),qs(t),45,qs(t),340);point(document.getElementById("ft-point"),qs(t),fs(f));
+            }
+            slider.addEventListener("input",update);document.querySelectorAll("[data-x]").forEach(b=>b.addEventListener("click",()=>{slider.value=b.dataset.x;update();}));update();
+          });
+        </script>
+      </div>
+
+      <div class="mt-10">
+        <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+        <div class="mt-4 space-y-4">
+          <div class="rounded-lg border border-red-200 bg-red-50 p-4"><p class="text-sm font-bold text-red-900">合成した直後に $-2\le t\le2$ とする</p><p class="mt-1 text-sm text-red-800">振幅は2ですが、角が1周期全体を動くわけではありません。必ず角の範囲を確認します。</p></div>
+          <div class="rounded-lg border border-red-200 bg-red-50 p-4"><p class="text-sm font-bold text-red-900">$f(x)$ を直接合成しようとする</p><p class="mt-1 text-sm text-red-800">$x$ と $2x$ が混在するため、直接の合成は不向きです。問題文で与えられた $t$ を利用します。</p></div>
+          <div class="rounded-lg border border-red-200 bg-red-50 p-4"><p class="text-sm font-bold text-red-900">最大値だけ頂点を調べ、最小値を見落とす</p><p class="mt-1 text-sm text-red-800">上に凸の放物線の最小値は、閉区間の両端の値を比較して決めます。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+      <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+      <p class="mt-4 text-sm text-blue-200">質問をクリックし、答えを頭の中で作ってから開いてください。</p>
+      <div class="mt-6 space-y-3">
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q1. $t$ を合成するとどうなりますか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm">\[t=2\sin\left(x-\frac\pi3\right)\]</div></details>
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q2. $t$ の値域は何ですか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm">\[-\sqrt3\le t\le2\]</div></details>
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q3. $t^2$ を倍角で表すとどうなりますか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm">\[t^2=2+\cos2x-\sqrt3\sin2x\]</div></details>
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q4. $f(x)$ を $t$ で表すとどうなりますか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm">\[f(x)=-t^2+t+2\]</div></details>
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q5. 最大値と最小値は何ですか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm">最大値は $\dfrac94$、最小値は $-1-\sqrt3$ です。</div></details>
+      </div>
+    </section>
+
+    <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+      <a href="no26.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">← No.26へ</a>
+      <a href="no28.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">No.28 →</a>
+    </nav>
+  </main>
+
+  <footer class="py-10 text-center text-sm text-slate-500">自彊館(理系)　夏期数学課題 解説サイト</footer>
+</div>
+</body>
+</html>

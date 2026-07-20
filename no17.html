@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.17 小問集合 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: { matchFontHeight: false },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: .5rem; margin-bottom: .5rem; }
+        .answer-blank {
+            display: inline-flex; min-width: 2.4rem; min-height: 2rem; align-items: center; justify-content: center;
+            border: 2px solid #64748b; border-radius: .25rem; padding: .1rem .45rem; font-weight: 700;
+            background: #fff; color: #334155; vertical-align: middle;
+        }
+        .dice {
+            width: 4rem; height: 4rem; display: grid; place-items: center; border: 2px solid #cbd5e1;
+            border-radius: .9rem; background: white; box-shadow: 0 4px 10px rgba(15,23,42,.08);
+            font-size: 3rem; line-height: 1;
+        }
+        button:focus-visible, summary:focus-visible, a:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35); outline-offset: 3px;
+        }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.17</span>
+                    <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">基礎</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">小問集合</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：15分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+
+                <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed">
+                    <p>次の <span class="answer-blank">ア</span> ～ <span class="answer-blank">カ</span> にあてはまる数を求めよ．</p>
+
+                    <ol class="mt-4 list-decimal space-y-6 pl-6">
+                        <li>
+                            <p>$0^\circ&lt;\alpha&lt;90^\circ$，$\tan\alpha=2$ のとき，</p>
+                            <p class="my-3 text-center">$\cos\alpha=$ <span class="answer-blank">ア</span></p>
+                            <p>である．</p>
+                            <p class="mt-3">また，$0^\circ&lt;\beta&lt;90^\circ$，$2\cos\beta-\sin\beta=1$ のとき，</p>
+                            <p class="my-3 text-center">$\cos\beta=$ <span class="answer-blank">イ</span></p>
+                            <p>である．</p>
+                        </li>
+
+                        <li>
+                            <p>3個のさいころを同時に振るとき，出る目の積が3の倍数になる確率は，</p>
+                            <p class="my-3 text-center"><span class="answer-blank">ウ</span></p>
+                            <p>である．</p>
+                            <p class="mt-3">また，3個のさいころを同時に振るとき，出る目の和が7の倍数になる確率は，</p>
+                            <p class="my-3 text-center"><span class="answer-blank">エ</span></p>
+                            <p>である．</p>
+                        </li>
+
+                        <li>
+                            <div class="grid gap-5 md:grid-cols-[1fr_230px] md:items-start">
+                                <div>
+                                    <p>半径2の球に高さ3の直円錐が図1のように内接するとき，この円錐の体積は，</p>
+                                    <p class="my-3 text-center"><span class="answer-blank">オ</span></p>
+                                    <p>である．</p>
+                                    <p class="mt-4">また，高さ7の直円錐に半径2の球が図2のように内接するとき，この円錐の体積は，</p>
+                                    <p class="my-3 text-center"><span class="answer-blank">カ</span></p>
+                                    <p>である．</p>
+                                </div>
+                                <div class="grid grid-cols-2 gap-3 md:grid-cols-1">
+                                    <figure class="rounded-xl border border-slate-200 bg-white p-3 text-center shadow-sm">
+                                        <img src="data:image/jpeg;base64,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" alt="球に内接する直円錐を表す図1" class="mx-auto h-auto max-h-40 w-auto">
+                                    </figure>
+                                    <figure class="rounded-xl border border-slate-200 bg-white p-3 text-center shadow-sm">
+                                        <img src="data:image/jpeg;base64,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" alt="直円錐に内接する球を表す図2" class="mx-auto h-auto max-h-44 w-auto">
+                                    </figure>
+                                </div>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                    <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+                    <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+                        <li><strong>角の範囲：</strong> $\alpha$、$\beta$ はともに鋭角なので、$\sin$、$\cos$、$\tan$ はすべて正です。</li>
+                        <li><strong>3個のさいころ：</strong> 全事象は $6^3=216$ 通りで、どの出方も同様に確からしいと考えます。</li>
+                        <li><strong>積が3の倍数：</strong> 少なくとも1個が3の倍数の目であればよいので、余事象を使うと短く処理できます。</li>
+                        <li><strong>和が7の倍数：</strong> 3個の目の和は3以上18以下なので、候補は7と14だけです。</li>
+                        <li><strong>球と円錐：</strong> 回転軸を含む平面で切ると、球は円、円錐は二等辺三角形になります。立体を平面図形へ置き換えることが重要です。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    三角比は基本関係、確率は余事象と対称性、立体は軸を含む断面へ変換して処理します。
+                </p>
+
+                <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                            <p class="text-sm font-bold text-amber-900">$\tan\alpha$ から $\cos\alpha$ を求める</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                $1+\tan^2\alpha=\dfrac{1}{\cos^2\alpha}$ を使います。角が鋭角なので、平方根を取るときは正の値を選びます。
+                            </p>
+                        </div>
+                        <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                            <p class="text-sm font-bold text-amber-900">$\sin$ と $\cos$ の1次式が与えられた</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                一方を他方で表し、$\sin^2\beta+\cos^2\beta=1$ に代入します。最後に角の範囲と元の式を確認します。
+                            </p>
+                        </div>
+                        <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                            <p class="text-sm font-bold text-amber-900">「少なくとも1個」が条件に入る確率</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                直接数えるより、「1個も条件を満たさない確率」を1から引く余事象が有効です。
+                            </p>
+                        </div>
+                        <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                            <p class="text-sm font-bold text-amber-900">さいころの和がある数の倍数</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                まず和の最小値と最大値から候補を絞ります。また、各目を $a\mapsto7-a$ と置き換える対称性も使えます。
+                            </p>
+                        </div>
+                        <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                            <p class="text-sm font-bold text-amber-900">球と直円錐が接する</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                軸を含む断面を描きます。図1では直角三角形、図2では三角形の面積 $S=rs$（内接円の半径×半周長）が計算の中心になります。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                            <strong>(1) 基本関係と単位円の条件を組み合わせる</strong><br>
+                            前半は $\tan$ と $\cos$ の基本関係を使います。後半は $c=\cos\beta$、$s=\sin\beta$ と置き、与式と $c^2+s^2=1$ を連立します。
+                        </div>
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                            <strong>(2) 数えにくい条件を、数えやすい条件へ言い換える</strong><br>
+                            積が3の倍数になる条件は「3または6が少なくとも1回出る」と同値です。和については7と14だけを数え、7と14の出方の個数が対称性により等しいことを利用します。
+                        </div>
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                            <strong>(3) 立体を軸を含む断面へ変換する</strong><br>
+                            図1では、球の中心から円錐の底面までの距離を求めて三平方の定理を使います。図2では、断面の二等辺三角形に内接する円の半径が2であることから、三角形の面積と半周長の関係を使います。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    <div class="mt-4 space-y-7 text-slate-700">
+
+                        <div>
+                            <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）</p>
+                            <p class="mt-3"><strong>ア</strong></p>
+                            <p class="mt-2">$\tan\alpha=2$ であるから、</p>
+                            <div class="math-scroll">
+                                \[
+                                \begin{aligned}
+                                1+\tan^2\alpha&=\frac{1}{\cos^2\alpha}\\
+                                1+2^2&=\frac{1}{\cos^2\alpha}\\
+                                \cos^2\alpha&=\frac{1}{5}
+                                \end{aligned}
+                                \]
+                            </div>
+                            <p>$0^\circ&lt;\alpha&lt;90^\circ$ より $\cos\alpha&gt;0$ なので、</p>
+                            <div class="math-scroll">
+                                \[
+                                \cos\alpha=\frac{1}{\sqrt5}=\frac{\sqrt5}{5}
+                                \]
+                            </div>
+                            <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                                ア：$\dfrac{\sqrt5}{5}$
+                            </div>
+
+                            <p class="mt-6"><strong>イ</strong></p>
+                            <p class="mt-2">$c=\cos\beta$、$s=\sin\beta$ とおく。$2c-s=1$ より $s=2c-1$ であるから、</p>
+                            <div class="math-scroll">
+                                \[
+                                \begin{aligned}
+                                c^2+s^2&=1\\
+                                c^2+(2c-1)^2&=1\\
+                                5c^2-4c&=0\\
+                                c(5c-4)&=0
+                                \end{aligned}
+                                \]
+                            </div>
+                            <p>したがって $c=0$ または $c=\dfrac45$。$c=0$ のとき $s=-1$ となり、$0^\circ&lt;\beta&lt;90^\circ$ に反する。よって、</p>
+                            <div class="math-scroll">
+                                \[
+                                \cos\beta=\frac45
+                                \]
+                            </div>
+                            <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                                イ：$\dfrac45$
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）</p>
+                            <p class="mt-3"><strong>ウ</strong></p>
+                            <p class="mt-2">積が3の倍数にならないのは、3個とも3の倍数でない目 $1,2,4,5$ が出る場合である。したがって、余事象を用いると、</p>
+                            <div class="math-scroll">
+                                \[
+                                1-\left(\frac46\right)^3
+                                =1-\frac{8}{27}
+                                =\frac{19}{27}
+                                \]
+                            </div>
+                            <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                                ウ：$\dfrac{19}{27}$
+                            </div>
+
+                            <p class="mt-6"><strong>エ</strong></p>
+                            <p class="mt-2">3個の目の和は3以上18以下なので、7の倍数となるのは和が7または14のときである。</p>
+                            <p class="mt-2">和が7となる出方は、順序を考えると、</p>
+                            <div class="math-scroll">
+                                \[
+                                \begin{array}{c|c}
+                                \text{目の組} & \text{並べ方}\\ \hline
+                                (1,1,5)&3\\
+                                (1,2,4)&6\\
+                                (1,3,3)&3\\
+                                (2,2,3)&3
+                                \end{array}
+                                \]
+                            </div>
+                            <p>より、合計 $15$ 通りである。</p>
+                            <p class="mt-2">各さいころの目を $a\mapsto7-a$ と置き換えると、和7の出方と和14の出方が1対1に対応する。したがって、和14も $15$ 通りである。</p>
+                            <div class="math-scroll">
+                                \[
+                                \frac{15+15}{6^3}=\frac{30}{216}=\frac{5}{36}
+                                \]
+                            </div>
+                            <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                                エ：$\dfrac5{36}$
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）</p>
+                            <p class="mt-3"><strong>オ</strong></p>
+                            <p class="mt-2">球と円錐の軸を含む平面で切る。球の中心をO、円錐の頂点をA、底面の半径を $r$ とする。</p>
+                            <p class="mt-2">球の半径は2、円錐の高さは3であるから、円錐の底面はOより1だけ下にある。したがって、断面に現れる直角三角形に三平方の定理を用いると、</p>
+                            <div class="math-scroll">
+                                \[
+                                r^2+1^2=2^2
+                                \]
+                                \[
+                                r^2=3
+                                \]
+                            </div>
+                            <p>よって、円錐の体積は、</p>
+                            <div class="math-scroll">
+                                \[
+                                V=\frac13\pi r^2\cdot3
+                                =\frac13\pi\cdot3\cdot3
+                                =3\pi
+                                \]
+                            </div>
+                            <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                                オ：$3\pi$
+                            </div>
+
+                            <p class="mt-6"><strong>カ</strong></p>
+                            <p class="mt-2">円錐の軸を含む平面で切る。円錐の底面の半径を $R$、母線の長さを $l$ とすると、断面は底辺 $2R$、高さ7、等しい2辺の長さが $l$ の二等辺三角形となる。</p>
+                            <p class="mt-2">この三角形の面積は $7R$、半周長は $R+l$、内接円の半径は2である。三角形の面積は「内接円の半径×半周長」で表せるから、</p>
+                            <div class="math-scroll">
+                                \[
+                                7R=2(R+l)
+                                \]
+                                \[
+                                l=\frac52R
+                                \]
+                            </div>
+                            <p>また、断面の半分に三平方の定理を用いると、</p>
+                            <div class="math-scroll">
+                                \[
+                                l^2=R^2+7^2
+                                \]
+                            </div>
+                            <p>したがって、</p>
+                            <div class="math-scroll">
+                                \[
+                                \begin{aligned}
+                                \left(\frac52R\right)^2&=R^2+49\\
+                                \frac{25}{4}R^2&=R^2+49\\
+                                \frac{21}{4}R^2&=49\\
+                                R^2&=\frac{28}{3}
+                                \end{aligned}
+                                \]
+                            </div>
+                            <p>よって、円錐の体積は、</p>
+                            <div class="math-scroll">
+                                \[
+                                V=\frac13\pi R^2\cdot7
+                                =\frac13\pi\cdot\frac{28}{3}\cdot7
+                                =\frac{196\pi}{9}
+                                \]
+                            </div>
+                            <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                                カ：$\dfrac{196\pi}{9}$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化</h3>
+
+                    <div class="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-5">
+                        <h4 class="font-bold text-slate-900">1．三角比を直角三角形で見る</h4>
+                        <div class="mt-4 grid gap-5 md:grid-cols-2">
+                            <div class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+                                <p class="text-center text-sm font-bold text-blue-800">$\tan\alpha=2$</p>
+                                <svg viewBox="0 0 300 210" class="mx-auto mt-2 h-auto w-full max-w-sm" role="img" aria-label="辺の比が1対2対ルート5の直角三角形">
+                                    <line x1="45" y1="170" x2="245" y2="170" stroke="#334155" stroke-width="3"/>
+                                    <line x1="245" y1="170" x2="245" y2="35" stroke="#334155" stroke-width="3"/>
+                                    <line x1="45" y1="170" x2="245" y2="35" stroke="#2563eb" stroke-width="3"/>
+                                    <path d="M225 170 L225 150 L245 150" fill="none" stroke="#64748b" stroke-width="2"/>
+                                    <path d="M80 170 A35 35 0 0 0 74 151" fill="none" stroke="#10b981" stroke-width="3"/>
+                                    <text x="92" y="158" font-size="18" fill="#047857">α</text>
+                                    <text x="140" y="195" font-size="18" fill="#334155">1</text>
+                                    <text x="255" y="108" font-size="18" fill="#334155">2</text>
+                                    <text x="135" y="93" font-size="18" fill="#2563eb">√5</text>
+                                </svg>
+                                <p class="mt-2 text-center text-sm text-slate-700">$\cos\alpha=\dfrac{\text{隣辺}}{\text{斜辺}}=\dfrac1{\sqrt5}$</p>
+                            </div>
+                            <div class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+                                <p class="text-center text-sm font-bold text-blue-800">$2\cos\beta-\sin\beta=1$</p>
+                                <svg viewBox="0 0 300 210" class="mx-auto mt-2 h-auto w-full max-w-sm" role="img" aria-label="辺の比が3対4対5の直角三角形">
+                                    <line x1="45" y1="170" x2="245" y2="170" stroke="#334155" stroke-width="3"/>
+                                    <line x1="245" y1="170" x2="245" y2="60" stroke="#334155" stroke-width="3"/>
+                                    <line x1="45" y1="170" x2="245" y2="60" stroke="#2563eb" stroke-width="3"/>
+                                    <path d="M225 170 L225 150 L245 150" fill="none" stroke="#64748b" stroke-width="2"/>
+                                    <path d="M80 170 A35 35 0 0 0 76 153" fill="none" stroke="#10b981" stroke-width="3"/>
+                                    <text x="92" y="159" font-size="18" fill="#047857">β</text>
+                                    <text x="140" y="195" font-size="18" fill="#334155">4</text>
+                                    <text x="255" y="120" font-size="18" fill="#334155">3</text>
+                                    <text x="142" y="105" font-size="18" fill="#2563eb">5</text>
+                                </svg>
+                                <p class="mt-2 text-center text-sm text-slate-700">$2\cdot\dfrac45-\dfrac35=1$</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-5">
+                        <h4 class="font-bold text-slate-900">2．3個のさいころを実際に振ってみる</h4>
+                        <p class="mt-2 text-sm leading-relaxed text-slate-600">ボタンを押すと3個の目をランダムに表示します。1回の実験と、全216通りを数える理論値を区別して確認しましょう。</p>
+                        <div class="mt-4 flex flex-wrap justify-center gap-4" aria-live="polite">
+                            <div id="die-1" class="dice">⚀</div>
+                            <div id="die-2" class="dice">⚀</div>
+                            <div id="die-3" class="dice">⚀</div>
+                        </div>
+                        <div class="mt-5 flex justify-center">
+                            <button id="roll-dice" type="button" class="rounded-xl bg-blue-700 px-6 py-3 font-bold text-white shadow-sm transition hover:bg-blue-800">3個のさいころを振る</button>
+                        </div>
+                        <div class="mx-auto mt-5 grid max-w-xl gap-3 sm:grid-cols-2">
+                            <div id="product-result" class="rounded-lg border border-slate-200 bg-white p-4 text-center text-sm font-bold text-slate-700">積：1</div>
+                            <div id="sum-result" class="rounded-lg border border-slate-200 bg-white p-4 text-center text-sm font-bold text-slate-700">和：3</div>
+                        </div>
+                        <div class="mt-5 overflow-x-auto">
+                            <table class="mx-auto min-w-[520px] border-collapse text-sm">
+                                <thead>
+                                    <tr class="bg-slate-200 text-slate-800">
+                                        <th class="border border-slate-300 px-4 py-2">条件</th>
+                                        <th class="border border-slate-300 px-4 py-2">該当する出方</th>
+                                        <th class="border border-slate-300 px-4 py-2">確率</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white">
+                                    <tr>
+                                        <td class="border border-slate-300 px-4 py-2">積が3の倍数</td>
+                                        <td id="product-count" class="border border-slate-300 px-4 py-2 text-center">152通り</td>
+                                        <td class="border border-slate-300 px-4 py-2 text-center">$\dfrac{152}{216}=\dfrac{19}{27}$</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-slate-300 px-4 py-2">和が7の倍数</td>
+                                        <td id="sum-count" class="border border-slate-300 px-4 py-2 text-center">30通り</td>
+                                        <td class="border border-slate-300 px-4 py-2 text-center">$\dfrac{30}{216}=\dfrac5{36}$</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-5">
+                        <h4 class="font-bold text-slate-900">3．立体は「軸を含む断面」で平面図形にする</h4>
+                        <div class="mt-4 grid gap-5 lg:grid-cols-2">
+                            <div class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+                                <p class="text-center text-sm font-bold text-blue-800">図1：球に内接する円錐</p>
+                                <svg viewBox="0 0 340 280" class="mx-auto mt-2 h-auto w-full max-w-sm" role="img" aria-label="半径2の円に高さ3の二等辺三角形が内接する断面図">
+                                    <circle cx="170" cy="135" r="100" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+                                    <line x1="170" y1="35" x2="83.4" y2="185" stroke="#334155" stroke-width="3"/>
+                                    <line x1="170" y1="35" x2="256.6" y2="185" stroke="#334155" stroke-width="3"/>
+                                    <line x1="83.4" y1="185" x2="256.6" y2="185" stroke="#334155" stroke-width="3"/>
+                                    <line x1="170" y1="35" x2="170" y2="185" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 5"/>
+                                    <line x1="170" y1="135" x2="83.4" y2="185" stroke="#10b981" stroke-width="2"/>
+                                    <circle cx="170" cy="135" r="4" fill="#e11d48"/>
+                                    <text x="180" y="132" font-size="16" fill="#e11d48">O</text>
+                                    <text x="177" y="82" font-size="16" fill="#334155">2</text>
+                                    <text x="177" y="165" font-size="16" fill="#334155">1</text>
+                                    <text x="118" y="172" font-size="16" fill="#047857">r=√3</text>
+                                    <text x="184" y="112" font-size="16" fill="#2563eb">高さ3</text>
+                                </svg>
+                                <p class="mt-2 text-center text-sm text-slate-700">$r^2+1^2=2^2$</p>
+                            </div>
+
+                            <div class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+                                <p class="text-center text-sm font-bold text-blue-800">図2：円錐に内接する球</p>
+                                <svg viewBox="0 0 340 280" class="mx-auto mt-2 h-auto w-full max-w-sm" role="img" aria-label="高さ7の二等辺三角形に半径2の円が内接する断面図">
+                                    <path d="M170 25 L74 245 L266 245 Z" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+                                    <circle cx="170" cy="182.14" r="62.86" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+                                    <line x1="170" y1="25" x2="170" y2="245" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 5"/>
+                                    <line x1="170" y1="182.14" x2="232.86" y2="182.14" stroke="#10b981" stroke-width="2"/>
+                                    <text x="178" y="133" font-size="16" fill="#334155">7</text>
+                                    <text x="198" y="177" font-size="16" fill="#047857">2</text>
+                                    <text x="107" y="267" font-size="16" fill="#334155">底辺 2R</text>
+                                    <text x="235" y="135" font-size="16" fill="#334155">l</text>
+                                </svg>
+                                <p class="mt-2 text-center text-sm text-slate-700">面積 $7R=2(R+l)$</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">補足：三角形の面積 $S=rs$ を使う理由</h3>
+                    <div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed text-slate-700">
+                        <p>
+                            三角形の3辺の長さを $a,b,c$、内接円の半径を $r$ とします。内心から3辺へ垂線を下ろすと、もとの三角形は、高さがすべて $r$ である3つの三角形に分かれます。
+                        </p>
+                        <div class="math-scroll mt-3">
+                            \[
+                            \begin{aligned}
+                            S&=\frac12ar+\frac12br+\frac12cr\\
+                             &=r\cdot\frac{a+b+c}{2}\\
+                             &=rs
+                            \end{aligned}
+                            \]
+                        </div>
+                        <p>
+                            ここで $s=\dfrac{a+b+c}{2}$ は半周長です。図2の断面では $S=7R$、$r=2$、$s=R+l$ なので、$7R=2(R+l)$ と立式できます。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果</h3>
+                    <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900">
+                        <div class="grid gap-3 font-bold sm:grid-cols-2 lg:grid-cols-3">
+                            <div>ア：$\dfrac{\sqrt5}{5}$</div>
+                            <div>イ：$\dfrac45$</div>
+                            <div>ウ：$\dfrac{19}{27}$</div>
+                            <div>エ：$\dfrac5{36}$</div>
+                            <div>オ：$3\pi$</div>
+                            <div>カ：$\dfrac{196\pi}{9}$</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                            <p class="text-sm font-bold text-red-900">平方根を取るときに符号を確認しない</p>
+                            <p class="mt-1 text-sm text-red-800">$\cos^2\alpha=\frac15$ からは本来 $\cos\alpha=\pm\frac1{\sqrt5}$ です。鋭角という条件によって正を選びます。</p>
+                        </div>
+                        <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                            <p class="text-sm font-bold text-red-900">積が3の倍数になる場合を直接数え始める</p>
+                            <p class="mt-1 text-sm text-red-800">1個だけ、2個、3個と場合分けすると重複処理が必要です。「3の倍数が1個も出ない」を引く方が安全です。</p>
+                        </div>
+                        <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                            <p class="text-sm font-bold text-red-900">和が7だけだと考えてしまう</p>
+                            <p class="mt-1 text-sm text-red-800">3個の目の和は18まであるので、7だけでなく14も含まれます。最初に和の範囲を確認しましょう。</p>
+                        </div>
+                        <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                            <p class="text-sm font-bold text-red-900">立体のまま考え続けてしまう</p>
+                            <p class="mt-1 text-sm text-red-800">球と直円錐の問題では、軸を含む断面を描くと円と二等辺三角形になります。接する関係や長さが一気に見やすくなります。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">質問をクリックし、答えを見る前に自分の言葉で説明してみましょう。</p>
+
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. $\tan\theta$ から $\cos\theta$ を求めるときに使える基本関係は何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            $1+\tan^2\theta=\dfrac1{\cos^2\theta}$ です。角の範囲から $\cos\theta$ の符号も確認します。
+                        </div>
+                    </details>
+
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. 3個のさいころの積が3の倍数になる確率を余事象で表すとどうなりますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            3個とも3の倍数でない確率を引いて、$1-\left(\frac46\right)^3=\frac{19}{27}$ です。
+                        </div>
+                    </details>
+
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. 3個のさいころの和が7の倍数になるとき、考えるべき和はいくつですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            3以上18以下にある7の倍数なので、7と14です。
+                        </div>
+                    </details>
+
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q4. 球と直円錐の接する関係を調べるとき、最初に何を描きますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            円錐の軸を含む断面です。球は円、円錐は二等辺三角形として表されます。
+                        </div>
+                    </details>
+
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q5. 内接円の半径を $r$、三角形の半周長を $s$ とすると、三角形の面積はどう表されますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            $S=rs$ です。内心から各辺に下ろした垂線を高さとする3つの三角形に分けて導けます。
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="no16.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← No.16へ
+                </a>
+                <a href="no18.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.18 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            自彊館(理系)　夏期数学課題 解説サイト
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const diceChars = ['⚀','⚁','⚂','⚃','⚄','⚅'];
+            const dieElements = [
+                document.getElementById('die-1'),
+                document.getElementById('die-2'),
+                document.getElementById('die-3')
+            ];
+            const productResult = document.getElementById('product-result');
+            const sumResult = document.getElementById('sum-result');
+            const rollButton = document.getElementById('roll-dice');
+
+            function showRoll(values) {
+                values.forEach((value, index) => {
+                    dieElements[index].textContent = diceChars[value - 1];
+                    dieElements[index].setAttribute('aria-label', `${value}の目`);
+                });
+
+                const product = values.reduce((acc, value) => acc * value, 1);
+                const sum = values.reduce((acc, value) => acc + value, 0);
+                const productOK = product % 3 === 0;
+                const sumOK = sum % 7 === 0;
+
+                productResult.textContent = `積：${product}　${productOK ? '3の倍数' : '3の倍数ではない'}`;
+                sumResult.textContent = `和：${sum}　${sumOK ? '7の倍数' : '7の倍数ではない'}`;
+                productResult.className = productOK
+                    ? 'rounded-lg border border-emerald-300 bg-emerald-50 p-4 text-center text-sm font-bold text-emerald-700'
+                    : 'rounded-lg border border-slate-200 bg-white p-4 text-center text-sm font-bold text-slate-600';
+                sumResult.className = sumOK
+                    ? 'rounded-lg border border-emerald-300 bg-emerald-50 p-4 text-center text-sm font-bold text-emerald-700'
+                    : 'rounded-lg border border-slate-200 bg-white p-4 text-center text-sm font-bold text-slate-600';
+            }
+
+            rollButton.addEventListener('click', function () {
+                const values = Array.from({length: 3}, () => Math.floor(Math.random() * 6) + 1);
+                showRoll(values);
+            });
+
+            let productCount = 0;
+            let sumCount = 0;
+            for (let a = 1; a <= 6; a++) {
+                for (let b = 1; b <= 6; b++) {
+                    for (let c = 1; c <= 6; c++) {
+                        if ((a * b * c) % 3 === 0) productCount++;
+                        if ((a + b + c) % 7 === 0) sumCount++;
+                    }
+                }
+            }
+            document.getElementById('product-count').textContent = `${productCount}通り`;
+            document.getElementById('sum-count').textContent = `${sumCount}通り`;
+            showRoll([1, 1, 1]);
+        });
+    </script>
+</body>
+</html>

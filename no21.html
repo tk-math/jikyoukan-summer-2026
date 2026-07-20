@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.21 三角関数と図形 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: { matchFontHeight: false },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: .5rem; margin-bottom: .5rem; }
+        button:focus-visible, summary:focus-visible, a:focus-visible, input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+        ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+        <div class="p-7 sm:p-10">
+            <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+                <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.21</span>
+                <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+            </div>
+            <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">三角関数と図形</h1>
+            <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                問題
+            </h2>
+
+            <div class="mt-4 grid gap-5 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed md:grid-cols-[1fr_220px] md:items-start">
+                <div>
+                    <p>
+                        $\mathrm{OA}=\mathrm{OB}=1$，
+                        $\angle\mathrm{AOB}=\dfrac{\pi}{3}$ である扇形OABの弧AB上に点Pをとり、
+                        点Pから線分OA、OBに下ろした垂線をそれぞれPQ、PRとする。
+                    </p>
+                    <p class="mt-2">
+                        $\angle\mathrm{AOP}=\theta$
+                        $\left(0<\theta<\dfrac{\pi}{3}\right)$
+                        として、次の問いに答えよ。
+                    </p>
+
+                    <ol class="mt-4 list-decimal space-y-4 pl-6">
+                        <li>
+                            線分OQ、PQの長さをそれぞれ $\theta$ を用いて表せ。<br>
+                            また、$\mathrm{PQ}=\dfrac{\sqrt2}{2}$ となるときの $\theta$ の値を求めよ。
+                        </li>
+                        <li>
+                            （1）で求めた $\theta$ の値に対して、線分PRの長さを求めよ。
+                        </li>
+                        <li>
+                            2つの三角形OQR、PQRの面積をそれぞれ $S_1,S_2$ とするとき、
+                            $S_1,S_2$ をそれぞれ $\theta$ を用いて表し、$S_1-S_2$ の値を求めよ。
+                        </li>
+                        <li>
+                            四角形OQPRの面積を $S$ とする。（3）の $S_1,S_2$ に対して、
+                            \[
+                            S=\sqrt3(S_1-S_2)
+                            \]
+                            となるときの $\theta$ の値を求めよ。
+                        </li>
+                    </ol>
+
+                    <div class="mt-4 rounded-lg border border-sky-200 bg-sky-50 p-3 text-sm font-semibold text-sky-900">
+                        $\theta$ を使って、図の中のさまざまな線分や面積を表していきます。
+                    </div>
+                </div>
+
+                <div class="rounded-lg border border-slate-200 bg-white p-3 text-center">
+                    <img src="data:image/jpeg;base64,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" alt="扇形OABと点P、垂線PQ・PRの図" class="mx-auto h-auto w-full object-contain">
+                    <p class="mt-2 text-xs text-slate-500">問題の図</p>
+                </div>
+            </div>
+
+            <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+                <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+                    <li><strong>半径：</strong> Pは半径1の円弧上にあるため、$\mathrm{OP}=1$ です。</li>
+                    <li><strong>直角三角形OQP：</strong> $\angle\mathrm{AOP}=\theta$ なので、
+                        OQは隣辺、PQは対辺です。</li>
+                    <li><strong>直角三角形ORP：</strong>
+                        \[
+                        \angle\mathrm{BOP}=\frac{\pi}{3}-\theta
+                        \]
+                        です。</li>
+                    <li><strong>面積：</strong> 四角形OQPRは、対角線QRにより
+                        三角形OQRと三角形PQRに分かれます。したがって、
+                        \[
+                        S=S_1+S_2
+                        \]
+                        です。</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                解説
+            </h2>
+            <p class="mt-4 text-sm leading-8 text-slate-600">
+                直角三角形の三角比と、面積の分割を組み合わせて処理します。
+            </p>
+
+            <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+                <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">半径1の円周上の点から垂線を下ろしたら</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            直角三角形の斜辺が1になるため、横の長さは $\cos\theta$、縦の長さは $\sin\theta$ とすぐに表せます。
+                        </p>
+                    </div>
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">別の半径OBとの角度が必要になったら</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            全体の中心角 $\pi/3$ から $\theta$ を引き、
+                            \[
+                            \angle\mathrm{BOP}=\frac{\pi}{3}-\theta
+                            \]
+                            とします。
+                        </p>
+                    </div>
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">複雑な図形の面積は分割する</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            四角形OQPRは、直角三角形OQPとORPに分ける方法と、三角形OQRとPQRに分ける方法の2通りがあります。この2通りを結びつけます。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（1）（2）2つの直角三角形を見る</strong><br>
+                        三角形OQPでは角 $\theta$、三角形ORPでは角 $\pi/3-\theta$ を使います。いずれも斜辺OPは1です。
+                    </div>
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（3）まず $S_1$、次に四角形全体の面積 $S$ を求める</strong><br>
+                        $S_1$ は2辺OQ、ORとその間の角 $\pi/3$ から求めます。$S$ は2つの直角三角形OQP、ORPの面積の和として求め、最後に $S_2=S-S_1$ とします。
+                    </div>
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（4）$S_1-S_2$ が定数になることを利用する</strong><br>
+                        （3）で $S_1-S_2=\sqrt3/8$ とわかるため、右辺は $3/8$ です。あとは $S$ の式から三角方程式を解きます。
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+
+                <div class="mt-4 space-y-7 text-slate-700">
+                    <div>
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）</p>
+                        <p class="mt-2">
+                            三角形OQPはQを直角とする直角三角形であり、$\mathrm{OP}=1$、
+                            $\angle\mathrm{QOP}=\theta$ であるから、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \mathrm{OQ}=\cos\theta,\qquad
+                            \mathrm{PQ}=\sin\theta
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            また、$\mathrm{PQ}=\dfrac{\sqrt2}{2}$ のとき、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \sin\theta=\frac{\sqrt2}{2}
+                            \]
+                        </div>
+                        <p>
+                            $0<\theta<\dfrac{\pi}{3}$ であるから、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \theta=\frac{\pi}{4}
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：
+                            $\mathrm{OQ}=\cos\theta$，
+                            $\mathrm{PQ}=\sin\theta$，
+                            $\theta=\dfrac{\pi}{4}$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）</p>
+                        <p class="mt-2">
+                            三角形ORPはRを直角とする直角三角形であり、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \angle\mathrm{POR}
+                            =\frac{\pi}{3}-\theta
+                            \]
+                        </div>
+                        <p>であるから、</p>
+                        <div class="math-scroll">
+                            \[
+                            \mathrm{PR}
+                            =\sin\left(\frac{\pi}{3}-\theta\right)
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            （1）で求めた $\theta=\dfrac{\pi}{4}$ を代入すると、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \mathrm{PR}
+                            &=\sin\left(\frac{\pi}{3}-\frac{\pi}{4}\right)\\
+                            &=\sin\frac{\pi}{12}\\
+                            &=\sin\left(\frac{\pi}{4}-\frac{\pi}{6}\right)\\
+                            &=\frac{\sqrt2}{2}\cdot\frac{\sqrt3}{2}
+                            -\frac{\sqrt2}{2}\cdot\frac12\\
+                            &=\frac{\sqrt6-\sqrt2}{4}
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$\displaystyle \frac{\sqrt6-\sqrt2}{4}$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）$S_1$</p>
+                        <p class="mt-2">
+                            三角形ORPにおいて、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \mathrm{OR}
+                            =\cos\left(\frac{\pi}{3}-\theta\right)
+                            \]
+                        </div>
+                        <p>
+                            である。また、$\angle\mathrm{QOR}=\pi/3$ であるから、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            S_1
+                            &=\frac12\,\mathrm{OQ}\cdot\mathrm{OR}
+                            \sin\frac{\pi}{3}\\
+                            &=\frac{\sqrt3}{4}
+                            \cos\theta
+                            \cos\left(\frac{\pi}{3}-\theta\right).
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            積和公式を使うと、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \cos\theta
+                            \cos\left(\frac{\pi}{3}-\theta\right)
+                            &=\frac12
+                            \left\{
+                            \cos\left(2\theta-\frac{\pi}{3}\right)
+                            +\cos\frac{\pi}{3}
+                            \right\}\\
+                            &=\frac12
+                            \sin\left(2\theta+\frac{\pi}{6}\right)
+                            +\frac14.
+                            \end{aligned}
+                            \]
+                        </div>
+                        <p>したがって、</p>
+                        <div class="math-scroll">
+                            \[
+                            S_1
+                            =\frac{\sqrt3}{16}
+                            \left\{
+                            2\sin\left(2\theta+\frac{\pi}{6}\right)+1
+                            \right\}.
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）$S_2$ と $S_1-S_2$</p>
+                        <p class="mt-2">
+                            四角形OQPRの面積 $S$ は、2つの直角三角形OQPとORPの面積の和であるから、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            S
+                            &=\frac12\sin\theta\cos\theta
+                            +\frac12
+                            \sin\left(\frac{\pi}{3}-\theta\right)
+                            \cos\left(\frac{\pi}{3}-\theta\right)\\
+                            &=\frac14
+                            \left\{
+                            \sin2\theta
+                            +\sin\left(\frac{2\pi}{3}-2\theta\right)
+                            \right\}\\
+                            &=\frac{\sqrt3}{4}
+                            \cos\left(2\theta-\frac{\pi}{3}\right)\\
+                            &=\frac{\sqrt3}{4}
+                            \sin\left(2\theta+\frac{\pi}{6}\right).
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            また、対角線QRによって
+                            \[
+                            S=S_1+S_2
+                            \]
+                            であるから、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            S_2
+                            &=S-S_1\\
+                            &=\frac{\sqrt3}{4}
+                            \sin\left(2\theta+\frac{\pi}{6}\right)
+                            -\frac{\sqrt3}{16}
+                            \left\{
+                            2\sin\left(2\theta+\frac{\pi}{6}\right)+1
+                            \right\}\\
+                            &=\frac{\sqrt3}{16}
+                            \left\{
+                            2\sin\left(2\theta+\frac{\pi}{6}\right)-1
+                            \right\}.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p class="mt-3">よって、</p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            S_1-S_2
+                            &=\frac{\sqrt3}{16}
+                            \left\{
+                            2\sin\left(2\theta+\frac{\pi}{6}\right)+1
+                            \right\}\\
+                            &\quad-
+                            \frac{\sqrt3}{16}
+                            \left\{
+                            2\sin\left(2\theta+\frac{\pi}{6}\right)-1
+                            \right\}\\
+                            &=\frac{\sqrt3}{8}.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            S_1
+                            =\frac{\sqrt3}{16}
+                            \left\{
+                            2\sin\left(2\theta+\frac{\pi}{6}\right)+1
+                            \right\},
+                            \]
+                            \[
+                            S_2
+                            =\frac{\sqrt3}{16}
+                            \left\{
+                            2\sin\left(2\theta+\frac{\pi}{6}\right)-1
+                            \right\},
+                            \qquad
+                            S_1-S_2=\frac{\sqrt3}{8}
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）</p>
+                        <p class="mt-2">
+                            （3）より、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \sqrt3(S_1-S_2)
+                            =\sqrt3\cdot\frac{\sqrt3}{8}
+                            =\frac38.
+                            \]
+                        </div>
+                        <p>
+                            また、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            S
+                            =\frac{\sqrt3}{4}
+                            \sin\left(2\theta+\frac{\pi}{6}\right)
+                            \]
+                        </div>
+                        <p>
+                            であるから、条件
+                            $S=\sqrt3(S_1-S_2)$ より、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \frac{\sqrt3}{4}
+                            \sin\left(2\theta+\frac{\pi}{6}\right)
+                            =\frac38
+                            \]
+                            \[
+                            \sin\left(2\theta+\frac{\pi}{6}\right)
+                            =\frac{\sqrt3}{2}.
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            $0<\theta<\dfrac{\pi}{3}$ より、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \frac{\pi}{6}
+                            <2\theta+\frac{\pi}{6}
+                            <\frac{5\pi}{6}.
+                            \]
+                        </div>
+                        <p>この範囲で正弦が $\sqrt3/2$ となるのは、</p>
+                        <div class="math-scroll">
+                            \[
+                            2\theta+\frac{\pi}{6}
+                            =\frac{\pi}{3},
+                            \qquad
+                            \frac{2\pi}{3}.
+                            \]
+                        </div>
+                        <p>したがって、</p>
+                        <div class="math-scroll">
+                            \[
+                            \theta=\frac{\pi}{12},
+                            \qquad
+                            \frac{\pi}{4}.
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：
+                            $\displaystyle \theta=\frac{\pi}{12},\ \frac{\pi}{4}$
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化</h3>
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    $\theta$ を動かすと、P・Q・Rの位置と各線分、面積が変化します。
+                    $S_1-S_2$ が常に $\sqrt3/8$ になることも確認できます。
+                </p>
+
+                <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="mx-auto max-w-xl">
+                        <label for="theta-slider" class="mb-2 block text-sm font-medium text-slate-700">
+                            $\theta$：
+                            <span id="theta-display" class="text-lg font-bold text-blue-700">$\pi/6$</span>
+                        </label>
+                        <input id="theta-slider" type="range" min="0.02" max="1.0271975512" step="0.002" value="0.5235987756"
+                               class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600">
+                        <div class="mt-2 flex justify-between text-xs text-slate-500">
+                            <span>$0$</span>
+                            <span>$\pi/6$</span>
+                            <span>$\pi/3$</span>
+                        </div>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            <button type="button" data-theta="0.2617993878"
+                                    class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-100">
+                                $\theta=\pi/12$
+                            </button>
+                            <button type="button" data-theta="0.5235987756"
+                                    class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-100">
+                                $\theta=\pi/6$
+                            </button>
+                            <button type="button" data-theta="0.7853981634"
+                                    class="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-bold text-blue-700 hover:bg-blue-50">
+                                $\theta=\pi/4$
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 overflow-x-auto">
+                        <svg id="sector-svg" width="600" height="430" viewBox="0 0 600 430"
+                             class="mx-auto h-auto w-full max-w-[600px] rounded-xl border border-slate-200 bg-white"
+                             aria-label="扇形と点P、垂線PQ・PRの可視化">
+                            <defs>
+                                <marker id="arrow-blue-44" viewBox="0 0 10 10" refX="8" refY="5"
+                                        markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"></path>
+                                </marker>
+                            </defs>
+
+                            <path id="sector-fill" fill="rgba(59,130,246,.08)" stroke="none"></path>
+                            <path id="arc-ab" fill="none" stroke="#334155" stroke-width="2.5"></path>
+                            <line id="oa-line" stroke="#334155" stroke-width="2.5"></line>
+                            <line id="ob-line" stroke="#334155" stroke-width="2.5"></line>
+
+                            <polygon id="s1-triangle" fill="rgba(16,185,129,.16)" stroke="#10b981" stroke-width="1.5"></polygon>
+                            <polygon id="s2-triangle" fill="rgba(139,92,246,.16)" stroke="#8b5cf6" stroke-width="1.5"></polygon>
+
+                            <line id="op-line" stroke="#2563eb" stroke-width="2.8" marker-end="url(#arrow-blue-44)"></line>
+                            <line id="pq-line" stroke="#e11d48" stroke-width="2.5"></line>
+                            <line id="pr-line" stroke="#f59e0b" stroke-width="2.5"></line>
+                            <line id="qr-line" stroke="#64748b" stroke-width="2" stroke-dasharray="6 5"></line>
+
+                            <circle id="o-point" r="5" fill="#111827"></circle>
+                            <circle id="a-point" r="5" fill="#111827"></circle>
+                            <circle id="b-point" r="5" fill="#111827"></circle>
+                            <circle id="p-point" r="6" fill="#2563eb"></circle>
+                            <circle id="q-point" r="5" fill="#e11d48"></circle>
+                            <circle id="r-point" r="5" fill="#f59e0b"></circle>
+
+                            <g font-size="14" font-weight="700">
+                                <text id="o-label" fill="#111827">O</text>
+                                <text id="a-label" fill="#111827">A</text>
+                                <text id="b-label" fill="#111827">B</text>
+                                <text id="p-label" fill="#2563eb">P</text>
+                                <text id="q-label" fill="#be123c">Q</text>
+                                <text id="r-label" fill="#b45309">R</text>
+                                <text id="theta-label" fill="#2563eb">θ</text>
+                                <text id="s1-label" fill="#047857">S₁</text>
+                                <text id="s2-label" fill="#7c3aed">S₂</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                        <div class="rounded-lg border border-slate-200 bg-white p-3 text-center">
+                            <div class="text-xs font-bold text-slate-500">OQ</div>
+                            <div id="oq-display" class="mt-1 text-lg font-bold text-slate-800"></div>
+                        </div>
+                        <div class="rounded-lg border border-slate-200 bg-white p-3 text-center">
+                            <div class="text-xs font-bold text-slate-500">PQ</div>
+                            <div id="pq-display" class="mt-1 text-lg font-bold text-rose-700"></div>
+                        </div>
+                        <div class="rounded-lg border border-slate-200 bg-white p-3 text-center">
+                            <div class="text-xs font-bold text-slate-500">PR</div>
+                            <div id="pr-display" class="mt-1 text-lg font-bold text-amber-700"></div>
+                        </div>
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-center">
+                            <div class="text-xs font-bold text-emerald-700">S₁</div>
+                            <div id="s1-display" class="mt-1 text-lg font-bold text-emerald-800"></div>
+                        </div>
+                        <div class="rounded-lg border border-violet-200 bg-violet-50 p-3 text-center">
+                            <div class="text-xs font-bold text-violet-700">S₂</div>
+                            <div id="s2-display" class="mt-1 text-lg font-bold text-violet-800"></div>
+                        </div>
+                        <div class="rounded-lg border border-blue-200 bg-blue-50 p-3 text-center">
+                            <div class="text-xs font-bold text-blue-700">S₁−S₂</div>
+                            <div id="diff-display" class="mt-1 text-lg font-bold text-blue-800"></div>
+                        </div>
+                    </div>
+
+                    <div id="special-status" class="mt-4 rounded-lg border border-slate-300 bg-white p-4 text-center text-sm font-bold text-slate-700">
+                        スライダーを動かして図形の変化を確認してください
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const slider = document.getElementById("theta-slider");
+                        const thetaDisplay = document.getElementById("theta-display");
+
+                        const ox = 105, oy = 360;
+                        const radius = 260;
+                        const sx = x => ox + radius * x;
+                        const sy = y => oy - radius * y;
+
+                        const O = {x:0, y:0};
+                        const A = {x:1, y:0};
+                        const B = {x:0.5, y:Math.sqrt(3)/2};
+
+                        const setLine = (id, p1, p2) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("x1", sx(p1.x));
+                            el.setAttribute("y1", sy(p1.y));
+                            el.setAttribute("x2", sx(p2.x));
+                            el.setAttribute("y2", sy(p2.y));
+                        };
+
+                        const setPoint = (id, p) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("cx", sx(p.x));
+                            el.setAttribute("cy", sy(p.y));
+                        };
+
+                        const setText = (id, p) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("x", sx(p.x));
+                            el.setAttribute("y", sy(p.y));
+                        };
+
+                        const polygonPoints = pts => pts.map(p => `${sx(p.x)},${sy(p.y)}`).join(" ");
+
+                        document.getElementById("arc-ab").setAttribute(
+                            "d",
+                            `M ${sx(A.x)} ${sy(A.y)} A ${radius} ${radius} 0 0 0 ${sx(B.x)} ${sy(B.y)}`
+                        );
+                        document.getElementById("sector-fill").setAttribute(
+                            "d",
+                            `M ${sx(O.x)} ${sy(O.y)} L ${sx(A.x)} ${sy(A.y)} A ${radius} ${radius} 0 0 0 ${sx(B.x)} ${sy(B.y)} Z`
+                        );
+
+                        setLine("oa-line", O, A);
+                        setLine("ob-line", O, B);
+                        setPoint("o-point", O);
+                        setPoint("a-point", A);
+                        setPoint("b-point", B);
+
+                        setText("o-label", {x:-0.07,y:-0.05});
+                        setText("a-label", {x:1.03,y:-0.03});
+                        setText("b-label", {x:0.48,y:0.93});
+
+                        function thetaName(t) {
+                            const values = [
+                                [Math.PI/12, "π/12"],
+                                [Math.PI/6, "π/6"],
+                                [Math.PI/4, "π/4"],
+                                [Math.PI/3, "π/3"]
+                            ];
+                            for (const [v, name] of values) {
+                                if (Math.abs(t-v) < 0.004) return name;
+                            }
+                            return `${(t/Math.PI).toFixed(3)}π`;
+                        }
+
+                        function update() {
+                            const t = parseFloat(slider.value);
+                            const delta = Math.PI/3 - t;
+
+                            const P = {x:Math.cos(t), y:Math.sin(t)};
+                            const Q = {x:Math.cos(t), y:0};
+                            const or = Math.cos(delta);
+                            const R = {x:0.5*or, y:(Math.sqrt(3)/2)*or};
+
+                            setLine("op-line", O, P);
+                            setLine("pq-line", P, Q);
+                            setLine("pr-line", P, R);
+                            setLine("qr-line", Q, R);
+
+                            setPoint("p-point", P);
+                            setPoint("q-point", Q);
+                            setPoint("r-point", R);
+
+                            setText("p-label", {x:P.x+0.03, y:P.y+0.04});
+                            setText("q-label", {x:Q.x+0.02, y:-0.05});
+                            setText("r-label", {x:R.x-0.08, y:R.y+0.04});
+                            setText("theta-label", {x:0.20*Math.cos(t/2), y:0.20*Math.sin(t/2)});
+                            setText("s1-label", {x:(O.x+Q.x+R.x)/3-0.02, y:(O.y+Q.y+R.y)/3});
+                            setText("s2-label", {x:(P.x+Q.x+R.x)/3, y:(P.y+Q.y+R.y)/3});
+
+                            document.getElementById("s1-triangle").setAttribute("points", polygonPoints([O,Q,R]));
+                            document.getElementById("s2-triangle").setAttribute("points", polygonPoints([P,Q,R]));
+
+                            const OQ = Math.cos(t);
+                            const PQ = Math.sin(t);
+                            const PR = Math.sin(delta);
+                            const S1 = Math.sqrt(3)/4 * Math.cos(t) * Math.cos(delta);
+                            const S = 0.5*Math.sin(t)*Math.cos(t) + 0.5*Math.sin(delta)*Math.cos(delta);
+                            const S2 = S - S1;
+                            const diff = S1 - S2;
+
+                            thetaDisplay.textContent = thetaName(t);
+                            document.getElementById("oq-display").textContent = OQ.toFixed(5);
+                            document.getElementById("pq-display").textContent = PQ.toFixed(5);
+                            document.getElementById("pr-display").textContent = PR.toFixed(5);
+                            document.getElementById("s1-display").textContent = S1.toFixed(5);
+                            document.getElementById("s2-display").textContent = S2.toFixed(5);
+                            document.getElementById("diff-display").textContent = diff.toFixed(5);
+
+                            const status = document.getElementById("special-status");
+                            if (Math.abs(t-Math.PI/4) < 0.004) {
+                                status.textContent = "θ=π/4：PQ=√2/2。さらに（4）の条件も満たす";
+                                status.className = "mt-4 rounded-lg border border-blue-300 bg-blue-50 p-4 text-center text-sm font-bold text-blue-800";
+                            } else if (Math.abs(t-Math.PI/12) < 0.004) {
+                                status.textContent = "θ=π/12：（4）の条件を満たす";
+                                status.className = "mt-4 rounded-lg border border-emerald-300 bg-emerald-50 p-4 text-center text-sm font-bold text-emerald-800";
+                            } else {
+                                status.textContent = "S₁−S₂はθによらず一定";
+                                status.className = "mt-4 rounded-lg border border-slate-300 bg-white p-4 text-center text-sm font-bold text-slate-700";
+                            }
+                        }
+
+                        slider.addEventListener("input", update);
+                        document.querySelectorAll("[data-theta]").forEach(button => {
+                            button.addEventListener("click", () => {
+                                slider.value = button.dataset.theta;
+                                update();
+                            });
+                        });
+                        update();
+                    });
+                </script>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">補足：なぜ $S_1-S_2$ は一定になるのか</h3>
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    （3）の結果では、$S_1$ と $S_2$ の両方に
+                    \[
+                    2\sin\left(2\theta+\frac{\pi}{6}\right)
+                    \]
+                    という共通部分が現れます。差を取るとこの部分が打ち消され、定数だけが残ります。
+                </p>
+                <div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-center font-bold text-indigo-950">
+                    \[
+                    S_1-S_2
+                    =
+                    \frac{\sqrt3}{16}
+                    \left[(2\sin u+1)-(2\sin u-1)\right]
+                    =
+                    \frac{\sqrt3}{8}
+                    \]
+                    <p class="mt-2 text-sm font-normal text-indigo-800">
+                        ただし、$u=2\theta+\pi/6$ としています。
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">PRを $\sin\theta$ としてしまう</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            PRを含む直角三角形で使う角は、OPとOBのなす角
+                            $\pi/3-\theta$ です。図のどの角に対する三角比かを確認します。
+                        </p>
+                    </div>
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">$S_2$ を直接求めようとして複雑になる</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            三角形PQRの辺や角を直接求めるより、四角形全体の面積 $S$ を先に求め、$S_2=S-S_1$ とする方が簡単です。
+                        </p>
+                    </div>
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">三角方程式で解を1つだけにしてしまう</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            $\sin u=\sqrt3/2$ は、指定された範囲内で $u=\pi/3,2\pi/3$ の2つがあります。角の範囲を必ず書いて確認します。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+            <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+            <p class="mt-4 text-sm text-blue-200">質問をクリックし、答えを頭の中で作ってから開いてください。</p>
+
+            <div class="mt-6 space-y-3">
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q1. 直角三角形OQPで、OQとPQはそれぞれ何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        斜辺OPが1なので、
+                        \[
+                        \mathrm{OQ}=\cos\theta,\qquad
+                        \mathrm{PQ}=\sin\theta
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q2. PRを表すときに使う角は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \angle\mathrm{BOP}
+                        =\frac{\pi}{3}-\theta
+                        \]
+                        なので、
+                        \[
+                        \mathrm{PR}
+                        =\sin\left(\frac{\pi}{3}-\theta\right)
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q3. 四角形OQPRの面積 $S$ は、どの2つの直角三角形の面積の和ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        三角形OQPと三角形ORPです。したがって、
+                        \[
+                        S
+                        =\frac12\mathrm{OQ}\cdot\mathrm{PQ}
+                        +\frac12\mathrm{OR}\cdot\mathrm{PR}
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q4. $S_1-S_2$ の値は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        S_1-S_2=\frac{\sqrt3}{8}
+                        \]
+                        で、$\theta$ によらず一定です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q5. （4）の条件を満たす $\theta$ は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \theta=\frac{\pi}{12},\qquad
+                        \frac{\pi}{4}
+                        \]
+                        です。
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+            <a href="no20.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                ← No.20へ
+            </a>
+            <a href="no22.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                No.22 →
+            </a>
+        </nav>
+    </main>
+
+    <footer class="py-10 text-center text-sm text-slate-500">
+        自彊館(理系)　夏期数学課題 解説サイト
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>夏期課題 No.29 三角関数と方程式 - 自彊館(理系)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    MathJax={chtml:{matchFontHeight:false},tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]}};
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Meiryo",sans-serif}
+    .nav-button{transition:transform .16s ease,box-shadow .16s ease}.nav-button:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(15,23,42,.12)}
+    .math-scroll{overflow-x:auto;overflow-y:hidden;padding-bottom:.5rem;margin-bottom:.5rem}
+    button:focus-visible,summary:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid rgba(37,99,235,.35);outline-offset:3px}
+  </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+  <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">← 問題一覧へ戻る</a>
+
+  <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+    <div class="p-7 sm:p-10">
+      <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+      <div class="mt-4 flex flex-wrap items-center gap-3">
+        <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.29</span>
+        <span class="rounded-full bg-rose-100 px-3 py-1 text-xs font-bold text-rose-800">発展</span>
+      </div>
+      <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">三角関数と方程式</h1>
+      <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+      <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900"><span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>問題</h2>
+      <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 leading-relaxed text-slate-700">
+        <p>$x$ の方程式</p>
+        <div class="math-scroll">\[
+          \sqrt3\sin2x-\cos2x+\sin x-\sqrt3\cos x=k\qquad\text{(*)}
+        \]</div>
+        <p>があり、</p>
+        <div class="math-scroll">\[t=\sin x-\sqrt3\cos x\]</div>
+        <p>とする。</p>
+        <ol class="mt-4 list-decimal space-y-4 pl-6">
+          <li>$t$ を $r\sin(x+\alpha)$（$r,\alpha$ は定数で、$r&gt;0$）の形で表せ。</li>
+          <li>$t^2$ を $\sin2x,\cos2x$ で表せ。</li>
+          <li>$(*)$ が $0\le x&lt;2\pi$ の範囲に異なる4個の解をもつような $k$ の値の範囲を求めよ。</li>
+        </ol>
+      </div>
+
+      <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+        <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+        <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+          <li>$t$ は $\sin x$ と $\cos x$ の一次結合なので、三角関数の合成を使います。</li>
+          <li>$t^2$ を展開すると、倍角公式によって $\sin2x,\cos2x$ が現れます。</li>
+          <li>$t=2\sin\left(x-\dfrac{\pi}{3}\right)$ なので、$-2\le t\le2$ です。</li>
+          <li>$-2&lt;t&lt;2$ なら、1つの $t$ に対して $0\le x&lt;2\pi$ に異なる2個の解があります。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+      <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900"><span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>解説</h2>
+      <p class="mt-4 text-sm leading-8 text-slate-600">三角関数の方程式を、値域が限定された変数 $t$ の二次方程式へ変換します。</p>
+
+      <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+        <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+        <div class="mt-4 space-y-4">
+          <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+            <p class="text-sm font-bold text-amber-900">同じ一次結合が式の中に現れる</p>
+            <p class="mt-1 text-sm text-amber-800">与えられた $t=\sin x-\sqrt3\cos x$ を利用し、倍角部分も $t^2$ で表せないか考えます。</p>
+          </div>
+          <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+            <p class="text-sm font-bold text-amber-900">定数分離できるときはグラフで判定する</p>
+            <p class="mt-1 text-sm text-amber-800">
+              方程式を
+              \[
+              k=-t^2+t+2
+              \]
+              とし、放物線と水平線 $y=k$ の交点数を調べます。
+              その前に、1つの $t$ に対応する $x$ の個数を表で整理します。
+            </p>
+          </div>
+          <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+            <p class="text-sm font-bold text-amber-900">端点 $t=\pm2$ に注意</p>
+            <p class="mt-1 text-sm text-amber-800">$-2&lt;t&lt;2$ では対応する $x$ は2個ですが、$t=\pm2$ では1個だけです。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+        <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+        <div class="mt-4 space-y-4">
+          <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900"><strong>（1）合成して値域を確定する</strong><br>振幅は $2$ なので、$t$ の値域は $[-2,2]$ です。</div>
+          <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900"><strong>（2）平方を展開し、倍角公式を使う</strong><br>$t^2$ から $\sqrt3\sin2x-\cos2x$ を取り出せる形に整理します。</div>
+          <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+            <strong>（3）対応表を作ってから定数分離する</strong><br>
+            $-2&lt;t&lt;2$ の1つの $t$ に2個の $x$ が対応します。
+            その後、
+            \[
+            k=-t^2+t+2
+            \]
+            のグラフを用い、区間 $-2&lt;t&lt;2$ の内部に異なる2交点ができる条件を調べます。
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10">
+        <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+        <div class="mt-4 space-y-8 text-slate-700">
+          <div>
+            <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）</p>
+            <p class="mt-2">係数の大きさから、</p>
+            <div class="math-scroll">\[r=\sqrt{1^2+(-\sqrt3)^2}=2.\]</div>
+            <p>また、</p>
+            <div class="math-scroll">\[
+              \begin{aligned}
+              2\sin\left(x-\frac{\pi}{3}\right)
+              &=2\left(\sin x\cos\frac{\pi}{3}-\cos x\sin\frac{\pi}{3}\right)\\
+              &=\sin x-\sqrt3\cos x.
+              \end{aligned}
+            \]</div>
+            <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">\[t=2\sin\left(x-\frac{\pi}{3}\right)\]</div>
+            <p class="mt-3 text-sm text-slate-600">よって、$r=2,\ \alpha=-\dfrac{\pi}{3}$ です。</p>
+          </div>
+
+          <div class="border-t border-slate-200 pt-6">
+            <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）</p>
+            <p class="mt-2">$t=\sin x-\sqrt3\cos x$ を2乗すると、</p>
+            <div class="math-scroll">\[
+              \begin{aligned}
+              t^2&=\sin^2x+3\cos^2x-2\sqrt3\sin x\cos x.
+              \end{aligned}
+            \]</div>
+            <p>倍角公式を使うと、</p>
+            <div class="math-scroll">\[
+              \begin{aligned}
+              t^2
+              &=\frac{1-\cos2x}{2}+\frac{3(1+\cos2x)}{2}-\sqrt3\sin2x\\
+              &=2+\cos2x-\sqrt3\sin2x.
+              \end{aligned}
+            \]</div>
+            <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">\[t^2=2+\cos2x-\sqrt3\sin2x\]</div>
+          </div>
+
+          <div class="border-t border-slate-200 pt-6">
+            <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）方程式を $t$ の式へ変換する</p>
+            <p class="mt-2">（2）より、</p>
+            <div class="math-scroll">\[\sqrt3\sin2x-\cos2x=2-t^2.\]</div>
+            <p>したがって、方程式 $(*)$ は</p>
+            <div class="math-scroll">\[2-t^2+t=k\]</div>
+            <p>すなわち、</p>
+            <div class="math-scroll">\[t^2-t+k-2=0.\]</div>
+          </div>
+
+          <div class="border-t border-slate-200 pt-6">
+            <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）$t$ と $x$ の個数の対応を整理する</p>
+
+            <p class="mt-2">
+              （1）より、
+              \[
+              t=2\sin\left(x-\frac{\pi}{3}\right).
+              \]
+              したがって、$0\le x&lt;2\pi$ において、1つの $t$ に対応する $x$ の個数は次のようになる。
+            </p>
+
+            <div class="mt-4 overflow-x-auto">
+              <table class="w-full min-w-[520px] border-collapse text-center text-sm">
+                <thead>
+                  <tr class="bg-slate-100">
+                    <th class="border border-slate-300 px-3 py-2">$t$ の値</th>
+                    <th class="border border-slate-300 px-3 py-2">対応する $x$ の個数</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="border border-slate-300 px-3 py-2">$-2&lt;t&lt;2$</td>
+                    <td class="border border-slate-300 px-3 py-2 font-bold text-emerald-700">2個</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-slate-300 px-3 py-2">$t=-2,\ 2$</td>
+                    <td class="border border-slate-300 px-3 py-2 font-bold text-amber-700">1個</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-slate-300 px-3 py-2">$t&lt;-2$ または $t&gt;2$</td>
+                    <td class="border border-slate-300 px-3 py-2 font-bold text-red-700">0個</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="mt-4">
+              よって、元の方程式が異なる4個の解をもつためには、
+              $-2&lt;t&lt;2$ の範囲に異なる2つの $t$ が存在すればよい。
+            </p>
+          </div>
+
+          <div class="border-t border-slate-200 pt-6">
+            <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）定数分離してグラフで判定する</p>
+
+            <p class="mt-2">
+              方程式
+              \[
+              2-t^2+t=k
+              \]
+              を、$k$ と $t$ に分けて
+            </p>
+
+            <div class="math-scroll">
+              \[
+              k=-t^2+t+2
+              \]
+            </div>
+
+            <p>
+              とする。ここで、
+            </p>
+
+            <div class="math-scroll">
+              \[
+              f(t)=-t^2+t+2
+              \]
+            </div>
+
+            <p>
+              とおくと、
+            </p>
+
+            <div class="math-scroll">
+              \[
+              \begin{aligned}
+              f(t)
+              &=
+              -\left(t-\frac12\right)^2+\frac94.
+              \end{aligned}
+              \]
+            </div>
+
+            <p>
+              よって、グラフは頂点
+              \[
+              \left(\frac12,\frac94\right)
+              \]
+              をもつ上に凸の放物線である。
+            </p>
+
+            <p class="mt-3">
+              また、$t$ の範囲の端での値は
+            </p>
+
+            <div class="math-scroll">
+              \[
+              f(-2)=-4,
+              \qquad
+              f(2)=0.
+              \]
+            </div>
+
+            <div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5">
+              <p class="font-bold text-indigo-900">グラフから交点数を読む</p>
+              <p class="mt-3 text-sm leading-relaxed text-slate-700">
+                水平線 $y=k$ が、放物線
+                \[
+                y=-t^2+t+2
+                \]
+                と区間 $-2&lt;t&lt;2$ の内部で異なる2点で交わるためには、
+                右側の交点が $t=2$ より左にあり、かつ頂点より下にある必要がある。
+              </p>
+
+              <div class="math-scroll mt-3">
+                \[
+                f(2)&lt;k&lt;\frac94
+                \]
+              </div>
+
+              <p class="text-sm leading-relaxed text-slate-700">
+                $f(2)=0$ なので、
+              </p>
+
+              <div class="math-scroll">
+                \[
+                0&lt;k&lt;\frac94.
+                \]
+              </div>
+
+              <p class="text-sm leading-relaxed text-slate-700">
+                この範囲では、左側の交点も $-2&lt;t&lt;\frac12$ に入る。
+                実際、左端では $f(-2)=-4$ であり、$k&gt;0$ だからである。
+              </p>
+            </div>
+
+            <p class="mt-4">
+              各交点の $t$ に対して2個ずつの $x$ が対応するので、
+              元の方程式は異なる4個の解をもつ。
+            </p>
+
+            <p class="mt-3 text-sm text-slate-600">
+              $k=0$ では交点の一つが $t=2$ となり、対応する $x$ は1個だけなので、合計3個である。
+              また、$k=\frac94$ では放物線に接し、$t$ は1種類だけなので、$x$ は2個である。
+            </p>
+
+            <div class="mt-3 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+              \[
+              0&lt;k&lt;\frac94
+              \]
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10">
+        <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解：定数分離できないパターン用に $t_1,t_2$ を調べる</h3>
+
+        <div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed text-slate-700">
+          <p>
+            定数分離してグラフを利用できない問題では、
+            $t$ の方程式の2つの解を直接調べる方法が使える。
+          </p>
+
+          <p class="mt-3">
+            方程式は
+          </p>
+
+          <div class="math-scroll">
+            \[
+            t^2-t+k-2=0
+            \]
+          </div>
+
+          <p>
+            である。この方程式の2つの解を
+            \[
+            t_1&lt;t_2
+            \]
+            とする。
+          </p>
+
+          <p class="mt-3">
+            解の公式より、
+          </p>
+
+          <div class="math-scroll">
+            \[
+            t_1=
+            \frac{1-\sqrt{9-4k}}{2},
+            \qquad
+            t_2=
+            \frac{1+\sqrt{9-4k}}{2}.
+            \]
+          </div>
+
+          <p class="mt-4 font-bold text-indigo-900">① 異なる2つの実数解をもつ条件</p>
+
+          <p class="mt-2">
+            判別式を $D$ とすると、
+          </p>
+
+          <div class="math-scroll">
+            \[
+            \begin{aligned}
+            D
+            &=
+            (-1)^2-4\cdot1\cdot(k-2)\\
+            &=
+            1-4k+8\\
+            &=
+            9-4k.
+            \end{aligned}
+            \]
+          </div>
+
+          <p>
+            異なる2つの実数解をもつため、
+          </p>
+
+          <div class="math-scroll">
+            \[
+            9-4k&gt;0
+            \]
+            \[
+            -4k&gt;-9
+            \]
+            \[
+            k&lt;\frac94.
+            \]
+          </div>
+
+          <p class="mt-4 font-bold text-indigo-900">② 大きい方の解が2より小さい条件</p>
+
+          <div class="math-scroll">
+            \[
+            \frac{1+\sqrt{9-4k}}{2}&lt;2
+            \]
+            \[
+            1+\sqrt{9-4k}&lt;4
+            \]
+            \[
+            \sqrt{9-4k}&lt;3.
+            \]
+          </div>
+
+          <p>
+            左辺と右辺はいずれも0以上なので、両辺を2乗して
+          </p>
+
+          <div class="math-scroll">
+            \[
+            9-4k&lt;9
+            \]
+            \[
+            -4k&lt;0
+            \]
+            \[
+            k&gt;0.
+            \]
+          </div>
+
+          <p class="mt-4 font-bold text-indigo-900">③ 小さい方の解が-2より大きい条件</p>
+
+          <div class="math-scroll">
+            \[
+            \frac{1-\sqrt{9-4k}}{2}&gt;-2
+            \]
+            \[
+            1-\sqrt{9-4k}&gt;-4
+            \]
+            \[
+            -\sqrt{9-4k}&gt;-5
+            \]
+            \[
+            \sqrt{9-4k}&lt;5.
+            \]
+          </div>
+
+          <p>
+            左辺と右辺はいずれも0以上なので、両辺を2乗して
+          </p>
+
+          <div class="math-scroll">
+            \[
+            9-4k&lt;25
+            \]
+            \[
+            -4k&lt;16
+            \]
+            \[
+            k&gt;-4.
+            \]
+          </div>
+
+          <p class="mt-4">
+            以上の3条件
+          </p>
+
+          <div class="math-scroll">
+            \[
+            k&lt;\frac94,
+            \qquad
+            k&gt;0,
+            \qquad
+            k&gt;-4
+            \]
+          </div>
+
+          <p>
+            を同時に満たす範囲は
+          </p>
+
+          <div class="mt-3 rounded-lg border border-indigo-300 bg-white p-4 text-center font-bold text-indigo-950">
+            \[
+            0&lt;k&lt;\frac94
+            \]
+          </div>
+
+          <p class="mt-3">
+            このとき、
+            \[
+            -2&lt;t_1&lt;t_2&lt;2
+            \]
+            であり、それぞれの $t$ に2個ずつの $x$ が対応するため、
+            元の方程式は異なる4個の解をもつ。
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-10">
+        <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化</h3>
+        <p class="mt-4 text-sm leading-relaxed text-slate-700">$k$ を動かし、$t$ の解と、それぞれに対応する $x$ の個数を確認してください。</p>
+        <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:p-6">
+          <div class="mx-auto max-w-xl">
+            <label for="k-slider" class="mb-2 block text-sm font-medium text-slate-700">k：<span id="k-display" class="text-lg font-bold text-blue-700">1.000</span></label>
+            <input id="k-slider" type="range" min="-1" max="2.5" step="0.002" value="1" class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600">
+            <div class="mt-3 flex flex-wrap justify-center gap-2">
+              <button type="button" data-k="0" class="rounded-lg border border-amber-200 bg-white px-3 py-2 text-sm font-bold text-amber-700 hover:bg-amber-50">境界 k = 0</button>
+              <button type="button" data-k="1" class="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-bold text-blue-700 hover:bg-blue-50">4解の例 k = 1</button>
+              <button type="button" data-k="2.25" class="rounded-lg border border-violet-200 bg-white px-3 py-2 text-sm font-bold text-violet-700 hover:bg-violet-50">境界 k = 9/4</button>
+            </div>
+          </div>
+
+          <div class="mt-5 grid gap-6 lg:grid-cols-2">
+            <div>
+              <h4 class="text-center font-bold text-slate-800">k = -t² + t + 2</h4>
+              <svg id="t-graph-svg" width="590" height="430" viewBox="0 0 590 430" class="mt-3 mx-auto h-auto w-full max-w-[590px] rounded-xl border border-slate-200 bg-white" aria-label="tの二次関数と水平線k">
+                <g id="t-grid"></g><line id="t-x-axis" stroke="#64748b" stroke-width="1.5"></line><line id="t-y-axis" stroke="#64748b" stroke-width="1.5"></line>
+                <path id="t-parabola" fill="none" stroke="#2563eb" stroke-width="3"></path><line id="k-line" stroke="#e11d48" stroke-width="2.5" stroke-dasharray="8 5"></line>
+                <line id="valid-segment" stroke="#10b981" stroke-width="5" stroke-linecap="round"></line><circle id="root-one" r="7" fill="#7c3aed"></circle><circle id="root-two" r="7" fill="#7c3aed"></circle>
+                <g font-size="13" font-weight="700"><text id="root-one-label" fill="#6d28d9"></text><text id="root-two-label" fill="#6d28d9"></text><text id="k-line-label" fill="#be123c"></text><text x="160" y="365" fill="#dc2626">t = -2</text><text x="445" y="365" fill="#dc2626">t = 2</text></g>
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-center font-bold text-slate-800">t = 2 sin(x - π/3)</h4>
+              <svg id="sine-svg" width="590" height="430" viewBox="0 0 590 430" class="mt-3 mx-auto h-auto w-full max-w-[590px] rounded-xl border border-slate-200 bg-white" aria-label="tとxの対応を示す正弦曲線">
+                <g id="sine-grid"></g><line id="sine-x-axis" stroke="#64748b" stroke-width="1.5"></line><line id="sine-y-axis" stroke="#64748b" stroke-width="1.5"></line>
+                <path id="sine-path" fill="none" stroke="#2563eb" stroke-width="3"></path><line id="level-one" stroke="#7c3aed" stroke-width="2" stroke-dasharray="7 5"></line><line id="level-two" stroke="#10b981" stroke-width="2" stroke-dasharray="7 5"></line>
+                <g id="solution-points"></g><g font-size="13" font-weight="700"><text id="level-one-label" fill="#6d28d9"></text><text id="level-two-label" fill="#047857"></text><text x="535" y="225" fill="#64748b">2π</text><text x="65" y="225" fill="#64748b">0</text></g>
+              </svg>
+            </div>
+          </div>
+
+          <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="rounded-lg border border-slate-200 bg-white p-3 text-center"><div class="text-xs font-bold text-slate-500">小さい方のt</div><div id="t1-display" class="mt-1 text-lg font-bold text-violet-700"></div></div>
+            <div class="rounded-lg border border-slate-200 bg-white p-3 text-center"><div class="text-xs font-bold text-slate-500">大きい方のt</div><div id="t2-display" class="mt-1 text-lg font-bold text-emerald-700"></div></div>
+            <div class="rounded-lg border border-blue-200 bg-blue-50 p-3 text-center"><div class="text-xs font-bold text-blue-700">xの解の個数</div><div id="solution-count" class="mt-1 text-2xl font-bold text-blue-900"></div></div>
+            <div class="rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-center"><div class="text-xs font-bold text-emerald-700">判定</div><div id="status-display" class="mt-1 text-sm font-bold text-emerald-800"></div></div>
+          </div>
+        </div>
+
+        <script>
+          document.addEventListener("DOMContentLoaded",()=>{
+            const slider=document.getElementById("k-slider"),kDisplay=document.getElementById("k-display");
+            const TW=590,TH=430,txMin=-3,txMax=3,tyMin=-5,tyMax=3;
+            const tsx=t=>(t-txMin)/(txMax-txMin)*TW, tsy=y=>TH-(y-tyMin)/(tyMax-tyMin)*TH;
+            const setLine=(id,x1,y1,x2,y2,sx,sy)=>{const e=document.getElementById(id);e.setAttribute("x1",sx(x1));e.setAttribute("y1",sy(y1));e.setAttribute("x2",sx(x2));e.setAttribute("y2",sy(y2));};
+            const setPoint=(id,x,y,sx,sy)=>{const e=document.getElementById(id);e.setAttribute("cx",sx(x));e.setAttribute("cy",sy(y));};
+            const setText=(id,x,y,text,sx,sy)=>{const e=document.getElementById(id);e.setAttribute("x",sx(x));e.setAttribute("y",sy(y));e.textContent=text;};
+            let grid="";for(let x=-3;x<=3;x++)grid+=`<line x1="${tsx(x)}" y1="0" x2="${tsx(x)}" y2="${TH}" stroke="#f1f5f9"/>`;for(let y=-5;y<=3;y++)grid+=`<line x1="0" y1="${tsy(y)}" x2="${TW}" y2="${tsy(y)}" stroke="#f1f5f9"/>`;document.getElementById("t-grid").innerHTML=grid;
+            setLine("t-x-axis",txMin,0,txMax,0,tsx,tsy);setLine("t-y-axis",0,tyMin,0,tyMax,tsx,tsy);setLine("valid-segment",-2,0,2,0,tsx,tsy);
+            let pd="";for(let i=0;i<=300;i++){const t=txMin+(txMax-txMin)*i/300,y=-t*t+t+2;pd+=`${i?"L":"M"} ${tsx(t)} ${tsy(y)} `;}document.getElementById("t-parabola").setAttribute("d",pd);
+            const SW=590,SH=430,sxMin=0,sxMax=2*Math.PI,syMin=-2.5,syMax=2.5,ssx=x=>(x-sxMin)/(sxMax-sxMin)*SW,ssy=y=>SH-(y-syMin)/(syMax-syMin)*SH;
+            let sg="";for(let i=0;i<=8;i++){const x=sxMax*i/8;sg+=`<line x1="${ssx(x)}" y1="0" x2="${ssx(x)}" y2="${SH}" stroke="#f1f5f9"/>`;}for(let y=-2;y<=2;y++)sg+=`<line x1="0" y1="${ssy(y)}" x2="${SW}" y2="${ssy(y)}" stroke="#f1f5f9"/>`;document.getElementById("sine-grid").innerHTML=sg;
+            setLine("sine-x-axis",0,0,2*Math.PI,0,ssx,ssy);setLine("sine-y-axis",0,syMin,0,syMax,ssx,ssy);
+            let sd="";for(let i=0;i<=400;i++){const x=sxMax*i/400,y=2*Math.sin(x-Math.PI/3);sd+=`${i?"L":"M"} ${ssx(x)} ${ssy(y)} `;}document.getElementById("sine-path").setAttribute("d",sd);
+            function xsForT(t){if(t<-2-1e-8||t>2+1e-8)return[];const a=Math.asin(Math.max(-1,Math.min(1,t/2))),c=[];for(let n=-2;n<=3;n++){for(const y of [a+2*Math.PI*n,Math.PI-a+2*Math.PI*n]){const x=y+Math.PI/3;if(x>=-1e-8&&x<2*Math.PI-1e-8)c.push(x);}}c.sort((u,v)=>u-v);return c.filter((x,i)=>i===0||Math.abs(x-c[i-1])>1e-6);}
+            function update(){
+              const k=parseFloat(slider.value),disc=9-4*k;let roots=[];if(disc>1e-10){const d=Math.sqrt(disc);roots=[(1-d)/2,(1+d)/2];}else if(Math.abs(disc)<=1e-10)roots=[.5];
+              setLine("k-line",txMin,k,txMax,k,tsx,tsy);setText("k-line-label",-2.85,k+.18,`k = ${k.toFixed(3)}`,tsx,tsy);
+              const r1=document.getElementById("root-one"),r2=document.getElementById("root-two");
+              if(roots[0]!==undefined){r1.style.display="";setPoint("root-one",roots[0],k,tsx,tsy);setText("root-one-label",roots[0]-.35,k+.3,`t₁=${roots[0].toFixed(2)}`,tsx,tsy);}else{r1.style.display="none";document.getElementById("root-one-label").textContent="";}
+              if(roots[1]!==undefined){r2.style.display="";setPoint("root-two",roots[1],k,tsx,tsy);setText("root-two-label",roots[1]+.08,k+.3,`t₂=${roots[1].toFixed(2)}`,tsx,tsy);}else{r2.style.display="none";document.getElementById("root-two-label").textContent="";}
+              let total=0,pts="";const l1=document.getElementById("level-one"),l2=document.getElementById("level-two");
+              if(roots[0]!==undefined){l1.style.display="";setLine("level-one",0,roots[0],2*Math.PI,roots[0],ssx,ssy);setText("level-one-label",.15,roots[0]+.18,`t₁=${roots[0].toFixed(2)}`,ssx,ssy);for(const x of xsForT(roots[0])){pts+=`<circle cx="${ssx(x)}" cy="${ssy(roots[0])}" r="7" fill="#7c3aed"/>`;total++;}}else{l1.style.display="none";document.getElementById("level-one-label").textContent="";}
+              if(roots[1]!==undefined){l2.style.display="";setLine("level-two",0,roots[1],2*Math.PI,roots[1],ssx,ssy);setText("level-two-label",.15,roots[1]+.18,`t₂=${roots[1].toFixed(2)}`,ssx,ssy);for(const x of xsForT(roots[1])){pts+=`<circle cx="${ssx(x)}" cy="${ssy(roots[1])}" r="7" fill="#10b981"/>`;total++;}}else{l2.style.display="none";document.getElementById("level-two-label").textContent="";}
+              document.getElementById("solution-points").innerHTML=pts;kDisplay.textContent=k.toFixed(3);document.getElementById("t1-display").textContent=roots[0]!==undefined?roots[0].toFixed(5):"なし";document.getElementById("t2-display").textContent=roots[1]!==undefined?roots[1].toFixed(5):"なし";document.getElementById("solution-count").textContent=total;
+              const s=document.getElementById("status-display");if(k>0&&k<2.25){s.textContent="異なる4解";s.className="mt-1 text-sm font-bold text-emerald-800";}else if(Math.abs(k)<.003){s.textContent="3解";s.className="mt-1 text-sm font-bold text-amber-800";}else if(Math.abs(k-2.25)<.003){s.textContent="2解";s.className="mt-1 text-sm font-bold text-violet-800";}else{s.textContent=`${total}解`;s.className="mt-1 text-sm font-bold text-slate-700";}
+            }
+            slider.addEventListener("input",update);document.querySelectorAll("[data-k]").forEach(b=>b.addEventListener("click",()=>{slider.value=b.dataset.k;update();}));update();
+          });
+        </script>
+      </div>
+
+      <div class="mt-10">
+        <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+        <div class="mt-4 space-y-4">
+          <div class="rounded-lg border border-red-200 bg-red-50 p-4"><p class="text-sm font-bold text-red-900">$t$ の二次方程式が2解なら、すぐ4解と判断する</p><p class="mt-1 text-sm text-red-800">$t$ が $[-2,2]$ の外にあれば対応する $x$ はありません。端点では1個だけです。</p></div>
+          <div class="rounded-lg border border-red-200 bg-red-50 p-4"><p class="text-sm font-bold text-red-900">$k=0$ を含める</p><p class="mt-1 text-sm text-red-800">$k=0$ では $t=-1,2$ なので、対応する $x$ は2個と1個の合計3個です。</p></div>
+          <div class="rounded-lg border border-red-200 bg-red-50 p-4"><p class="text-sm font-bold text-red-900">$k=9/4$ を含める</p><p class="mt-1 text-sm text-red-800">このとき $t=1/2$ が重解で、$t$ は1種類しかないため、対応する $x$ は2個です。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+      <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+      <p class="mt-4 text-sm text-blue-200">質問をクリックし、答えを頭の中で作ってから開いてください。</p>
+      <div class="mt-6 space-y-3">
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q1. $t$ を合成するとどうなりますか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm">\[t=2\sin\left(x-\frac{\pi}{3}\right)\]</div></details>
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q2. $t^2$ を倍角で表すとどうなりますか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm">\[t^2=2+\cos2x-\sqrt3\sin2x\]</div></details>
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q3. 元の方程式は $t$ を用いるとどうなりますか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm">\[t^2-t+k-2=0\]</div></details>
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q4. 1つの $t$ に対して $x$ が2個得られる条件は何ですか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm">\[-2&lt;t&lt;2\]</div></details>
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q5. 異なる4個の解をもつ $k$ の範囲は何ですか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm">\[0&lt;k&lt;\frac94\]</div></details>
+      </div>
+    </section>
+
+    <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+        <a href="no28.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+            ← No.28へ
+        </a>
+        <a href="no30.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+            No.30 →
+        </a>
+    </nav>
+  </main>
+
+  <footer class="py-10 text-center text-sm text-slate-500">自彊館(理系)　夏期数学課題 解説サイト</footer>
+</div>
+</body>
+</html>

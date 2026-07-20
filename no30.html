@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.30 対数関数と図形 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: { matchFontHeight: false },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: .5rem; margin-bottom: .5rem; }
+        button:focus-visible, summary:focus-visible, a:focus-visible, input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+        ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+        <div class="p-7 sm:p-10">
+            <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+                <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.30</span>
+                <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+            </div>
+            <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">対数関数と図形</h1>
+            <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                問題
+            </h2>
+
+            <div class="mt-4 space-y-6 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed">
+                <div>
+                    <p class="font-bold text-slate-900">（1）常用対数と桁数・小数</p>
+                    <p class="mt-2">
+                        $\log_{10}2=0.3010$ とする。
+                    </p>
+
+                    <ol class="mt-3 list-[lower-roman] space-y-2 pl-6">
+                        <li>$\log_{10}5$ および $\log_{10}625$ を求めよ。</li>
+                        <li>$625^{10}$ は何桁の整数か。</li>
+                        <li>
+                            $n$ を正の整数とし、$0.625^n$ は小数第30位にはじめて0でない数字が現れるとする。
+                            これを満たす $n$ をすべて求めよ。
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="border-t border-slate-200 pt-5">
+                    <p class="font-bold text-slate-900">（2）円と直角二等辺三角形</p>
+
+                    <p class="mt-2">
+                        長さ2の線分PQを直径とする円Cの周上に、P、Qと異なる点Rをとる。
+                        C上にない点Sを、三角形QRSが辺QRを斜辺とする直角二等辺三角形となるようにとる。
+                        ただし、Sは直線QRに関してPと反対側にとる。
+                    </p>
+
+                    <p class="mt-2">
+                        $\angle\mathrm{PQR}=\theta$ とする。
+                    </p>
+
+                    <ol class="mt-3 list-[lower-roman] space-y-2 pl-6">
+                        <li>四角形PQSRの面積を $\theta$ を用いて表せ。</li>
+                        <li>RがCの周上を動くとき、四角形PQSRの面積の最大値を求めよ。</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+
+                <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+                    <li>
+                        桁数は常用対数の整数部分から判断します。
+                    </li>
+                    <li>
+                        $0&lt;A&lt;1$ において、小数第 $m$ 位にはじめて0でない数字が現れる条件は
+                        \[
+                        10^{-m}\le A&lt;10^{-(m-1)}
+                        \]
+                        です。
+                    </li>
+                    <li>
+                        PQが円の直径なので、円周角の定理から
+                        \[
+                        \angle\mathrm{PRQ}=90^\circ
+                        \]
+                        です。
+                    </li>
+                    <li>
+                        四角形PQSRは、三角形PQRと三角形QRSの和として面積を求めます。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                解説
+            </h2>
+
+            <p class="mt-4 text-sm leading-8 text-slate-600">
+                前半は常用対数による桁数・小数の位置、後半は直角三角形と三角関数の合成を利用します。
+            </p>
+
+            <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+                <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">大きな整数の桁数</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            $N$ が
+                            \[
+                            10^m\le N&lt;10^{m+1}
+                            \]
+                            を満たすとき、$N$ は $m+1$ 桁です。
+                            常用対数をとり、整数部分を調べます。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">小数第何位にはじめて現れるか</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            小数第30位なら、
+                            \[
+                            10^{-30}\le A&lt;10^{-29}
+                            \]
+                            と表してから常用対数をとります。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">円の直径が見えたら直角を作る</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            三角形PQRはRを直角とする直角三角形です。
+                            PQ=2を斜辺として、PR、QRを $\theta$ で表します。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（1）(iii) 不等式の向きに注意する</strong><br>
+                        $\log_{10}0.625$ は負なので、$n$ を含む式を整理するときに不等号の向きが変わります。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（2）2つの三角形の面積を別々に求める</strong><br>
+                        \[
+                        [\triangle\mathrm{PQR}]
+                        =
+                        \frac12\mathrm{PR}\cdot\mathrm{QR},
+                        \]
+                        \[
+                        [\triangle\mathrm{QRS}]
+                        =
+                        \frac14\mathrm{QR}^2
+                        \]
+                        と表せます。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（2）(ii) 合成して最大値を読む</strong><br>
+                        \[
+                        \sin2\theta+\frac12\cos2\theta
+                        \]
+                        を1つの正弦にまとめます。
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+
+                <div class="mt-4 space-y-8 text-slate-700">
+                    <div>
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）(i)</p>
+
+                        <p class="mt-2">
+                            \[
+                            \log_{10}5
+                            =
+                            \log_{10}\frac{10}{2}
+                            \]
+                            より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \log_{10}5
+                            &=
+                            \log_{10}10-\log_{10}2\\
+                            &=
+                            1-0.3010\\
+                            &=
+                            0.6990.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>
+                            また、$625=5^4$ なので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \log_{10}625
+                            &=
+                            4\log_{10}5\\
+                            &=
+                            4\cdot0.6990\\
+                            &=
+                            2.7960.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            \log_{10}5=0.6990,
+                            \qquad
+                            \log_{10}625=2.7960
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）(ii)</p>
+
+                        <p class="mt-2">
+                            \[
+                            \begin{aligned}
+                            \log_{10}625^{10}
+                            &=
+                            10\log_{10}625\\
+                            &=
+                            10\cdot2.7960\\
+                            &=
+                            27.960.
+                            \end{aligned}
+                            \]
+                        </p>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            27&lt;27.960&lt;28.
+                            \]
+                        </div>
+
+                        <p>
+                            底 $10&gt;1$ より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            10^{27}
+                            &lt;
+                            10^{27.960}
+                            &lt;
+                            10^{28}.
+                            \]
+                        </div>
+
+                        <p>
+                            ここで、
+                            \[
+                            10^{27.960}=625^{10}
+                            \]
+                            であるから、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            10^{27}
+                            &lt;
+                            625^{10}
+                            &lt;
+                            10^{28}.
+                            \]
+                        </div>
+
+                        <p>
+                            したがって、$625^{10}$ は
+                        </p>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            28桁
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）(iii)</p>
+
+                        <p class="mt-2">
+                            $0.625^n$ の小数第30位にはじめて0でない数字が現れるための条件は、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            10^{-30}\le0.625^n&lt;10^{-29}.
+                            \]
+                        </div>
+
+                        <p>
+                            また、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \log_{10}0.625
+                            &=
+                            \log_{10}\frac{625}{1000}\\
+                            &=
+                            2.7960-3\\
+                            &=
+                            -0.2040.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>
+                            各辺の常用対数をとると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            -30\le-0.2040n&lt;-29.
+                            \]
+                        </div>
+
+                        <p>
+                            各辺に $-1$ をかけると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            30\ge0.2040n&gt;29.
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac{29}{0.2040}
+                            &lt;
+                            n
+                            \le
+                            \frac{30}{0.2040}.
+                            \]
+                        </div>
+
+                        <p>
+                            ここで、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac{29}{0.2040}
+                            =
+                            142.15\ldots,
+                            \qquad
+                            \frac{30}{0.2040}
+                            =
+                            147.05\ldots
+                            \]
+                        </div>
+
+                        <p>
+                            なので、正の整数 $n$ は
+                        </p>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            n=143,\ 144,\ 145,\ 146,\ 147
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）(i)</p>
+
+                        <p class="mt-2">
+                            PQは円Cの直径なので、円周角の定理より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \angle\mathrm{PRQ}=90^\circ.
+                            \]
+                        </div>
+
+                        <p>
+                            三角形PQRにおいて、PQ=2、$\angle\mathrm{PQR}=\theta$ であるから、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \mathrm{PR}=2\sin\theta,
+                            \qquad
+                            \mathrm{QR}=2\cos\theta.
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            [\triangle\mathrm{PQR}]
+                            &=
+                            \frac12
+                            \mathrm{PR}\cdot\mathrm{QR}\\
+                            &=
+                            \frac12
+                            \cdot2\sin\theta
+                            \cdot2\cos\theta\\
+                            &=
+                            2\sin\theta\cos\theta\\
+                            &=
+                            \sin2\theta.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            一方、三角形QRSはQRを斜辺とする直角二等辺三角形なので、
+                            2つの等しい辺の長さは
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac{\mathrm{QR}}{\sqrt2}
+                            =
+                            \sqrt2\cos\theta.
+                            \]
+                        </div>
+
+                        <p>
+                            したがって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            [\triangle\mathrm{QRS}]
+                            &=
+                            \frac12
+                            \left(\sqrt2\cos\theta\right)^2\\
+                            &=
+                            \cos^2\theta.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            Sは直線QRに関してPと反対側にあるので、四角形PQSRの面積は
+                            2つの三角形の面積の和である。
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            [\text{四角形PQSR}]
+                            &=
+                            \sin2\theta+\cos^2\theta.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            [\text{四角形PQSR}]
+                            =
+                            \sin2\theta+\cos^2\theta
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）(ii)</p>
+
+                        <p class="mt-2">
+                            面積を $A$ とすると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            A
+                            &=
+                            \sin2\theta+\cos^2\theta\\
+                            &=
+                            \sin2\theta
+                            +\frac{1+\cos2\theta}{2}\\
+                            &=
+                            \frac12
+                            +\sin2\theta
+                            +\frac12\cos2\theta.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>
+                            ここで、鋭角 $\alpha$ を
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \cos\alpha=\frac2{\sqrt5},
+                            \qquad
+                            \sin\alpha=\frac1{\sqrt5}
+                            \]
+                        </div>
+
+                        <p>
+                            で定めると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \sin2\theta+\frac12\cos2\theta
+                            &=
+                            \frac{\sqrt5}{2}
+                            \left(
+                            \frac2{\sqrt5}\sin2\theta
+                            +
+                            \frac1{\sqrt5}\cos2\theta
+                            \right)\\
+                            &=
+                            \frac{\sqrt5}{2}
+                            \sin(2\theta+\alpha).
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            A
+                            =
+                            \frac12
+                            +
+                            \frac{\sqrt5}{2}
+                            \sin(2\theta+\alpha).
+                            \]
+                        </div>
+
+                        <p>
+                            $0&lt;\theta&lt;\dfrac{\pi}{2}$ であり、
+                            $\sin(2\theta+\alpha)=1$ となる $\theta$ が存在する。
+                            したがって、
+                        </p>
+
+                        <div class="mt-3 rounded-xl border-2 border-blue-500 bg-blue-50 p-4 font-bold text-slate-900">
+                            \[
+                            A_{\max}
+                            =
+                            \frac{1+\sqrt5}{2}
+                            \]
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化</h3>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    $\theta$ を動かすと、R、Sの位置と四角形PQSRの面積が変化します。
+                </p>
+
+                <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="mx-auto max-w-xl">
+                        <label for="theta-slider" class="mb-2 block text-sm font-medium text-slate-700">
+                            θ：
+                            <span id="theta-display" class="text-lg font-bold text-blue-700">30.0°</span>
+                        </label>
+
+                        <input id="theta-slider" type="range" min="2" max="88" step="0.1" value="30"
+                               class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600">
+
+                        <div class="mt-3 flex flex-wrap justify-center gap-2">
+                            <button type="button" data-theta="30"
+                                    class="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-bold text-blue-700 hover:bg-blue-50">
+                                θ = 30°
+                            </button>
+                            <button type="button" id="max-button"
+                                    class="rounded-lg border border-emerald-200 bg-white px-3 py-2 text-sm font-bold text-emerald-700 hover:bg-emerald-50">
+                                面積最大
+                            </button>
+                            <button type="button" data-theta="60"
+                                    class="rounded-lg border border-violet-200 bg-white px-3 py-2 text-sm font-bold text-violet-700 hover:bg-violet-50">
+                                θ = 60°
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 grid gap-6 lg:grid-cols-2">
+                        <div>
+                            <h4 class="text-center font-bold text-slate-800">円Cと四角形PQSR</h4>
+
+                            <svg id="geometry-svg" width="600" height="470" viewBox="0 0 600 470"
+                                 class="mt-3 mx-auto h-auto w-full max-w-[600px] rounded-xl border border-slate-200 bg-white"
+                                 aria-label="円と四角形PQSRの図">
+
+                                <circle cx="300" cy="265" r="170" fill="rgba(37,99,235,.04)" stroke="#2563eb" stroke-width="2.5"></circle>
+                                <polygon id="quad" fill="rgba(16,185,129,.20)" stroke="#10b981" stroke-width="2.5"></polygon>
+
+                                <line id="pq-line" stroke="#334155" stroke-width="3"></line>
+                                <line id="pr-line" stroke="#475569" stroke-width="2.5"></line>
+                                <line id="qr-line" stroke="#475569" stroke-width="2.5"></line>
+                                <line id="qs-line" stroke="#e11d48" stroke-width="2.5"></line>
+                                <line id="rs-line" stroke="#e11d48" stroke-width="2.5"></line>
+
+                                <circle id="point-p" r="7" fill="#111827"></circle>
+                                <circle id="point-q" r="7" fill="#111827"></circle>
+                                <circle id="point-r" r="7" fill="#2563eb"></circle>
+                                <circle id="point-s" r="7" fill="#e11d48"></circle>
+
+                                <g font-size="15" font-weight="700">
+                                    <text id="label-p" fill="#111827">P</text>
+                                    <text id="label-q" fill="#111827">Q</text>
+                                    <text id="label-r" fill="#1d4ed8">R</text>
+                                    <text id="label-s" fill="#be123c">S</text>
+                                    <text id="theta-label" fill="#7c3aed">θ</text>
+                                </g>
+                            </svg>
+                        </div>
+
+                        <div>
+                            <h4 class="text-center font-bold text-slate-800">面積 A(θ)</h4>
+
+                            <svg id="area-svg" width="600" height="470" viewBox="0 0 600 470"
+                                 class="mt-3 mx-auto h-auto w-full max-w-[600px] rounded-xl border border-slate-200 bg-white"
+                                 aria-label="面積A(theta)のグラフ">
+
+                                <g id="area-grid"></g>
+                                <line id="area-x-axis" stroke="#64748b" stroke-width="1.5"></line>
+                                <line id="area-y-axis" stroke="#64748b" stroke-width="1.5"></line>
+
+                                <path id="area-path" fill="none" stroke="#2563eb" stroke-width="3"></path>
+                                <line id="area-max-guide" stroke="#10b981" stroke-width="2" stroke-dasharray="7 5"></line>
+
+                                <circle id="area-current" r="7" fill="#e11d48"></circle>
+                                <circle id="area-max" r="7" fill="#10b981"></circle>
+
+                                <g font-size="13" font-weight="700">
+                                    <text id="area-current-label" fill="#be123c"></text>
+                                    <text id="area-max-label" fill="#047857">最大</text>
+                                    <text x="555" y="420" fill="#64748b">θ</text>
+                                    <text x="60" y="25" fill="#64748b">A</text>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                        <div class="rounded-lg border border-slate-200 bg-white p-3 text-center">
+                            <div class="text-xs font-bold text-slate-500">PR</div>
+                            <div id="pr-display" class="mt-1 text-lg font-bold text-slate-800"></div>
+                        </div>
+
+                        <div class="rounded-lg border border-slate-200 bg-white p-3 text-center">
+                            <div class="text-xs font-bold text-slate-500">QR</div>
+                            <div id="qr-display" class="mt-1 text-lg font-bold text-slate-800"></div>
+                        </div>
+
+                        <div class="rounded-lg border border-blue-200 bg-blue-50 p-3 text-center">
+                            <div class="text-xs font-bold text-blue-700">△PQR</div>
+                            <div id="pqr-area-display" class="mt-1 text-lg font-bold text-blue-800"></div>
+                        </div>
+
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-center">
+                            <div class="text-xs font-bold text-emerald-700">四角形PQSR</div>
+                            <div id="area-display" class="mt-1 text-lg font-bold text-emerald-800"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const slider = document.getElementById("theta-slider");
+                        const thetaDisplay = document.getElementById("theta-display");
+
+                        const cx = 300;
+                        const cy = 265;
+                        const radius = 170;
+
+                        const Q = {x: cx-radius, y: cy};
+                        const P = {x: cx+radius, y: cy};
+
+                        function pointOnGeometry(theta) {
+                            const c = Math.cos(theta);
+                            const s = Math.sin(theta);
+                            const qr = 2*c;
+
+                            const Rm = {
+                                x: qr*c,
+                                y: qr*s
+                            };
+
+                            const Sm = {
+                                x: c*c-s*c,
+                                y: s*c+c*c
+                            };
+
+                            return {
+                                R: {
+                                    x: Q.x + radius*Rm.x,
+                                    y: Q.y - radius*Rm.y
+                                },
+                                S: {
+                                    x: Q.x + radius*Sm.x,
+                                    y: Q.y - radius*Sm.y
+                                }
+                            };
+                        }
+
+                        function setPoint(id, p) {
+                            const el = document.getElementById(id);
+                            el.setAttribute("cx", p.x);
+                            el.setAttribute("cy", p.y);
+                        }
+
+                        function setText(id, p, dx, dy) {
+                            const el = document.getElementById(id);
+                            el.setAttribute("x", p.x+dx);
+                            el.setAttribute("y", p.y+dy);
+                        }
+
+                        function setLine(id, a, b) {
+                            const el = document.getElementById(id);
+                            el.setAttribute("x1", a.x);
+                            el.setAttribute("y1", a.y);
+                            el.setAttribute("x2", b.x);
+                            el.setAttribute("y2", b.y);
+                        }
+
+                        setPoint("point-p", P);
+                        setPoint("point-q", Q);
+                        setText("label-p", P, 10, 18);
+                        setText("label-q", Q, -20, 18);
+                        setLine("pq-line", P, Q);
+
+                        const AW=600, AH=470;
+                        const axMin=0, axMax=Math.PI/2;
+                        const ayMin=0, ayMax=1.7;
+                        const asx=x=>70+(x-axMin)/(axMax-axMin)*480;
+                        const asy=y=>400-(y-ayMin)/(ayMax-ayMin)*340;
+
+                        let grid="";
+                        for(let i=0;i<=6;i++){
+                            const x=axMin+(axMax-axMin)*i/6;
+                            grid += `<line x1="${asx(x)}" y1="${asy(0)}" x2="${asx(x)}" y2="${asy(ayMax)}" stroke="#f1f5f9" stroke-width="1"/>`;
+                        }
+                        for(let y=0;y<=1.6;y+=0.2){
+                            grid += `<line x1="${asx(0)}" y1="${asy(y)}" x2="${asx(axMax)}" y2="${asy(y)}" stroke="#f1f5f9" stroke-width="1"/>`;
+                        }
+                        document.getElementById("area-grid").innerHTML=grid;
+
+                        function setGraphLine(id,x1,y1,x2,y2){
+                            const el=document.getElementById(id);
+                            el.setAttribute("x1",asx(x1));
+                            el.setAttribute("y1",asy(y1));
+                            el.setAttribute("x2",asx(x2));
+                            el.setAttribute("y2",asy(y2));
+                        }
+
+                        function setGraphPoint(id,x,y){
+                            const el=document.getElementById(id);
+                            el.setAttribute("cx",asx(x));
+                            el.setAttribute("cy",asy(y));
+                        }
+
+                        setGraphLine("area-x-axis",0,0,Math.PI/2,0);
+                        setGraphLine("area-y-axis",0,0,0,ayMax);
+
+                        function area(theta){
+                            return Math.sin(2*theta)+Math.cos(theta)*Math.cos(theta);
+                        }
+
+                        let path="";
+                        for(let i=0;i<=400;i++){
+                            const th=0.001+(Math.PI/2-0.002)*i/400;
+                            path += `${i===0?"M":"L"} ${asx(th)} ${asy(area(th))} `;
+                        }
+                        document.getElementById("area-path").setAttribute("d",path);
+
+                        const alpha=Math.atan(1/2);
+                        const thetaMax=(Math.PI/2-alpha)/2;
+                        const areaMax=(1+Math.sqrt(5))/2;
+
+                        setGraphPoint("area-max",thetaMax,areaMax);
+                        setGraphLine("area-max-guide",thetaMax,0,thetaMax,areaMax);
+
+                        const maxLabel=document.getElementById("area-max-label");
+                        maxLabel.setAttribute("x",asx(thetaMax)+10);
+                        maxLabel.setAttribute("y",asy(areaMax)-10);
+
+                        function update(){
+                            const deg=parseFloat(slider.value);
+                            const theta=deg*Math.PI/180;
+                            const {R,S}=pointOnGeometry(theta);
+
+                            setPoint("point-r",R);
+                            setPoint("point-s",S);
+                            setText("label-r",R,8,-10);
+                            setText("label-s",S,8,-10);
+
+                            setLine("pr-line",P,R);
+                            setLine("qr-line",Q,R);
+                            setLine("qs-line",Q,S);
+                            setLine("rs-line",R,S);
+
+                            document.getElementById("quad").setAttribute(
+                                "points",
+                                `${P.x},${P.y} ${Q.x},${Q.y} ${S.x},${S.y} ${R.x},${R.y}`
+                            );
+
+                            const thetaLabel=document.getElementById("theta-label");
+                            thetaLabel.setAttribute("x",Q.x+48*Math.cos(theta/2));
+                            thetaLabel.setAttribute("y",Q.y-48*Math.sin(theta/2));
+
+                            const pr=2*Math.sin(theta);
+                            const qr=2*Math.cos(theta);
+                            const pqrArea=Math.sin(2*theta);
+                            const totalArea=area(theta);
+
+                            thetaDisplay.textContent=`${deg.toFixed(1)}°`;
+                            document.getElementById("pr-display").textContent=pr.toFixed(5);
+                            document.getElementById("qr-display").textContent=qr.toFixed(5);
+                            document.getElementById("pqr-area-display").textContent=pqrArea.toFixed(5);
+                            document.getElementById("area-display").textContent=totalArea.toFixed(6);
+
+                            setGraphPoint("area-current",theta,totalArea);
+
+                            const label=document.getElementById("area-current-label");
+                            label.setAttribute("x",asx(theta)+8);
+                            label.setAttribute("y",asy(totalArea)-10);
+                            label.textContent=`(${deg.toFixed(1)}°, ${totalArea.toFixed(3)})`;
+                        }
+
+                        slider.addEventListener("input",update);
+
+                        document.querySelectorAll("[data-theta]").forEach(button=>{
+                            button.addEventListener("click",()=>{
+                                slider.value=button.dataset.theta;
+                                update();
+                            });
+                        });
+
+                        document.getElementById("max-button").addEventListener("click",()=>{
+                            slider.value=(thetaMax*180/Math.PI).toFixed(4);
+                            update();
+                        });
+
+                        update();
+                    });
+                </script>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">桁数を27桁とする</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            常用対数の整数部分が27なら、元の数は28桁です。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">小数第30位の条件の端点を逆にする</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            小数第30位にはじめて現れる条件は
+                            \[
+                            10^{-30}\le A&lt;10^{-29}
+                            \]
+                            です。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">四角形の面積を2つの三角形の差にする</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            SはPと直線QRの反対側にあるため、面積は
+                            \[
+                            [\triangle\mathrm{PQR}]
+                            +
+                            [\triangle\mathrm{QRS}]
+                            \]
+                            です。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+            <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+
+            <p class="mt-4 text-sm text-blue-200">
+                質問をクリックし、答えを頭の中で作ってから開いてください。
+            </p>
+
+            <div class="mt-6 space-y-3">
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q1. $\log_{10}5$ と $\log_{10}625$ は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \log_{10}5=0.6990,
+                        \qquad
+                        \log_{10}625=2.7960
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q2. $625^{10}$ は何桁ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        28桁です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q3. 条件を満たす正の整数 $n$ は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        n=143,\ 144,\ 145,\ 146,\ 147
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q4. 四角形PQSRの面積は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \sin2\theta+\cos^2\theta
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q5. 四角形PQSRの面積の最大値は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \frac{1+\sqrt5}{2}
+                        \]
+                        です。
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+            <a href="no29.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                ← No.29へ
+            </a>
+            <a href="no31.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                No.31 →
+            </a>
+        </nav>
+    </main>
+
+    <footer class="py-10 text-center text-sm text-slate-500">
+        自彊館(理系)　夏期数学課題 解説サイト
+    </footer>
+</div>
+</body>
+</html>

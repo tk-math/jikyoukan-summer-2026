@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>夏期課題 No.6 図形と方程式 - 自彊館(理系)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    MathJax = {
+      chtml: { matchFontHeight: false },
+      tex: { 
+        inlineMath: [['$', '$'], ['\\(', '\\)']], 
+        displayMath: [['\\[', '\\]']],
+        macros: {
+          Vec: ["\\overrightarrow{\\mathrm{#1}}", 1],
+          abs: ["\\left|#1\\right|", 1]
+        }
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    }
+    .nav-button {
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+    .nav-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+    }
+    .math-scroll {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+  <main class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+    
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+      ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+      <div class="p-7 sm:p-10">
+        <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">
+          自彊館(理系)
+        </span>
+        <div class="mt-4 flex flex-wrap items-center gap-3">
+          <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.6</span>
+          <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+        </div>
+        <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">図形と方程式</h1>
+        <p class="mt-3 text-lg text-blue-100">目標解答時間：20分</p>
+      </div>
+    </header>
+
+    <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+      <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+        <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+        問題
+      </h2>
+      <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 mt-4 text-slate-700 leading-relaxed">
+        Oを原点とする$xy$平面上に2点 $\mathrm{A}(2, 9)$，$\mathrm{B}(0, 10)$ がある．
+        <ol class="mt-4 list-decimal pl-6 space-y-2">
+          <li>直線ABの方程式を求めよ．</li>
+          <li>Oから直線ABに下ろした垂線の足Hの座標を求めよ．また，O，Hを直径の両端とする円$C$の中心の座標と半径を求めよ．</li>
+          <li>$x$軸上に中心があり，直線ABに接し，さらに(2)の円$C$と外接する円の中心の$x$座標を求めよ．</li>
+        </ol>
+      </div>
+
+      <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+        <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+        <ul class="list-disc pl-5 space-y-1.5 text-sm text-blue-900">
+          <li><strong>直線の方程式：</strong> 2点を通る直線です。「傾き」と「$y$切片」を求めて式を作ります。(2)以降のために $ax+by+c=0$ の一般形にしておくと便利です。</li>
+          <li><strong>垂線の足と円：</strong> 直線OHは直線ABと垂直なので、傾きの積が $-1$ になります。円の中心は直径の両端(OとH)の中点、半径はその距離の半分です。</li>
+          <li><strong>第3の円の条件：</strong>
+            <ul class="list-none pl-4 mt-1 space-y-1 text-slate-600">
+              <li>・中心は$x$軸上 $\rightarrow$ 中心座標を $\mathrm{P}(a, 0)$ とおける</li>
+              <li>・直線ABに接する $\rightarrow$ 中心$\mathrm{P}$と直線ABの距離が半径 $r$</li>
+              <li>・円$C$と外接する $\rightarrow$ 中心間の距離が半径の和に等しい（$d = r + R_c$）</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+      <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+        <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+        解説
+      </h2>
+      <p class="mt-4 text-sm leading-8 text-slate-600">
+        問題を解くための考え方から、答案、検算、発展までを順に確認します。
+      </p>
+
+      <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+        <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+        <div class="mt-4 space-y-3">
+          <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4 text-amber-900">
+            <span class="font-bold text-amber-800">「垂線を下ろす」と来たら</span> → <strong>垂直な直線の式を立てて連立する</strong> <br>
+            「傾きの積が $-1$」を利用して直線OHの式を作り、直線ABの式と連立して交点Hを求めます。（ベクトルの内積を利用する方法もあります）。
+          </div>
+          <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4 text-amber-900">
+            <span class="font-bold text-amber-800">「直線に接する円」と来たら</span> → <strong>点と直線の距離の公式</strong> <br>
+            円の中心 $(a, 0)$ と直線 $ax+by+c=0$ の距離 $d$ が、円の半径 $r$ となるように立式します。このとき、絶対値記号が残ることに注意します。
+          </div>
+          <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4 text-amber-900">
+            <span class="font-bold text-amber-800">「2つの円が外接する」と来たら</span> → <strong>中心間距離 ＝ 半径の和</strong> <br>
+            中心間距離 $d = \sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$ と 半径の和 $r_1+r_2$ を等置します。両辺を2乗して処理しますが、(3)では先ほどの絶対値記号を含んだまま2乗することになります。
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+        <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+        <div class="mt-4 space-y-3 text-emerald-900">
+          <ul class="list-disc pl-5 space-y-2">
+            <li><strong>(1), (2) の流れ：</strong> 直線の基本公式を用いて方程式を求め、連立方程式で交点を出します。円の中心は中点公式、半径は2点間の距離の公式と、基礎的な操作が続きます。</li>
+            <li><strong>(3) の流れ（式立て）：</strong> 求める円の中心を $\mathrm{P}(a, 0)$、半径を $r$ とおきます。<br>
+            直線ABに接する条件から、$r$ を $a$ を用いて表します（$r = \frac{|a-20|}{\sqrt{5}}$ となります）。<br>
+            円$C$と外接する条件から方程式を立てます。$\mathrm{P}$ と円$C$の中心$\mathrm{Q}$ の距離の2乗 $\mathrm{PQ}^2$ が $(r + 2\sqrt{5})^2$ と等しい、という式を作ります。</li>
+            <li><strong>(3) の流れ（方程式の処理）：</strong> 得られた方程式を展開し、整理します。$r$ に含まれる $|a-20|$ の処理が鍵になります。<br>
+            $|A|^2 = A^2$ の性質を利用してうまく展開すると、$a$ の2次式と $|a-20|$ が残る方程式になります。最後に $a-20$ の正負（$a \ge 20$ か $a < 20$ か）で場合分けをして、絶対値を外して2次方程式を解ききります。</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="mt-10 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+      <div class="mt-4 text-slate-800 leading-loose">
+        <p class="font-bold">(1)</p>
+        <p>
+          2点 $\mathrm{A}(2, 9)$，$\mathrm{B}(0, 10)$ を通る直線の傾きは
+        </p>
+        <div class="math-scroll">
+          \[ \frac{10 - 9}{0 - 2} = -\frac{1}{2} \]
+        </div>
+        <p>
+          $y$切片は $10$ であるから，直線ABの方程式は
+        </p>
+        <div class="math-scroll">
+          \[ y = -\frac{1}{2}x + 10 \iff x + 2y - 20 = 0 \]
+        </div>
+        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+          答: $x + 2y - 20 = 0$ （または $y = -\frac{1}{2}x + 10$）
+        </div>
+
+        <p class="font-bold mt-6">(2)</p>
+        <p>
+          直線OHは原点を通り、直線ABに垂直である。直線ABの傾きが $-\dfrac{1}{2}$ であるから、直線OHの傾きは $2$ となる。<br>
+          したがって、直線OHの方程式は $y = 2x$ である。<br>
+          これと直線ABの方程式 $x + 2y - 20 = 0$ を連立する。
+        </p>
+        <div class="math-scroll">
+          \begin{aligned}
+          x + 2(2x) - 20 &= 0 \\
+          5x &= 20 \implies x = 4 \\
+          y &= 2 \times 4 = 8
+          \end{aligned}
+        </div>
+        <p>
+          ゆえに、垂線の足Hの座標は $\mathrm{H}(4, 8)$ である。<br>
+          次に、O$(0, 0)$，H$(4, 8)$ を直径の両端とする円$C$の中心は、線分OHの中点であるから
+        </p>
+        <div class="math-scroll">
+          \[ \left(\frac{0+4}{2}, \frac{0+8}{2}\right) = (2, 4) \]
+        </div>
+        <p>
+          また、円$C$の半径は $\dfrac{1}{2}\mathrm{OH}$ である。
+        </p>
+        <div class="math-scroll">
+          \[ \frac{1}{2}\sqrt{4^2 + 8^2} = \frac{1}{2}\sqrt{16 + 64} = \frac{1}{2}\sqrt{80} = \frac{1}{2} \cdot 4\sqrt{5} = 2\sqrt{5} \]
+        </div>
+        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+          答: $\mathrm{H}(4, 8)$ ， 中心の座標 $(2, 4)$ ， 半径 $2\sqrt{5}$
+        </div>
+
+        <p class="font-bold mt-6">(3)</p>
+        <p>
+          求める円の中心は$x$軸上にあるので、これを $\mathrm{P}(a, 0)$ とおき、半径を $r \ (r > 0)$ とおく。<br>
+          円$\mathrm{P}$が直線AB（$x + 2y - 20 = 0$）に接するから、中心$\mathrm{P}$と直線ABの距離が半径 $r$ に等しい。
+        </p>
+        <div class="math-scroll">
+          \[ r = \frac{|a + 2\cdot 0 - 20|}{\sqrt{1^2 + 2^2}} = \frac{|a - 20|}{\sqrt{5}} \quad \cdots\cdots \text{①} \]
+        </div>
+        <p>
+          また、円$\mathrm{P}$は(2)で求めた円$C$（中心を $\mathrm{Q}(2, 4)$ とする）と外接するから、中心間距離 $\mathrm{PQ}$ が半径の和 $r + 2\sqrt{5}$ に等しい。
+        </p>
+        <div class="math-scroll">
+          \[ \mathrm{PQ} = r + 2\sqrt{5} \]
+        </div>
+        <p>
+          両辺を2乗すると $\mathrm{PQ}^2 = (r + 2\sqrt{5})^2$ となる。<br>
+          ここで、$\mathrm{PQ}^2 = (a - 2)^2 + (0 - 4)^2 = a^2 - 4a + 20$ である。
+        </p>
+        <div class="math-scroll">
+          \begin{aligned}
+          a^2 - 4a + 20 &= \left( \frac{|a - 20|}{\sqrt{5}} + 2\sqrt{5} \right)^2 \\
+          &= \frac{(a - 20)^2}{5} + 2 \cdot \frac{|a - 20|}{\sqrt{5}} \cdot 2\sqrt{5} + 20 \\
+          &= \frac{(a - 20)^2}{5} + 4|a - 20| + 20
+          \end{aligned}
+        </div>
+        <p>
+          両辺から $20$ を引き、$5$ を掛けて整理する。
+        </p>
+        <div class="math-scroll">
+          \begin{aligned}
+          a^2 - 4a &= \frac{a^2 - 40a + 400}{5} + 4|a - 20| \\
+          5a^2 - 20a &= a^2 - 40a + 400 + 20|a - 20| \\
+          4a^2 + 20a - 400 &= 20|a - 20| \\
+          a^2 + 5a - 100 &= 5|a - 20| \quad \cdots\cdots \text{②}
+          \end{aligned}
+        </div>
+        <p>
+          方程式②を解くため、絶対値の中身の正負で場合分けをする。
+        </p>
+        <p class="mt-4 font-bold text-blue-800">[i] $a - 20 \ge 0$ すなわち $a \ge 20$ のとき</p>
+        <p class="mt-1">
+          $|a - 20| = a - 20$ であるから、
+        </p>
+        <div class="math-scroll">
+          \begin{aligned}
+          a^2 + 5a - 100 &= 5(a - 20) \\
+          a^2 + 5a - 100 &= 5a - 100 \\
+          a^2 &= 0 \implies a = 0
+          \end{aligned}
+        </div>
+        <p>
+          これは $a \ge 20$ を満たさないため不適。
+        </p>
+
+        <p class="mt-4 font-bold text-blue-800">[ii] $a - 20 < 0$ すなわち $a < 20$ のとき</p>
+        <p class="mt-1">
+          $|a - 20| = -(a - 20) = 20 - a$ であるから、
+        </p>
+        <div class="math-scroll">
+          \begin{aligned}
+          a^2 + 5a - 100 &= 5(20 - a) \\
+          a^2 + 5a - 100 &= 100 - 5a \\
+          a^2 + 10a - 200 &= 0 \\
+          (a + 20)(a - 10) &= 0
+          \end{aligned}
+        </div>
+        <p>
+          よって $a = 10, -20$。これらはともに $a < 20$ を満たす。<br><br>
+          以上より、求める円の中心の$x$座標は
+        </p>
+        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+          答: $x = 10, -20$
+        </div>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化</h3>
+      <div class="mt-6 text-center bg-slate-50 border border-slate-200 rounded-xl p-4 sm:p-6 shadow-sm">
+        <p class="text-sm text-slate-700 mb-4 leading-relaxed text-left">
+          スライダーを動かして、中心 $\mathrm{P}$（$x$軸上の点）を動かしてみましょう。<br>
+          紫色の円は、常に「直線ABに接する」ように半径が自動調整されます。<br>
+          この紫色の円が、固定されている「円$C$（赤い円）」と外側でピッタリ触れる（外接する）瞬間が、方程式の解となる $x$ 座標です。
+        </p>
+        
+        <!-- コントロール部 -->
+        <div class="mb-6 max-w-md mx-auto">
+          <label for="a-slider" class="block text-sm font-medium text-slate-700 mb-2">
+            円の中心の $x$ 座標 ($a$): <span id="a-value" class="font-bold text-violet-600 text-lg">0</span>
+          </label>
+          <input type="range" id="a-slider" min="-25" max="15" step="1" value="0" class="w-full h-2 bg-slate-300 rounded-lg appearance-none cursor-pointer accent-violet-600">
+          <div class="flex justify-between mt-2 text-xs text-slate-500">
+            <span>-25</span>
+            <span>-5</span>
+            <span>15</span>
+          </div>
+          <div id="touch-status" class="mt-4 p-3 rounded-lg text-sm font-bold border transition-colors duration-200 bg-white text-slate-500 border-slate-300">
+            スライダーを動かして外接する点を探そう
+          </div>
+        </div>
+
+        <svg viewBox="0 0 450 300" class="w-full h-auto max-w-md mx-auto bg-white border border-slate-200 rounded-lg shadow-sm" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- 座標系: 
+               Origin (280, 220)
+               scale: 1 unit = 8px
+               X_svg = 280 + x*8
+               Y_svg = 220 - y*8
+          -->
+          <defs>
+            <clipPath id="svg-clip">
+              <rect width="450" height="300" />
+            </clipPath>
+          </defs>
+          <g clip-path="url(#svg-clip)">
+            <!-- グリッドと軸 -->
+            <line x1="0" y1="220" x2="450" y2="220" stroke="#cbd5e1" stroke-width="1.5" /> <!-- x軸 -->
+            <line x1="280" y1="0" x2="280" y2="300" stroke="#cbd5e1" stroke-width="1.5" /> <!-- y軸 -->
+            <text x="435" y="215" fill="#64748b" font-size="12">x</text>
+            <text x="285" y="15" fill="#64748b" font-size="12">y</text>
+            <text x="265" y="235" fill="#64748b" font-size="12">O</text>
+
+            <!-- 直線AB: x + 2y - 20 = 0 -> y = -0.5x + 10 -->
+            <!-- x=-35(0, 10), x=20(20, 0) -->
+            <line x1="0" y1="0" x2="440" y2="220" stroke="#94a3b8" stroke-width="1.5" /> 
+
+            <!-- 円C: 中心(2, 4) -> SVG(296, 188), 半径 2√5 ≒ 4.47 -> R=35.8 -->
+            <circle cx="296" cy="188" r="35.8" fill="rgba(244, 63, 94, 0.15)" stroke="#f43f5e" stroke-width="2"/>
+            <circle cx="296" cy="188" r="3" fill="#f43f5e" />
+            <text x="302" y="185" fill="#f43f5e" font-size="12" font-weight="bold">C(Q)</text>
+            
+            <!-- 点H(4, 8) -> SVG(312, 156) -->
+            <line x1="280" y1="220" x2="312" y2="156" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="3,3" />
+            <circle cx="312" cy="156" r="3" fill="#f43f5e" />
+            <text x="318" y="153" fill="#f43f5e" font-size="12" font-weight="bold">H</text>
+
+            <!-- 点A(2,9), B(0,10) -->
+            <circle cx="296" cy="148" r="3" fill="#334155" />
+            <text x="280" y="145" fill="#334155" font-size="12">A</text>
+            <circle cx="280" cy="140" r="3" fill="#334155" />
+            <text x="265" y="135" fill="#334155" font-size="12">B</text>
+
+            <!-- インタラクティブな円P -->
+            <!-- 描画はJSで行う -->
+            <circle id="dynamic-circle" cx="280" cy="220" r="0" stroke="#8b5cf6" stroke-width="2" fill="none" />
+            <circle id="dynamic-center" cx="280" cy="220" r="4" fill="#8b5cf6" />
+            <text id="dynamic-label" x="280" y="240" fill="#8b5cf6" font-size="12" font-weight="bold">P(a,0)</text>
+            <!-- 距離PQの線 -->
+            <line id="line-pq" x1="296" y1="188" x2="280" y2="220" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="3,3" />
+          </g>
+        </svg>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+            const slider = document.getElementById('a-slider');
+            const valueDisplay = document.getElementById('a-value');
+            const dynamicCircle = document.getElementById('dynamic-circle');
+            const dynamicCenter = document.getElementById('dynamic-center');
+            const dynamicLabel = document.getElementById('dynamic-label');
+            const linePQ = document.getElementById('line-pq');
+            const statusText = document.getElementById('touch-status');
+
+            // 定数
+            const scale = 8;
+            const orgX = 280;
+            const orgY = 220;
+            const Qc_x = 2; // 円Cのx
+            const Qc_y = 4; // 円Cのy
+            const Rc = 2 * Math.sqrt(5); // 円Cの半径
+
+            function update() {
+              const a = parseFloat(slider.value);
+              valueDisplay.textContent = a;
+              
+              // 数学座標
+              const r = Math.abs(a - 20) / Math.sqrt(5);
+              const d_pq = Math.sqrt(Math.pow(a - Qc_x, 2) + Math.pow(0 - Qc_y, 2));
+              
+              // SVG座標
+              const svgCx = orgX + a * scale;
+              const svgCy = orgY; // y=0
+              const svgR = r * scale;
+              
+              dynamicCircle.setAttribute('cx', svgCx);
+              dynamicCircle.setAttribute('cy', svgCy);
+              dynamicCircle.setAttribute('r', svgR);
+              
+              dynamicCenter.setAttribute('cx', svgCx);
+              dynamicCenter.setAttribute('cy', svgCy);
+              
+              dynamicLabel.setAttribute('x', svgCx - 10);
+              dynamicLabel.setAttribute('y', svgCy + 20);
+              dynamicLabel.textContent = `P(${a}, 0)`;
+              
+              linePQ.setAttribute('x2', svgCx);
+              linePQ.setAttribute('y2', svgCy);
+
+              // 外接の判定 (d_pq == r + Rc)
+              // 浮動小数点の誤差を考慮
+              if (Math.abs(d_pq - (r + Rc)) < 0.05) {
+                statusText.textContent = `外接しました！ (x = ${a})`;
+                statusText.className = "mt-4 p-3 rounded-lg text-sm font-bold border border-violet-300 bg-violet-50 text-violet-700 transition-colors duration-200 shadow-sm";
+                dynamicCircle.setAttribute('fill', 'rgba(139, 92, 246, 0.15)');
+                dynamicCircle.setAttribute('stroke-width', '3');
+              } else {
+                statusText.textContent = "円Cと外接していません";
+                statusText.className = "mt-4 p-3 rounded-lg text-sm font-bold border border-slate-300 bg-slate-50 text-slate-500 transition-colors duration-200";
+                dynamicCircle.setAttribute('fill', 'none');
+                dynamicCircle.setAttribute('stroke-width', '2');
+              }
+            }
+
+            slider.addEventListener('input', update);
+            update(); // 初期描画
+          });
+        </script>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+      <div class="mt-4 space-y-4">
+        <div class="bg-red-50 border border-red-200 rounded-lg p-4 text-slate-800">
+          <p class="font-bold text-red-800">絶対値を含む方程式の場合分け漏れ</p>
+          <p class="mt-2 text-sm">
+            (3)の最後で $a^2 + 5a - 100 = 5|a - 20|$ を解く際、「$|a - 20|$ は $\pm (a - 20)$ だから両方解けばいい」と安易に考えてしまうと危険です。必ず「中身が正（$a \ge 20$）」と「中身が負（$a < 20$）」の<strong>定義域を明記</strong>し、出てきた解がその定義域に収まっているかを確認するプロセスが必要です。今回、$a \ge 20$ のケースから出た $a=0$ が不適となるのはこのためです。
+          </p>
+        </div>
+        <div class="bg-red-50 border border-red-200 rounded-lg p-4 text-slate-800">
+          <p class="font-bold text-red-800">直線の方程式の「一般形」への変換忘れ</p>
+          <p class="mt-2 text-sm">
+            点と直線の距離の公式は $ax+by+c=0$ の形でしか使えません。(1)で $y = -\frac{1}{2}x + 10$ と答えたままにしておき、(3)で無理やり代入して分数が入り乱れた複雑な式を作って自滅するケースが散見されます。公式を使う前に、必ず整数の一般形（$x+2y-20=0$）に直しておく癖をつけましょう。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+      <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+      <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+      
+      <div class="mt-6 space-y-4">
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            <div class="flex-1 leading-relaxed">
+              <div class="mb-1">Q1. 2つの円（半径 $r_1, r_2$、中心間距離 $d$）が「外接する」ための条件式は何ですか？</div>
+            </div>
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            中心間距離 $d$ が、2つの円の半径の和に等しい。すなわち <strong>$d = r_1 + r_2$</strong> です。（※「内接する」場合は $d = |r_1 - r_2|$ となります）
+          </div>
+        </details>
+
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            <div class="flex-1 leading-relaxed">
+              <div class="mb-1">Q2. 2点 $(x_1, y_1)$ と $(x_2, y_2)$ を直径の両端とする円の、「中心の座標」と「半径」はどのように求めますか？</div>
+            </div>
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            中心は2点の中点なので $\left(\frac{x_1+x_2}{2}, \frac{y_1+y_2}{2}\right)$ となります。半径は、2点間の距離の半分なので $\frac{1}{2}\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}$ となります。
+          </div>
+        </details>
+
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            <div class="flex-1 leading-relaxed">
+              <div class="mb-1">Q3. 絶対値を含む方程式 $|A| = B$ を解く際の、安全で基本的な手順は何ですか？</div>
+            </div>
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            絶対値の中身 $A$ の符号で場合分けをします。「$A \ge 0$ のとき $A = B$」として解き、その解が $A \ge 0$ を満たすか確認。「$A < 0$ のとき $-A = B$」として解き、その解が $A < 0$ を満たすか確認します。
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+        <a href="no05.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+            ← No.5へ
+        </a>
+        <a href="no07.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+            No.7 →
+        </a>
+    </nav>
+
+  </main>
+  
+  <footer class="py-10 text-center text-sm text-slate-500">
+    自彊館(理系)　夏期数学課題 解説サイト
+  </footer>
+</body>
+</html>

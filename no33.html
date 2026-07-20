@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.33 確率 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: { matchFontHeight: false },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: .5rem; margin-bottom: .5rem; }
+        button:focus-visible, summary:focus-visible, a:focus-visible, select:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+        ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+        <div class="p-7 sm:p-10">
+            <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+                <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.33</span>
+                <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+            </div>
+            <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">確率</h1>
+            <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                問題
+            </h2>
+
+            <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed">
+                <p>
+                    1、2、3、4、5、6の数が書かれたカードが1枚ずつ、計6枚入った箱がある。
+                    サイコロを振り、出た目と同じ数のカードを箱から取り出す試行を3回行う。
+                </p>
+
+                <p class="mt-2">
+                    出た目と同じ数のカードが箱にない場合は、その時点で箱に残っているカードのうち、
+                    最大の数が書かれたカードを取り出す。取り出したカードは箱に戻さない。
+                </p>
+
+                <p class="mt-2">
+                    取り出した3枚のカードに書かれた数の積を $X$ とする。
+                </p>
+
+                <ol class="mt-4 list-decimal space-y-4 pl-6">
+                    <li>
+                        サイコロの目が $1,1,1$ の順に出たときと、
+                        $1,1,3$ の順に出たときの $X$ をそれぞれ求めよ。
+                    </li>
+                    <li>$X=6$ となる確率を求めよ。</li>
+                    <li>$X=120$ となる確率を求めよ。</li>
+                    <li>$X$ が6の倍数となる確率を求めよ。</li>
+                </ol>
+            </div>
+
+            <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+
+                <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+                    <li>
+                        3回のサイコロの目の並びは全部で
+                        \[
+                        6^3=216
+                        \]
+                        通りあり、すべて同様に確からしいです。
+                    </li>
+                    <li>
+                        取り出されるカードは毎回異なるため、$X$ は異なる3枚のカードの積です。
+                    </li>
+                    <li>
+                        同じ目が再び出ると、そのカードはすでにないので、その時点の最大カードが取り出されます。
+                    </li>
+                    <li>
+                        取り出されたカードに6が含まれない場合、途中で代替処理は一度も起きていません。
+                        代替処理が起きれば、残っている最大のカード6が取り出されるからです。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                解説
+            </h2>
+
+            <p class="mt-4 text-sm leading-8 text-slate-600">
+                サイコロの目そのものよりも、最終的に取り出された3枚のカードの集合に注目します。
+            </p>
+
+            <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+                <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">積が指定されている</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            まず、1～6の異なる3数でその積を作る組を特定します。
+                            その後、その3枚が取り出されるサイコロの目の並びを数えます。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">特定の倍数になる確率</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            直接数えるより、倍数にならない場合を補集合として数える方が簡単かを検討します。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">取り出された集合に6が含まれない</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            代替処理が起きていないため、サイコロの目はその3枚を1回ずつ出した並びだけです。
+                            したがって並びは
+                            \[
+                            3!=6
+                            \]
+                            通りです。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（2）積6を作る3枚は何か</strong><br>
+                        異なる3枚で積が6になるのは
+                        \[
+                        \{1,2,3\}
+                        \]
+                        だけです。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（3）積120なら大きい3枚に注目する</strong><br>
+                        \[
+                        120=4\cdot5\cdot6
+                        \]
+                        なので、取り出される集合は $\{4,5,6\}$ です。
+                        サイコロの目が毎回4、5、6のいずれかなら、必ずこの3枚が取り出されます。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（4）6の倍数でない場合を分類する</strong><br>
+                        積が6の倍数でないのは、
+                        「偶数を1枚も含まない」または「3の倍数を1枚も含まない」場合です。
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+
+                <div class="mt-4 space-y-8 text-slate-700">
+                    <div>
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）</p>
+
+                        <p class="mt-2 font-bold text-slate-900">サイコロの目が $1,1,1$ のとき</p>
+
+                        <div class="mt-3 overflow-x-auto">
+                            <table class="w-full min-w-[560px] border-collapse text-center text-sm">
+                                <thead>
+                                    <tr class="bg-slate-100">
+                                        <th class="border border-slate-300 px-3 py-2">回</th>
+                                        <th class="border border-slate-300 px-3 py-2">出た目</th>
+                                        <th class="border border-slate-300 px-3 py-2">取り出すカード</th>
+                                        <th class="border border-slate-300 px-3 py-2">理由</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-slate-300 px-3 py-2">1回目</td>
+                                        <td class="border border-slate-300 px-3 py-2">1</td>
+                                        <td class="border border-slate-300 px-3 py-2 font-bold text-blue-700">1</td>
+                                        <td class="border border-slate-300 px-3 py-2">カード1がある</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-slate-300 px-3 py-2">2回目</td>
+                                        <td class="border border-slate-300 px-3 py-2">1</td>
+                                        <td class="border border-slate-300 px-3 py-2 font-bold text-rose-700">6</td>
+                                        <td class="border border-slate-300 px-3 py-2">カード1がないので最大を取る</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-slate-300 px-3 py-2">3回目</td>
+                                        <td class="border border-slate-300 px-3 py-2">1</td>
+                                        <td class="border border-slate-300 px-3 py-2 font-bold text-rose-700">5</td>
+                                        <td class="border border-slate-300 px-3 py-2">カード1がないので最大を取る</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="math-scroll mt-3">
+                            \[
+                            X=1\cdot6\cdot5=30.
+                            \]
+                        </div>
+
+                        <p class="mt-4 font-bold text-slate-900">サイコロの目が $1,1,3$ のとき</p>
+
+                        <div class="mt-3 overflow-x-auto">
+                            <table class="w-full min-w-[560px] border-collapse text-center text-sm">
+                                <thead>
+                                    <tr class="bg-slate-100">
+                                        <th class="border border-slate-300 px-3 py-2">回</th>
+                                        <th class="border border-slate-300 px-3 py-2">出た目</th>
+                                        <th class="border border-slate-300 px-3 py-2">取り出すカード</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-slate-300 px-3 py-2">1回目</td>
+                                        <td class="border border-slate-300 px-3 py-2">1</td>
+                                        <td class="border border-slate-300 px-3 py-2 font-bold text-blue-700">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-slate-300 px-3 py-2">2回目</td>
+                                        <td class="border border-slate-300 px-3 py-2">1</td>
+                                        <td class="border border-slate-300 px-3 py-2 font-bold text-rose-700">6</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-slate-300 px-3 py-2">3回目</td>
+                                        <td class="border border-slate-300 px-3 py-2">3</td>
+                                        <td class="border border-slate-300 px-3 py-2 font-bold text-blue-700">3</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="math-scroll mt-3">
+                            \[
+                            X=1\cdot6\cdot3=18.
+                            \]
+                        </div>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            1,1,1\text{ のとき }X=30,
+                            \qquad
+                            1,1,3\text{ のとき }X=18
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）</p>
+
+                        <p class="mt-2">
+                            異なる3枚のカードの積が6になるのは、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            1\cdot2\cdot3=6
+                            \]
+                        </div>
+
+                        <p>
+                            の場合だけである。
+                        よって、取り出されるカードは1、2、3でなければならない。
+                        </p>
+
+                        <p class="mt-3">
+                            この3枚には6が含まれない。
+                            途中で代替処理が起きると、残っている最大カード6が取り出されるため、
+                            代替処理は一度も起きていない。
+                        </p>
+
+                        <p>
+                            したがって、サイコロの目は1、2、3が1回ずつ出ればよい。
+                            その並びは
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            3!=6
+                            \]
+                        </div>
+
+                        <p>
+                            通りである。
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac6{6^3}
+                            =
+                            \frac6{216}
+                            =
+                            \frac1{36}.
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$\displaystyle\frac1{36}$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）</p>
+
+                        <p class="mt-2">
+                            異なる3枚のカードの積が120になるのは、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            4\cdot5\cdot6=120
+                            \]
+                        </div>
+
+                        <p>
+                            の場合だけである。
+                            よって、取り出されるカードの集合は
+                            \[
+                            \{4,5,6\}
+                            \]
+                            でなければならない。
+                        </p>
+
+                        <p class="mt-3">
+                            サイコロの目が3回とも4、5、6のいずれかなら、
+                            取り出されるカードは常に4、5、6のいずれかである。
+                            同じ目が再び出ても、残っている最大カードが取り出されるため、
+                            3回終了時には4、5、6がすべて取り出される。
+                        </p>
+
+                        <p>
+                            逆に、1、2、3のいずれかが出ると、そのカードは箱に残っているので、
+                            その小さいカードが取り出され、$X=120$ にはならない。
+                        </p>
+
+                        <p class="mt-3">
+                            したがって、各回の目は4、5、6の3通りから選べるので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            3^3=27
+                            \]
+                        </div>
+
+                        <p>
+                            通りである。
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac{27}{6^3}
+                            =
+                            \frac{27}{216}
+                            =
+                            \frac18.
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$\displaystyle\frac18$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）</p>
+
+                        <p class="mt-2">
+                            $X$ が6の倍数になるためには、積に因数2と因数3が必要である。
+                            したがって、取り出された3枚の中に
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \text{少なくとも1枚の偶数}
+                            \]
+                            と
+                            \[
+                            \text{少なくとも1枚の3の倍数}
+                            \]
+                        </div>
+
+                        <p>
+                            が必要である。
+                        </p>
+
+                        <p class="mt-3">
+                            補集合を考える。
+                            $X$ が6の倍数でないのは、次のいずれかである。
+                        </p>
+
+                        <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                            <p class="font-bold text-slate-900">① 偶数を1枚も含まない場合</p>
+                            <p class="mt-2 text-sm">
+                                取り出される3枚は
+                                \[
+                                \{1,3,5\}
+                                \]
+                                に限られる。
+                            </p>
+                        </div>
+
+                        <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                            <p class="font-bold text-slate-900">② 3の倍数を1枚も含まない場合</p>
+                            <p class="mt-2 text-sm">
+                                1、2、4、5から3枚を選ぶので、
+                                \[
+                                \{1,2,4\},
+                                \quad
+                                \{1,2,5\},
+                                \quad
+                                \{1,4,5\},
+                                \quad
+                                \{2,4,5\}
+                                \]
+                                の4組である。
+                            </p>
+                        </div>
+
+                        <p class="mt-4">
+                            以上の5組はいずれも6を含まない。
+                            よって、代替処理は起こらず、各組についてサイコロの目は3枚を1回ずつ出す必要がある。
+                            各組の並びは
+                            \[
+                            3!=6
+                            \]
+                            通りである。
+                        </p>
+
+                        <p>
+                            また、①の集合は3を含み、②の集合は3の倍数を含まないので、
+                            ①と②は重ならない。
+                        </p>
+
+                        <p class="mt-3">
+                            したがって、$X$ が6の倍数でない並びは
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            5\cdot6=30
+                            \]
+                        </div>
+
+                        <p>
+                            通りである。
+                            よって、求める確率は
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            1-\frac{30}{216}
+                            &=
+                            \frac{186}{216}\\
+                            &=
+                            \frac{31}{36}.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$\displaystyle\frac{31}{36}$
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化① 3回の試行をシミュレーション</h3>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    3回のサイコロの目を選ぶと、各回でどのカードが取り出されるかを確認できます。
+                </p>
+
+                <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="grid gap-4 sm:grid-cols-3">
+                        <label class="block text-sm font-bold text-slate-700">
+                            1回目
+                            <select id="roll-1" class="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2">
+                                <option>1</option><option>2</option><option>3</option>
+                                <option>4</option><option>5</option><option>6</option>
+                            </select>
+                        </label>
+
+                        <label class="block text-sm font-bold text-slate-700">
+                            2回目
+                            <select id="roll-2" class="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2">
+                                <option selected>1</option><option>2</option><option>3</option>
+                                <option>4</option><option>5</option><option>6</option>
+                            </select>
+                        </label>
+
+                        <label class="block text-sm font-bold text-slate-700">
+                            3回目
+                            <select id="roll-3" class="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2">
+                                <option selected>1</option><option>2</option><option>3</option>
+                                <option>4</option><option>5</option><option>6</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="mt-4 flex flex-wrap justify-center gap-2">
+                        <button type="button" data-seq="1,1,1"
+                                class="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-bold text-blue-700 hover:bg-blue-50">
+                            1,1,1
+                        </button>
+                        <button type="button" data-seq="1,1,3"
+                                class="rounded-lg border border-violet-200 bg-white px-3 py-2 text-sm font-bold text-violet-700 hover:bg-violet-50">
+                            1,1,3
+                        </button>
+                        <button type="button" data-seq="4,4,4"
+                                class="rounded-lg border border-emerald-200 bg-white px-3 py-2 text-sm font-bold text-emerald-700 hover:bg-emerald-50">
+                            4,4,4
+                        </button>
+                    </div>
+
+                    <div class="mt-6 grid gap-4 sm:grid-cols-3" id="step-cards"></div>
+
+                    <div class="mt-5 grid gap-3 sm:grid-cols-3">
+                        <div class="rounded-lg border border-slate-200 bg-white p-4 text-center">
+                            <div class="text-xs font-bold text-slate-500">サイコロの目</div>
+                            <div id="rolls-display" class="mt-1 text-lg font-bold text-slate-800"></div>
+                        </div>
+
+                        <div class="rounded-lg border border-blue-200 bg-blue-50 p-4 text-center">
+                            <div class="text-xs font-bold text-blue-700">取り出したカード</div>
+                            <div id="removed-display" class="mt-1 text-lg font-bold text-blue-900"></div>
+                        </div>
+
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-center">
+                            <div class="text-xs font-bold text-emerald-700">積 X</div>
+                            <div id="product-display" class="mt-1 text-2xl font-bold text-emerald-900"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const selects = [
+                            document.getElementById("roll-1"),
+                            document.getElementById("roll-2"),
+                            document.getElementById("roll-3")
+                        ];
+
+                        function simulate(rolls) {
+                            const cards = [1,2,3,4,5,6];
+                            const removed = [];
+                            const steps = [];
+
+                            for (let i=0; i<3; i++) {
+                                const roll = rolls[i];
+                                const index = cards.indexOf(roll);
+                                let card;
+                                let reason;
+
+                                if (index !== -1) {
+                                    card = roll;
+                                    cards.splice(index,1);
+                                    reason = `カード${roll}がある`;
+                                } else {
+                                    card = Math.max(...cards);
+                                    cards.splice(cards.indexOf(card),1);
+                                    reason = `カード${roll}がないため最大${card}`;
+                                }
+
+                                removed.push(card);
+                                steps.push({
+                                    roll,
+                                    card,
+                                    reason,
+                                    remaining: [...cards]
+                                });
+                            }
+
+                            return {removed, steps};
+                        }
+
+                        function updateSimulator() {
+                            const rolls = selects.map(select => Number(select.value));
+                            const result = simulate(rolls);
+                            const product = result.removed.reduce((a,b)=>a*b,1);
+
+                            document.getElementById("rolls-display").textContent = rolls.join(" → ");
+                            document.getElementById("removed-display").textContent = result.removed.join(" → ");
+                            document.getElementById("product-display").textContent = product;
+
+                            const stepCards = document.getElementById("step-cards");
+                            stepCards.innerHTML = result.steps.map((step,index)=>`
+                                <div class="rounded-xl border border-slate-200 bg-white p-4">
+                                    <div class="text-sm font-bold text-slate-800">${index+1}回目</div>
+                                    <div class="mt-3 text-sm text-slate-600">出た目：<span class="font-bold text-blue-700">${step.roll}</span></div>
+                                    <div class="mt-1 text-sm text-slate-600">取り出す：<span class="font-bold text-rose-700">${step.card}</span></div>
+                                    <div class="mt-2 rounded-lg bg-slate-50 p-2 text-xs text-slate-600">${step.reason}</div>
+                                    <div class="mt-2 text-xs text-slate-500">残り：${step.remaining.join(", ")}</div>
+                                </div>
+                            `).join("");
+                        }
+
+                        selects.forEach(select => select.addEventListener("change",updateSimulator));
+
+                        document.querySelectorAll("[data-seq]").forEach(button => {
+                            button.addEventListener("click",()=>{
+                                const values = button.dataset.seq.split(",");
+                                values.forEach((value,index)=>{
+                                    selects[index].value = value;
+                                });
+                                updateSimulator();
+                            });
+                        });
+
+                        updateSimulator();
+                    });
+                </script>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化② 積Xの分布</h3>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    216通りすべてを集計したときの、積 $X$ ごとの並びの数です。
+                    棒をクリックすると、その積が6の倍数かどうかを確認できます。
+                </p>
+
+                <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="overflow-x-auto">
+                        <svg id="distribution-svg" width="900" height="430" viewBox="0 0 900 430"
+                             class="mx-auto h-auto min-w-[760px] max-w-[900px] rounded-xl border border-slate-200 bg-white"
+                             aria-label="積Xの確率分布"></svg>
+                    </div>
+
+                    <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4 text-center">
+                        <div class="text-xs font-bold text-blue-700">選択中</div>
+                        <div id="distribution-info" class="mt-2 text-lg font-bold text-blue-900">
+                            棒をクリックしてください
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const counts = [
+                            [6,6],[8,6],[10,6],[12,18],
+                            [15,6],[18,12],[20,6],[24,18],
+                            [30,25],[36,12],[40,6],[48,12],
+                            [60,25],[72,12],[90,19],[120,27]
+                        ];
+
+                        const svg = document.getElementById("distribution-svg");
+                        const W = 900;
+                        const H = 430;
+                        const left = 55;
+                        const right = 25;
+                        const top = 35;
+                        const bottom = 70;
+                        const chartW = W-left-right;
+                        const chartH = H-top-bottom;
+                        const maxCount = 30;
+                        const barGap = 8;
+                        const barW = chartW/counts.length-barGap;
+
+                        let markup = "";
+
+                        for (let y=0; y<=30; y+=5) {
+                            const py = top+chartH-(y/maxCount)*chartH;
+                            markup += `<line x1="${left}" y1="${py}" x2="${W-right}" y2="${py}" stroke="#f1f5f9" stroke-width="1"/>`;
+                            markup += `<text x="${left-10}" y="${py+4}" text-anchor="end" fill="#64748b" font-size="12">${y}</text>`;
+                        }
+
+                        markup += `<line x1="${left}" y1="${top+chartH}" x2="${W-right}" y2="${top+chartH}" stroke="#64748b" stroke-width="1.5"/>`;
+
+                        counts.forEach(([value,count],index)=>{
+                            const x = left+index*(chartW/counts.length)+barGap/2;
+                            const h = count/maxCount*chartH;
+                            const y = top+chartH-h;
+                            const isMultiple = value%6===0;
+                            const fill = isMultiple ? "#10b981" : "#94a3b8";
+
+                            markup += `
+                                <rect
+                                    class="distribution-bar"
+                                    data-value="${value}"
+                                    data-count="${count}"
+                                    data-multiple="${isMultiple}"
+                                    x="${x}"
+                                    y="${y}"
+                                    width="${barW}"
+                                    height="${h}"
+                                    rx="4"
+                                    fill="${fill}"
+                                    style="cursor:pointer"
+                                />
+                                <text x="${x+barW/2}" y="${y-7}" text-anchor="middle" fill="#334155" font-size="11" font-weight="700">${count}</text>
+                                <text x="${x+barW/2}" y="${top+chartH+22}" text-anchor="middle" fill="#475569" font-size="11">${value}</text>
+                            `;
+                        });
+
+                        markup += `<text x="${W/2}" y="${H-15}" text-anchor="middle" fill="#64748b" font-size="13" font-weight="700">積 X</text>`;
+                        markup += `<text x="18" y="${H/2}" text-anchor="middle" fill="#64748b" font-size="13" font-weight="700" transform="rotate(-90 18 ${H/2})">並びの数</text>`;
+
+                        svg.innerHTML = markup;
+
+                        svg.querySelectorAll(".distribution-bar").forEach(bar=>{
+                            bar.addEventListener("click",()=>{
+                                const value = Number(bar.dataset.value);
+                                const count = Number(bar.dataset.count);
+                                const isMultiple = bar.dataset.multiple === "true";
+                                document.getElementById("distribution-info").textContent =
+                                    `X=${value}：${count}通り、確率 ${count}/216、6の倍数 ${isMultiple ? "である" : "ではない"}`;
+                            });
+                        });
+                    });
+                </script>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">同じ目が出たら、同じカードを再び取り出す</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            カードは戻しません。同じカードがない場合は、その時点の最大カードを取り出します。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">$X=120$ で4、5、6が1回ずつ出る場合だけ数える</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            例えば4、4、4でも、取り出されるカードは4、6、5となり、積は120です。
+                            サイコロの目が毎回4、5、6のいずれかであればよいです。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">6の倍数になる条件を「6のカードを含む」と考える</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            6のカードがなくても、例えば2と3を含めば積は6の倍数です。
+                            必要なのは因数2と因数3です。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+            <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+
+            <p class="mt-4 text-sm text-blue-200">
+                数値だけでなく、「なぜその数え方になるのか」を説明してから開いてください。
+            </p>
+
+            <div class="mt-6 space-y-3">
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q1. 取り出された3枚に6が含まれないとき、なぜ代替処理は起きていないと言えますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        代替処理が初めて起きた時点では、カード6がまだ箱に残っていれば最大カード6が取り出されます。
+                        最終的な3枚に6が含まれないなら、そのような代替処理は一度も起きていません。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q2. $X=6$ のとき、なぜサイコロの目は1、2、3を1回ずつ出す必要がありますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        積6を作る異なる3枚は $\{1,2,3\}$ だけです。
+                        この集合には6がないため代替処理は起こらず、1、2、3のカードを直接1回ずつ取り出す必要があります。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q3. $X=120$ のとき、なぜサイコロの目は4、5、6を1回ずつでなくてもよいのですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        同じ目が再び出た場合は、残っている最大カードが代わりに取り出されます。
+                        3回とも目が4、5、6のいずれかなら、小さいカード1、2、3は取り出されず、
+                        3回で4、5、6の3枚がすべて取り出されます。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q4. 積が6の倍数になるために必要な、カードの性質は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        積に因数2と因数3が必要なので、
+                        「少なくとも1枚の偶数」と「少なくとも1枚の3の倍数」を含むことが必要です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q5. （4）で直接数えるより補集合を使う利点は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        6の倍数になる集合は多い一方、6の倍数にならない集合は
+                        「偶数なし」または「3の倍数なし」の5組だけです。
+                        少ない例外を数えて全体から引く方が、漏れや重複を防ぎやすくなります。
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+            <a href="no32.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                ← No.32へ
+            </a>
+            <a href="no34.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                No.34 →
+            </a>
+        </nav>
+    </main>
+
+    <footer class="py-10 text-center text-sm text-slate-500">
+        自彊館(理系)　夏期数学課題 解説サイト
+    </footer>
+</div>
+</body>
+</html>

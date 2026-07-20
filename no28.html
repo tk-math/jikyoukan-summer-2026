@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.28 小問集合 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: { matchFontHeight: false },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: .5rem; margin-bottom: .5rem; }
+        button:focus-visible, summary:focus-visible, a:focus-visible, input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+        ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+        <div class="p-7 sm:p-10">
+            <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+                <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.28</span>
+                <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+            </div>
+            <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">小問集合</h1>
+            <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                問題
+            </h2>
+
+            <div class="mt-4 space-y-6 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed">
+                <div>
+                    <p class="font-bold text-slate-900">（1）得点の推移と確率</p>
+                    <p class="mt-2">
+                        箱の中に、1、2、3と書かれたカードが1枚ずつある。
+                        1枚を取り出して元に戻す試行を5回行う。
+                        最初の得点は0であり、各回で取り出したカードの数を得点に加える。
+                    </p>
+
+                    <ol class="mt-3 list-[lower-roman] space-y-2 pl-6">
+                        <li>3回目の試行で得点が4になる確率を求めよ。</li>
+                        <li>3回目の試行で得点が5になり、それまでに得点が3になっていない確率を求めよ。</li>
+                        <li>何回かの試行で得点が5になり、それまでに得点が3になっていない確率を求めよ。</li>
+                    </ol>
+                </div>
+
+                <div class="border-t border-slate-200 pt-5">
+                    <p class="font-bold text-slate-900">（2）放物線の頂点と軌跡</p>
+                    <p class="mt-2">$xy$ 平面上に放物線</p>
+                    <div class="math-scroll">
+                        \[
+                        C:y=x^2+tx+t+1
+                        \]
+                    </div>
+                    <p>があり、Cの頂点をPとする。</p>
+
+                    <ol class="mt-3 list-[lower-roman] space-y-2 pl-6">
+                        <li>Pの座標を求めよ。</li>
+                        <li>Cと直線 $y=2x+3$ が異なる2点で交わるような $t$ の値の範囲を求めよ。</li>
+                        <li>$t$ が(ii)の範囲を変化するときのPの軌跡を求め、図示せよ。</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+                <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+                    <li>
+                        各回の出目は1、2、3のいずれかで、それぞれの確率は
+                        \[
+                        \frac13
+                        \]
+                        です。
+                    </li>
+                    <li>
+                        得点は毎回必ず増加するため、一度通過した得点へ戻ることはありません。
+                    </li>
+                    <li>
+                        「それまでに得点が3になっていない」は、途中の累積和が3にならないことを意味します。
+                    </li>
+                    <li>
+                        放物線の頂点は平方完成、異なる2交点は判別式、軌跡は媒介変数の消去で処理します。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                解説
+            </h2>
+
+            <p class="mt-4 text-sm leading-8 text-slate-600">
+                前半は累積得点の経路を数え、後半は頂点の座標を媒介表示して軌跡へつなげます。
+            </p>
+
+            <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+                <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">累積得点が指定される確率</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            各回の出目の和が指定された値になる並びを列挙します。
+                            途中の得点条件がある場合は、各並びの部分和まで確認します。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">「何回かの試行で初めて到達する」型</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            到達する回数ごとに場合分けします。
+                            得点は増加するため、得点5に到達する時刻は重複しません。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">頂点の軌跡</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            頂点Pを
+                            \[
+                            \mathrm{P}(X,Y)
+                            \]
+                            と置き、$X=-t/2$ から $t$ を消去します。
+                            最後に $t$ の範囲を $X$ の範囲へ移します。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（1）部分和が3になる経路を除く</strong><br>
+                        例えば $(1,2,2)$ は合計5ですが、2回目終了時点で得点が3になるため除外します。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（1）(iii) 到達回を2回目・3回目・4回目に分ける</strong><br>
+                        5回目に初めて得点5になるには全て1ですが、3回目に得点3となるので条件を満たしません。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（2）軌跡は式だけでなく範囲も必要</strong><br>
+                        放物線の式を得ても、交点条件から
+                        \[
+                        X&lt;-3\quad\text{または}\quad X&gt;-1
+                        \]
+                        という範囲を付ける必要があります。
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+
+                <div class="mt-4 space-y-8 text-slate-700">
+                    <div>
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）(i)</p>
+
+                        <p class="mt-2">
+                            3回目終了時の得点が4になるには、3回の出目の和が4になればよい。
+                            出目は1、2、3のいずれかなので、該当する並びは
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            (1,1,2),\qquad
+                            (1,2,1),\qquad
+                            (2,1,1)
+                            \]
+                        </div>
+
+                        <p>
+                            の3通りである。3回の出目は全部で
+                            \[
+                            3^3=27
+                            \]
+                            通りなので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac3{27}=\frac19.
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$\displaystyle \frac19$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）(ii)</p>
+
+                        <p class="mt-2">
+                            3回の出目の和が5となる並びを列挙し、途中の得点が3になるものを除く。
+                        </p>
+
+                        <div class="mt-4 overflow-x-auto">
+                            <table class="w-full min-w-[560px] border-collapse text-center text-sm">
+                                <thead>
+                                    <tr class="bg-slate-100">
+                                        <th class="border border-slate-300 px-3 py-2">出目</th>
+                                        <th class="border border-slate-300 px-3 py-2">途中の得点</th>
+                                        <th class="border border-slate-300 px-3 py-2">判定</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td class="border border-slate-300 px-3 py-2">(1,1,3)</td><td class="border border-slate-300 px-3 py-2">1 → 2 → 5</td><td class="border border-slate-300 px-3 py-2 font-bold text-emerald-700">可</td></tr>
+                                    <tr><td class="border border-slate-300 px-3 py-2">(1,2,2)</td><td class="border border-slate-300 px-3 py-2">1 → 3 → 5</td><td class="border border-slate-300 px-3 py-2 font-bold text-red-700">不可</td></tr>
+                                    <tr><td class="border border-slate-300 px-3 py-2">(1,3,1)</td><td class="border border-slate-300 px-3 py-2">1 → 4 → 5</td><td class="border border-slate-300 px-3 py-2 font-bold text-emerald-700">可</td></tr>
+                                    <tr><td class="border border-slate-300 px-3 py-2">(2,1,2)</td><td class="border border-slate-300 px-3 py-2">2 → 3 → 5</td><td class="border border-slate-300 px-3 py-2 font-bold text-red-700">不可</td></tr>
+                                    <tr><td class="border border-slate-300 px-3 py-2">(2,2,1)</td><td class="border border-slate-300 px-3 py-2">2 → 4 → 5</td><td class="border border-slate-300 px-3 py-2 font-bold text-emerald-700">可</td></tr>
+                                    <tr><td class="border border-slate-300 px-3 py-2">(3,1,1)</td><td class="border border-slate-300 px-3 py-2">3 → 4 → 5</td><td class="border border-slate-300 px-3 py-2 font-bold text-red-700">不可</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p class="mt-4">
+                            条件を満たす並びは3通りなので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac3{3^3}=\frac19.
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$\displaystyle \frac19$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）(iii)</p>
+
+                        <p class="mt-2">
+                            得点は毎回増加するので、得点5になる回数ごとに分ける。
+                        </p>
+
+                        <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                            <p class="font-bold text-slate-900">2回目に得点5になる場合</p>
+                            <p class="mt-2 text-sm">
+                                出目の和が5となる並びは $(2,3),(3,2)$ であるが、
+                                $(3,2)$ は1回目に得点3となるため除く。
+                            </p>
+                            <div class="math-scroll mt-2">
+                                \[
+                                \text{確率}=\frac1{3^2}=\frac19.
+                                \]
+                            </div>
+                        </div>
+
+                        <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                            <p class="font-bold text-slate-900">3回目に得点5になる場合</p>
+                            <p class="mt-2 text-sm">
+                                （ii）より、条件を満たす並びは3通りである。
+                            </p>
+                            <div class="math-scroll mt-2">
+                                \[
+                                \text{確率}=\frac3{3^3}=\frac19.
+                                \]
+                            </div>
+                        </div>
+
+                        <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                            <p class="font-bold text-slate-900">4回目に得点5になる場合</p>
+                            <p class="mt-2 text-sm">
+                                4個の出目の和が5になるには、1が3個、2が1個である。
+                                4通りの並びのうち、途中で得点3にならないのは
+                                \[
+                                (1,1,2,1)
+                                \]
+                                のみである。
+                            </p>
+                            <div class="math-scroll mt-2">
+                                \[
+                                \text{確率}=\frac1{3^4}=\frac1{81}.
+                                \]
+                            </div>
+                        </div>
+
+                        <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                            <p class="font-bold text-slate-900">5回目に得点5になる場合</p>
+                            <p class="mt-2 text-sm">
+                                出目は $(1,1,1,1,1)$ のみだが、3回目に得点3となるため条件を満たさない。
+                            </p>
+                        </div>
+
+                        <p class="mt-4">
+                            以上は互いに排反なので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac19+\frac19+\frac1{81}
+                            =
+                            \frac{19}{81}.
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$\displaystyle \frac{19}{81}$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）(i)</p>
+
+                        <p class="mt-2">
+                            平方完成すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            y
+                            &=
+                            x^2+tx+t+1\\
+                            &=
+                            \left(x+\frac t2\right)^2
+                            -\frac{t^2}{4}
+                            +t+1.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>
+                            よって、頂点Pの座標は
+                        </p>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            \mathrm{P}
+                            \left(
+                            -\frac t2,\,
+                            -\frac{t^2}{4}+t+1
+                            \right)
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）(ii)</p>
+
+                        <p class="mt-2">
+                            Cと直線 $y=2x+3$ の交点の $x$ 座標は、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            x^2+tx+t+1=2x+3
+                            \]
+                        </div>
+
+                        <p>
+                            すなわち、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            x^2+(t-2)x+(t-2)=0
+                            \]
+                        </div>
+
+                        <p>
+                            の解である。異なる2点で交わるための条件は、判別式を $D$ として
+                        \[
+                        D&gt;0
+                        \]
+                        である。
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            D
+                            &=
+                            (t-2)^2-4(t-2)\\
+                            &=
+                            (t-2)(t-6).
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            (t-2)(t-6)&gt;0.
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：
+                            $\displaystyle t&lt;2\quad\text{または}\quad t&gt;6$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）(iii)</p>
+
+                        <p class="mt-2">
+                            頂点Pの座標を $(X,Y)$ とすると、（i）より
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            X=-\frac t2,
+                            \qquad
+                            Y=-\frac{t^2}{4}+t+1.
+                            \]
+                        </div>
+
+                        <p>
+                            第1式より
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            t=-2X.
+                            \]
+                        </div>
+
+                        <p>
+                            これを第2式に代入すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            Y
+                            &=
+                            -\frac{(-2X)^2}{4}
+                            -2X+1\\
+                            &=
+                            -X^2-2X+1\\
+                            &=
+                            -(X+1)^2+2.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            また、（ii）の範囲をXの範囲へ直す。
+                        </p>
+
+                        <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                            <div class="math-scroll">
+                                \[
+                                t&lt;2
+                                \quad\Longleftrightarrow\quad
+                                -2X&lt;2
+                                \quad\Longleftrightarrow\quad
+                                X&gt;-1,
+                                \]
+                                \[
+                                t&gt;6
+                                \quad\Longleftrightarrow\quad
+                                -2X&gt;6
+                                \quad\Longleftrightarrow\quad
+                                X&lt;-3.
+                                \]
+                            </div>
+                        </div>
+
+                        <p class="mt-4">
+                            したがって、Pの軌跡は
+                        </p>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            Y=-X^2-2X+1
+                            \]
+                            のうち、
+                            \[
+                            X&lt;-3
+                            \quad\text{または}\quad
+                            X&gt;-1
+                            \]
+                            の部分
+                        </div>
+
+                        <p class="mt-3 text-sm text-slate-600">
+                            端点に対応する $X=-3,-1$ は含まれません。
+                            それぞれの点は
+                            \[
+                            (-3,-2),\qquad(-1,2)
+                            \]
+                            です。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化① 得点の経路</h3>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    緑色の経路は、得点3を通らずに得点5へ到達する経路です。
+                </p>
+
+                <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="overflow-x-auto">
+                        <svg width="760" height="390" viewBox="0 0 760 390"
+                             class="mx-auto h-auto w-full max-w-[760px] rounded-xl border border-slate-200 bg-white"
+                             aria-label="得点0から得点5へ進む経路図">
+                            <g stroke="#e2e8f0" stroke-width="1">
+                                <line x1="80" y1="330" x2="700" y2="330"/>
+                                <line x1="80" y1="275" x2="700" y2="275"/>
+                                <line x1="80" y1="220" x2="700" y2="220"/>
+                                <line x1="80" y1="165" x2="700" y2="165"/>
+                                <line x1="80" y1="110" x2="700" y2="110"/>
+                                <line x1="80" y1="55" x2="700" y2="55"/>
+                            </g>
+
+                            <g fill="#64748b" font-size="13" font-weight="700">
+                                <text x="45" y="335">0</text>
+                                <text x="45" y="280">1</text>
+                                <text x="45" y="225">2</text>
+                                <text x="45" y="170">3</text>
+                                <text x="45" y="115">4</text>
+                                <text x="45" y="60">5</text>
+
+                                <text x="95" y="370">開始</text>
+                                <text x="220" y="370">1回目</text>
+                                <text x="355" y="370">2回目</text>
+                                <text x="490" y="370">3回目</text>
+                                <text x="625" y="370">4回目</text>
+                            </g>
+
+                            <line x1="110" y1="330" x2="245" y2="220" stroke="#10b981" stroke-width="4"/>
+                            <line x1="245" y1="220" x2="380" y2="55" stroke="#10b981" stroke-width="4"/>
+
+                            <line x1="110" y1="330" x2="245" y2="275" stroke="#10b981" stroke-width="4"/>
+                            <line x1="245" y1="275" x2="380" y2="220" stroke="#10b981" stroke-width="4"/>
+                            <line x1="380" y1="220" x2="515" y2="55" stroke="#10b981" stroke-width="4"/>
+
+                            <line x1="110" y1="330" x2="245" y2="275" stroke="#10b981" stroke-width="4"/>
+                            <line x1="245" y1="275" x2="380" y2="110" stroke="#10b981" stroke-width="4"/>
+                            <line x1="380" y1="110" x2="515" y2="55" stroke="#10b981" stroke-width="4"/>
+
+                            <line x1="110" y1="330" x2="245" y2="220" stroke="#10b981" stroke-width="4"/>
+                            <line x1="245" y1="220" x2="380" y2="110" stroke="#10b981" stroke-width="4"/>
+                            <line x1="380" y1="110" x2="515" y2="55" stroke="#10b981" stroke-width="4"/>
+
+                            <line x1="110" y1="330" x2="245" y2="275" stroke="#10b981" stroke-width="4"/>
+                            <line x1="245" y1="275" x2="380" y2="220" stroke="#10b981" stroke-width="4"/>
+                            <line x1="380" y1="220" x2="515" y2="110" stroke="#10b981" stroke-width="4"/>
+                            <line x1="515" y1="110" x2="650" y2="55" stroke="#10b981" stroke-width="4"/>
+
+                            <circle cx="110" cy="330" r="7" fill="#111827"/>
+                            <circle cx="245" cy="275" r="6" fill="#2563eb"/>
+                            <circle cx="245" cy="220" r="6" fill="#2563eb"/>
+                            <circle cx="380" cy="220" r="6" fill="#2563eb"/>
+                            <circle cx="380" cy="110" r="6" fill="#2563eb"/>
+                            <circle cx="380" cy="55" r="7" fill="#10b981"/>
+                            <circle cx="515" cy="55" r="7" fill="#10b981"/>
+                            <circle cx="650" cy="55" r="7" fill="#10b981"/>
+
+                            <circle cx="245" cy="165" r="9" fill="white" stroke="#ef4444" stroke-width="3"/>
+                            <text x="265" y="170" fill="#dc2626" font-size="13" font-weight="700">得点3は通過不可</text>
+                        </svg>
+                    </div>
+
+                    <div class="mt-4 grid gap-3 sm:grid-cols-3">
+                        <div class="rounded-lg border border-emerald-200 bg-white p-3 text-center">
+                            <div class="text-xs font-bold text-emerald-700">2回目に到達</div>
+                            <div class="mt-1 text-lg font-bold text-emerald-800">1通り</div>
+                        </div>
+                        <div class="rounded-lg border border-emerald-200 bg-white p-3 text-center">
+                            <div class="text-xs font-bold text-emerald-700">3回目に到達</div>
+                            <div class="mt-1 text-lg font-bold text-emerald-800">3通り</div>
+                        </div>
+                        <div class="rounded-lg border border-emerald-200 bg-white p-3 text-center">
+                            <div class="text-xs font-bold text-emerald-700">4回目に到達</div>
+                            <div class="mt-1 text-lg font-bold text-emerald-800">1通り</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化② 頂点Pと軌跡</h3>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    $t$ を動かすと放物線Cの頂点Pが移動します。
+                    ただし、直線と異なる2点で交わる範囲だけを青色で表示します。
+                </p>
+
+                <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="mx-auto max-w-xl">
+                        <label for="t-slider" class="mb-2 block text-sm font-medium text-slate-700">
+                            t：
+                            <span id="t-display" class="text-lg font-bold text-blue-700">0.000</span>
+                        </label>
+
+                        <input id="t-slider" type="range" min="-6" max="10" step="0.01" value="0"
+                               class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600">
+
+                        <div class="mt-3 flex flex-wrap justify-center gap-2">
+                            <button type="button" data-t="0"
+                                    class="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-bold text-blue-700 hover:bg-blue-50">
+                                t = 0
+                            </button>
+                            <button type="button" data-t="1.99"
+                                    class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-100">
+                                t ≈ 2
+                            </button>
+                            <button type="button" data-t="6.01"
+                                    class="rounded-lg border border-violet-200 bg-white px-3 py-2 text-sm font-bold text-violet-700 hover:bg-violet-50">
+                                t ≈ 6
+                            </button>
+                            <button type="button" data-t="8"
+                                    class="rounded-lg border border-emerald-200 bg-white px-3 py-2 text-sm font-bold text-emerald-700 hover:bg-emerald-50">
+                                t = 8
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 grid gap-6 lg:grid-cols-2">
+                        <div>
+                            <h4 class="text-center font-bold text-slate-800">放物線Cと直線</h4>
+                            <svg id="family-svg" width="590" height="430" viewBox="0 0 590 430"
+                                 class="mt-3 mx-auto h-auto w-full max-w-[590px] rounded-xl border border-slate-200 bg-white"
+                                 aria-label="放物線Cと直線y=2x+3">
+                                <g id="family-grid"></g>
+                                <line id="family-x-axis" stroke="#64748b" stroke-width="1.5"></line>
+                                <line id="family-y-axis" stroke="#64748b" stroke-width="1.5"></line>
+                                <path id="family-parabola" fill="none" stroke="#2563eb" stroke-width="3"></path>
+                                <path id="family-line" fill="none" stroke="#e11d48" stroke-width="2.5"></path>
+                                <circle id="family-vertex" r="7" fill="#7c3aed"></circle>
+                                <text id="family-p-label" fill="#6d28d9" font-size="14" font-weight="700">P</text>
+                            </svg>
+                        </div>
+
+                        <div>
+                            <h4 class="text-center font-bold text-slate-800">頂点Pの軌跡</h4>
+                            <svg id="locus-svg" width="590" height="430" viewBox="0 0 590 430"
+                                 class="mt-3 mx-auto h-auto w-full max-w-[590px] rounded-xl border border-slate-200 bg-white"
+                                 aria-label="頂点Pの軌跡">
+                                <g id="locus-grid"></g>
+                                <line id="locus-x-axis" stroke="#64748b" stroke-width="1.5"></line>
+                                <line id="locus-y-axis" stroke="#64748b" stroke-width="1.5"></line>
+                                <path id="locus-all" fill="none" stroke="#cbd5e1" stroke-width="2.5" stroke-dasharray="7 5"></path>
+                                <path id="locus-left" fill="none" stroke="#2563eb" stroke-width="4"></path>
+                                <path id="locus-right" fill="none" stroke="#2563eb" stroke-width="4"></path>
+                                <circle cx="195" cy="310" r="7" fill="white" stroke="#ef4444" stroke-width="3"></circle>
+                                <circle cx="335" cy="110" r="7" fill="white" stroke="#ef4444" stroke-width="3"></circle>
+                                <circle id="locus-current" r="8" fill="#7c3aed"></circle>
+                                <text id="locus-current-label" fill="#6d28d9" font-size="13" font-weight="700"></text>
+                                <text x="150" y="335" fill="#dc2626" font-size="12" font-weight="700">(-3,-2) 除外</text>
+                                <text x="345" y="90" fill="#dc2626" font-size="12" font-weight="700">(-1,2) 除外</text>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 grid gap-3 sm:grid-cols-3">
+                        <div class="rounded-lg border border-slate-200 bg-white p-3 text-center">
+                            <div class="text-xs font-bold text-slate-500">頂点P</div>
+                            <div id="vertex-display" class="mt-1 text-sm font-bold text-violet-700"></div>
+                        </div>
+                        <div class="rounded-lg border border-blue-200 bg-blue-50 p-3 text-center">
+                            <div class="text-xs font-bold text-blue-700">判別式</div>
+                            <div id="disc-display" class="mt-1 text-lg font-bold text-blue-800"></div>
+                        </div>
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-center">
+                            <div class="text-xs font-bold text-emerald-700">交点の状態</div>
+                            <div id="intersection-status" class="mt-1 text-sm font-bold text-emerald-800"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const slider = document.getElementById("t-slider");
+                        const tDisplay = document.getElementById("t-display");
+
+                        function setupGrid(groupId, sx, sy, xVals, yVals, width, height) {
+                            let markup = "";
+                            for (const x of xVals) {
+                                markup += `<line x1="${sx(x)}" y1="0" x2="${sx(x)}" y2="${height}" stroke="#f1f5f9" stroke-width="1"/>`;
+                            }
+                            for (const y of yVals) {
+                                markup += `<line x1="0" y1="${sy(y)}" x2="${width}" y2="${sy(y)}" stroke="#f1f5f9" stroke-width="1"/>`;
+                            }
+                            document.getElementById(groupId).innerHTML = markup;
+                        }
+
+                        const FW = 590, FH = 430;
+                        const fxMin = -7, fxMax = 7, fyMin = -12, fyMax = 16;
+                        const fsx = x => (x-fxMin)/(fxMax-fxMin)*FW;
+                        const fsy = y => FH-(y-fyMin)/(fyMax-fyMin)*FH;
+
+                        setupGrid(
+                            "family-grid",
+                            fsx, fsy,
+                            [-6,-4,-2,0,2,4,6],
+                            [-10,-5,0,5,10,15],
+                            FW,FH
+                        );
+
+                        const setFamilyLine = (id,x1,y1,x2,y2) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("x1",fsx(x1));
+                            el.setAttribute("y1",fsy(y1));
+                            el.setAttribute("x2",fsx(x2));
+                            el.setAttribute("y2",fsy(y2));
+                        };
+
+                        setFamilyLine("family-x-axis",fxMin,0,fxMax,0);
+                        setFamilyLine("family-y-axis",0,fyMin,0,fyMax);
+
+                        let linePath = "";
+                        for (let i=0;i<=200;i++) {
+                            const x=fxMin+(fxMax-fxMin)*i/200;
+                            const y=2*x+3;
+                            linePath += `${i===0?"M":"L"} ${fsx(x)} ${fsy(y)} `;
+                        }
+                        document.getElementById("family-line").setAttribute("d",linePath);
+
+                        const LW = 590, LH = 430;
+                        const lxMin = -7, lxMax = 4, lyMin = -14, lyMax = 6;
+                        const lsx = x => (x-lxMin)/(lxMax-lxMin)*LW;
+                        const lsy = y => LH-(y-lyMin)/(lyMax-lyMin)*LH;
+
+                        setupGrid(
+                            "locus-grid",
+                            lsx, lsy,
+                            [-6,-5,-4,-3,-2,-1,0,1,2,3],
+                            [-12,-8,-4,0,4],
+                            LW,LH
+                        );
+
+                        const setLocusLine = (id,x1,y1,x2,y2) => {
+                            const el=document.getElementById(id);
+                            el.setAttribute("x1",lsx(x1));
+                            el.setAttribute("y1",lsy(y1));
+                            el.setAttribute("x2",lsx(x2));
+                            el.setAttribute("y2",lsy(y2));
+                        };
+
+                        setLocusLine("locus-x-axis",lxMin,0,lxMax,0);
+                        setLocusLine("locus-y-axis",0,lyMin,0,lyMax);
+
+                        function locusY(x) {
+                            return -x*x-2*x+1;
+                        }
+
+                        function buildPath(start,end,sx,sy,fn,steps) {
+                            let d="";
+                            for (let i=0;i<=steps;i++) {
+                                const x=start+(end-start)*i/steps;
+                                d += `${i===0?"M":"L"} ${sx(x)} ${sy(fn(x))} `;
+                            }
+                            return d;
+                        }
+
+                        document.getElementById("locus-all").setAttribute(
+                            "d", buildPath(lxMin,lxMax,lsx,lsy,locusY,300)
+                        );
+                        document.getElementById("locus-left").setAttribute(
+                            "d", buildPath(lxMin,-3.001,lsx,lsy,locusY,130)
+                        );
+                        document.getElementById("locus-right").setAttribute(
+                            "d", buildPath(-0.999,lxMax,lsx,lsy,locusY,130)
+                        );
+
+                        const excluded1 = document.querySelector('#locus-svg circle[cx="195"]');
+                        const excluded2 = document.querySelector('#locus-svg circle[cx="335"]');
+                        excluded1.setAttribute("cx",lsx(-3));
+                        excluded1.setAttribute("cy",lsy(-2));
+                        excluded2.setAttribute("cx",lsx(-1));
+                        excluded2.setAttribute("cy",lsy(2));
+
+                        function update() {
+                            const t=parseFloat(slider.value);
+                            const vx=-t/2;
+                            const vy=-t*t/4+t+1;
+                            const D=(t-2)*(t-6);
+
+                            let parabolaPath="";
+                            for (let i=0;i<=260;i++) {
+                                const x=fxMin+(fxMax-fxMin)*i/260;
+                                const y=x*x+t*x+t+1;
+                                parabolaPath += `${i===0?"M":"L"} ${fsx(x)} ${fsy(y)} `;
+                            }
+                            document.getElementById("family-parabola").setAttribute("d",parabolaPath);
+
+                            const vertex=document.getElementById("family-vertex");
+                            vertex.setAttribute("cx",fsx(vx));
+                            vertex.setAttribute("cy",fsy(vy));
+
+                            const pLabel=document.getElementById("family-p-label");
+                            pLabel.setAttribute("x",fsx(vx)+9);
+                            pLabel.setAttribute("y",fsy(vy)-8);
+
+                            const current=document.getElementById("locus-current");
+                            current.setAttribute("cx",lsx(vx));
+                            current.setAttribute("cy",lsy(vy));
+
+                            const currentLabel=document.getElementById("locus-current-label");
+                            currentLabel.setAttribute("x",lsx(vx)+10);
+                            currentLabel.setAttribute("y",lsy(vy)-10);
+                            currentLabel.textContent=`(${vx.toFixed(2)}, ${vy.toFixed(2)})`;
+
+                            tDisplay.textContent=t.toFixed(2);
+                            document.getElementById("vertex-display").textContent=
+                                `(${vx.toFixed(3)}, ${vy.toFixed(3)})`;
+                            document.getElementById("disc-display").textContent=D.toFixed(4);
+
+                            const status=document.getElementById("intersection-status");
+                            if (D>0) {
+                                status.textContent="異なる2点で交わる";
+                                status.className="mt-1 text-sm font-bold text-emerald-800";
+                                current.setAttribute("fill","#7c3aed");
+                            } else if (Math.abs(D)<0.03) {
+                                status.textContent="接する";
+                                status.className="mt-1 text-sm font-bold text-amber-800";
+                                current.setAttribute("fill","#f59e0b");
+                            } else {
+                                status.textContent="実数交点なし";
+                                status.className="mt-1 text-sm font-bold text-red-700";
+                                current.setAttribute("fill","#94a3b8");
+                            }
+                        }
+
+                        slider.addEventListener("input",update);
+                        document.querySelectorAll("[data-t]").forEach(button=>{
+                            button.addEventListener("click",()=>{
+                                slider.value=button.dataset.t;
+                                update();
+                            });
+                        });
+
+                        update();
+                    });
+                </script>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">合計だけを見て途中の得点を確認しない</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            「それまでに得点3になっていない」という条件では、各回終了時の部分和を確認します。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">5回の試行だから分母を常に $3^5$ にする</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            到達回ごとの確率で計算する場合、到達後の出目は自由なので
+                            \[
+                            \frac1{3^2},\quad\frac3{3^3},\quad\frac1{3^4}
+                            \]
+                            として足して構いません。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">軌跡の方程式だけを書いて終える</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            本問では $t$ の範囲が限定されるため、軌跡は放物線全体ではありません。
+                            $X&lt;-3$ または $X&gt;-1$ を必ず付けます。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+            <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+
+            <p class="mt-4 text-sm text-blue-200">
+                質問をクリックし、答えを頭の中で作ってから開いてください。
+            </p>
+
+            <div class="mt-6 space-y-3">
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q1. 3回の出目の和が4になる並びは何通りですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        $(1,1,2)$ の並べ替えなので3通りです。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q2. 3回目に得点5となり、途中で3を通らない並びは何通りですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        (1,1,3),\quad(1,3,1),\quad(2,2,1)
+                        \]
+                        の3通りです。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q3. 何回かの試行で得点5になり、途中で3を通らない確率は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \frac19+\frac19+\frac1{81}
+                        =
+                        \frac{19}{81}
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q4. 放物線Cの頂点Pの座標は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \mathrm{P}
+                        \left(
+                        -\frac t2,\,
+                        -\frac{t^2}{4}+t+1
+                        \right)
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q5. 頂点Pの軌跡を答えてください。</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        Y=-X^2-2X+1
+                        \]
+                        のうち、
+                        \[
+                        X&lt;-3
+                        \quad\text{または}\quad
+                        X&gt;-1
+                        \]
+                        の部分です。
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+            <a href="no27.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                ← No.27へ
+            </a>
+            <a href="no29.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                No.29 →
+            </a>
+        </nav>
+    </main>
+
+    <footer class="py-10 text-center text-sm text-slate-500">
+        自彊館(理系)　夏期数学課題 解説サイト
+    </footer>
+</div>
+</body>
+</html>

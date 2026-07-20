@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.13 対数関数 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+        
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.13</span>
+                    <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">対数関数</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 text-slate-700 leading-relaxed mt-4">
+                    <p>$x$ の方程式</p>
+                    <div class="math-scroll">
+                        \[ (\log_2 x)^2+\log_2 x^2+a=0 \quad \cdots(*) \]
+                    </div>
+                    <p>がある。ただし，$a$ は実数の定数である。</p>
+                    <ol class="list-decimal pl-6 mt-3 space-y-4">
+                        <li>$s=\log_2 x$ とおくとき，$(*)$ を $s$ を用いて表せ。</li>
+                        <li>$(*)$ が異なる2つの実数解をもつような $a$ の値の範囲を求めよ。</li>
+                        <li>(2)のときの $(*)$ の解を $x=\alpha$ ，$\beta \ (\alpha<\beta)$ とする。<br>
+                        $t$ の方程式
+                        \[ 2^{2t+2}-5\cdot2^t+b=0 \quad (b \mbox{ は実数の定数}) \]
+                        の解が $t=\log_2 \alpha$ ，$\log_2 \beta$ となるような $a$ ，$b$ の値を求めよ。</li>
+                    </ol>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                    <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                        <li><strong>真数条件の確認：</strong> $\log_2 x$ と $\log_2 x^2$ があるため、真数は正（$x>0$ かつ $x^2>0$）。まとめると $x>0$ が大前提となります。</li>
+                        <li><strong>変数の置き換え：</strong> 前半は $s = \log_2 x$ の2次方程式、後半は $X = 2^t$ の2次方程式に帰着させます。</li>
+                        <li><strong>解の対応関係：</strong> $\alpha, \beta$ は $x$ の解ですが、$s$ の方程式の解は $s_1 = \log_2 \alpha, s_2 = \log_2 \beta$ となります。これがそのまま後半の $t$ の解になるという構造を読み取ります。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    問題を解くための考え方から、答案、検算、発展までを順に確認します。
+                </p>
+
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">$\log_a x^2$ の処理と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                真数条件 $x>0$ を確認した上で、肩の数字を前に下ろして <strong>$2\log_a x$</strong> と変形し、同じパーツ（$\log_a x$）を揃えます。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">方程式の解の個数と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                $s = \log_2 x$ と置いたとき、底 $2 > 1$ より $x>0$ において $x$ と $s$ は<strong>1対1に対応</strong>します。したがって、$x$ の解の個数はそのまま $s$ の2次方程式の解の個数（判別式 $D$）と一致します。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">2つの解の「積」や「和」と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                <strong>「解と係数の関係」</strong>を利用して橋渡しをします。本問は、前半の $s$ の方程式での解と係数の関係と、後半の $X$ の方程式での解と係数の関係を連立させることで、一気に $a$ と $b$ が求まる美しい構造になっています。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(1)(2) の計算手順</strong><br>
+                            $x>0$ より $\log_2 x^2 = 2\log_2 x$ となり、$(*)$ は $(\log_2 x)^2 + 2\log_2 x + a = 0$ になります。$s = \log_2 x$ とおけば $s^2 + 2s + a = 0$ です。この2次方程式が異なる2つの実数解をもつ条件として、判別式 $D/4 = 1 - a > 0$ を解きます。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(3) 前半と後半のリンク</strong><br>
+                            前半の $s$ の方程式の解を $s_1 = \log_2 \alpha$, $s_2 = \log_2 \beta$ とおくと、解と係数の関係から $s_1 + s_2 = -2$ と $s_1 s_2 = a$ が得られます。<br>
+                            後半の方程式 $2^{2t+2} - 5\cdot 2^t + b = 0$ を $X = 2^t$ とおいて $4X^2 - 5X + b = 0$ とします。<br>
+                            この解は $X_1 = 2^{s_1} = 2^{\log_2 \alpha} = \alpha$、同様に $X_2 = \beta$ となります。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(3) $a, b$ を決定する仕上げ</strong><br>
+                            後半の $X$ の方程式における解と係数の関係から、$\alpha + \beta = 5/4$、$\alpha\beta = b/4$ が成り立ちます。<br>
+                            前半の $s_1 + s_2 = \log_2\alpha + \log_2\beta = \log_2(\alpha\beta) = -2$ を利用すると、$\alpha\beta = 2^{-2} = 1/4$ が確定します。これにより $b = 1$ が出ます。<br>
+                            $b=1$ を元の式 $4X^2 - 5X + 1 = 0$ に戻して解くと $\alpha, \beta$ の値が直接求まり、そこから $s_1, s_2$、そして $a = s_1 s_2$ が芋づる式に求まります。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <!-- (1) -->
+                        <div>
+                            <p class="font-bold text-blue-800 border-b border-slate-200 pb-1">（1）</p>
+                            <p class="mt-2">
+                                対数の真数条件より、$x > 0$ かつ $x^2 > 0$ であるから、$x > 0$。<br>
+                                これより、$\log_2 x^2 = 2\log_2 x$ と変形できる。よって $(*)$ は
+                            </p>
+                            <div class="math-scroll">
+                                \[ (\log_2 x)^2 + 2\log_2 x + a = 0 \]
+                            </div>
+                            <p class="mt-2">
+                                $s = \log_2 x$ とおくと、
+                            </p>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $s^2 + 2s + a = 0$
+                            </div>
+                        </div>
+
+                        <!-- (2) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold text-blue-800 border-b border-slate-200 pb-1">（2）</p>
+                            <p class="mt-2">
+                                $x > 0$ において、$s = \log_2 x$ はすべての実数値をとる。<br>
+                                底 $2 > 1$ より $x$ と $s$ は1対1に対応するため、$(*)$ が異なる2つの実数解をもつ条件は、(1)で求めた $s$ の2次方程式が異なる2つの実数解をもつことと同値である。<br>
+                                $s^2 + 2s + a = 0$ の判別式を $D$ とすると、$D > 0$ であればよいから、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \frac{D}{4} = 1^2 - 1 \cdot a &> 0 \\
+                                1 - a &> 0 \\
+                                a &< 1
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $a < 1$
+                            </div>
+                        </div>
+
+                        <!-- (3) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold text-blue-800 border-b border-slate-200 pb-1">（3）</p>
+                            <p class="mt-2">
+                                方程式 $s^2 + 2s + a = 0$ の2つの解を $s_1, s_2 \ (s_1 < s_2)$ とする。<br>
+                                $\alpha < \beta$ であり、底 $2 > 1$ より単調増加であるから、$s_1 = \log_2 \alpha, \ s_2 = \log_2 \beta$ である。<br>
+                                解と係数の関係より、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                s_1 + s_2 &= -2 \quad \cdots \text{①} \\
+                                s_1 s_2 &= a \quad \cdots \text{②}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-4">
+                                一方、$t$ の方程式 $2^{2t+2} - 5\cdot 2^t + b = 0$ を変形する。
+                            </p>
+                            <div class="math-scroll">
+                                \[ 4(2^t)^2 - 5\cdot 2^t + b = 0 \]
+                            </div>
+                            <p class="mt-2">
+                                $X = 2^t$ とおくと、$4X^2 - 5X + b = 0$ となる。<br>
+                                この方程式の解は、条件より $t = \log_2 \alpha = s_1$ および $t = \log_2 \beta = s_2$ を代入したものであるから、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                X &= 2^{s_1} = 2^{\log_2 \alpha} = \alpha \\
+                                X &= 2^{s_2} = 2^{\log_2 \beta} = \beta
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                すなわち、2次方程式 $4X^2 - 5X + b = 0$ の解は $\alpha$ と $\beta$ である。<br>
+                                解と係数の関係より、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \alpha + \beta &= \frac{5}{4} \quad \cdots \text{③} \\
+                                \alpha \beta &= \frac{b}{4} \quad \cdots \text{④}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-4">
+                                ここで、式①より
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \log_2 \alpha + \log_2 \beta &= -2 \\
+                                \log_2 (\alpha \beta) &= -2 \\
+                                \alpha \beta &= 2^{-2} = \frac{1}{4}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                これを式④に代入すると、$\dfrac{b}{4} = \dfrac{1}{4} \implies \boldsymbol{b = 1}$。
+                            </p>
+                            <p class="mt-4">
+                                $b=1$ を $X$ の2次方程式に戻すと、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                4X^2 - 5X + 1 &= 0 \\
+                                (4X - 1)(X - 1) &= 0 \\
+                                X &= \frac{1}{4}, \ 1
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                $\alpha < \beta$ であるから、$\alpha = \dfrac{1}{4}$, $\beta = 1$ と確定する。（和が $5/4$ になるため式③も満たす）<br>
+                                これにより、$s_1, s_2$ の値は
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                s_1 &= \log_2 \frac{1}{4} = -2 \\
+                                s_2 &= \log_2 1 = 0
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                式②より、$a = s_1 s_2 = (-2) \cdot 0 = \boldsymbol{0}$。<br>
+                                これは (2)の条件 $a < 1$ を満たす。
+                            </p>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $a = 0, \ b = 1$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化（パラメータ $a$ と方程式の連動）</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        前半のパラメータ $a$ を動かすと、$s$ の方程式の解 $s_1, s_2$ が変化し、それに伴って $\alpha, \beta$ の値も連動して動きます。<br>
+                        グラフ上の<span class="text-blue-600 font-bold">青い実線</span>は後半の目標となる方程式 $y = 4X^2 - 5X + 1$ を表し、<span class="text-rose-500 font-bold border-b border-rose-500 border-dashed">赤い破線</span>は $a$ の変化から作られる方程式 $y = 4X^2 - 4(\alpha+\beta)X + 4\alpha\beta$ を表します。<br>
+                        スライダーを動かして、2つのグラフがピッタリ重なる瞬間の $a$ の値を確認してみましょう。
+                    </p>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 sm:p-6 rounded-lg border border-slate-200 flex flex-col items-center">
+                        <div class="w-full max-w-md mb-6 px-2">
+                            <label for="a-slider" class="block text-sm font-medium text-slate-700 mb-2">
+                                パラメータ $a$ の値: <span id="a-value" class="font-bold text-blue-600 text-lg">-1.50</span>
+                            </label>
+                            <input type="range" id="a-slider" min="-3" max="0.95" step="0.05" value="-1.5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                            <div class="flex justify-between mt-2 text-xs text-slate-500">
+                                <span>-3.0</span>
+                                <span>0</span>
+                                <span>0.95 (限界)</span>
+                            </div>
+                        </div>
+
+                        <div class="relative w-full max-w-md bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden p-2 flex justify-center">
+                            <!-- SVG Canvas -->
+                            <svg id="graph-svg" width="400" height="300" viewBox="-1 -2 4 6" class="w-full h-auto">
+                                <defs>
+                                    <clipPath id="graph-clip">
+                                        <rect x="-1" y="-2" width="4" height="6" />
+                                    </clipPath>
+                                </defs>
+                                
+                                <!-- 背景グリッド (SVG座標系は y下向きなので注意) -->
+                                <g stroke="#e2e8f0" stroke-width="0.05">
+                                    <line x1="-1" y1="0" x2="3" y2="0" stroke="#94a3b8" stroke-width="0.1"/> <!-- x軸 -->
+                                    <line x1="0" y1="-2" x2="0" y2="4" stroke="#94a3b8" stroke-width="0.1"/> <!-- y軸 -->
+                                    <line x1="1" y1="-2" x2="1" y2="4" stroke="#cbd5e1" stroke-dasharray="0.1,0.1"/> <!-- x=1 -->
+                                    <line x1="2" y1="-2" x2="2" y2="4" stroke="#cbd5e1" stroke-dasharray="0.1,0.1"/> <!-- x=2 -->
+                                    <line x1="-1" y1="-1" x2="3" y2="-1" stroke="#cbd5e1" stroke-dasharray="0.1,0.1"/> <!-- y=1 -->
+                                </g>
+
+                                <text x="2.8" y="-0.1" fill="#64748b" font-size="0.2">X</text>
+                                <text x="0.1" y="-1.8" fill="#64748b" font-size="0.2">y</text>
+
+                                <!-- 目標のグラフ y = 4X^2 - 5X + 1 -->
+                                <path id="curve-target" fill="none" stroke="#2563eb" stroke-width="0.08" clip-path="url(#graph-clip)" />
+                                <!-- 目標の解 -->
+                                <circle cx="0.25" cy="0" r="0.06" fill="#2563eb" />
+                                <circle cx="1" cy="0" r="0.06" fill="#2563eb" />
+
+                                <!-- 連動するグラフ y = 4X^2 - 4(a+b)X + 4ab -->
+                                <path id="curve-dynamic" fill="none" stroke="#f43f5e" stroke-width="0.06" stroke-dasharray="0.1,0.1" clip-path="url(#graph-clip)" />
+
+                                <!-- 連動する解のマーカー -->
+                                <circle id="pt-alpha" cx="0" cy="0" r="0.08" fill="#f43f5e" />
+                                <text id="lbl-alpha" x="0" y="-0.15" fill="#f43f5e" font-size="0.2" font-weight="bold" text-anchor="middle">α</text>
+                                <circle id="pt-beta" cx="0" cy="0" r="0.08" fill="#f43f5e" />
+                                <text id="lbl-beta" x="0" y="-0.15" fill="#f43f5e" font-size="0.2" font-weight="bold" text-anchor="middle">β</text>
+                            </svg>
+                        </div>
+                        
+                        <div class="mt-4 p-3 bg-white rounded-lg text-center w-full max-w-md border border-slate-200 shadow-sm text-sm text-slate-700">
+                            <div>$\alpha = $ <span id="val-alpha" class="font-bold text-rose-600">0.00</span>, $\beta = $ <span id="val-beta" class="font-bold text-rose-600">0.00</span></div>
+                            <div class="mt-1">方程式: $y = 4X^2 -$ <span id="val-sum" class="font-bold text-rose-600">0.00</span> $X +$ <span id="val-prod" class="font-bold text-rose-600">1.00</span></div>
+                        </div>
+                    </div>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const slider = document.getElementById('a-slider');
+                            const aValueDisplay = document.getElementById('a-value');
+                            
+                            const curveTarget = document.getElementById('curve-target');
+                            const curveDynamic = document.getElementById('curve-dynamic');
+                            const ptAlpha = document.getElementById('pt-alpha');
+                            const ptBeta = document.getElementById('pt-beta');
+                            const lblAlpha = document.getElementById('lbl-alpha');
+                            const lblBeta = document.getElementById('lbl-beta');
+                            
+                            const valAlpha = document.getElementById('val-alpha');
+                            const valBeta = document.getElementById('val-beta');
+                            const valSum = document.getElementById('val-sum');
+                            const valProd = document.getElementById('val-prod');
+                            
+                            // 目標グラフの描画 (y = 4X^2 - 5X + 1)
+                            function generateTarget() {
+                                let path = "";
+                                for (let X = -0.5; X <= 2.5; X += 0.05) {
+                                    const y = 4 * X * X - 5 * X + 1;
+                                    const command = path === "" ? "M" : "L";
+                                    path += `${command} ${X} ${-y} `; // y反転
+                                }
+                                curveTarget.setAttribute("d", path);
+                            }
+                            generateTarget();
+                            
+                            function updateVisualization() {
+                                const a = parseFloat(slider.value);
+                                aValueDisplay.textContent = a.toFixed(2);
+                                
+                                // s1, s2 の計算
+                                const s1 = -1 - Math.sqrt(1 - a);
+                                const s2 = -1 + Math.sqrt(1 - a);
+                                
+                                // alpha, beta の計算
+                                const alpha = Math.pow(2, s1);
+                                const beta = Math.pow(2, s2);
+                                
+                                const sum = alpha + beta;
+                                const prod = alpha * beta; // 常に 1/4 になるはず
+                                
+                                // 動的グラフの描画 (y = 4X^2 - 4*sum*X + 4*prod)
+                                let path = "";
+                                for (let X = -0.5; X <= 2.5; X += 0.05) {
+                                    const y = 4 * X * X - 4 * sum * X + 4 * prod;
+                                    const command = path === "" ? "M" : "L";
+                                    path += `${command} ${X} ${-y} `;
+                                }
+                                curveDynamic.setAttribute("d", path);
+                                
+                                // マーカーの更新
+                                ptAlpha.setAttribute("cx", alpha);
+                                lblAlpha.setAttribute("x", alpha);
+                                ptBeta.setAttribute("cx", beta);
+                                lblBeta.setAttribute("x", beta);
+                                
+                                // テキストの更新
+                                valAlpha.textContent = alpha.toFixed(3);
+                                valBeta.textContent = beta.toFixed(3);
+                                valSum.textContent = (4 * sum).toFixed(2);
+                                valProd.textContent = (4 * prod).toFixed(2);
+                            }
+                            
+                            slider.addEventListener('input', updateVisualization);
+                            updateVisualization(); // 初期描画
+                        });
+                    </script>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解の考察</h3>
+                    <div class="mt-4 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-slate-700">
+                        <strong>対称式と相加相乗平均を用いた $\alpha, \beta$ の絞り込み</strong><br>
+                        答案では $b=1$ を求めてから $4X^2 - 5X + 1 = 0$ を解きましたが、$b$ を経由せずに $\alpha, \beta$ の関係式から直接解を求めることも可能です。<br>
+                        $s_1 = -1 - \sqrt{1-a}$, \ $s_2 = -1 + \sqrt{1-a}$ より、<br>
+                        $\alpha = 2^{-1-\sqrt{1-a}}$, \ $\beta = 2^{-1+\sqrt{1-a}}$ と表せます。<br>
+                        このとき、和は $\alpha + \beta = 2^{-1}(2^{-\sqrt{1-a}} + 2^{\sqrt{1-a}}) = \dfrac{1}{2}(2^{\sqrt{1-a}} + 2^{-\sqrt{1-a}})$ となります。<br>
+                        これが条件より $\dfrac{5}{4}$ に等しいので、<br>
+                        $2^{\sqrt{1-a}} + 2^{-\sqrt{1-a}} = \dfrac{5}{2}$<br>
+                        $Y = 2^{\sqrt{1-a}} \ (Y \ge 1)$ とおくと、$Y + \dfrac{1}{Y} = \dfrac{5}{2}$ となり、両辺に $2Y$ を掛けて整理すると<br>
+                        $2Y^2 - 5Y + 2 = 0 \implies (2Y-1)(Y-2) = 0$<br>
+                        $Y \ge 1$ より $Y = 2$。<br>
+                        すなわち $2^{\sqrt{1-a}} = 2^1 \implies \sqrt{1-a} = 1 \implies 1-a = 1 \implies a=0$ と求まります。<br>
+                        このアプローチは計算量はやや増えますが、指数関数の対称な構造（$Y + 1/Y$ の形）を深く理解するのに非常に役立ちます。
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">$\log_2 x^2$ を $2\log_2 x$ にする前の「真数条件の確認」漏れ</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                一般に $\log_a x^2 = 2\log_a |x|$ であり、絶対値がつきます。本問は初めから $(\log_2 x)^2$ が存在するため、暗黙のうちに真数条件 $x>0$ が確定しており、絶対値を外して $2\log_2 x$ とできます。このロジックを答案に書かずにいきなり変形すると、厳密な採点では減点される恐れがあります。
+                            </p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">$\alpha\beta$ と $s_1 s_2$ の混同</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                後半で $s_1 s_2 = a$ と $\alpha\beta = b/4$ が出てきますが、この2つを直接イコールで結んでしまうミスが頻発します。$\alpha$ と $s_1$ は対数の関係（$s_1 = \log_2 \alpha$）で結ばれているため、和と積が変換されます（対数の和は真数の積）。ここを丁寧に整理できるかが合否を分けます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+                
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. $\log_a x^2$ を $2\log_a x$ と変形する際、前提として確認しておかなければならないことは何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            真数条件により「$x > 0$」であることです。一般には $\log_a x^2 = 2\log_a |x|$ となりますが、$x>0$ が保証されている場合のみ絶対値を外して $2\log_a x$ と変形できます。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. $x$ の対数方程式を $s = \log_a x$ と置き換えて解の個数を考える際、答案に必ず明記すべき「$x$ と $s$ の関係」とは何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            「底 $a > 0, a \neq 1$ であるため、$x$ と $s$ は1対1に対応する（実数解の個数が一致する）」という断り書きです。これにより、$s$ の2次方程式の解の個数を調べるだけでよい論理的な根拠となります。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. 2つの解の積 $\alpha\beta$ の値を知りたいとき、対数を用いた式 $\log_a \alpha$ と $\log_a \beta$ について、どのような計算をすればよいですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            2つの式を「足し算」します。対数の性質より $\log_a \alpha + \log_a \beta = \log_a (\alpha\beta)$ となるため、和の値から真数の積を逆算することができます。
+                        </div>
+                    </details>
+                </div>
+            </section>
+            
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="no12.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← No.12へ
+                </a>
+                <a href="no14.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.14 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            自彊館(理系)　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>
