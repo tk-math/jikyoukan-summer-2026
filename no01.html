@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.1 図形と方程式 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+        
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.1</span>
+                    <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">図形と方程式</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 text-slate-700 leading-relaxed mt-4">
+                    <p>$xy$平面上に2点 $\mathrm{A}(-2, 3)$，$\mathrm{B}(2, 5)$ と円 $C:x^2+y^2-8x-2y+13=0$ がある。</p>
+                    <ol class="list-decimal pl-6 mt-3 space-y-2">
+                        <li>$C$の中心の座標と半径を求めよ。</li>
+                        <li>線分$\mathrm{AB}$の垂直二等分線を$l$とする。$l$の方程式を求めよ。</li>
+                        <li>(2)の$l$に関して円$C$を対称移動して得られる円を$E$とする。$E$の方程式を求めよ。</li>
+                        <li>点$\mathrm{P}$が(3)で定めた円$E$上を動くとき，$\mathrm{PA}^2+\mathrm{PB}^2$の最小値を求めよ。</li>
+                    </ol>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                    <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                        <li><strong>垂直二等分線の定義：</strong> 2点 $\mathrm{A, B}$ の垂直二等分線は、「線分$\mathrm{AB}$の中点」を通り、かつ「直線$\mathrm{AB}$に垂直」な直線である。</li>
+                        <li><strong>円の対称移動：</strong> 円を直線に関して対称移動させても、<strong>円の大きさ（半径）は変わらない</strong>。したがって、「円の中心」だけを対称移動させれば、新しい円の方程式は決定する。</li>
+                        <li>
+                            <strong>$\mathrm{PA}^2+\mathrm{PB}^2$ の扱い：</strong>
+                            動点Pに関する距離が $PA^2$ と $PB^2$ の2か所に現れているため、
+                            このままでは何を最大・最小にすればよいか見えにくい。
+                            線分ABの中点Mを利用して中線定理を適用し、
+                            <strong>Pを含む部分を $PM^2$ の1か所にまとめる</strong>。
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    問題を解くための考え方から、答案、検算、発展までを順に確認します。
+                </p>
+
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">「直線 $l$ に関する点の対称移動」と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                求める対称点を $(p, q)$ とおき、<strong>「垂直条件（傾きの積が $-1$）」</strong>と<strong>「中点条件（中点が直線 $l$ 上にある）」</strong>の2つの式を連立させて解きます。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">$\mathrm{PA}^2+\mathrm{PB}^2$ のように、動点Pが2か所に現れるとき</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                $PA^2$ と $PB^2$ を別々に追うと、動点Pの位置を2つの距離で同時に考えなければならず、
+                                最大・最小の基準が見えにくくなります。
+                                そこで線分ABの中点Mをとり、中線定理
+                                \[
+                                PA^2+PB^2=2(PM^2+AM^2)
+                                \]
+                                を用います。これにより、<strong>正体の分からない動点Pを含む部分が
+                                $PM^2$ の1か所にまとまります</strong>。
+                                $AM^2$ は定数なので、あとは $PM$ だけに着目すればよくなります。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">「円上の点」と「定点」との距離の最大・最小</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                定点から円上の点までの距離が最小（または最大）になるのは、その点が<strong>「定点と円の中心を結んだ直線上」</strong>にあるときです。距離を直接計算するのではなく、「（中心と定点の距離 $d$） $-$ （半径 $r$）」として引き算で求めるのがセオリーです。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(2) 直線 $l$ の決定</strong><br>
+                            $\mathrm{A}(-2, 3)$, $\mathrm{B}(2, 5)$ より、中点 $\mathrm{M}$ の座標は $(0, 4)$。直線 $\mathrm{AB}$ の傾きは $\dfrac{5-3}{2-(-2)} = \dfrac{1}{2}$ であるため、これに垂直な直線 $l$ の傾きは $-2$ となる。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(3) 中心同士の対称移動</strong><br>
+                            円 $C$ の中心 $(4, 1)$ を、(2)の直線 $l: y = -2x+4$ （すなわち $2x+y-4=0$）に関して対称移動させた点 $\mathrm{E}_0$ を求める。これが円 $E$ の中心となり、半径は円 $C$ と同じである。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(4) Pを含む量を1か所にまとめる</strong><br>
+                            $PA^2+PB^2$ では、動点Pが2つの距離に分かれて現れるため、
+                            そのままでは最小となる位置を判断しにくい。
+                            線分ABの中点Mを用いて中線定理を適用すると、
+                            \[
+                            PA^2+PB^2=2(PM^2+AM^2)
+                            \]
+                            となり、Pを含む部分は $PM^2$ だけになる。
+                            $AM^2$ は一定なので、円E上で $PM$ が最小となる点を探せばよい。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <!-- (1) -->
+                        <div>
+                            <p class="font-bold">（1）</p>
+                            <p class="mt-2">
+                                円 $C$ の方程式 $x^2+y^2-8x-2y+13=0$ を平方完成すると，
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                (x^2 - 8x) + (y^2 - 2y) &= -13 \\
+                                (x - 4)^2 - 16 + (y - 1)^2 - 1 &= -13 \\
+                                (x - 4)^2 + (y - 1)^2 &= 4
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                したがって，$C$ の中心の座標と半径は次の通りである。
+                            </p>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: 中心の座標 $(4, 1)$， 半径 $2$
+                            </div>
+                        </div>
+
+                        <!-- (2) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（2）</p>
+                            <p class="mt-2">
+                                $\mathrm{A}(-2, 3)$, $\mathrm{B}(2, 5)$ について，線分 $\mathrm{AB}$ の中点 $\mathrm{M}$ の座標は
+                            </p>
+                            <div class="math-scroll">
+                                \[ \left(\frac{-2 + 2}{2}, \frac{3 + 5}{2}\right) \text{すなわち} (0, 4) \]
+                            </div>
+                            <p class="mt-2">
+                                また，直線 $\mathrm{AB}$ の傾きは $\dfrac{5 - 3}{2 - (-2)} = \dfrac{2}{4} = \dfrac{1}{2}$ である。<br>
+                                $l$ は直線 $\mathrm{AB}$ に垂直であるから，その傾きを $m$ とすると $\dfrac{1}{2} m = -1$ より $m = -2$ である。<br>
+                                したがって，直線 $l$ は点 $\mathrm{M}(0, 4)$ を通り，傾きが $-2$ の直線であるから，その方程式は
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                y - 4 &= -2(x - 0) \\
+                                y &= -2x + 4 \quad (\text{または } 2x + y - 4 = 0)
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $y = -2x + 4$
+                            </div>
+                        </div>
+
+                        <!-- (3) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（3）</p>
+                            <p class="mt-2">
+                                円 $E$ は，円 $C$ を直線 $l: 2x + y - 4 = 0$ に関して対称移動したものであるから，円 $E$ の半径は $C$ と同じ $2$ である。<br>
+                                円 $C$ の中心 $\mathrm{C}_0(4, 1)$ と対称な点（円 $E$ の中心）を $\mathrm{E}_0(p, q)$ とおく。<br>
+                                線分 $\mathrm{C}_0\mathrm{E}_0$ の中点 $\left(\dfrac{p+4}{2}, \dfrac{q+1}{2}\right)$ は直線 $l$ 上にあるから，
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                2\left(\frac{p+4}{2}\right) + \left(\frac{q+1}{2}\right) - 4 &= 0 \\
+                                2p + 8 + q + 1 - 8 &= 0 \\
+                                2p + q + 1 &= 0 \quad \cdots\cdots \text{①}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                また，直線 $\mathrm{C}_0\mathrm{E}_0$ は $l$ に垂直であるから，その傾きは $\dfrac{1}{2}$ である。よって
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \frac{q - 1}{p - 4} &= \frac{1}{2} \\
+                                2(q - 1) &= p - 4 \\
+                                p - 2q - 2 &= 0 \quad \cdots\cdots \text{②}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                ①より $q = -2p - 1$。これを②に代入して
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                p - 2(-2p - 1) - 2 &= 0 \\
+                                5p &= 0 \\
+                                p &= 0
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                したがって $q = -2(0) - 1 = -1$。ゆえに，円 $E$ の中心 $\mathrm{E}_0$ は $(0, -1)$ である。<br>
+                                半径は $2$ であるから，円 $E$ の方程式は
+                            </p>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $x^2 + (y + 1)^2 = 4$
+                            </div>
+                        </div>
+
+                        <!-- (4) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（4）</p>
+                            <p class="mt-2">
+                                求める式
+                                \[
+                                PA^2+PB^2
+                                \]
+                                には、動点Pが $PA^2$ と $PB^2$ の2か所に現れている。
+                                そこで、Pを含む部分を1か所にまとめるため、線分ABの中点
+                                \[
+                                \mathrm{M}(0,4)
+                                \]
+                                をとる。三角形PABに中線定理を用いると、
+                            </p>
+                            <div class="math-scroll">
+                                \[ \mathrm{PA}^2 + \mathrm{PB}^2 = 2(\mathrm{PM}^2 + \mathrm{AM}^2) \]
+                            </div>
+                            <p class="mt-2">
+                                この変形により、動点Pを含む部分は $PM^2$ の1か所だけになった。
+                                また、$AM^2$ はPによらない定数である。
+                                実際、A$(-2,3)$、M$(0,4)$ より、
+                            </p>
+                            <div class="math-scroll">
+                                \[ \mathrm{AM}^2 = (0 - (-2))^2 + (4 - 3)^2 = 2^2 + 1^2 = 5 \ (\text{一定}) \]
+                            </div>
+                            <p class="mt-2">
+                                ゆえに，$\mathrm{PA}^2 + \mathrm{PB}^2 = 2(\mathrm{PM}^2 + 5)$ となる。この値が最小となるのは，点 $\mathrm{M}$ と点 $\mathrm{P}$（円 $E$ 上の点）の距離 $\mathrm{PM}$ が最小となるときである。<br>
+                                定点 $\mathrm{M}(0, 4)$ と円 $E$ の中心 $\mathrm{E}_0(0, -1)$ の距離 $d$ は，
+                            </p>
+                            <div class="math-scroll">
+                                \[ d = \mathrm{ME}_0 = \sqrt{(0 - 0)^2 + (-1 - 4)^2} = \sqrt{(-5)^2} = 5 \]
+                            </div>
+                            <p class="mt-2">
+                                円 $E$ の半径 $r$ は $2$ であるから，$\mathrm{PM}$ の最小値は
+                            </p>
+                            <div class="math-scroll">
+                                \[ \mathrm{PM}_{\min} = d - r = 5 - 2 = 3 \]
+                            </div>
+                            <p class="mt-2">
+                                したがって，求める最小値は
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \left(\mathrm{PA}^2 + \mathrm{PB}^2\right)_{\min} &= 2(3^2 + 5) \\
+                                &= 2(9 + 5) = 28
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $28$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化（円上の動点 P）</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        下の図の点Pをスライダーで動かして、距離 $\mathrm{PM}$ と $\mathrm{PA}^2+\mathrm{PB}^2$ の値が変化する様子を確認できます。<br>
+                        中点 $\mathrm{M}(0, 4)$ と点Pを結ぶ線分が、円の中心 $\mathrm{E}_0(0, -1)$ を通過するとき、距離 $\mathrm{PM}$ が最小（$3$）になります。問題に登場する点A、B、円Cや直線 $l$ の位置関係も併せて確認しましょう。
+                    </p>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 sm:p-6 rounded-lg border border-slate-200 flex flex-col items-center">
+                        <div class="w-full max-w-lg mb-4 px-2">
+                            <label for="p-slider" class="block text-sm font-medium text-slate-700 mb-2">
+                                点 $\mathrm{P}$ を動かす（角度 $\theta$）: <span id="theta-value" class="font-bold text-blue-600">90°</span>
+                            </label>
+                            <input type="range" id="p-slider" min="0" max="359" step="1" value="90" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                            <div class="flex justify-between mt-1 text-xs text-slate-500">
+                                <span>0°</span>
+                                <span>90°</span>
+                                <span>180°</span>
+                                <span>270°</span>
+                                <span>360°</span>
+                            </div>
+                        </div>
+
+                        <div class="relative bg-white border border-slate-200 shadow-sm rounded-xl p-4 sm:p-6 flex justify-center w-full max-w-lg">
+                            <svg width="100%" height="auto" style="max-width: 450px;" viewBox="-150 -180 300 360">
+                                <g transform="scale(1, -1)">
+                                    <!-- XY軸 -->
+                                    <line x1="-150" y1="0" x2="150" y2="0" stroke="#e2e8f0" stroke-width="1.5" />
+                                    <line x1="0" y1="-180" x2="0" y2="180" stroke="#e2e8f0" stroke-width="1.5" />
+                                    
+                                    <!-- 円 C: (x-4)^2+(y-1)^2=4 (中心(80, 20), 半径40) -->
+                                    <circle cx="80" cy="20" r="40" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,4" />
+                                    <circle cx="80" cy="20" r="3" fill="#64748b" />
+
+                                    <!-- 直線 l: y = -2x+4 ((-40, 160) から (60, -40)) -->
+                                    <line x1="-40" y1="160" x2="60" y2="-40" stroke="#cbd5e1" stroke-width="2" />
+                                    
+                                    <!-- 点 A(-2,3), B(2,5) と線分 AB -->
+                                    <line x1="-40" y1="60" x2="40" y2="100" stroke="#93c5fd" stroke-width="1.5" />
+                                    <circle cx="-40" cy="60" r="4" fill="#3b82f6" />
+                                    <circle cx="40" cy="100" r="4" fill="#3b82f6" />
+
+                                    <!-- 円 E: x^2+(y+1)^2=4 (中心(0, -20), 半径40) -->
+                                    <circle cx="0" cy="-20" r="40" fill="rgba(16, 185, 129, 0.1)" stroke="#10b981" stroke-width="2" />
+                                    <circle cx="0" cy="-20" r="3" fill="#059669" />
+                                    
+                                    <!-- 中点 M(0, 80) -->
+                                    <circle cx="0" cy="80" r="4" fill="#f59e0b" />
+                                    
+                                    <!-- 線分 PA, PB -->
+                                    <line id="line-pa" x1="-40" y1="60" x2="0" y2="20" stroke="#fda4af" stroke-width="1.5" stroke-dasharray="3,3" />
+                                    <line id="line-pb" x1="40" y1="100" x2="0" y2="20" stroke="#fda4af" stroke-width="1.5" stroke-dasharray="3,3" />
+
+                                    <!-- 線分 PM -->
+                                    <line id="line-pm" x1="0" y1="80" x2="0" y2="20" stroke="#ef4444" stroke-width="2.5" />
+                                    
+                                    <!-- 点 P -->
+                                    <circle id="point-p" cx="0" cy="20" r="5" fill="#ef4444" />
+                                </g>
+                                
+                                <!-- テキスト要素 (y座標は反転して配置) -->
+                                <text x="140" y="15" fill="#94a3b8" font-size="12">x</text>
+                                <text x="5" y="-165" fill="#94a3b8" font-size="12">y</text>
+                                <text x="85" y="-25" fill="#64748b" font-size="12" font-weight="bold">C</text>
+                                <text x="-40" y="-165" fill="#94a3b8" font-size="14" font-weight="bold">l</text>
+                                <text x="-55" y="-65" fill="#1d4ed8" font-weight="bold" font-size="14">A</text>
+                                <text x="45" y="-105" fill="#1d4ed8" font-weight="bold" font-size="14">B</text>
+                                <text x="-25" y="-85" fill="#d97706" font-weight="bold" font-size="14">M</text>
+                                <text x="10" y="25" fill="#059669" font-weight="bold" font-size="14">E₀</text>
+                                <text id="text-p" x="10" y="-25" fill="#ef4444" font-weight="bold" font-size="14">P</text>
+                            </svg>
+                        </div>
+                        
+                        <div class="mt-4 p-4 bg-blue-50 rounded-lg w-full max-w-lg border border-blue-200 shadow-sm">
+                            <div class="grid grid-cols-2 gap-4 text-center">
+                                <div>
+                                    <div class="text-xs text-slate-500 font-semibold mb-1">距離 $\mathrm{PM}$</div>
+                                    <div id="pm-dist" class="text-xl font-bold text-blue-700">3.00</div>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-slate-500 font-semibold mb-1">$\mathrm{PA}^2+\mathrm{PB}^2$ の値</div>
+                                    <div id="pab-val" class="text-2xl font-bold text-rose-600">28.00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const slider = document.getElementById('p-slider');
+                            const thetaValueDisplay = document.getElementById('theta-value');
+                            const pmDistDisplay = document.getElementById('pm-dist');
+                            const pabValDisplay = document.getElementById('pab-val');
+                            
+                            const pDot = document.getElementById('point-p');
+                            const linePm = document.getElementById('line-pm');
+                            const linePa = document.getElementById('line-pa');
+                            const linePb = document.getElementById('line-pb');
+                            const textP = document.getElementById('text-p');
+                            
+                            function updatePointP() {
+                                const thetaDeg = parseFloat(slider.value);
+                                thetaValueDisplay.textContent = thetaDeg + "°";
+                                
+                                const thetaRad = thetaDeg * Math.PI / 180;
+                                
+                                // 数学上のPの座標 (x^2 + (y+1)^2 = 4)
+                                const mathX = 2 * Math.cos(thetaRad);
+                                const mathY = -1 + 2 * Math.sin(thetaRad);
+                                
+                                // 描画上のPの座標 (20倍)
+                                const px = mathX * 20;
+                                const py = mathY * 20;
+                                
+                                // 図形の更新
+                                pDot.setAttribute('cx', px);
+                                pDot.setAttribute('cy', py);
+                                
+                                linePm.setAttribute('x2', px);
+                                linePm.setAttribute('y2', py);
+                                
+                                linePa.setAttribute('x2', px);
+                                linePa.setAttribute('y2', py);
+                                
+                                linePb.setAttribute('x2', px);
+                                linePb.setAttribute('y2', py);
+                                
+                                // テキスト位置の更新 (SVGのy座標は反転)
+                                textP.setAttribute('x', px + 10);
+                                textP.setAttribute('y', -py - 5);
+                                
+                                // PMの距離計算
+                                const pmSq = Math.pow(mathX - 0, 2) + Math.pow(mathY - 4, 2);
+                                const pmDist = Math.sqrt(pmSq);
+                                pmDistDisplay.textContent = pmDist.toFixed(2);
+                                
+                                // PA^2 + PB^2 の計算
+                                // PA^2 + PB^2 = 2(PM^2 + AM^2)
+                                // AM^2 = (-2 - 0)^2 + (3 - 4)^2 = 4 + 1 = 5
+                                const pabVal = 2 * (pmSq + 5);
+                                pabValDisplay.textContent = pabVal.toFixed(2);
+                            }
+                            
+                            slider.addEventListener('input', updatePointP);
+                            updatePointP(); // 初期化
+                        });
+                    </script>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解：パラメータ表示（媒介変数表示）を用いたアプローチ</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        円 $E: x^2 + (y+1)^2 = 4$ は円周全体を表すため、上の点 $\mathrm{P}$ は、実数 $\theta$ （$0 \le \theta < 2\pi$）を用いて以下のようにパラメータ表示できます。
+                        \[ x = 2\cos\theta, \quad y = -1 + 2\sin\theta \]
+                        点 $\mathrm{A}(-2, 3), \mathrm{B}(2, 5)$ であるから、
+                        \begin{aligned}
+                        \mathrm{PA}^2 &= (2\cos\theta - (-2))^2 + (-1 + 2\sin\theta - 3)^2 \\
+                        &= (2\cos\theta + 2)^2 + (2\sin\theta - 4)^2 \\
+                        &= 4\cos^2\theta + 8\cos\theta + 4 + 4\sin^2\theta - 16\sin\theta + 16 \\
+                        &= 4(\cos^2\theta + \sin^2\theta) + 8\cos\theta - 16\sin\theta + 20 \\
+                        &= 24 + 8\cos\theta - 16\sin\theta \\
+                        \mathrm{PB}^2 &= (2\cos\theta - 2)^2 + (-1 + 2\sin\theta - 5)^2 \\
+                        &= (2\cos\theta - 2)^2 + (2\sin\theta - 6)^2 \\
+                        &= 4\cos^2\theta - 8\cos\theta + 4 + 4\sin^2\theta - 24\sin\theta + 36 \\
+                        &= 4(\cos^2\theta + \sin^2\theta) - 8\cos\theta - 24\sin\theta + 40 \\
+                        &= 44 - 8\cos\theta - 24\sin\theta
+                        \end{aligned}
+                        したがって、
+                        \[ \mathrm{PA}^2 + \mathrm{PB}^2 = (24 + 8\cos\theta - 16\sin\theta) + (44 - 8\cos\theta - 24\sin\theta) = 68 - 40\sin\theta \]
+                        $0 \le \theta < 2\pi$ の範囲において、この値が最小となるのは $\sin\theta = 1$ （すなわち $\theta = \dfrac{\pi}{2}$）のときであるから、求める最小値は
+                        \[ 68 - 40(1) = 28 \]
+                        となり、中線定理を用いた結果と一致します。パラメータ表示を利用すると、幾何的な定理が使えない場合でも代数的に機械処理できるため、強力な手段となります。
+                    </p>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">円の対称移動で半径まで変えてしまう、あるいは計算を放棄する</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                直線に関して円の式そのものを対称移動させようとして、円の方程式の $x, y$ を変換式に代入して計算が泥沼化するケースが非常に多いです。「円を移動させても大きさは変わらない $\Rightarrow$ 中心だけを移動させればよい」という原則を徹底してください。
+                            </p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">定点と円上の点の距離の最小値を直接求めようとする</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                (4)において、点 $\mathrm{P}$ の座標を $(\alpha, \beta)$ などとおき、円の方程式 $\alpha^2 + (\beta+1)^2 = 4$ を代入して2次関数の最大最小に持ち込もうとすると、式が非常に複雑になります。定点と円上の点の距離の最小・最大は、必ず<strong>「円の中心」を経由して「距離の足し引き $(d \pm r)$」</strong>で求めるのが定石です。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">公式名だけでなく、なぜその変形を行うのかを説明してから答えを開いてください。</p>
+                
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. $PA^2+PB^2$ に中線定理を使う本質的な目的は何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            $PA^2$ と $PB^2$ に分かれて現れる動点Pを、1つの距離 $PM^2$ にまとめることです。
+                            線分ABの中点をMとすると、
+                            \[
+                            PA^2+PB^2=2(PM^2+AM^2)
+                            \]
+                            となります。$AM^2$ はPによらない定数なので、変化する部分は $PM^2$ の1か所だけになり、
+                            $PM$ の最大・最小だけを考えればよくなります。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. 直線 $l$ に関して円を対称移動させて新しい円の方程式を求めるとき、計算のポイントは何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            「円の中心」だけを直線 $l$ に関して対称移動させることです。円の大きさ（半径）は対称移動しても変わらないため、新しい中心の座標さえ「垂直条件」と「中点条件」から求まれば、円の方程式が決定します。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. 定点と「円上の点 $\mathrm{P}$」との距離の最大・最小を求めるときのセオリーは何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            定点と「円の中心」を結んだ直線を考えます。定点と円の中心の距離を $d$、円の半径を $r$ とするとき、点 $\mathrm{P}$ が円周上を動くときの距離の最小値は $d-r$ （定点が円の外部の場合）、最大値は $d+r$ となります。点 $\mathrm{P}$ の座標を直接求めようとするよりも、距離の足し引きで計算する方が簡単で確実です。
+                        </div>
+                    </details>
+                </div>
+            </section>
+            
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="index.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← 一覧へ
+                </a>
+                <a href="no02.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.2 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            自彊館(理系)　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>

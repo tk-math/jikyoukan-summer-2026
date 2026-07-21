@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>夏期課題 No.35 2次方程式 - 自彊館(理系)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+MathJax={chtml:{matchFontHeight:false},tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]}};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Meiryo",sans-serif}.nav-button{transition:transform .16s ease,box-shadow .16s ease}.nav-button:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(15,23,42,.12)}.math-scroll{overflow-x:auto;overflow-y:hidden;padding-bottom:.5rem;margin-bottom:.5rem}button:focus-visible,summary:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid rgba(37,99,235,.35);outline-offset:3px}
+</style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+<a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">← 問題一覧へ戻る</a>
+<header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+<div class="p-7 sm:p-10"><span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span><div class="mt-4 flex flex-wrap items-center gap-3"><span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.35</span><span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span></div><h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">2次方程式</h1><div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div></div>
+</header>
+<main>
+<section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+<h2 class="flex items-center gap-2 text-xl font-bold text-blue-900"><span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>問題</h2>
+<div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed">
+<p>$x$ の2次方程式</p>
+<div class="math-scroll">\[x^2-2px+p=0\qquad(p\text{ は実数の定数})\quad\cdots(*)\]</div>
+<p>の2解を $\alpha,\beta$ とする。</p>
+<ol class="mt-4 list-decimal space-y-4 pl-6">
+<li>$p=2$ のとき、$(*)$ を解け。</li>
+<li>$(*)$ が異なる2つの実数解をもつような $p$ の値の範囲を求めよ。</li>
+<li>$(2\alpha-1)(2\beta-1)$ の値を求めよ。</li>
+<li>$2\alpha-1,2\beta-1$ を2解にもつ、$x^2$ の係数が1である2次方程式を $f(x)=0$ とする。
+<ol class="mt-2 list-[lower-roman] space-y-3 pl-6"><li>$f(x)$ を $p$ を用いて表せ。</li><li>$g(x)=x^2-2px+p$ とするとき、4次方程式 $f(x)g(x)=0$ の異なる解の個数がちょうど3となるような $p$ の値を求めよ。</li></ol></li>
+</ol>
+</div>
+<div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+<h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+<ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+<li>解と係数の関係より、\[\alpha+\beta=2p,\qquad\alpha\beta=p\]です。</li>
+<li>$2\alpha-1,2\beta-1$ の和と積を求めれば、$f(x)$ を作れます。</li>
+<li>$p=0,1$ では判別式が0となるため、（4）（ii）では先に別扱いします。</li>
+<li>$p\ne0,1$ では、異なる解が3個になる条件は、$f(x)=0$ と $g(x)=0$ が共通解をちょうど1個もつことです。</li>
+</ul>
+</div>
+</section>
+
+<section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+<h2 class="flex items-center gap-2 text-xl font-bold text-slate-900"><span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>解説</h2>
+<p class="mt-4 text-sm leading-8 text-slate-600">判別式、解と係数の関係、共通解の条件を順に用います。</p>
+<div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+<h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+<div class="mt-4 space-y-4">
+<div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4"><p class="text-sm font-bold text-amber-900">異なる2つの実数解</p><p class="mt-1 text-sm text-amber-800">判別式 $D$ に対して \[D&gt;0\] を用います。</p></div>
+<div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4"><p class="text-sm font-bold text-amber-900">変換された2数を解にもつ方程式</p><p class="mt-1 text-sm text-amber-800">新しい2解の和と積を、$\alpha+\beta$、$\alpha\beta$ から作ります。</p></div>
+<div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4"><p class="text-sm font-bold text-amber-900">2つの方程式の解を合わせて3個</p><p class="mt-1 text-sm text-amber-800">各方程式が異なる2解をもつなら、共通解がちょうど1個のとき全体で3個です。</p></div>
+</div>
+</div>
+<div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+<h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+<div class="mt-4 space-y-4">
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900"><strong>（3）和と積をそのまま使う</strong><br>\[(2\alpha-1)(2\beta-1)=4\alpha\beta-2(\alpha+\beta)+1\]と変形します。</div>
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900"><strong>（4）（ii）特殊値を先に確認する</strong><br>$p=0,1$ では重解が生じるため、一般の場合と分けます。</div>
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900"><strong>（4）（ii）共通解は差をとって探す</strong><br>共通解 $r$ なら \[f(r)-g(r)=0\] です。2次項が消えるので候補を絞れます。</div>
+</div>
+</div>
+
+<div class="mt-10"><h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3><div class="mt-4 space-y-8 text-slate-700">
+<div><p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）</p><p class="mt-2">$p=2$ のとき、</p><div class="math-scroll">\[x^2-4x+2=0\]</div><p>解の公式より、</p><div class="math-scroll">\[\begin{aligned}x&=\frac{4\pm\sqrt{16-8}}2\\&=2\pm\sqrt2.\end{aligned}\]</div><div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">\[x=2\pm\sqrt2\]</div></div>
+<div class="border-t border-slate-200 pt-6"><p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）</p><p class="mt-2">判別式を $D$ とすると、</p><div class="math-scroll">\[\begin{aligned}D&=(-2p)^2-4p\\&=4p(p-1).\end{aligned}\]</div><p>異なる2つの実数解をもつ条件は $D&gt;0$ なので、</p><div class="math-scroll">\[p(p-1)&gt;0\]</div><div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">\[p&lt;0\quad\text{または}\quad p&gt;1\]</div></div>
+<div class="border-t border-slate-200 pt-6"><p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）</p><p class="mt-2">解と係数の関係より、</p><div class="math-scroll">\[\alpha+\beta=2p,\qquad\alpha\beta=p\]</div><p>したがって、</p><div class="math-scroll">\[\begin{aligned}(2\alpha-1)(2\beta-1)&=4\alpha\beta-2(\alpha+\beta)+1\\&=4p-4p+1\\&=1.\end{aligned}\]</div><div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">答：$1$</div></div>
+
+<div class="border-t border-slate-200 pt-6"><p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）（i）</p><p class="mt-2">新しい2解の和は、</p><div class="math-scroll">\[\begin{aligned}(2\alpha-1)+(2\beta-1)&=2(\alpha+\beta)-2\\&=4p-2.\end{aligned}\]</div><p>積は（3）より1である。したがって、</p><div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">\[f(x)=x^2-(4p-2)x+1\]</div></div>
+
+<div class="border-t border-slate-200 pt-6"><p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）（ii）重解となる場合</p><p class="mt-2">$g(x)$ の判別式は $4p(p-1)$、$f(x)$ の判別式は</p><div class="math-scroll">\[\begin{aligned}(4p-2)^2-4&=16p^2-16p\\&=16p(p-1).\end{aligned}\]</div><p>よって、重解が生じるのは $p=0,1$ のときである。</p>
+<div class="mt-3 overflow-x-auto"><table class="w-full min-w-[600px] border-collapse text-center text-sm"><thead><tr class="bg-slate-100"><th class="border border-slate-300 px-3 py-3">$p$</th><th class="border border-slate-300 px-3 py-3">$g(x)$</th><th class="border border-slate-300 px-3 py-3">$f(x)$</th><th class="border border-slate-300 px-3 py-3">異なる解の個数</th></tr></thead><tbody><tr><td class="border border-slate-300 px-3 py-3">$0$</td><td class="border border-slate-300 px-3 py-3">$x^2$</td><td class="border border-slate-300 px-3 py-3">$(x+1)^2$</td><td class="border border-slate-300 px-3 py-3 font-bold">2個</td></tr><tr><td class="border border-slate-300 px-3 py-3">$1$</td><td class="border border-slate-300 px-3 py-3">$(x-1)^2$</td><td class="border border-slate-300 px-3 py-3">$(x-1)^2$</td><td class="border border-slate-300 px-3 py-3 font-bold">1個</td></tr></tbody></table></div><p class="mt-3">したがって、$p=0,1$ は条件を満たさない。</p></div>
+
+<div class="border-t border-slate-200 pt-6"><p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）（ii）共通解を求める</p><p class="mt-2">以下、$p\ne0,1$ とする。このとき、$f(x)=0$ と $g(x)=0$ はそれぞれ異なる2解をもつ。</p><p>異なる解が全部で3個になるためには、2つの方程式が共通解をちょうど1個もてばよい。</p><p class="mt-3">共通解を $r$ とすると、$f(r)=g(r)=0$ なので、</p><div class="math-scroll">\[f(r)-g(r)=0\]</div><p>ここで、</p><div class="math-scroll">\[\begin{aligned}f(x)-g(x)&=\{x^2-(4p-2)x+1\}-(x^2-2px+p)\\&=(2-2p)x+1-p\\&=(1-p)(2x+1).\end{aligned}\]</div><p>$p\ne1$ なので、</p><div class="math-scroll">\[2r+1=0\qquad r=-\frac12\]</div><p>これが $g(x)=0$ の解であるから、</p><div class="math-scroll">\[\begin{aligned}g\left(-\frac12\right)&=\frac14+p+p\\&=\frac14+2p\\&=0.\end{aligned}\]</div><p>よって、</p><div class="math-scroll">\[p=-\frac18\]</div><p class="mt-3">実際、$p=-\dfrac18$ のとき、</p><div class="math-scroll">\[\begin{aligned}g(x)&=x^2+\frac14x-\frac18\\&=\left(x+\frac12\right)\left(x-\frac14\right),\end{aligned}\]\[\begin{aligned}f(x)&=x^2+\frac52x+1\\&=\left(x+\frac12\right)(x+2).\end{aligned}\]</div><p>異なる解は $-2,-\dfrac12,\dfrac14$ の3個である。</p><div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">\[p=-\frac18\]</div></div>
+</div></div>
+
+<div class="mt-10"><h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解：（4）（ii）解の変換から考える</h3><div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed text-slate-700"><p>$p\ne0,1$ のとき、$g(x)=0$ の異なる2解を $\alpha,\beta$ とすると、$f(x)=0$ の解は $2\alpha-1,2\beta-1$ である。</p><p class="mt-3">異なる解が3個になるには、元の解と変換後の解が1個だけ一致する必要がある。$\alpha=2\alpha-1$ または $\beta=2\beta-1$ なら、その解は1であり、$g(1)=0$ から $p=1$ となるので除外する。</p><p>したがって、例えば $\alpha=2\beta-1$ としてよい。解と係数の関係より、</p><div class="math-scroll">\[\alpha+\beta=2p,\qquad\alpha\beta=p\]</div><p>$\alpha=2\beta-1$ を用いると、</p><div class="math-scroll">\[3\beta-1=2p,\qquad\beta(2\beta-1)=p\]</div><p>よって、</p><div class="math-scroll">\[2\beta^2-\beta=\frac{3\beta-1}{2}\]\[4\beta^2-5\beta+1=0\]\[(4\beta-1)(\beta-1)=0\]</div><p>$\beta=1$ は $p=1$ となるので除外し、$\beta=\dfrac14$ から</p><div class="math-scroll">\[p=\frac{3\cdot\dfrac14-1}{2}=-\frac18\]</div></div></div>
+<div class="mt-10"><h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化 解の変換と重なり</h3><p class="mt-4 text-sm leading-relaxed text-slate-700">$g(x)=0$ の解 $\alpha,\beta$ と、その変換 $2\alpha-1,2\beta-1$ を複素数平面上に表示します。$p=-\dfrac18$ では1組だけが重なります。</p>
+<div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-6">
+<div class="mx-auto max-w-xl"><label for="p-slider" class="mb-2 block text-sm font-medium text-slate-700">p：<span id="p-display" class="text-lg font-bold text-blue-700">-0.125</span></label><input id="p-slider" type="range" min="-0.5" max="1.5" step="0.001" value="-0.125" class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600"><div class="mt-3 flex flex-wrap justify-center gap-2"><button type="button" data-p="-0.125" class="rounded-lg border border-emerald-200 bg-white px-3 py-2 text-sm font-bold text-emerald-700 hover:bg-emerald-50">p = -1/8</button><button type="button" data-p="0" class="rounded-lg border border-amber-200 bg-white px-3 py-2 text-sm font-bold text-amber-700 hover:bg-amber-50">p = 0</button><button type="button" data-p="0.5" class="rounded-lg border border-violet-200 bg-white px-3 py-2 text-sm font-bold text-violet-700 hover:bg-violet-50">p = 1/2</button><button type="button" data-p="1" class="rounded-lg border border-rose-200 bg-white px-3 py-2 text-sm font-bold text-rose-700 hover:bg-rose-50">p = 1</button></div></div>
+<div class="mt-5 overflow-x-auto"><svg id="root-svg" width="780" height="500" viewBox="0 0 780 500" class="mx-auto h-auto min-w-[700px] max-w-[780px] rounded-xl border border-slate-200 bg-white" aria-label="gとfの解を示す複素数平面"><g id="root-grid"></g><line id="real-axis" stroke="#64748b" stroke-width="1.7"></line><line id="imag-axis" stroke="#64748b" stroke-width="1.7"></line><line id="map-line-a" stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="7 5"></line><line id="map-line-b" stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="7 5"></line><circle id="root-alpha" r="8" fill="#2563eb"></circle><circle id="root-beta" r="8" fill="#7c3aed"></circle><circle id="root-ta" r="8" fill="#10b981"></circle><circle id="root-tb" r="8" fill="#e11d48"></circle><g font-size="14" font-weight="700"><text id="label-alpha" fill="#1d4ed8">α</text><text id="label-beta" fill="#6d28d9">β</text><text id="label-ta" fill="#047857">2α−1</text><text id="label-tb" fill="#be123c">2β−1</text><text x="735" y="264" fill="#64748b">実軸</text><text x="392" y="30" fill="#64748b">虚軸</text></g></svg></div>
+<div class="mt-4 grid gap-3 sm:grid-cols-3"><div class="rounded-lg border border-blue-200 bg-blue-50 p-4 text-center"><div class="text-xs font-bold text-blue-700">$g(x)=0$ の解</div><div id="g-roots-display" class="mt-2 text-sm font-bold text-blue-900"></div></div><div class="rounded-lg border border-violet-200 bg-violet-50 p-4 text-center"><div class="text-xs font-bold text-violet-700">$f(x)=0$ の解</div><div id="f-roots-display" class="mt-2 text-sm font-bold text-violet-900"></div></div><div class="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-center"><div class="text-xs font-bold text-emerald-700">異なる解の個数</div><div id="distinct-display" class="mt-2 text-2xl font-bold text-emerald-900"></div></div></div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded",()=>{const slider=document.getElementById("p-slider"),W=780,H=500,left=55,right=35,top=35,bottom=45,xMin=-4,xMax=4,yMin=-2,yMax=2,sx=x=>left+(x-xMin)/(xMax-xMin)*(W-left-right),sy=y=>H-bottom-(y-yMin)/(yMax-yMin)*(H-top-bottom);let grid="";for(let x=-4;x<=4;x+=.5)grid+=`<line x1="${sx(x)}" y1="${top}" x2="${sx(x)}" y2="${H-bottom}" stroke="#f1f5f9" stroke-width="1"/>`;for(let y=-2;y<=2;y+=.5)grid+=`<line x1="${left}" y1="${sy(y)}" x2="${W-right}" y2="${sy(y)}" stroke="#f1f5f9" stroke-width="1"/>`;document.getElementById("root-grid").innerHTML=grid;const ra=document.getElementById("real-axis"),ia=document.getElementById("imag-axis");ra.setAttribute("x1",sx(xMin));ra.setAttribute("y1",sy(0));ra.setAttribute("x2",sx(xMax));ra.setAttribute("y2",sy(0));ia.setAttribute("x1",sx(0));ia.setAttribute("y1",sy(yMin));ia.setAttribute("x2",sx(0));ia.setAttribute("y2",sy(yMax));function roots(p){const d=p*(p-1);if(d>=0){const s=Math.sqrt(d);return[{re:p+s,im:0},{re:p-s,im:0}]}const s=Math.sqrt(-d);return[{re:p,im:s},{re:p,im:-s}]}function tr(z){return{re:2*z.re-1,im:2*z.im}}function setPoint(id,lid,z,dx,dy){const e=document.getElementById(id),l=document.getElementById(lid);e.setAttribute("cx",sx(z.re));e.setAttribute("cy",sy(z.im));l.setAttribute("x",sx(z.re)+dx);l.setAttribute("y",sy(z.im)+dy)}function setLine(id,z,w){const e=document.getElementById(id);e.setAttribute("x1",sx(z.re));e.setAttribute("y1",sy(z.im));e.setAttribute("x2",sx(w.re));e.setAttribute("y2",sy(w.im))}function fmt(z){const r=Math.abs(z.re)<1e-8?0:z.re,i=Math.abs(z.im)<1e-8?0:z.im;if(i===0)return r.toFixed(4);return`${r.toFixed(4)} ${i>=0?"+":"−"} ${Math.abs(i).toFixed(4)}i`}function count(ps){const u=[];ps.forEach(p=>{if(!u.some(q=>Math.hypot(p.re-q.re,p.im-q.im)<1e-5))u.push(p)});return u.length}function update(){const p=Number(slider.value),[a,b]=roots(p),ta=tr(a),tb=tr(b);setPoint("root-alpha","label-alpha",a,10,-12);setPoint("root-beta","label-beta",b,10,20);setPoint("root-ta","label-ta",ta,10,-12);setPoint("root-tb","label-tb",tb,10,20);setLine("map-line-a",a,ta);setLine("map-line-b",b,tb);document.getElementById("p-display").textContent=p.toFixed(3);document.getElementById("g-roots-display").textContent=`α = ${fmt(a)}, β = ${fmt(b)}`;document.getElementById("f-roots-display").textContent=`2α−1 = ${fmt(ta)}, 2β−1 = ${fmt(tb)}`;document.getElementById("distinct-display").textContent=count([a,b,ta,tb])}slider.addEventListener("input",update);document.querySelectorAll("[data-p]").forEach(b=>b.addEventListener("click",()=>{slider.value=b.dataset.p;update()}));update()});
+</script>
+</div>
+
+<div class="mt-10"><h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3><div class="mt-4 space-y-4"><div class="rounded-lg border border-red-200 bg-red-50 p-4"><p class="text-sm font-bold text-red-900">異なる2実数解の条件を $D\ge0$ とする</p><p class="mt-1 text-sm text-red-800">「異なる」ので $D&gt;0$ が必要です。</p></div><div class="rounded-lg border border-red-200 bg-red-50 p-4"><p class="text-sm font-bold text-red-900">$f(x)$ の $x$ の係数の符号を誤る</p><p class="mt-1 text-sm text-red-800">2解の和が $4p-2$ なので、\[f(x)=x^2-(4p-2)x+1\]です。</p></div><div class="rounded-lg border border-red-200 bg-red-50 p-4"><p class="text-sm font-bold text-red-900">（4）（ii）で $p=0,1$ を調べない</p><p class="mt-1 text-sm text-red-800">この2つでは重解が生じるため、一般の場合と解の個数の数え方が変わります。</p></div></div></div>
+</section>
+<section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+<h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+<p class="mt-4 text-sm text-blue-200">結果だけでなく、条件の読み替えや解法選択の理由を説明してから開いてください。</p>
+<div class="mt-6 space-y-3">
+<details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q1. 「異なる2つの実数解」を判別式でどう表しますか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">判別式を $D$ とすると、\[D&gt;0\]です。$D=0$ では重解となります。</div></details>
+<details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q2. 変換された2数を解にもつ2次方程式を作るには、まず何を求めますか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">新しい2解の和と積です。和が $S$、積が $P$ なら、\[x^2-Sx+P=0\]となります。</div></details>
+<details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q3. （4）（ii）で、なぜ $p=0,1$ を先に分けますか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">この2つでは $f(x)$、$g(x)$ の判別式が0となり、各方程式が異なる2解をもたないからです。</div></details>
+<details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q4. 2つの2次方程式が各2解をもち、合わせて異なる解が3個になるのはどんなときですか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">共通解をちょうど1個もつときです。共通解がなければ4個、2個とも共通なら2個です。</div></details>
+<details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q5. 共通解を探すとき、なぜ $f(x)-g(x)$ を考えるのですか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">共通解 $r$ では $f(r)=g(r)=0$ なので、\[f(r)-g(r)=0\]が成り立ちます。2次項が消え、候補を簡単に絞れます。</div></details>
+</div>
+</section>
+<nav class="mt-7 grid gap-3 sm:grid-cols-2">
+    <a href="no34.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+        ← No.34へ
+    </a>
+    <a href="no36.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+        No.36 →
+    </a>
+</nav>
+</main>
+<footer class="py-10 text-center text-sm text-slate-500">自彊館(理系)　夏期数学課題 解説サイト</footer>
+</div>
+</body>
+</html>
