@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.4 三角関数 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: { matchFontHeight: false },
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+        
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.4</span>
+                    <span class="rounded-full bg-red-100 px-3 py-1 text-xs font-bold text-red-800">発展</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">三角関数</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 text-slate-700 leading-relaxed mt-4">
+                    <p>$\theta$についての方程式</p>
+                    <div class="math-scroll">
+                        \[ 2\sin 2\theta-2k\sin\theta-2k\cos\theta+k^2=0 \quad (k \mbox{ は0以上の定数}) \quad \cdots(*) \]
+                    </div>
+                    <p>がある．ただし，$0 \leq \theta < 2\pi$ とする．</p>
+                    <ol class="list-decimal pl-6 mt-3 space-y-2">
+                        <li>$k=0$ のとき，$(*)$ を解け．</li>
+                        <li>$k=1$ のとき，$(*)$ を解け．</li>
+                        <li>$(*)$ が相異なる4個の解をもつような$k$の値の範囲を求めよ．</li>
+                        <li>(3)のとき，$(*)$ の最小の解を $\alpha$ ，最大の解を $\beta$ とする．$\beta$ を $\alpha$ を用いて表せ．</li>
+                    </ol>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                    <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                        <li><strong>方程式の形：</strong> $\sin 2\theta$ と $\sin\theta, \cos\theta$ が混在している。まずは倍角の公式 $\sin 2\theta = 2\sin\theta\cos\theta$ で角を $\theta$ に統一する。</li>
+                        <li><strong>定石の落とし穴：</strong> $\sin\theta$ と $\cos\theta$ の和を含む対称式を見ると、即座に $t = \sin\theta + \cos\theta$ と置換したくなるが、本問でそれを実行すると $t$ の方程式は解けても $\theta$ に戻す処理が極めて難解になる。</li>
+                        <li><strong>項のグループ分けと因数分解：</strong> 展開した式を見ると、項が4つあり、うまく2つずつペアにすると共通因数が見えてくる。これが最大の突破口である。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    問題を解くための考え方から、答案、検算、発展までを順に確認します。
+                </p>
+
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">項が4つある複雑な方程式</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                置換を考える前に、まずは<strong>「因数分解」</strong>を疑います。2項ずつペアにして共通因数でくくる（部分分解）ことで、$(A - B)(C - D) = 0$ の形に持ち込めることが多いです。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">解の個数条件</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                因数分解により $\sin\theta = \frac{k}{2}$ または $\cos\theta = \frac{k}{2}$ となります。これらの解の個数の合計が4個になる条件を考えますが、<strong>「共通解（重複）」</strong>の存在を忘れないように単位円を描いて確認します。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">異なる象限の角の関係式（$\alpha$ と $\beta$）</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                例えば第4象限の $\beta$ を第1象限の $\alpha$ で表したい場合、<strong>$\cos(2\pi - \beta)$ などの公式を用いて、一旦「すべて第1象限の角」に変換して比較する</strong>のが定石です。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                            <strong>① 倍角公式を用いて因数分解する</strong><br>
+                            $2\sin2\theta=4\sin\theta\cos\theta$ と直し、4項を2項ずつまとめて
+                            $(2\sin\theta-k)(2\cos\theta-k)=0$ を得ます。
+                        </div>
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                            <strong>② 単位円で解の個数を数える</strong><br>
+                            $\sin\theta=\dfrac{k}{2}$ と $\cos\theta=\dfrac{k}{2}$ の解を別々に数え、
+                            両方を満たす共通解がある場合は重複を除きます。
+                        </div>
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                            <strong>③ 最小解と最大解の象限を確認する</strong><br>
+                            $k$ の範囲ごとに $\alpha,\beta$ の位置が変わるため、単位円上の対称性から関係式を求めます。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <p class="mb-4">
+                            まず、与えられた方程式 $(*)$ を変形し、因数分解する。<br>
+                            $\sin 2\theta = 2\sin\theta\cos\theta$ より、
+                        </p>
+                        <div class="math-scroll bg-slate-50 p-4 rounded-lg border border-slate-200">
+                            \begin{aligned}
+                            4\sin\theta\cos\theta - 2k\sin\theta - 2k\cos\theta + k^2 &= 0 \\
+                            2\sin\theta(2\cos\theta - k) - k(2\cos\theta - k) &= 0 \\
+                            (2\sin\theta - k)(2\cos\theta - k) &= 0
+                            \end{aligned}
+                        </div>
+                        <p class="mt-2">
+                            よって、$(*)$ の解は $\sin\theta = \frac{k}{2} \cdots$① または $\cos\theta = \frac{k}{2} \cdots$② を満たす $\theta$ である。
+                        </p>
+
+                        <!-- (1) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（1）</p>
+                            <p class="mt-2">
+                                $k=0$ のとき、①, ② は $\sin\theta = 0$ または $\cos\theta = 0$ となる。<br>
+                                $0 \leq \theta < 2\pi$ の範囲において、<br>
+                                $\sin\theta = 0$ より $\theta = 0, \pi$<br>
+                                $\cos\theta = 0$ より $\theta = \frac{\pi}{2}, \frac{3\pi}{2}$<br>
+                                これらは互いに異なる。
+                            </p>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $\theta = 0, \frac{\pi}{2}, \pi, \frac{3\pi}{2}$
+                            </div>
+                        </div>
+
+                        <!-- (2) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（2）</p>
+                            <p class="mt-2">
+                                $k=1$ のとき、①, ② は $\sin\theta = \frac{1}{2}$ または $\cos\theta = \frac{1}{2}$ となる。<br>
+                                $0 \leq \theta < 2\pi$ の範囲において、<br>
+                                $\sin\theta = \frac{1}{2}$ より $\theta = \frac{\pi}{6}, \frac{5\pi}{6}$<br>
+                                $\cos\theta = \frac{1}{2}$ より $\theta = \frac{\pi}{3}, \frac{5\pi}{3}$
+                            </p>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $\theta = \frac{\pi}{6}, \frac{\pi}{3}, \frac{5\pi}{6}, \frac{5\pi}{3}$
+                            </div>
+                        </div>
+
+                        <!-- (3) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（3）</p>
+                            <p class="mt-2">
+                                $(*)$ が相異なる4個の解をもつためには、方程式①、②がそれぞれ $0 \leq \theta < 2\pi$ の範囲に2個の解をもち、かつそれらに共通解がないことが必要十分条件である。<br>
+                                ①、②がそれぞれ2個の解をもつ条件は、$-1 < \frac{k}{2} < 1$ である。<br>
+                                $k \geq 0$ より、$0 \leq \frac{k}{2} < 1$ すなわち $0 \leq k < 2$。<br>
+                                <br>
+                                次に、①と②が共通解をもつ条件を考える。<br>
+                                共通解をもつとき $\sin\theta = \cos\theta = \frac{k}{2}$ である。<br>
+                                $\sin^2\theta + \cos^2\theta = 1$ より、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \left(\frac{k}{2}\right)^2 + \left(\frac{k}{2}\right)^2 &= 1 \\
+                                \frac{k^2}{2} &= 1 \\
+                                k^2 &= 2
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                $k \geq 0$ より $k = \sqrt{2}$。<br>
+                                このとき $\sin\theta = \cos\theta = \frac{1}{\sqrt{2}}$ となり、$\theta = \frac{\pi}{4}$ が共通解となるため、全体の解の個数は3個に減ってしまう。<br>
+                                したがって、$k = \sqrt{2}$ は除外しなければならない。
+                            </p>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $0 \leq k < \sqrt{2}$ , $\sqrt{2} < k < 2$
+                            </div>
+                        </div>
+
+                        <!-- (4) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（4）</p>
+                            <p class="mt-2">
+                                $\frac{k}{2} = c$ とおく。(3)より $0 \leq c < 1, c \neq \frac{1}{\sqrt{2}}$ である。<br>
+                                ①($\sin\theta=c$) の解は第1象限と第2象限に1つずつ、②($\cos\theta=c$) の解は第1象限と第4象限に1つずつ存在する。<br>
+                                $0 \leq \theta < 2\pi$ の範囲において、最小の解 $\alpha$ は第1象限にあり、最大の解 $\beta$ は第4象限にある。すなわち、$\beta$ は必ず $\cos\beta = c$ (②の解) を満たす。<br>
+                                <br>
+                                第1象限（$0 \le \theta \le \frac{\pi}{2}$）において、$\alpha$ が①と②のどちらの解に由来するかで場合分けをする。
+                            </p>
+                            
+                            <p class="mt-4 font-bold text-blue-800">[i] $0 \leq k < \sqrt{2}$ すなわち $0 \leq c < \frac{1}{\sqrt{2}}$ のとき</p>
+                            <p class="mt-1">
+                                第1象限において、$\sin\frac{\pi}{4} = \cos\frac{\pi}{4} = \frac{1}{\sqrt{2}}$ であるから、関数 $\sin\theta$ と $\cos\theta$ のグラフを考えると、解となる角度は小さい方から順に $\sin\theta=c$ の解、$\cos\theta=c$ の解となる。（$\because c < \frac{1}{\sqrt{2}}$）<br>
+                                したがって、最小の解 $\alpha$ は $\sin\alpha = c$ を満たす。<br>
+                                $\beta$ は第4象限の角であり $\cos\beta = c$ を満たすから、
+                            </p>
+                            <div class="math-scroll">
+                                \[ \cos\beta = \cos(2\pi - \beta) = c = \sin\alpha = \cos\left(\frac{\pi}{2} - \alpha\right) \]
+                            </div>
+                            <p class="mt-2">
+                                ここで、$2\pi - \beta$ と $\frac{\pi}{2} - \alpha$ はともに第1象限の角であるため等しくなる。
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                2\pi - \beta &= \frac{\pi}{2} - \alpha \\
+                                \beta &= \alpha + \frac{3}{2}\pi
+                                \end{aligned}
+                            </div>
+                            
+                            <p class="mt-6 font-bold text-blue-800">[ii] $\sqrt{2} < k < 2$ すなわち $\frac{1}{\sqrt{2}} < c < 1$ のとき</p>
+                            <p class="mt-1">
+                                同様に第1象限の大小関係を考えると、解となる角度は小さい方から順に $\cos\theta=c$ の解、$\sin\theta=c$ の解となる。<br>
+                                したがって、最小の解 $\alpha$ は $\cos\alpha = c$ を満たす。<br>
+                                $\beta$ は $\cos\beta = c$ を満たす第4象限の角であるから、
+                            </p>
+                            <div class="math-scroll">
+                                \[ \cos\beta = \cos(2\pi - \beta) = c = \cos\alpha \]
+                            </div>
+                            <p class="mt-2">
+                                $2\pi - \beta$ と $\alpha$ はともに第1象限の角であるため等しくなる。
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                2\pi - \beta &= \alpha \\
+                                \beta &= -\alpha + 2\pi
+                                \end{aligned}
+                            </div>
+
+                            <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900 font-bold inline-block w-full">
+                                答:<br>
+                                $0 \leq k < \sqrt{2}$ のとき、 $\beta = \alpha + \frac{3}{2}\pi$<br>
+                                $\sqrt{2} < k < 2$ のとき、 $\beta = -\alpha + 2\pi$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化（単位円と交点）</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        (4)の場合分けがなぜ必要なのか、単位円上で視覚的に確認しましょう。<br>
+                        方程式の解は、単位円上の点 $(X, Y) = (\cos\theta, \sin\theta)$ について、<br>
+                        <span class="text-blue-600 font-bold">水平線 $Y = k/2$ （$\sin\theta = k/2$に対応）</span> と <span class="text-amber-600 font-bold">垂直線 $X = k/2$ （$\cos\theta = k/2$に対応）</span> <br>
+                        が単位円と交わる点の <strong>偏角（角度）</strong> です。<br>
+                        スライダーを動かして $k$ を変化させ、最小の解 $\alpha$（緑色の点）と最大の解 $\beta$（赤色の点）の位置関係の変化を観察してください。
+                    </p>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 sm:p-6 rounded-lg border border-slate-200 flex flex-col items-center">
+                        <div class="w-full max-w-md mb-6 px-2">
+                            <label for="k-slider" class="block text-sm font-medium text-slate-700 mb-2">
+                                定数 $k$ の値: <span id="k-value" class="font-bold text-indigo-600">0.00</span>
+                            </label>
+                            <input type="range" id="k-slider" min="0" max="2.4" step="0.02" value="0" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
+                            <div class="flex justify-between mt-2 text-xs text-slate-500 px-1">
+                                <span>0</span>
+                                <span>$\sqrt{2}\approx 1.41$</span>
+                                <span>2.0</span>
+                            </div>
+                        </div>
+
+                        <div class="relative w-full max-w-md bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden p-2 flex justify-center">
+                            <svg id="unit-circle-svg" viewBox="-1.5 -1.5 3 3" class="w-full h-auto" style="transform: scaleY(-1);">
+                                <!-- 背景軸 -->
+                                <line x1="-1.5" y1="0" x2="1.5" y2="0" stroke="#cbd5e1" stroke-width="0.02" />
+                                <line x1="0" y1="-1.5" x2="0" y2="1.5" stroke="#cbd5e1" stroke-width="0.02" />
+                                
+                                <!-- 単位円 -->
+                                <circle cx="0" cy="0" r="1" fill="none" stroke="#94a3b8" stroke-width="0.02" />
+                                
+                                <!-- 動く直線 -->
+                                <line id="line-sin" x1="-1.5" y1="0" x2="1.5" y2="0" stroke="#2563eb" stroke-width="0.02" stroke-dasharray="0.04, 0.04" />
+                                <line id="line-cos" x1="0" y1="-1.5" x2="0" y2="1.5" stroke="#d97706" stroke-width="0.02" stroke-dasharray="0.04, 0.04" />
+
+                                <!-- 基準線 (y=x) -->
+                                <line x1="-1.2" y1="-1.2" x2="1.2" y2="1.2" stroke="#e2e8f0" stroke-width="0.02" />
+
+                                <!-- 交点グループ -->
+                                <g id="points-group"></g>
+                            </svg>
+                            <!-- テキストオーバーレイ (SVGのY反転を回避するためHTMLで配置) -->
+                            <div id="labels-container" class="absolute top-0 left-0 w-full h-full pointer-events-none"></div>
+                        </div>
+                        
+                        <div class="mt-4 p-3 bg-indigo-50 rounded-lg text-center w-full max-w-md border border-indigo-200 shadow-sm text-sm">
+                            <div id="status-text" class="font-bold text-indigo-800"></div>
+                        </div>
+                    </div>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const slider = document.getElementById('k-slider');
+                            const kValueDisplay = document.getElementById('k-value');
+                            const lineSin = document.getElementById('line-sin');
+                            const lineCos = document.getElementById('line-cos');
+                            const pointsGroup = document.getElementById('points-group');
+                            const labelsContainer = document.getElementById('labels-container');
+                            const statusText = document.getElementById('status-text');
+                            
+                            function updateVisualization() {
+                                const k = parseFloat(slider.value);
+                                kValueDisplay.textContent = k.toFixed(2);
+                                
+                                const c = k / 2;
+                                lineSin.setAttribute('y1', c); lineSin.setAttribute('y2', c);
+                                lineCos.setAttribute('x1', c); lineCos.setAttribute('x2', c);
+                                
+                                pointsGroup.innerHTML = '';
+                                labelsContainer.innerHTML = '';
+                                
+                                let angles = [];
+                                
+                                if (c >= 0 && c <= 1) {
+                                    const cos_for_sin = Math.sqrt(1 - c*c);
+                                    // sinθ = c の解
+                                    const theta1 = Math.acos(cos_for_sin); // 第1象限
+                                    const theta2 = Math.PI - theta1;       // 第2象限
+                                    angles.push({ val: theta1, x: cos_for_sin, y: c, source: 'sin' });
+                                    if (theta1 !== theta2) angles.push({ val: theta2, x: -cos_for_sin, y: c, source: 'sin' });
+                                    
+                                    // cosθ = c の解
+                                    const sin_for_cos = Math.sqrt(1 - c*c);
+                                    const theta3 = Math.asin(sin_for_cos); // 第1象限
+                                    const theta4 = 2*Math.PI - theta3;     // 第4象限
+                                    // 角度が近いものは重複とみなす
+                                    if (!angles.some(a => Math.abs(a.val - theta3) < 0.01)) {
+                                        angles.push({ val: theta3, x: c, y: sin_for_cos, source: 'cos' });
+                                    }
+                                    if (!angles.some(a => Math.abs(a.val - theta4) < 0.01)) {
+                                        angles.push({ val: theta4, x: c, y: -sin_for_cos, source: 'cos' });
+                                    }
+                                }
+                                
+                                // 角度でソート
+                                angles.sort((a, b) => a.val - b.val);
+                                
+                                const pxToPercent = (x) => ((x + 1.5) / 3) * 100;
+                                const pyToPercent = (y) => ((1.5 - y) / 3) * 100; // y軸上向き
+                                
+                                angles.forEach((angle, idx) => {
+                                    let color = "#64748b"; // デフォルト灰
+                                    let label = "";
+                                    let isMain = false;
+                                    
+                                    if (idx === 0) {
+                                        color = "#10b981"; // 緑 (最小 α)
+                                        label = "α";
+                                        isMain = true;
+                                    } else if (idx === angles.length - 1 && angles.length > 1) {
+                                        color = "#f43f5e"; // 赤 (最大 β)
+                                        label = "β";
+                                        isMain = true;
+                                    }
+                                    
+                                    pointsGroup.innerHTML += `<circle cx="${angle.x}" cy="${angle.y}" r="${isMain ? 0.06 : 0.04}" fill="${color}" />`;
+                                    
+                                    if (label) {
+                                        const left = pxToPercent(angle.x);
+                                        const top = pyToPercent(angle.y);
+                                        // 象限によってラベル位置を微調整
+                                        const ox = angle.x > 0 ? 10 : -20;
+                                        const oy = angle.y > 0 ? -25 : 15;
+                                        
+                                        labelsContainer.innerHTML += `<div class="absolute font-bold text-base" style="left: calc(${left}% + ${ox}px); top: calc(${top}% + ${oy}px); color: ${color};">${label}</div>`;
+                                    }
+                                });
+                                
+                                // ステータステキストの更新
+                                if (k < 1.41) {
+                                    statusText.innerHTML = `解は ${angles.length}個 (0 ≤ k < √2)<br><span class="text-emerald-600 font-normal">α は sinθ=k/2 由来</span> ➔ <span class="text-rose-600 font-normal">β = α + 3π/2</span>`;
+                                } else if (Math.abs(k - 1.414) < 0.02) {
+                                    statusText.innerHTML = `解は 3個 (k = √2 で解が重複)<br><span class="text-slate-500 font-normal">条件不適</span>`;
+                                } else if (k < 2.0) {
+                                    statusText.innerHTML = `解は ${angles.length}個 (√2 < k < 2)<br><span class="text-emerald-600 font-normal">α は cosθ=k/2 由来</span> ➔ <span class="text-rose-600 font-normal">β = -α + 2π</span>`;
+                                } else {
+                                    statusText.innerHTML = `解は ${angles.length}個 (k ≥ 2)<br><span class="text-slate-500 font-normal">4個の解を持たない</span>`;
+                                }
+                            }
+                            
+                            slider.addEventListener('input', updateVisualization);
+                            updateVisualization(); // 初期描画
+                        });
+                    </script>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">定石（$t = \sin\theta + \cos\theta$）に固執してタイムアップ</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                確かに $t$ の方程式に帰着させることはできます（$2t^2 - 2kt + k^2 - 2 = 0$ となる）が、ここから $t$ を求めても、さらに合成して $\theta$ を求めるプロセスが難解で、解の個数や $\alpha, \beta$ の関係を追うのが非常に困難になります。項の形を見たら「まずは因数分解」を試みる柔軟性が求められます。
+                            </p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">第4象限の角を第1象限に変換できない</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                (4)において、$\beta$ が $\cos\beta = c$ を満たすところまではわかっても、$\beta$ と $\alpha$ の関係式を作れない人が多いです。$\cos(2\pi - \beta) = \cos\beta$ を用いて「強制的に第1象限の角 $2\pi - \beta$ に変換して比較する」というテクニックは、難関大で非常によく使われます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+                
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. $\sin 2\theta, \sin\theta, \cos\theta$ が混在する方程式を見たとき、解法の第一手としてまず何を試みますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            $\sin 2\theta = 2\sin\theta\cos\theta$ と変形し、「因数分解（部分分解）」できないか試みます。それでダメな場合に初めて、$t = \sin\theta + \cos\theta$ などの置換を検討します。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. $0 \le \theta < 2\pi$ において、$\sin\theta = c$ と $\cos\theta = c$ が「共通解」を持つのは、単位円上でどのような点ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            $\sin\theta = \cos\theta$ となる点、すなわち単位円と直線 $y=x$ の交点（$\theta = \frac{\pi}{4}, \frac{5\pi}{4}$）です。このとき、解の個数が重なって減ってしまうことに注意が必要です。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. 第1象限の角 $\alpha$ と、第4象限の角 $\beta$ があり、$\cos\beta = \sin\alpha$ を満たしているとき、$\beta$ を $\alpha$ の式で表すとどうなりますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            第4象限の $\beta$ に対して、第1象限の角 $2\pi - \beta$ を考えます。$\cos(2\pi - \beta) = \cos\beta = \sin\alpha = \cos(\frac{\pi}{2} - \alpha)$ と変形し、ともに第1象限の角として比較すると $2\pi - \beta = \frac{\pi}{2} - \alpha$ となり、$\beta = \alpha + \frac{3\pi}{2}$ が得られます。
+                        </div>
+                    </details>
+                </div>
+            </section>
+            
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="no03.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← No.3へ
+                </a>
+                <a href="no05.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.5 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            自彊館(理系)　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>

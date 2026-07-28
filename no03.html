@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.3 図形と方程式 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+        
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.3</span>
+                    <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">図形と方程式</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 text-slate-700 leading-relaxed mt-4">
+                    <p>Oを原点とする$xy$平面上に2点$\mathrm{A}(6, 0)$，$\mathrm{B}(0, -4)$がある．また，点Pは，</p>
+                    <div class="math-scroll">
+                        \[ x^2+y^2-2x-6y+6=0 \]
+                    </div>
+                    <p>で表される円$E$上を動く．</p>
+                    <ol class="list-decimal pl-6 mt-3 space-y-2">
+                        <li>直線ABの方程式を求めよ．また，円$E$の中心の座標と半径を求めよ．</li>
+                        <li>三角形POAの面積が最小になるような点Pの座標を求めよ．</li>
+                        <li>三角形PABの面積の最小値を求めよ．</li>
+                        <li>線分OAの中点をMとし，三角形POMの面積と三角形PBMの面積の和を$S$とする．$S$の最小値を求めよ．</li>
+                    </ol>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                    <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                        <li><strong>定点の位置：</strong> $\mathrm{O}(0, 0)$，$\mathrm{A}(6, 0)$（$x$軸上），$\mathrm{B}(0, -4)$（$y$軸上），$\mathrm{M}(3, 0)$（OAの中点）。</li>
+                        <li><strong>動点 $\mathrm{P}$ の条件：</strong> 与えられた円 $E$ の一般形を標準形に直し、中心の座標と半径を求めて図形的な位置を把握する。</li>
+                        <li><strong>面積の最小化：</strong> 底辺が固定されている三角形（$\triangle\mathrm{POA}$ や $\triangle\mathrm{PAB}$）の面積を最小にするには、<strong>高さ（点 $\mathrm{P}$ から底辺の直線までの距離）</strong>が最小になる点を探せばよい。</li>
+                        <li><strong>和 $S$ の最小化：</strong> (4)では、面積の和を点 $\mathrm{P}$ の座標 $(x, y)$ を用いて代数的に立式し、その式の最小値を求めるアプローチをとる。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    問題を解くための考え方から、答案、検算、発展までを順に確認します。
+                </p>
+
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">円上の点から直線までの距離の最大・最小</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                座標でゴリ押しせず、必ず<strong>「（中心と直線の距離 $d$）$\pm$（半径 $r$）」</strong>の図形的性質を利用します。最小値なら $d-r$、最大値なら $d+r$ です。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">面積の式に絶対値が含まれたら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                そのまま2乗して解こうとするのは悪手です。点 $\mathrm{P}$ が存在する範囲（円 $E$ の位置）から、<strong>絶対値の中身の符号が常に正か負かを判定し、絶対値を外す</strong>のが定石です。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">$x, y$ の1次式の最大・最小と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                $-2x + 3y = k$ のようにおき、<strong>「直線と円が共有点をもつための $k$ の条件」</strong>（線形計画法）に帰着させます。ここでも「点と直線の距離公式 $\le$ 半径」を用います。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(2) $\triangle\mathrm{POA}$ の面積最小化</strong><br>
+                            底辺 $\mathrm{OA}$ は $x$軸上にあるので、高さは点 $\mathrm{P}$ の $y$座標の絶対値です。円 $E$ は第1象限にあるため、純粋に円上の点で最も $y$座標が小さい（低い）位置を探せばよいことになります。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(3) $\triangle\mathrm{PAB}$ の面積最小化</strong><br>
+                            底辺 $\mathrm{AB}$ の長さを計算し、直線 $\mathrm{AB}$ の方程式を求めます。点 $\mathrm{P}$ から直線 $\mathrm{AB}$ までの距離が最小になるのは、円の中心から直線 $\mathrm{AB}$ に垂線を下ろしたときです。距離 $d-r$ を求めて面積を計算します。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(4) $S$ の最小化</strong><br>
+                            $\triangle\mathrm{POM}$ は底辺が $x$軸上の $\mathrm{OM}=3$ なので、面積は $\frac{1}{2} \cdot 3 \cdot y$。<br>
+                            $\triangle\mathrm{PBM}$ は底辺を $\mathrm{BM}=5$ とし、直線 $\mathrm{BM}$ の方程式を立てて、点 $\mathrm{P}(x, y)$ との距離公式から面積を式で表します。<br>
+                            2つの面積を足し合わせた式を整理すると絶対値が現れますが、点 $\mathrm{P}$ の存在範囲（$x \le 3, y \ge 1$ など）を考えれば、絶対値の中身が常に負であることがわかり、シンプルな $x, y$ の1次式に帰着できます。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <!-- (1) -->
+                        <div>
+                            <p class="font-bold">（1）</p>
+                            <p class="mt-2">
+                                2点 $\mathrm{A}(6, 0)$，$\mathrm{B}(0, -4)$ を通る直線の方程式は、$x$切片と$y$切片を用いて
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \frac{x}{6} + \frac{y}{-4} &= 1 \\
+                                2x - 3y - 12 &= 0
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                また、円 $E$ の方程式を変形すると
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                x^2 - 2x + y^2 - 6y + 6 &= 0 \\
+                                (x - 1)^2 - 1 + (y - 3)^2 - 9 + 6 &= 0 \\
+                                (x - 1)^2 + (y - 3)^2 &= 4
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                したがって、円 $E$ の中心の座標と半径は次の通りである。
+                            </p>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: 直線AB: $2x - 3y - 12 = 0$， 中心 $(1, 3)$， 半径 $2$
+                            </div>
+                        </div>
+
+                        <!-- (2) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（2）</p>
+                            <p class="mt-2">
+                                $\triangle\mathrm{POA}$ の底辺を $\mathrm{OA}$ とすると、$\mathrm{OA} = 6$ で一定である。<br>
+                                したがって、$\triangle\mathrm{POA}$ の面積が最小になるのは、点 $\mathrm{P}$ から $x$軸（直線 $\mathrm{OA}$）までの距離が最小となるときである。<br>
+                                点 $\mathrm{P}$ は円 $(x - 1)^2 + (y - 3)^2 = 4$ 上にあり、中心の $y$座標が $3$、半径が $2$ であるため、円上の点の $y$座標の範囲は $1 \le y \le 5$ である。<br>
+                                つまり、点 $\mathrm{P}$ は常に第1象限にあり、$x$軸との距離は点 $\mathrm{P}$ の $y$座標そのものである。<br>
+                                よって、$y$座標が最小値 $1$ をとるとき、面積は最小となる。このとき $x$座標は円の中心と同じ $1$ である。
+                            </p>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $\mathrm{P}(1, 1)$
+                            </div>
+                        </div>
+
+                        <!-- (3) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（3）</p>
+                            <p class="mt-2">
+                                $\triangle\mathrm{PAB}$ の底辺を $\mathrm{AB}$ とすると、
+                            </p>
+                            <div class="math-scroll">
+                                \[ \mathrm{AB} = \sqrt{(0 - 6)^2 + (-4 - 0)^2} = \sqrt{36 + 16} = \sqrt{52} = 2\sqrt{13} \]
+                            </div>
+                            <p class="mt-2">
+                                面積が最小になるのは、点 $\mathrm{P}$ と直線 $\mathrm{AB}$ の距離 $h$ が最小となるときである。<br>
+                                (1)より、円 $E$ の中心 $\mathrm{C}(1, 3)$ と直線 $\mathrm{AB}: 2x - 3y - 12 = 0$ との距離 $d$ は、
+                            </p>
+                            <div class="math-scroll">
+                                \[ d = \frac{|2 \cdot 1 - 3 \cdot 3 - 12|}{\sqrt{2^2 + (-3)^2}} = \frac{|2 - 9 - 12|}{\sqrt{13}} = \frac{19}{\sqrt{13}} \]
+                            </div>
+                            <p class="mt-2">
+                                点 $\mathrm{P}$ は円 $E$ 上の点であるから、距離 $h$ の最小値は
+                            </p>
+                            <div class="math-scroll">
+                                \[ h_{\min} = d - (\text{半径}) = \frac{19}{\sqrt{13}} - 2 \]
+                            </div>
+                            <p class="mt-2">
+                                したがって、$\triangle\mathrm{PAB}$ の面積の最小値は
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \frac{1}{2} \times \mathrm{AB} \times h_{\min} &= \frac{1}{2} \cdot 2\sqrt{13} \cdot \left(\frac{19}{\sqrt{13}} - 2\right) \\
+                                &= \sqrt{13} \left(\frac{19}{\sqrt{13}} - 2\right) \\
+                                &= 19 - 2\sqrt{13}
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $19 - 2\sqrt{13}$
+                            </div>
+                        </div>
+
+                        <!-- (4) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（4）</p>
+                            <p class="mt-2">
+                                線分 $\mathrm{OA}$ の中点 $\mathrm{M}$ の座標は $(3, 0)$ である。<br>
+                                動点 $\mathrm{P}$ の座標を $(x, y)$ とする。$\triangle\mathrm{POM}$ の面積 $S_1$ は、底辺 $\mathrm{OM}=3$ で高さが $y$（$\because y \ge 1 > 0$）であるから、
+                            </p>
+                            <div class="math-scroll">
+                                \[ S_1 = \frac{1}{2} \cdot 3 \cdot y = \frac{3}{2}y \]
+                            </div>
+                            <p class="mt-2">
+                                直線 $\mathrm{BM}$ は2点 $\mathrm{M}(3, 0)$，$\mathrm{B}(0, -4)$ を通るので、その方程式は
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \frac{x}{3} + \frac{y}{-4} &= 1 \\
+                                4x - 3y - 12 &= 0
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                線分 $\mathrm{BM}$ の長さは $\sqrt{3^2 + (-4)^2} = 5$ であり、点 $\mathrm{P}(x, y)$ と直線 $\mathrm{BM}$ の距離 $h'$ は
+                            </p>
+                            <div class="math-scroll">
+                                \[ h' = \frac{|4x - 3y - 12|}{\sqrt{4^2 + (-3)^2}} = \frac{|4x - 3y - 12|}{5} \]
+                            </div>
+                            <p class="mt-2">
+                                したがって、$\triangle\mathrm{PBM}$ の面積 $S_2$ は
+                            </p>
+                            <div class="math-scroll">
+                                \[ S_2 = \frac{1}{2} \cdot 5 \cdot \frac{|4x - 3y - 12|}{5} = \frac{1}{2}|4x - 3y - 12| \]
+                            </div>
+                            <p class="mt-4">
+                                ここで、点 $\mathrm{P}(x, y)$ は円 $(x - 1)^2 + (y - 3)^2 = 4$ 上を動くため、<br>
+                                $x$ の最大値は $1+2=3$、$y$ の最小値は $3-2=1$ である。<br>
+                                これより、$4x - 3y - 12$ の値は、最大でも $4(3) - 3(1) - 12 = -3 < 0$ となり、円上のすべての点において常に負である。<br>
+                                したがって、絶対値記号を外すことができ、
+                            </p>
+                            <div class="math-scroll">
+                                \[ S_2 = -\frac{1}{2}(4x - 3y - 12) = -2x + \frac{3}{2}y + 6 \]
+                            </div>
+                            <p class="mt-2">
+                                よって、面積の和 $S$ は
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                S &= S_1 + S_2 \\
+                                &= \frac{3}{2}y + \left(-2x + \frac{3}{2}y + 6\right) \\
+                                &= -2x + 3y + 6
+                                \end{aligned}
+                            </div>
+                            <p class="mt-4">
+                                $k = -2x + 3y$ とおくと、直線 $2x - 3y + k = 0$ が円 $E$ と共有点をもつような $k$ の最小値を求めればよい。<br>
+                                円の中心 $(1, 3)$ とこの直線の距離が半径 $2$ 以下であればよいので、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \frac{|2(1) - 3(3) + k|}{\sqrt{2^2 + (-3)^2}} &\le 2 \\
+                                \frac{|k - 7|}{\sqrt{13}} &\le 2 \\
+                                |k - 7| &\le 2\sqrt{13} \\
+                                7 - 2\sqrt{13} \le &k \le 7 + 2\sqrt{13}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                ゆえに $k$ の最小値は $7 - 2\sqrt{13}$ である。<br>
+                                したがって、$S = k + 6$ の最小値は
+                            </p>
+                            <div class="math-scroll">
+                                \[ (7 - 2\sqrt{13}) + 6 = 13 - 2\sqrt{13} \]
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $13 - 2\sqrt{13}$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解：（4）パラメータ表示と三角関数の合成</h3>
+
+                    <div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed text-slate-700">
+                        <p>
+                            円 $E$ は
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            (x-1)^2+(y-3)^2=4
+                            \]
+                        </div>
+
+                        <p>
+                            であるから、円上の点Pを
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \mathrm{P}
+                            \left(
+                            1+2\cos\theta,\,
+                            3+2\sin\theta
+                            \right)
+                            \qquad
+                            (0\le\theta&lt;2\pi)
+                            \]
+                        </div>
+
+                        <p>
+                            と表す。
+                        </p>
+
+                        <div class="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-4 text-amber-900">
+                            <strong>パラメータ表示の確認：</strong><br>
+                            中心が原点ではなく $(1,3)$、半径が2なので、
+                            \[
+                            x=1+2\cos\theta,
+                            \qquad
+                            y=3+2\sin\theta
+                            \]
+                            とする。中心の座標を加えることを忘れない。
+                        </div>
+
+                        <p class="mt-4">
+                            主解法で求めた
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            S=-2x+3y+6
+                            \]
+                        </div>
+
+                        <p>
+                            に代入すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            S
+                            &=
+                            -2(1+2\cos\theta)
+                            +3(3+2\sin\theta)
+                            +6\\
+                            &=
+                            13-4\cos\theta+6\sin\theta.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            ここで、角 $\varphi$ を
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \cos\varphi=\frac3{\sqrt{13}},
+                            \qquad
+                            \sin\varphi=\frac2{\sqrt{13}}
+                            \qquad
+                            \left(0&lt;\varphi&lt;\frac{\pi}{2}\right)
+                            \]
+                        </div>
+
+                        <p>
+                            と定める。すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            -4\cos\theta+6\sin\theta
+                            &=
+                            2\sqrt{13}
+                            \left(
+                            \frac3{\sqrt{13}}\sin\theta
+                            -
+                            \frac2{\sqrt{13}}\cos\theta
+                            \right)\\
+                            &=
+                            2\sqrt{13}
+                            \left(
+                            \sin\theta\cos\varphi
+                            -
+                            \cos\theta\sin\varphi
+                            \right)\\
+                            &=
+                            2\sqrt{13}\sin(\theta-\varphi).
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            S
+                            =
+                            13+2\sqrt{13}\sin(\theta-\varphi).
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            $0\le\theta&lt;2\pi$ の範囲で
+                            \[
+                            \sin(\theta-\varphi)=-1
+                            \]
+                            となる $\theta$ が存在する。実際、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \theta
+                            =
+                            \frac{3\pi}{2}+\varphi
+                            \]
+                        </div>
+
+                        <p>
+                            とすればよい。$0&lt;\varphi&lt;\dfrac{\pi}{2}$ なので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            0
+                            \le
+                            \frac{3\pi}{2}+\varphi
+                            &lt;
+                            2\pi
+                            \]
+                        </div>
+
+                        <p>
+                            も満たされる。
+                        </p>
+
+                        <p class="mt-3">
+                            したがって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            S_{\min}
+                            =
+                            13-2\sqrt{13}.
+                            \]
+                        </div>
+
+                        <div class="mt-3 rounded-xl border-2 border-blue-500 bg-white p-4 text-center font-bold text-slate-900">
+                            \[
+                            13-2\sqrt{13}
+                            \]
+                        </div>
+
+                        <p class="mt-4">
+                            なお、最小となるとき、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \cos\theta
+                            =
+                            \sin\varphi
+                            =
+                            \frac2{\sqrt{13}},
+                            \qquad
+                            \sin\theta
+                            =
+                            -\cos\varphi
+                            =
+                            -\frac3{\sqrt{13}}.
+                            \]
+                        </div>
+
+                        <p>
+                            よって、そのときの点Pは
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \mathrm{P}
+                            \left(
+                            1+\frac4{\sqrt{13}},
+                            \,
+                            3-\frac6{\sqrt{13}}
+                            \right)
+                            \]
+                        </div>
+
+                        <p>
+                            である。
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        (3)の $\triangle\mathrm{PAB}$ の面積と、(4)の $S = \triangle\mathrm{POM} + \triangle\mathrm{PBM}$ の関係を視覚的に確認しましょう。<br>
+                        下のスライダーで円上の点 $\mathrm{P}$ を動かすことができます。点 $\mathrm{P}$ が直線の傾き $\dfrac{2}{3}$（直線 $\mathrm{AB}$ の傾きと同じ）の接点に近づいたとき、どちらの面積も最小になります。
+                    </p>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 sm:p-6 rounded-lg border border-slate-200 flex flex-col items-center">
+                        <div class="w-full max-w-lg mb-6 px-2">
+                            <label for="theta-slider" class="block text-sm font-medium text-slate-700 mb-2">
+                                点 $\mathrm{P}$ を動かす（角度 $\theta$）: <span id="theta-value" class="font-bold text-blue-600">300°</span>
+                            </label>
+                            <input type="range" id="theta-slider" min="0" max="359" step="1" value="300" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                        </div>
+
+                        <div class="relative w-full max-w-lg bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden p-2 flex justify-center">
+                            <!-- SVG Canvas (X: -2 to 8, Y: -6 to 6) -->
+                            <!-- y軸下向きを補正するために transform="scale(1, -1)" を使用 -->
+                            <svg id="geom-svg" width="400" height="360" viewBox="-2 -6 10 12" class="w-full h-auto" preserveAspectRatio="xMidYMid meet" style="transform: scaleY(-1);">
+                                <!-- 背景グリッド -->
+                                <g stroke="#e2e8f0" stroke-width="0.05">
+                                    <line x1="-2" y1="0" x2="8" y2="0" stroke="#94a3b8" stroke-width="0.1" /> <!-- x軸 -->
+                                    <line x1="0" y1="-6" x2="0" y2="6" stroke="#94a3b8" stroke-width="0.1" /> <!-- y軸 -->
+                                </g>
+
+                                <!-- 円 E -->
+                                <circle cx="1" cy="3" r="2" fill="rgba(59, 130, 246, 0.1)" stroke="#3b82f6" stroke-width="0.1" />
+                                <circle cx="1" cy="3" r="0.15" fill="#3b82f6" />
+                                
+                                <!-- 直線 AB -->
+                                <!-- 2x - 3y - 12 = 0 => y = (2x - 12)/3 -->
+                                <line x1="-2" y1="-5.333" x2="8" y2="1.333" stroke="#cbd5e1" stroke-width="0.08" stroke-dasharray="0.3, 0.3" />
+                                
+                                <!-- 直線 BM -->
+                                <!-- 4x - 3y - 12 = 0 => y = (4x - 12)/3 -->
+                                <line x1="-1.5" y1="-6" x2="4.5" y2="2" stroke="#cbd5e1" stroke-width="0.08" stroke-dasharray="0.3, 0.3" />
+
+                                <!-- 三角形 PAB -->
+                                <polygon id="poly-pab" points="0,-4 6,0 1,1" fill="rgba(244, 63, 94, 0.1)" stroke="#f43f5e" stroke-width="0.1" />
+                                
+                                <!-- 三角形 POM と PBM の境界線 -->
+                                <line id="line-pm" x1="1" y1="1" x2="3" y2="0" stroke="#10b981" stroke-width="0.1" stroke-dasharray="0.2, 0.2" />
+                                <line id="line-po" x1="1" y1="1" x2="0" y2="0" stroke="#10b981" stroke-width="0.1" />
+                                <line id="line-pb" x1="1" y1="1" x2="0" y2="-4" stroke="#10b981" stroke-width="0.1" />
+
+                                <!-- 定点 -->
+                                <circle cx="0" cy="0" r="0.2" fill="#475569" /> <!-- O -->
+                                <circle cx="6" cy="0" r="0.2" fill="#475569" /> <!-- A -->
+                                <circle cx="0" cy="-4" r="0.2" fill="#475569" /> <!-- B -->
+                                <circle cx="3" cy="0" r="0.2" fill="#10b981" /> <!-- M -->
+                                
+                                <!-- 動点 P -->
+                                <circle id="point-p" cx="1" cy="1" r="0.25" fill="#f43f5e" />
+                            </svg>
+                            <!-- テキストはSVGスケール反転の影響を受けないよう絶対配置 -->
+                            <div class="absolute text-slate-600 font-bold text-sm" style="bottom: 48%; left: 18%;">O</div>
+                            <div class="absolute text-slate-600 font-bold text-sm" style="bottom: 48%; right: 18%;">A</div>
+                            <div class="absolute text-slate-600 font-bold text-sm" style="bottom: 12%; left: 16%;">B</div>
+                            <div class="absolute text-emerald-600 font-bold text-sm" style="bottom: 48%; left: 49%;">M</div>
+                            <div id="text-p" class="absolute text-rose-600 font-bold text-sm" style="top: 25%; left: 30%;">P</div>
+                        </div>
+                        
+                        <div class="mt-4 p-4 bg-blue-50 rounded-lg w-full max-w-lg border border-blue-200 shadow-sm">
+                            <div class="grid grid-cols-2 gap-4 text-center">
+                                <div>
+                                    <div class="text-xs text-slate-500 font-semibold mb-1">(3) $\triangle\mathrm{PAB}$ の面積</div>
+                                    <div id="area-pab" class="text-xl font-bold text-rose-600">0.00</div>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-slate-500 font-semibold mb-1">(4) $S$ の値</div>
+                                    <div id="area-s" class="text-xl font-bold text-emerald-600">0.00</div>
+                                </div>
+                            </div>
+                            <div class="mt-3 pt-3 border-t border-blue-200 text-center text-sm font-semibold text-slate-700">
+                                $S$ と $\triangle\mathrm{PAB}$ の面積の差： <span class="text-blue-700">常に 6</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const slider = document.getElementById('theta-slider');
+                            const thetaValueDisplay = document.getElementById('theta-value');
+                            const pointP = document.getElementById('point-p');
+                            const polyPab = document.getElementById('poly-pab');
+                            const linePm = document.getElementById('line-pm');
+                            const linePo = document.getElementById('line-po');
+                            const linePb = document.getElementById('line-pb');
+                            const textP = document.getElementById('text-p');
+                            const areaPabDisplay = document.getElementById('area-pab');
+                            const areaSDisplay = document.getElementById('area-s');
+                            
+                            // SVGとコンテナのサイズ関係 (概算)
+                            const svgRect = document.getElementById('geom-svg').getBoundingClientRect();
+                            
+                            function updateVisualization() {
+                                const thetaDeg = parseFloat(slider.value);
+                                thetaValueDisplay.textContent = thetaDeg + "°";
+                                
+                                const thetaRad = thetaDeg * Math.PI / 180;
+                                
+                                // Pの座標 (円(x-1)^2+(y-3)^2=4 上)
+                                const px = 1 + 2 * Math.cos(thetaRad);
+                                const py = 3 + 2 * Math.sin(thetaRad);
+                                
+                                pointP.setAttribute('cx', px);
+                                pointP.setAttribute('cy', py);
+                                
+                                polyPab.setAttribute('points', `0,-4 6,0 ${px},${py}`);
+                                linePm.setAttribute('x1', px); linePm.setAttribute('y1', py);
+                                linePo.setAttribute('x1', px); linePo.setAttribute('y1', py);
+                                linePb.setAttribute('x1', px); linePb.setAttribute('y1', py);
+                                
+                                // テキストPの位置更新 (簡易マッピング)
+                                // X: -2 to 8 (幅10), Y: -6 to 6 (高さ12, 上が+y)
+                                const percentX = ((px - (-2)) / 10) * 100;
+                                const percentY = ((6 - py) / 12) * 100; // y軸反転をCSSのtopに対応
+                                textP.style.left = `calc(${percentX}% + 8px)`;
+                                textP.style.top = `calc(${percentY}% - 15px)`;
+                                
+                                // 面積の計算
+                                // △PAB = 12 - 2x + 3y (公式より)
+                                const areaPab = 12 - 2 * px + 3 * py;
+                                // S = -2x + 3y + 6
+                                const areaS = -2 * px + 3 * py + 6;
+                                
+                                areaPabDisplay.textContent = areaPab.toFixed(2);
+                                areaSDisplay.textContent = areaS.toFixed(2);
+                            }
+                            
+                            slider.addEventListener('input', updateVisualization);
+                            updateVisualization(); // 初期描画
+                        });
+                    </script>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">発展・一般化：出題者の誘導の意図</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        (3)と(4)の答えを比較すると、(4)の $S$ の最小値は (3)の $\triangle\mathrm{PAB}$ の最小値から <strong>ぴったり $6$ を引いた値</strong> になっています。これは偶然ではありません。<br>
+                        $\triangle\mathrm{PAB}$ の面積を座標を用いた「サラスの公式」で計算してみましょう。
+                    </p>
+                    <div class="math-scroll mt-2 bg-slate-50 p-3 rounded-lg border border-slate-200">
+                        \begin{aligned}
+                        \triangle\mathrm{PAB} &= \frac{1}{2} |6(-4) - 0 \cdot 0 + 0 \cdot y - (-4)x + x \cdot 0 - y \cdot 6| \\
+                        &= \frac{1}{2} |-24 + 4x - 6y| \\
+                        &= |2x - 3y - 12|
+                        \end{aligned}
+                    </div>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        円 $E$ 上の点において $2x - 3y - 12 < 0$ であるため、絶対値を外すと $\triangle\mathrm{PAB} = 12 - 2x + 3y$ となります。<br>
+                        一方、(4)の答案で導いたように $S = 6 - 2x + 3y$ でした。したがって、
+                    </p>
+                    <div class="math-scroll mt-2">
+                        \[ S = \triangle\mathrm{PAB} - 6 \]
+                    </div>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        という美しい関係式が成り立ちます。引かれている「$6$」という数字は、定点からなる $\triangle\mathrm{MOB}$ の面積（$\frac{1}{2} \cdot 3 \cdot 4 = 6$）に由来しています。<br>
+                        つまり、この問題は「(3)の最小値が求まっていれば、そこから $6$ を引くだけで(4)の答えが出る」という構造になっていたのです。図形を代数的に処理することで、目に見えない図形間の関係性が浮かび上がる、座標幾何の真骨頂と言える良問です。
+                    </p>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">絶対値を外さずに2乗して泥沼化する</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                (4)で $S = \frac{3}{2}y + \frac{1}{2}|4x - 3y - 12|$ の絶対値を処理できず、無理やり全体を2乗して $x^2$ や $y^2$ の項を作り、円の方程式を代入しようとして計算が破綻するケースが非常に多いです。「変数の範囲を確かめて符号を特定し、絶対値をそのまま外す」という勇気を持ちましょう。
+                            </p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">円上の点をパラメータで置く際、中心のズレを忘れる</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                別解として点 $\mathrm{P}$ の座標を $\theta$ を用いて表す際、$x = 2\cos\theta, y = 2\sin\theta$ と原点中心の式で置いてしまうミスが見られます。中心が $(1, 3)$ なので、正しくは $x = 1 + 2\cos\theta, y = 3 + 2\sin\theta$ としなければなりません。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+                
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. 円上の点からある直線までの距離の「最小値」を求めたいとき、図形的にどのような公式を利用しますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            「点と直線の距離公式」を用いて、円の中心と直線の距離 $d$ を計算し、そこから円の半径 $r$ を引いた「$d - r$」を計算します。円周上の点を文字で置いて微分等をする必要はありません。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. 座標を用いた面積計算で絶対値 $|ax+by+c|$ が現れたとき、計算を楽にするために最初に何を試みるべきですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            $x, y$ の「とり得る値の範囲（存在範囲）」を確認し、$ax+by+c$ の値が常に正、あるいは常に負にならないかをチェックします。符号が確定すれば、絶対値記号をただの括弧にして外すことができます。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. 点 $(x,y)$ が円上を動くとき、$1次式 -2x+3y$ の最小値を求めるには、どのような図形的アプローチ（線形計画法）をとりますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            $-2x+3y = k$ とおき、直線 $2x-3y+k=0$ と円が共有点をもつための条件を考えます。円の中心と直線の距離が半径以下となる不等式を解き、$k$ のとり得る範囲から最小値を特定します。
+                        </div>
+                    </details>
+                </div>
+            </section>
+            
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="no02.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← No.2へ
+                </a>
+                <a href="no04.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.4 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            自彊館(理系)　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>
