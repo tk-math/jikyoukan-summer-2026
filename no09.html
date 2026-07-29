@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.9 図形と計量 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+        
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.9</span>
+                    <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">図形と計量</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 text-slate-700 leading-relaxed mt-4">
+                    <p>三角形 $\mathrm{ABC}$ があり，</p>
+                    <div class="math-scroll">
+                        \[ \mathrm{AB}=4\sqrt{2}, \quad \mathrm{AC}=6\sqrt{2}, \quad \cos A=\frac{1}{3} \]
+                    </div>
+                    <p>である。この三角形の外接円を $K$ とする。</p>
+                    <ol class="list-decimal pl-6 mt-3 space-y-4">
+                        <li>辺 $\mathrm{BC}$ の長さを求めよ。</li>
+                        <li>$K$ の半径を求めよ。</li>
+                        <li>$K$ の弧 $\mathrm{BC}$ （$\mathrm{A}$ を含まない方）の上に，点 $\mathrm{D}$ を，$\mathrm{AD}$ が $K$ の直径となるようにとる。
+                            <ol class="list-[lower-roman] pl-6 mt-2 space-y-2">
+                                <li>四角形 $\mathrm{ABDC}$ の面積を求めよ。</li>
+                                <li>四角形 $\mathrm{ABDC}$ の対角線の交点を $\mathrm{E}$ とするとき，$\sin\angle\mathrm{AEB}$ の値を求めよ。</li>
+                            </ol>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4 flex flex-col sm:flex-row gap-6 items-center">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+                        <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                            <li><strong>(1), (2)の基本計算：</strong> 2辺とその間の角の $\cos$ が与えられているため、余弦定理で大変 $\mathrm{BC}$ が求まり、$\sin$ に直して正弦定理を使えば外接円の半径 $R$ が求まります。典型的な流れです。</li>
+                            <li><strong>$\mathrm{AD}$ が直径であることの恩恵：</strong> 「直径に対する円周角は $90^\circ$」であるため、$\triangle\mathrm{ABD}$ と $\triangle\mathrm{ACD}$ は<strong>直角三角形</strong>になります。これにより面積計算が劇的に楽になります。</li>
+                            <li><strong>対角線と面積の関係：</strong> 四角形の対角線の長さ（$\mathrm{AD}$ と $\mathrm{BC}$）が両方とも判明しています。対角線の長さと交角を用いた面積公式を利用すると、(3)(ii) は一瞬で解けます。</li>
+                        </ul>
+                    </div>
+                    <div class="w-48 flex-shrink-0 bg-white p-2 rounded-lg border border-blue-100">
+                        <svg viewBox="0 0 200 200" class="w-full h-auto">
+                            <!-- 円K -->
+                            <circle cx="100" cy="100" r="90" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+                            <!-- 中心 -->
+                            <circle cx="100" cy="100" r="2" fill="#64748b" />
+                            <!-- A(0, -90), D(0, 90) -->
+                            <!-- B(x, y) = (-77, 46), C(x, y) = (85, -30) あたりのイメージ -->
+                            <polygon points="100,10 23,146 100,190 185,70" fill="rgba(59, 130, 246, 0.1)" stroke="#3b82f6" stroke-width="1.5"/>
+                            <!-- 対角線 -->
+                            <line x1="100" y1="10" x2="100" y2="190" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="4,2"/>
+                            <line x1="23" y1="146" x2="185" y2="70" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="4,2"/>
+                            <!-- 直角マーク -->
+                            <polyline points="23,136 33,131 33,141" fill="none" stroke="#0f172a" stroke-width="1" />
+                            <polyline points="175,67 172,77 182,80" fill="none" stroke="#0f172a" stroke-width="1" />
+                            <!-- ラベル -->
+                            <text x="95" y="8" fill="#0f172a" font-size="12" font-weight="bold">A</text>
+                            <text x="8" y="156" fill="#0f172a" font-size="12" font-weight="bold">B</text>
+                            <text x="190" y="70" fill="#0f172a" font-size="12" font-weight="bold">C</text>
+                            <text x="95" y="205" fill="#0f172a" font-size="12" font-weight="bold">D</text>
+                            <text x="85" y="105" fill="#f43f5e" font-size="12" font-weight="bold">E</text>
+                        </svg>
+                        <p class="text-[10px] text-center text-slate-500 mt-1">※イメージ図。$\angle\mathrm{B}, \angle\mathrm{C}$が直角。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    問題を解くための考え方から、答案、検算、発展までを順に確認します。
+                </p>
+
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">円の「直径」が絡む図形問題と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                真っ先に<strong>「直径に対する円周角は $90^\circ$」</strong>を利用できないか探します。(3)(i)の四角形の面積は、この性質により2つの直角三角形の面積の和として瞬時に計算できます。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">四角形の面積と「対角線の交角」と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                四角形の対角線の長さを $p, q$ 、そのなす角を $\theta$ とするとき、<strong>面積 $S = \dfrac{1}{2}pq\sin\theta$</strong> という公式が絶大な威力を発揮します。これを知らないと、面積比などを駆使して遠回りな計算を強いられます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(1)(2) 基本公式の適用</strong><br>
+                            余弦定理で $\mathrm{BC}$ を求め、$\sin^2 A + \cos^2 A = 1$ から $\sin A$ を出します。その後、正弦定理 $2R = \frac{\mathrm{BC}}{\sin A}$ に代入するだけの基本動作です。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(3)(i) 直角三角形を利用した面積計算</strong><br>
+                            $\mathrm{AD}$ は円 $K$ の直径なので、長さは $2R$ です。<br>
+                            $\angle\mathrm{ABD} = \angle\mathrm{ACD} = 90^\circ$ となるため、三平方の定理より $\mathrm{BD} = \sqrt{\mathrm{AD}^2 - \mathrm{AB}^2}$、$\mathrm{CD} = \sqrt{\mathrm{AD}^2 - \mathrm{AC}^2}$ で残りの辺を出せば、底辺 $\times$ 高さ $\div 2$ で各三角形の面積が求まります。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(3)(ii) 対角線面積公式の逆算</strong><br>
+                            四角形 $\mathrm{ABDC}$ の面積 $S$ は (i) で求まっています。対角線は $\mathrm{AD} = 2R$ と $\mathrm{BC} = \text{(1)の答え}$ です。<br>
+                            公式 $S = \dfrac{1}{2} \cdot \mathrm{AD} \cdot \mathrm{BC} \cdot \sin\angle\mathrm{AEB}$ にすべての数値を代入し、$\sin\angle\mathrm{AEB}$ について解くだけです。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <!-- (1) -->
+                        <div>
+                            <p class="font-bold">（1）</p>
+                            <p class="mt-2">
+                                $\triangle\mathrm{ABC}$ において、余弦定理より
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \mathrm{BC}^2 &= \mathrm{AB}^2 + \mathrm{AC}^2 - 2\mathrm{AB} \cdot \mathrm{AC} \cos A \\
+                                &= (4\sqrt{2})^2 + (6\sqrt{2})^2 - 2(4\sqrt{2})(6\sqrt{2}) \cdot \frac{1}{3} \\
+                                &= 32 + 72 - 96 \cdot \frac{1}{3} \\
+                                &= 104 - 32 \\
+                                &= 72
+                                \end{aligned}
+                            </div>
+                            <p class="mt-1">
+                                $\mathrm{BC} > 0$ であるから、$\mathrm{BC} = \sqrt{72} = 6\sqrt{2}$
+                            </p>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $\mathrm{BC} = 6\sqrt{2}$
+                            </div>
+                        </div>
+
+                        <!-- (2) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（2）</p>
+                            <p class="mt-2">
+                                $0^\circ < A < 180^\circ$ より $\sin A > 0$ であるから、
+                            </p>
+                            <div class="math-scroll">
+                                \[ \sin A = \sqrt{1 - \cos^2 A} = \sqrt{1 - \left(\frac{1}{3}\right)^2} = \sqrt{\frac{8}{9}} = \frac{2\sqrt{2}}{3} \]
+                            </div>
+                            <p class="mt-2">
+                                $K$ の半径を $R$ とすると、$\triangle\mathrm{ABC}$ において正弦定理より
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                2R &= \frac{\mathrm{BC}}{\sin A} \\
+                                2R &= \frac{6\sqrt{2}}{\frac{2\sqrt{2}}{3}} \\
+                                2R &= 6\sqrt{2} \times \frac{3}{2\sqrt{2}} \\
+                                2R &= 9 \\
+                                R &= \frac{9}{2}
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: 半径 $\dfrac{9}{2}$
+                            </div>
+                        </div>
+
+                        <!-- (3)(i) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（3）(i)</p>
+                            <p class="mt-2">
+                                $\mathrm{AD}$ は円 $K$ の直径であるから、$\mathrm{AD} = 2R = 9$ である。<br>
+                                直径に対する円周角は $90^\circ$ であるから、$\angle\mathrm{ABD} = \angle\mathrm{ACD} = 90^\circ$ となる。<br>
+                                直角三角形 $\mathrm{ABD}$ において、三平方の定理より
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \mathrm{BD} &= \sqrt{\mathrm{AD}^2 - \mathrm{AB}^2} \\
+                                &= \sqrt{9^2 - (4\sqrt{2})^2} = \sqrt{81 - 32} = \sqrt{49} = 7
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                同様に、直角三角形 $\mathrm{ACD}$ において、三平方の定理より
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \mathrm{CD} &= \sqrt{\mathrm{AD}^2 - \mathrm{AC}^2} \\
+                                &= \sqrt{9^2 - (6\sqrt{2})^2} = \sqrt{81 - 72} = \sqrt{9} = 3
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                四角形 $\mathrm{ABDC}$ の面積 $S$ は、$\triangle\mathrm{ABD}$ と $\triangle\mathrm{ACD}$ の面積の和であるから、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                S &= \frac{1}{2} \cdot \mathrm{AB} \cdot \mathrm{BD} + \frac{1}{2} \cdot \mathrm{AC} \cdot \mathrm{CD} \\
+                                &= \frac{1}{2}(4\sqrt{2})(7) + \frac{1}{2}(6\sqrt{2})(3) \\
+                                &= 14\sqrt{2} + 9\sqrt{2} \\
+                                &= 23\sqrt{2}
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $23\sqrt{2}$
+                            </div>
+                        </div>
+
+                        <!-- (3)(ii) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（3）(ii)</p>
+                            <p class="mt-2">
+                                四角形 $\mathrm{ABDC}$ において、対角線の長さは $\mathrm{AD} = 9$、$\mathrm{BC} = 6\sqrt{2}$ である。<br>
+                                対角線のなす角が $\angle\mathrm{AEB}$ であるから、四角形の面積 $S$ は次の公式で表される。
+                            </p>
+                            <div class="math-scroll">
+                                \[ S = \frac{1}{2} \cdot \mathrm{AD} \cdot \mathrm{BC} \cdot \sin\angle\mathrm{AEB} \]
+                            </div>
+                            <p class="mt-2">
+                                これに $S = 23\sqrt{2}$ などを代入して、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                23\sqrt{2} &= \frac{1}{2} \cdot 9 \cdot 6\sqrt{2} \cdot \sin\angle\mathrm{AEB} \\
+                                23\sqrt{2} &= 27\sqrt{2} \sin\angle\mathrm{AEB} \\
+                                \sin\angle\mathrm{AEB} &= \frac{23\sqrt{2}}{27\sqrt{2}} = \frac{23}{27}
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $\sin\angle\mathrm{AEB} = \dfrac{23}{27}$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化（対角線と面積の公式）</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        (3)(ii)で使用した公式 <strong>$S = \dfrac{1}{2}pq\sin\theta$</strong>（対角線 $p, q$、交角 $\theta$）がなぜ成り立つのか、視覚的に証明します。<br>
+                        四角形の各頂点を通る「対角線と平行な直線」を引くと、大きな平行四辺形ができます。中の四角形は、この大きな平行四辺形の<strong>ちょうど半分の面積</strong>になることがスライダーから直感的に理解できます。
+                    </p>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 sm:p-6 rounded-lg border border-slate-200 flex flex-col items-center">
+                        <div class="w-full max-w-md mb-6 px-2">
+                            <label for="theta-slider" class="block text-sm font-medium text-slate-700 mb-2">
+                                対角線の交角 $\theta$: <span id="theta-value" class="font-bold text-amber-600 text-lg">60</span>°
+                            </label>
+                            <input type="range" id="theta-slider" min="30" max="150" step="1" value="60" class="w-full h-2 bg-slate-300 rounded-lg appearance-none cursor-pointer accent-amber-500">
+                            
+                            <div class="flex justify-center mt-4">
+                                <button id="btn-toggle" class="px-5 py-2 bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 text-sm font-bold rounded-lg transition-colors shadow-sm">
+                                    外接平行四辺形を表示
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="relative w-full max-w-md bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden p-2 flex justify-center">
+                            <!-- SVG Canvas -->
+                            <svg id="area-svg" width="300" height="250" viewBox="0 0 400 300" class="w-full h-auto">
+                                <!-- 交点 E(200, 150) -->
+                                <!-- p=240, q=160 -->
+                                <g id="parallelogram-lines" opacity="0">
+                                    <!-- 縦の平行線 (BDと平行) -->
+                                    <line id="pl-left" x1="0" y1="0" x2="0" y2="0" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,4" />
+                                    <line id="pl-right" x1="0" y1="0" x2="0" y2="0" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,4" />
+                                    <!-- 横の平行線 (ACと平行) -->
+                                    <line id="pl-top" x1="0" y1="0" x2="0" y2="0" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,4" />
+                                    <line id="pl-bottom" x1="0" y1="0" x2="0" y2="0" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,4" />
+                                    <!-- 塗りつぶし領域 -->
+                                    <polygon id="pl-fill" points="" fill="rgba(245, 158, 11, 0.1)" />
+                                </g>
+
+                                <!-- 四角形 -->
+                                <polygon id="quadrilateral" points="" fill="rgba(16, 185, 129, 0.2)" stroke="#10b981" stroke-width="3" stroke-linejoin="round" />
+                                
+                                <!-- 対角線 -->
+                                <!-- 横の対角線 q -->
+                                <line x1="120" y1="150" x2="280" y2="150" stroke="#475569" stroke-width="2" />
+                                <!-- 傾く対角線 p -->
+                                <line id="diag-p" x1="0" y1="0" x2="0" y2="0" stroke="#475569" stroke-width="2" />
+
+                                <!-- 交角マーク -->
+                                <path id="angle-arc" d="" fill="rgba(245, 158, 11, 0.3)" stroke="#f59e0b" stroke-width="1" />
+                                <text x="215" y="145" fill="#d97706" font-size="16" font-weight="bold">θ</text>
+
+                                <!-- ラベル -->
+                                <text id="lbl-p" x="0" y="0" fill="#475569" font-size="16" font-weight="bold">p</text>
+                                <text x="185" y="165" fill="#475569" font-size="16" font-weight="bold">q</text>
+                            </svg>
+                        </div>
+                        
+                        <div id="explanation-box" class="mt-4 p-3 bg-white rounded-lg border border-slate-200 text-sm text-slate-600 w-full max-w-md hidden opacity-0 transition-opacity duration-300">
+                            外側の平行四辺形の面積は、底辺が $q$、斜めの辺が $p$ で、その間の角が $\theta$ であるため <strong>$p \times q \times \sin\theta$</strong> となります。<br>
+                            緑色の四角形は、4つの小さな平行四辺形のそれぞれ半分を占めているため、面積は全体の中の <strong>$\frac{1}{2}$</strong> になります。
+                        </div>
+                    </div>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const slider = document.getElementById('theta-slider');
+                            const thetaValueDisplay = document.getElementById('theta-value');
+                            const btnToggle = document.getElementById('btn-toggle');
+                            const plLines = document.getElementById('parallelogram-lines');
+                            const explanationBox = document.getElementById('explanation-box');
+                            
+                            const quad = document.getElementById('quadrilateral');
+                            const diagP = document.getElementById('diag-p');
+                            const lblP = document.getElementById('lbl-p');
+                            const plTop = document.getElementById('pl-top');
+                            const plBottom = document.getElementById('pl-bottom');
+                            const plLeft = document.getElementById('pl-left');
+                            const plRight = document.getElementById('pl-right');
+                            const plFill = document.getElementById('pl-fill');
+                            const angleArc = document.getElementById('angle-arc');
+
+                            const cx = 200, cy = 150;
+                            const q = 160; // BD = 水平
+                            const p = 220; // AC = 傾く
+
+                            let isPlVisible = false;
+
+                            function updateVisualization() {
+                                const angleDeg = parseInt(slider.value);
+                                thetaValueDisplay.textContent = angleDeg;
+                                
+                                const theta = angleDeg * Math.PI / 180;
+                                
+                                // 対角線の頂点座標
+                                const bx = cx - q/2, by = cy;
+                                const dx = cx + q/2, dy = cy;
+                                
+                                // pの頂点座標 (右上がA, 左下がC とする)
+                                // 角度が30〜150なので、右上が第一象限
+                                const ax = cx + (p/2) * Math.cos(theta);
+                                const ay = cy - (p/2) * Math.sin(theta);
+                                const cx_pt = cx - (p/2) * Math.cos(theta);
+                                const cy_pt = cy + (p/2) * Math.sin(theta);
+
+                                // 対角線pの更新
+                                diagP.setAttribute('x1', cx_pt); diagP.setAttribute('y1', cy_pt);
+                                diagP.setAttribute('x2', ax); diagP.setAttribute('y2', ay);
+                                
+                                lblP.setAttribute('x', cx + (p/4) * Math.cos(theta) - 10);
+                                lblP.setAttribute('y', cy - (p/4) * Math.sin(theta) - 10);
+
+                                // 四角形の更新 (A -> B -> C -> D -> A)
+                                quad.setAttribute('points', `${ax},${ay} ${bx},${by} ${cx_pt},${cy_pt} ${dx},${dy}`);
+
+                                // 平行四辺形の更新
+                                // 縦の線はBD(水平)と平行なので水平線。AとCを通る。
+                                const w = q;
+                                plTop.setAttribute('x1', ax - w/2); plTop.setAttribute('y1', ay);
+                                plTop.setAttribute('x2', ax + w/2); plTop.setAttribute('y2', ay);
+                                plBottom.setAttribute('x1', cx_pt - w/2); plBottom.setAttribute('y1', cy_pt);
+                                plBottom.setAttribute('x2', cx_pt + w/2); plBottom.setAttribute('y2', cy_pt);
+                                
+                                // 横の線はAC(傾きtheta)と平行。BとDを通る。
+                                const hx = p * Math.cos(theta);
+                                const hy = -p * Math.sin(theta);
+                                plLeft.setAttribute('x1', bx - hx/2); plLeft.setAttribute('y1', by - hy/2);
+                                plLeft.setAttribute('x2', bx + hx/2); plLeft.setAttribute('y2', by + hy/2);
+                                plRight.setAttribute('x1', dx - hx/2); plRight.setAttribute('y1', dy - hy/2);
+                                plRight.setAttribute('x2', dx + hx/2); plRight.setAttribute('y2', dy + hy/2);
+
+                                plFill.setAttribute('points', `${ax - w/2},${ay} ${ax + w/2},${ay} ${cx_pt + w/2},${cy_pt} ${cx_pt - w/2},${cy_pt}`);
+
+                                // 角度の円弧
+                                const r = 30;
+                                const arcX = cx + r * Math.cos(theta);
+                                const arcY = cy - r * Math.sin(theta);
+                                angleArc.setAttribute('d', `M ${cx+r} ${cy} A ${r} ${r} 0 0 0 ${arcX} ${arcY} L ${cx} ${cy} Z`);
+                            }
+
+                            btnToggle.addEventListener('click', function() {
+                                isPlVisible = !isPlVisible;
+                                if (isPlVisible) {
+                                    plLines.setAttribute('opacity', '1');
+                                    explanationBox.classList.remove('hidden');
+                                    setTimeout(() => explanationBox.classList.remove('opacity-0'), 50);
+                                    btnToggle.textContent = '外接平行四辺形を隠す';
+                                    btnToggle.classList.replace('bg-white', 'bg-amber-100');
+                                } else {
+                                    plLines.setAttribute('opacity', '0');
+                                    explanationBox.classList.add('opacity-0');
+                                    setTimeout(() => explanationBox.classList.add('hidden'), 300);
+                                    btnToggle.textContent = '外接平行四辺形を表示';
+                                    btnToggle.classList.replace('bg-amber-100', 'bg-white');
+                                }
+                            });
+
+                            slider.addEventListener('input', updateVisualization);
+                            updateVisualization();
+                        });
+                    </script>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">$\mathrm{AD}$ が直径であることの図形的な意味に気づけない</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                問題文に「直径となるように」と書いてあっても、余弦定理などでゴリ押ししようとして泥沼にハマるケースが多発します。「直径」という単語を見た瞬間に、<strong>「$90^\circ$ の円周角がどこにできるか」</strong>を必ず図に書き込む癖をつけてください。
+                            </p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">対角線の面積公式を知らずに遠回りする</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                (3)(ii) は、面積公式 $S = \frac{1}{2}pq\sin\theta$ を知っていれば 1行 で終わります。これを知らないと、「点 $\mathrm{E}$ が対角線をどのような比に分割するか」を面積比や相似を使って求め、各部分の三角形の面積から $\sin$ を逆算するという、膨大な計算と時間を消費することになります。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+                
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. 円の外接円の半径 $R$ を求めるための基本的な定理と公式は何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            「正弦定理」です。三角形の1つの辺の長さ $a$ と、その向かい合う角のサイン $\sin A$ が分かれば、$2R = \frac{a}{\sin A}$ で外接円の半径を求めることができます。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. 円に内接する四角形で、対角線の1つが円の「直径」であるとき、四角形はどのような三角形2つに分割できますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            直径を斜辺とする「直角三角形」2つに分割できます。円周角の定理により、直径に対する円周角は常に $90^\circ$ となるためです。これにより、三平方の定理が使えるようになり計算が大幅に楽になります。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. 任意の四角形において、2本の対角線の長さを $p, q$、その交角を $\theta$ とするとき、四角形の面積 $S$ を求める公式は何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            $S = \frac{1}{2}pq\sin\theta$ です。四角形を対角線と平行な線で囲むと平行四辺形ができ、その面積のちょうど半分になることから導かれます。
+                        </div>
+                    </details>
+                </div>
+            </section>
+            
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="no08.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← No.8へ
+                </a>
+                <a href="no10.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.10 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            自彊館(理系)　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>

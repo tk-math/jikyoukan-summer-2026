@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.7 場合の数 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+        
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.7</span>
+                    <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">場合の数</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：15分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 text-slate-700 leading-relaxed mt-4">
+                    <ol class="list-decimal pl-6 space-y-4">
+                        <li>\(\mathrm{A, A, A, B, C, D}\) の6個の文字を一列に並べる。
+                            <ol class="list-[lower-roman] pl-6 mt-2 space-y-2">
+                                <li>並べ方は全部で何通りあるか。</li>
+                                <li>3個の\(\mathrm{A}\)が隣り合う並べ方は何通りあるか。</li>
+                                <li>少なくとも2個の\(\mathrm{A}\)が隣り合う並べ方は何通りあるか。</li>
+                            </ol>
+                        </li>
+                        <li>(1)の6個の文字に，\(\mathrm{E, E}\)の2個の文字を追加した合計8個の文字を一列に並べる。同じ文字が隣り合わない並べ方は何通りあるか。</li>
+                    </ol>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                    <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                        <li><strong>文字の構成：</strong> (1)は \(\mathrm{A}\)が3個，他は1個ずつ。(2)は \(\mathrm{A}\)が3個，\(\mathrm{E}\)が2個，他は1個ずつ。</li>
+                        <li><strong>「隣り合う」の扱い：</strong> 隣り合うものは「1つの塊（ブロック）」として扱ってから、後でその中での並び替えを考えるのが定石です。今回は同じ文字なので塊の中の並び替えは不要です。</li>
+                        <li><strong>「少なくとも〜」の扱い：</strong> 「全体」から「そうならない場合（余事象）」を引くのが鉄則です。「少なくとも2個のAが隣り合う」の余事象は「どのAも隣り合わない（全てのAが離れている）」です。</li>
+                        <li><strong>「隣り合わない」の扱い：</strong> 他の文字を先に並べ、その<strong>「隙間と両端」</strong>に文字を挿入する手法が最も確実です。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    問題を解くための考え方から、答案、検算、発展までを順に確認します。
+                </p>
+
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">同じものを含む順列と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                全体の階乗を、同じものの個数の階乗で割ります。\(n\) 個のうち \(p\) 個が同じものなら \(\dfrac{n!}{p!}\) です。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">「同じ文字が隣り合わない」複数ペア問題と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                (2)は難問です。「Aも隣り合わず、Eも隣り合わない」を一度に計算するのは困難です。そこで<strong>「Aが隣り合わない場合」をすべて求め、そこから「Aは隣り合ってないが、Eが隣り合ってしまっている場合」を引く</strong>という2段階のアプローチ（条件付きの余事象）を取ると劇的に計算が楽になります。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(1)-(ii) 3個のAが隣り合う</strong><br>
+                            AAAを「1つの巨大な文字」と見なします。「(AAA), B, C, D」の4つの文字を並べる順列を計算します。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(1)-(iii) 少なくとも2個のAが隣り合う</strong><br>
+                            全体(120通り)から、「どのAも隣り合わない」を引きます。Aが隣り合わないようにするには、先にB, C, Dを並べ（\(3!\)通り）、その「両端と隙間」の4箇所からAを入れる3箇所を選びます（\({}_4\mathrm{C}_3\)通り）。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(2) 同じ文字が隣り合わない（A:3個, E:2個）</strong><br>
+                            ステップ1：<strong>「Aが隣り合わない」</strong>並べ方を求める。<br>
+                            E, E, B, C, D の5文字を先に並べ（同じものを含む順列）、その両端と隙間（6箇所）からAを入れる3箇所を選びます。<br>
+                            ステップ2：<strong>「Aは隣り合わず、Eは隣り合っている」</strong>並べ方を求める。<br>
+                            EEを「1つの文字X」と見なします。X, B, C, D の4文字を並べ、その両端と隙間（5箇所）からAを入れる3箇所を選びます。<br>
+                            ステップ3：ステップ1からステップ2を引けば、「AもEも隣り合わない」並べ方が出ます。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <!-- (1)-(i) -->
+                        <div>
+                            <p class="font-bold">（1）(i)</p>
+                            <p class="mt-2">
+                                Aが3個，B, C, Dがそれぞれ1個ずつ，合計6個の文字を並べる。<br>
+                                同じものを含む順列より，
+                            </p>
+                            <div class="math-scroll">
+                                \[ \frac{6!}{3!} = \frac{6 \times 5 \times 4 \times 3 \times 2 \times 1}{3 \times 2 \times 1} = 6 \times 5 \times 4 = 120 \]
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: 120通り
+                            </div>
+                        </div>
+
+                        <!-- (1)-(ii) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（1）(ii)</p>
+                            <p class="mt-2">
+                                3個のAをまとめて1つの文字「AAA」とみなす。<br>
+                                「AAA」, B, C, D の4つの文字を一列に並べる順列に等しいから，
+                            </p>
+                            <div class="math-scroll">
+                                \[ 4! = 4 \times 3 \times 2 \times 1 = 24 \]
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: 24通り
+                            </div>
+                        </div>
+
+                        <!-- (1)-(iii) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（1）(iii)</p>
+                            <p class="mt-2">
+                                「少なくとも2個のAが隣り合う」事象は，「どのAも隣り合わない」事象の余事象である。<br>
+                                どのAも隣り合わない並べ方を求める。<br>
+                                まず、A以外の3文字（B, C, D）を一列に並べる。その並べ方は
+                            </p>
+                            <div class="math-scroll">
+                                \[ 3! = 6 \quad (\text{通り}) \]
+                            </div>
+                            <p class="mt-2">
+                                並べた3文字の「両端および文字の間の隙間」は4箇所ある。<br>
+                                \(\wedge\ \mathrm{B}\ \wedge\ \mathrm{C}\ \wedge\ \mathrm{D}\ \wedge\) （\(\wedge\) が挿入可能な場所）<br>
+                                この4箇所から3箇所を選んでAを1個ずつ入れればよいので、その選び方は
+                            </p>
+                            <div class="math-scroll">
+                                \[ {}_4\mathrm{C}_3 = 4 \quad (\text{通り}) \]
+                            </div>
+                            <p class="mt-2">
+                                よって、どのAも隣り合わない並べ方は \(6 \times 4 = 24\) 通り。<br>
+                                したがって、少なくとも2個のAが隣り合う並べ方は、全体の並べ方からこれを引いて
+                            </p>
+                            <div class="math-scroll">
+                                \[ 120 - 24 = 96 \]
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: 96通り
+                            </div>
+                        </div>
+
+                        <!-- (2) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（2）</p>
+                            <p class="mt-2">
+                                Aが3個，Eが2個，B, C, Dがそれぞれ1個ずつ，合計8個の文字を並べる。<br>
+                                求める並べ方は，「Aが隣り合わない並べ方」から「Aは隣り合わないが、Eが隣り合っている並べ方」を引くことで求められる。
+                            </p>
+                            <p class="mt-4 font-bold text-blue-800">[1] Aが隣り合わない並べ方</p>
+                            <p class="mt-1">
+                                まず，A以外の5文字（E, E, B, C, D）を一列に並べる。<br>
+                                Eが2個あるため、同じものを含む順列より
+                            </p>
+                            <div class="math-scroll">
+                                \[ \frac{5!}{2!} = \frac{120}{2} = 60 \quad (\text{通り}) \]
+                            </div>
+                            <p class="mt-1">
+                                次に、並べた5文字の両端と隙間の合計6箇所から、3箇所を選んでAを入れる。
+                            </p>
+                            <div class="math-scroll">
+                                \[ {}_6\mathrm{C}_3 = \frac{6 \times 5 \times 4}{3 \times 2 \times 1} = 20 \quad (\text{通り}) \]
+                            </div>
+                            <p class="mt-1">
+                                したがって、Aが隣り合わない並べ方は \(60 \times 20 = 1200\) 通りである。
+                            </p>
+
+                            <p class="mt-4 font-bold text-blue-800">[2] Aが隣り合わず、かつEが隣り合っている並べ方</p>
+                            <p class="mt-1">
+                                2個のEを1つの塊「EE」とみなす。<br>
+                                まず、「EE」, B, C, D の4つの文字を並べる。すべて異なる文字とみなせるので
+                            </p>
+                            <div class="math-scroll">
+                                \[ 4! = 24 \quad (\text{通り}) \]
+                            </div>
+                            <p class="mt-1">
+                                次に、並べた4文字の両端と隙間の合計5箇所から、3箇所を選んでAを入れる。
+                            </p>
+                            <div class="math-scroll">
+                                \[ {}_5\mathrm{C}_3 = \frac{5 \times 4}{2 \times 1} = 10 \quad (\text{通り}) \]
+                            </div>
+                            <p class="mt-1">
+                                したがって、Aが隣り合わず、Eが隣り合っている並べ方は \(24 \times 10 = 240\) 通りである。
+                            </p>
+
+                            <p class="mt-4">
+                                以上より、「同じ文字（AとE）が隣り合わない」並べ方は、[1]から[2]を引いて
+                            </p>
+                            <div class="math-scroll">
+                                \[ 1200 - 240 = 960 \]
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: 960通り
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化（隙間への挿入法）</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        「隣り合わない」条件を処理する際の<strong>「隙間と両端への挿入」</strong>を視覚的に確認しましょう。<br>
+                        (1)-(iii) の「Aが隣り合わない」ケースでは、まずB, C, Dを並べ、その間に作られる4つのスポット（枠）から3つを選んでAを入れます。<br>
+                        下のボタンを押すと、挿入のプロセスを順を追って確認できます。
+                    </p>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 sm:p-6 rounded-lg border border-slate-200 flex flex-col items-center">
+                        <!-- コントロール部 -->
+                        <div class="flex gap-4 mb-6">
+                            <button id="btn-step1" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-lg transition-colors border border-slate-300">
+                                ① B,C,Dを並べる
+                            </button>
+                            <button id="btn-step2" class="px-4 py-2 bg-blue-100 hover:bg-blue-200 text-blue-700 font-bold rounded-lg transition-colors border border-blue-300">
+                                ② 隙間を確保する
+                            </button>
+                            <button id="btn-step3" class="px-4 py-2 bg-rose-100 hover:bg-rose-200 text-rose-700 font-bold rounded-lg transition-colors border border-rose-300">
+                                ③ Aを挿入する
+                            </button>
+                        </div>
+                        
+                        <div class="mt-2 text-sm font-bold text-slate-500 mb-4 h-6" id="step-description">
+                            ボタンを押してステップを進めてください
+                        </div>
+
+                        <!-- SVG Visualization -->
+                        <div class="relative w-full max-w-lg bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden p-6 flex justify-center">
+                            <svg width="400" height="100" viewBox="0 0 400 100">
+                                <!-- BCD Blocks -->
+                                <g id="block-b" transform="translate(110, 30)" opacity="0.2">
+                                    <rect width="40" height="40" rx="8" fill="#3b82f6" />
+                                    <text x="20" y="25" fill="white" font-size="20" font-weight="bold" text-anchor="middle">B</text>
+                                </g>
+                                <g id="block-c" transform="translate(180, 30)" opacity="0.2">
+                                    <rect width="40" height="40" rx="8" fill="#10b981" />
+                                    <text x="20" y="25" fill="white" font-size="20" font-weight="bold" text-anchor="middle">C</text>
+                                </g>
+                                <g id="block-d" transform="translate(250, 30)" opacity="0.2">
+                                    <rect width="40" height="40" rx="8" fill="#8b5cf6" />
+                                    <text x="20" y="25" fill="white" font-size="20" font-weight="bold" text-anchor="middle">D</text>
+                                </g>
+
+                                <!-- Insert Slots -->
+                                <g id="slots" opacity="0">
+                                    <!-- Slot 1 -->
+                                    <path d="M 80,65 L 90,45 L 100,65" fill="none" stroke="#94a3b8" stroke-width="2" />
+                                    <!-- Slot 2 -->
+                                    <path d="M 150,65 L 160,45 L 170,65" fill="none" stroke="#94a3b8" stroke-width="2" />
+                                    <!-- Slot 3 -->
+                                    <path d="M 220,65 L 230,45 L 240,65" fill="none" stroke="#94a3b8" stroke-width="2" />
+                                    <!-- Slot 4 -->
+                                    <path d="M 290,65 L 300,45 L 310,65" fill="none" stroke="#94a3b8" stroke-width="2" />
+                                </g>
+
+                                <!-- Inserted 'A's -->
+                                <g id="inserted-a" opacity="0">
+                                    <!-- Slot 1 A -->
+                                    <circle cx="90" cy="20" r="16" fill="#f43f5e" />
+                                    <text x="90" y="26" fill="white" font-size="16" font-weight="bold" text-anchor="middle">A</text>
+                                    <line x1="90" y1="36" x2="90" y2="45" stroke="#f43f5e" stroke-width="2" marker-end="url(#arrow)" />
+                                    
+                                    <!-- Slot 2 A -->
+                                    <circle cx="160" cy="20" r="16" fill="#f43f5e" />
+                                    <text x="160" y="26" fill="white" font-size="16" font-weight="bold" text-anchor="middle">A</text>
+                                    <line x1="160" y1="36" x2="160" y2="45" stroke="#f43f5e" stroke-width="2" marker-end="url(#arrow)" />
+
+                                    <!-- Slot 4 A -->
+                                    <circle cx="300" cy="20" r="16" fill="#f43f5e" />
+                                    <text x="300" y="26" fill="white" font-size="16" font-weight="bold" text-anchor="middle">A</text>
+                                    <line x1="300" y1="36" x2="300" y2="45" stroke="#f43f5e" stroke-width="2" marker-end="url(#arrow)" />
+                                </g>
+
+                                <defs>
+                                    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+                                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#f43f5e" />
+                                    </marker>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const btn1 = document.getElementById('btn-step1');
+                            const btn2 = document.getElementById('btn-step2');
+                            const btn3 = document.getElementById('btn-step3');
+                            const desc = document.getElementById('step-description');
+                            
+                            const b_b = document.getElementById('block-b');
+                            const b_c = document.getElementById('block-c');
+                            const b_d = document.getElementById('block-d');
+                            const slots = document.getElementById('slots');
+                            const a_s = document.getElementById('inserted-a');
+                            
+                            function resetAll() {
+                                b_b.setAttribute('opacity', '0.2');
+                                b_c.setAttribute('opacity', '0.2');
+                                b_d.setAttribute('opacity', '0.2');
+                                slots.setAttribute('opacity', '0');
+                                a_s.setAttribute('opacity', '0');
+                                b_b.setAttribute('transform', 'translate(110, 30)');
+                                b_c.setAttribute('transform', 'translate(180, 30)');
+                                b_d.setAttribute('transform', 'translate(250, 30)');
+                            }
+
+                            btn1.addEventListener('click', () => {
+                                resetAll();
+                                b_b.setAttribute('opacity', '1');
+                                b_c.setAttribute('opacity', '1');
+                                b_d.setAttribute('opacity', '1');
+                                // 中央に寄せる
+                                b_b.setAttribute('transform', 'translate(130, 30)');
+                                b_c.setAttribute('transform', 'translate(180, 30)');
+                                b_d.setAttribute('transform', 'translate(230, 30)');
+                                desc.innerHTML = 'B, C, D を並べる（<span class="text-blue-600">3! = 6通り</span>）';
+                            });
+
+                            btn2.addEventListener('click', () => {
+                                resetAll();
+                                b_b.setAttribute('opacity', '1');
+                                b_c.setAttribute('opacity', '1');
+                                b_d.setAttribute('opacity', '1');
+                                // 隙間を空ける
+                                b_b.setAttribute('transform', 'translate(110, 30)');
+                                b_c.setAttribute('transform', 'translate(180, 30)');
+                                b_d.setAttribute('transform', 'translate(250, 30)');
+                                slots.setAttribute('opacity', '1');
+                                desc.innerHTML = '両端と間に隙間を確保する（<span class="text-slate-600">4箇所</span>の挿入スポット）';
+                            });
+
+                            btn3.addEventListener('click', () => {
+                                resetAll();
+                                b_b.setAttribute('opacity', '1');
+                                b_c.setAttribute('opacity', '1');
+                                b_d.setAttribute('opacity', '1');
+                                slots.setAttribute('opacity', '1');
+                                a_s.setAttribute('opacity', '1');
+                                desc.innerHTML = '4箇所の隙間から3箇所を選んでAを入れる（<span class="text-rose-600">₄C₃ = 4通り</span>）';
+                            });
+                        });
+                    </script>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果と検算</h3>
+                    
+                    <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900">
+                        <ul class="space-y-2 font-bold">
+                            <li>(1) (i) 120通り　(ii) 24通り　(iii) 96通り</li>
+                            <li>(2) 960通り</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-slate-700">
+                        <strong>検算ポイント：(2)の別解（包除原理）</strong><br>
+                        (2)の計算が正しいか、数学Aで習う「包除原理」を用いて確認してみましょう。<br>
+                        全体の並べ方：\(U = \dfrac{8!}{3!2!} = 3360\) 通り。<br>
+                        Aが隣り合う事象を\(P(A)\)（※Aが3つあるので、正確には「Aが少なくとも2つ隣り合う事象」）、Eが隣り合う事象を\(P(E)\)とします。<br>
+                        求めるのは、\(n(\overline{P(A)} \cap \overline{P(E)}) = n(U) - n(P(A) \cup P(E)) = n(U) - \{ n(P(A)) + n(P(E)) - n(P(A) \cap P(E)) \}\) です。<br>
+                        ・\(n(P(A))\) は「全体 - Aが隣り合わない」なので \(3360 - 1200 = 2160\) 通り。<br>
+                        ・\(n(P(E))\) はEEを塊として計算して \(\dfrac{7!}{3!} = 840\) 通り。<br>
+                        ・\(n(P(A) \cap P(E))\) は「Aが隣り合い、かつEが隣り合う」なので、\(n(P(E))\) のうちAが隣り合わないものを引けばよく、\(840 - 240 = 600\) 通り。<br>
+                        したがって、求める場合の数は<br>
+                        \(3360 - (2160 + 840 - 600) = 3360 - 2400 = 960\) 通り。<br>
+                        二つの異なるアプローチで同じ結果が得られたため、正答である確信が持てます。
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">(1)-(ii) 「塊の中での並び替え」を無駄に計算してしまう</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                異なる人を並べる問題（例えば「女子3人が隣り合う」）では、塊の中で女子3人を並び替える \(3!\) を掛ける必要がありますが、今回は文字の「A」であり区別がありません。AAAを並び替えてもAAAのままで1通りです。ここで \(3!\) を掛けてしまうと答えが大きくなりすぎます。
+                            </p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">(2) を包除原理で強行突破しようとして自滅する</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                複数の条件の否定（〜でない、かつ〜でない）を見ると、すぐにベン図と包除原理を使いたくなります。しかし、Aが3個あるため「Aが少なくとも2個隣り合う」事象を直接数え上げるのは非常に複雑（AAとAに分かれる場合と、AAAの場合がある）で、ミスを誘発します。<br>
+                                今回の解説のように、<strong>「一方の条件（Aが隣り合わない）を大前提として固定し、その中でダメな場合（Eが隣り合う）を引く」</strong>という条件付きの引き算が、最も安全でスマートな解法です。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+                
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. 「少なくとも〜」というキーワードを見たら、どのようなアプローチを取るのが定石ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            「余事象」を考えます。「全体の場合の数」から「指定された条件が全く起こらない場合（〜でない）」を引き算して求めます。これにより場合分けの手間を大幅に削減できます。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. 「指定された要素が隣り合わない」並べ方を求める最も確実な手法は何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            「挿入法」です。隣り合ってもよい他の要素を先にすべて並べ、その要素の「両端および要素間の隙間」から必要な箇所を選んで、指定された要素を1つずつ挿入していきます。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. (2)のように、「条件Aも満たさず、条件Bも満たさない」を求める際、包除原理を使うと計算が複雑になる場合、どのような代替手段がありますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            「条件Aを満たさない事象」を全体集合とみなし、そこから「条件Aを満たさず、かつ条件Bを満たしてしまっている事象（ダメなパターン）」を計算して引き算する手法が有効です。これにより、条件を1つずつ確実に処理できます。
+                        </div>
+                    </details>
+                </div>
+            </section>
+            
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="no06.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← No.6へ
+                </a>
+                <a href="no08.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.8 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            自彊館(理系)　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>

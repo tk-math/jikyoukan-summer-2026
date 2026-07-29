@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>夏期課題 No.5 対数関数 - 自彊館(理系)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    MathJax = {
+      chtml: { matchFontHeight: false },
+      tex: { 
+        inlineMath: [['$', '$'], ['\\(', '\\)']], 
+        displayMath: [['\\[', '\\]']],
+        macros: {
+          Vec: ["\\overrightarrow{\\mathrm{#1}}", 1]
+        }
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    }
+    .nav-button {
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+    .nav-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+    }
+    .math-scroll {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+  <main class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+    
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+      ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+      <div class="p-7 sm:p-10">
+        <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">
+          自彊館(理系)
+        </span>
+        <div class="mt-4 flex flex-wrap items-center gap-3">
+          <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.5</span>
+          <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+        </div>
+        <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">対数関数</h1>
+        <p class="mt-3 text-lg text-blue-100">目標解答時間：20分</p>
+      </div>
+    </header>
+
+    <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+      <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+        <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+        問題
+      </h2>
+      <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 mt-4 text-slate-700 leading-relaxed">
+        $x$ の関数
+        <div class="math-scroll">
+          \[ f(x)=\log_2 \frac{x}{8} \cdot \log_2 x \quad (x>0) \]
+        </div>
+        がある．
+        <ol class="mt-4 list-decimal pl-6 space-y-2">
+          <li>$f(1)$ ，$f(16)$ の値をそれぞれ求めよ．</li>
+          <li>$\log_2 x=t$ とおくとき，$f(x)$ を $t$ を用いて表せ．</li>
+          <li>方程式 $f(x)=-2$ を解け．</li>
+          <li>
+            $a$ は実数の定数とする．
+            <ol class="list-[lower-roman] pl-6 space-y-1 mt-1">
+              <li>方程式 $f(x)=a$ が解をもつような $a$ の値の範囲を求めよ．</li>
+              <li>方程式 $f(x)=a$ の解で $x \geq 2^a$ を満たすものがただ1つであるような $a$ の値の範囲を求めよ．</li>
+            </ol>
+          </li>
+        </ol>
+      </div>
+
+      <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+        <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+        <ul class="list-disc pl-5 space-y-1.5 text-sm text-blue-900">
+          <li><strong>真数条件：</strong> 問題文で $x>0$ と与えられているため、これ以上気にする必要はありません。</li>
+          <li><strong>対数の分解：</strong> $\log_2 \frac{x}{8} = \log_2 x - \log_2 8 = \log_2 x - 3$ と分解することで、すべて $\log_2 x$ の式に統一できます。</li>
+          <li><strong>置き換えと変域：</strong> $\log_2 x = t$ と置き換えます。$x>0$ のとき、対数関数 $\log_2 x$ はすべての実数値をとるため、<strong>$t$ はすべての実数</strong>となります（範囲の制限なし）。</li>
+          <li><strong>$x$ の条件を $t$ の条件へ翻訳：</strong> (4)(ii) の「$x \geq 2^a$」は、底2の対数をとることで $\log_2 x \geq \log_2 2^a$ すなわち <strong>$t \geq a$</strong> と翻訳できます。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+      <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+        <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+        解説
+      </h2>
+      <p class="mt-4 text-sm leading-8 text-slate-600">
+        問題を解くための考え方から、答案、検算、発展までを順に確認します。
+      </p>
+
+      <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+        <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+        <div class="mt-4 space-y-3">
+          <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4 text-amber-900">
+            <span class="font-bold text-amber-800">「同じ形（$\log_2 x$）がある」</span> → <strong>$t$ に置き換えて2次方程式・2次関数に帰着する</strong> <br>
+            式を整理すると $t$ の2次関数になります。対数関数と異なり $t$ の変域に制限がないため、純粋な2次関数の問題として扱えます。
+          </div>
+          <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4 text-amber-900">
+            <span class="font-bold text-amber-800">「方程式が解をもつ条件」</span> → <strong>2次関数のグラフと直線 $y=a$ の共有点</strong> <br>
+            (4)(i)は単なる $t$ の2次関数の値域（最小値）を求めることと同じです。頂点の $y$ 座標をチェックします。
+          </div>
+          <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4 text-amber-900">
+            <span class="font-bold text-amber-800">「条件付きの解がただ1つ」</span> → <strong>解の配置問題としてグラフで視覚化する</strong> <br>
+            「$t \ge a$ を満たす解が1つ」という条件です。$g(t) = t^2 - 3t - a = 0$ とおき、$g(t)$ のグラフが $t \ge a$ の範囲で $t$ 軸と1回だけ交わる条件（重解の場合と、境界をまたぐ場合）を丁寧に場合分けします。
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+        <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+        <div class="mt-4 space-y-3 text-emerald-900">
+          <ul class="list-disc pl-5 space-y-2">
+            <li><strong>(1)〜(3)の流れ：</strong> 基本的な計算と置き換えです。(3) は $t^2 - 3t = -2$ を解いて $t$ を求め、それを $x$ に戻します。</li>
+            <li><strong>(4)(i)の流れ：</strong> 方程式 $t^2 - 3t = a$ が実数解をもつ条件です。平方完成して頂点から最小値を読み取り、$a$ がその最小値以上であればよいと分かります。</li>
+            <li><strong>(4)(ii)の流れ（本番）：</strong> $x \ge 2^a$ を底2の対数をとって $t \ge a$ に変換します。方程式 $g(t) = t^2 - 3t - a = 0$ が $t \ge a$ にただ1つの解をもつ条件を考えます。</li>
+            <li><strong>(4)(ii)の場合分け：</strong><br>
+              ① <strong>重解</strong>でそれが $t \ge a$ に入る場合。<br>
+              ② <strong>異なる2つの解</strong>をもち、一方が $t \ge a$、他方が $t < a$ に入る場合（境界 $t=a$ をまたぐので $g(a) < 0$）。<br>
+              ③ <strong>一方が境界上 $t=a$ ズバリ</strong>で、もう一方が $t < a$ にある場合（$g(a)=0$ を解いて個別にチェック）。
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="mt-10 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+      <div class="mt-4 text-slate-800 leading-loose">
+        <p class="font-bold">(1)</p>
+        <p>
+          $f(1) = \log_2 \dfrac{1}{8} \cdot \log_2 1 = \log_2 2^{-3} \cdot 0 = -3 \cdot 0 = 0$<br>
+          $f(16) = \log_2 \dfrac{16}{8} \cdot \log_2 16 = \log_2 2 \cdot \log_2 2^4 = 1 \cdot 4 = 4$
+        </p>
+        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+          答: $f(1) = 0$ ， $f(16) = 4$
+        </div>
+
+        <p class="font-bold mt-6">(2)</p>
+        <p>対数の性質より，</p>
+        <div class="math-scroll">
+          \begin{aligned}
+          f(x) &= (\log_2 x - \log_2 8) \log_2 x \\
+          &= (\log_2 x - 3) \log_2 x
+          \end{aligned}
+        </div>
+        <p>ここで $\log_2 x = t$ とおくと，</p>
+        <div class="math-scroll">
+          \[ f(x) = (t - 3)t = t^2 - 3t \]
+        </div>
+        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+          答: $t^2 - 3t$
+        </div>
+
+        <p class="font-bold mt-6">(3)</p>
+        <p>方程式 $f(x) = -2$ は，(2)より</p>
+        <div class="math-scroll">
+          \begin{aligned}
+          t^2 - 3t &= -2 \\
+          t^2 - 3t + 2 &= 0 \\
+          (t - 1)(t - 2) &= 0
+          \end{aligned}
+        </div>
+        <p>よって，$t = 1, 2$ である。<br>
+        $t = \log_2 x$ であるから，<br>
+        $t = 1$ のとき $\log_2 x = 1 \implies x = 2$<br>
+        $t = 2$ のとき $\log_2 x = 2 \implies x = 2^2 = 4$<br>
+        これらはともに $x>0$ を満たす。
+        </p>
+        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+          答: $x = 2, 4$
+        </div>
+
+        <p class="font-bold mt-6">(4)(i)</p>
+        <p>
+          $x > 0$ のとき，関数 $t = \log_2 x$ はすべての実数値をとる。<br>
+          方程式 $f(x) = a$ が解をもつことは，$t$ の2次方程式 $t^2 - 3t = a$ が実数解をもつことと同値である。
+        </p>
+        <div class="math-scroll">
+          \[ t^2 - 3t - a = 0 \]
+        </div>
+        <p>
+          この方程式の判別式を $D$ とすると，実数解をもつ条件は $D \ge 0$ である。
+        </p>
+        <div class="math-scroll">
+          \begin{aligned}
+          D = (-3)^2 - 4 \cdot 1 \cdot (-a) &\ge 0 \\
+          9 + 4a &\ge 0 \\
+          a &\ge -\frac{9}{4}
+          \end{aligned}
+        </div>
+        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+          答: $a \ge -\dfrac{9}{4}$
+        </div>
+
+        <p class="font-bold mt-6">(4)(ii)</p>
+        <p>
+          $x \ge 2^a$ の両辺に底2の対数をとると，底 $2 > 1$ より不等号の向きは変わらず
+        </p>
+        <div class="math-scroll">
+          \[ \log_2 x \ge \log_2 2^a \iff t \ge a \]
+        </div>
+        <p>
+          底2より $x$ と $t$ は1対1に対応する。したがって、条件は「方程式 $t^2 - 3t - a = 0$ が $t \ge a$ の範囲にただ1つの解をもつ」ことである。<br>
+          $g(t) = t^2 - 3t - a$ とおく。この関数のグラフは下に凸の放物線であり，軸は直線 $t = \dfrac{3}{2}$ である。<br>
+          また，$g(a) = a^2 - 3a - a = a^2 - 4a = a(a - 4)$ である。
+        </p>
+        <p class="mt-2 font-bold text-blue-800">[1] $g(t) = 0$ が重解をもち，その重解が $t \ge a$ を満たす場合</p>
+        <p class="mt-1">
+          (i)より重解をもつのは $a = -\dfrac{9}{4}$ のとき。このとき重解は軸である $t = \dfrac{3}{2}$。<br>
+          $t = \dfrac{3}{2} \ge -\dfrac{9}{4}$ （すなわち $t \ge a$）を満たすため、適する。
+        </p>
+        <p class="mt-4 font-bold text-blue-800">[2] $g(t) = 0$ が異なる2つの解をもち，一方が $t > a$，他方が $t < a$ にある場合</p>
+        <p class="mt-1">
+          境界 $t=a$ をまたぐ条件は $g(a) < 0$ である。
+        </p>
+        <div class="math-scroll">
+          \begin{aligned}
+          a(a - 4) &< 0 \\
+          0 &< a < 4
+          \end{aligned}
+        </div>
+
+        <p class="mt-4 font-bold text-blue-800">[3] $g(t) = 0$ の一方の解が $t=a$ であり，もう一方の解が $t < a$ にある場合</p>
+        <p class="mt-1">
+          $t=a$ が解となるのは $g(a) = 0$ のときであり，$a(a - 4) = 0$ より $a=0, 4$。<br>
+          ・$a=0$ のとき、$g(t) = t^2 - 3t = 0$ より解は $t=0, 3$。$t \ge a$ すなわち $t \ge 0$ の範囲に解は $0, 3$ の2つあるため不適。<br>
+          ・$a=4$ のとき、$g(t) = t^2 - 3t - 4 = 0$ より解は $t=4, -1$。$t \ge a$ すなわち $t \ge 4$ の範囲にある解は $t=4$ のただ1つであるため適する。
+        </p>
+        <p class="mt-4">
+          以上 [1]〜[3] より，求める $a$ の値の範囲は
+        </p>
+        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+          答: $a = -\dfrac{9}{4} \ , \ 0 < a \le 4$
+        </div>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化</h3>
+      <div class="mt-6 text-center bg-slate-50 border border-slate-200 rounded-xl p-4 sm:p-6 shadow-sm">
+        <p class="text-sm text-slate-700 mb-4 leading-relaxed text-left">
+          放物線 $y = t^2 - 3t$ と水平線 $y = a$ の交点が、方程式の解です。<br>
+          (4)(ii) の条件「$t \ge a$」は、<strong>水色の領域（垂直線 $t=a$ の右側）</strong>を意味します。<br>
+          スライダーで $a$ を動かし、「水色の領域内にある交点（赤い点）がちょうど1個になる」タイミングを観察してください。
+        </p>
+        
+        <!-- コントロール部 -->
+        <div class="mb-6 max-w-md mx-auto">
+          <label for="a-slider" class="block text-sm font-medium text-slate-700 mb-2">
+            定数 $a$ の値: <span id="a-value" class="font-bold text-rose-600 text-lg">1.00</span>
+          </label>
+          <input type="range" id="a-slider" min="-3" max="5" step="0.25" value="1" class="w-full h-2 bg-slate-300 rounded-lg appearance-none cursor-pointer accent-rose-600">
+          <div class="flex justify-between mt-2 text-xs text-slate-500">
+            <span>-3</span>
+            <span>$a=-\frac{9}{4}$</span>
+            <span>$0$</span>
+            <span>$4$</span>
+            <span>5</span>
+          </div>
+          <div id="solution-status" class="mt-3 p-2 bg-white border border-slate-200 rounded font-bold text-sm">
+            読込中...
+          </div>
+        </div>
+
+        <svg viewBox="0 0 400 300" class="w-full h-auto max-w-md mx-auto bg-white border border-slate-200 rounded-lg shadow-sm" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- 背景枠 -->
+          <rect width="400" height="300" fill="#ffffff" />
+          
+          <!-- x/y 軸 -->
+          <!-- 座標系: x(t) = 50 + (t+3)*37.5, y(y) = 250 - (y+4)*20 -->
+          <line x1="0" y1="170" x2="400" y2="170" stroke="#cbd5e1" stroke-width="1.5" /> <!-- t軸 (y=0) -->
+          <line x1="162.5" y1="0" x2="162.5" y2="300" stroke="#cbd5e1" stroke-width="1.5" /> <!-- y軸 (t=0) -->
+          
+          <!-- 軸ラベル -->
+          <text x="380" y="165" fill="#64748b" font-size="12">t</text>
+          <text x="168" y="20" fill="#64748b" font-size="12">y</text>
+
+          <g id="dynamic-elements">
+            <!-- ハイライト領域 t >= a -->
+            <rect id="region-t" x="0" y="0" width="0" height="300" fill="rgba(56, 189, 248, 0.15)" />
+            
+            <!-- 境界線 t = a -->
+            <line id="line-t" x1="0" y1="0" x2="0" y2="300" stroke="#0ea5e9" stroke-width="1" stroke-dasharray="4,2" />
+            <text id="label-t" x="0" y="280" fill="#0ea5e9" font-size="12" text-anchor="middle">t=a</text>
+
+            <!-- 水平線 y = a -->
+            <line id="line-y" x1="0" y1="0" x2="400" y2="0" stroke="#f43f5e" stroke-width="2" />
+            <text id="label-y" x="10" y="0" fill="#f43f5e" font-size="12">y=a</text>
+            
+            <!-- 放物線 y = t^2 - 3t -->
+            <!-- 描画は JSで行う -->
+            <path id="parabola" stroke="#475569" stroke-width="2.5" fill="none" />
+
+            <!-- 交点マーカー -->
+            <circle id="point1" cx="-100" cy="-100" r="5" fill="#f43f5e" />
+            <circle id="point2" cx="-100" cy="-100" r="5" fill="#f43f5e" />
+          </g>
+        </svg>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+            const slider = document.getElementById('a-slider');
+            const valueDisplay = document.getElementById('a-value');
+            const regionT = document.getElementById('region-t');
+            const lineT = document.getElementById('line-t');
+            const labelT = document.getElementById('label-t');
+            const lineY = document.getElementById('line-y');
+            const labelY = document.getElementById('label-y');
+            const parabola = document.getElementById('parabola');
+            const point1 = document.getElementById('point1');
+            const point2 = document.getElementById('point2');
+            const statusBox = document.getElementById('solution-status');
+
+            // 座標変換関数
+            // tの範囲: -3 〜 5 (幅8) -> 400px (1単位=50px), t=0 は 150px
+            // yの範囲: -4 〜 8 (幅12) -> 300px (1単位=25px), y=0 は 200px
+            function getX(t) { return 150 + t * 50; }
+            function getY(y) { return 200 - y * 25; }
+
+            // 放物線のパス生成
+            let path = "";
+            for (let t = -2; t <= 5; t += 0.1) {
+              let y = t * t - 3 * t;
+              path += (t === -2 ? "M " : "L ") + getX(t) + " " + getY(y) + " ";
+            }
+            parabola.setAttribute("d", path);
+
+            function update() {
+              const a = parseFloat(slider.value);
+              valueDisplay.textContent = a.toFixed(2);
+              
+              // 直線 y = a
+              const svgY = getY(a);
+              lineY.setAttribute('y1', svgY);
+              lineY.setAttribute('y2', svgY);
+              labelY.setAttribute('y', svgY - 5);
+              
+              // 垂直線 t = a
+              const svgT = getX(a);
+              lineT.setAttribute('x1', svgT);
+              lineT.setAttribute('x2', svgT);
+              labelT.setAttribute('x', svgT);
+              
+              // 領域 t >= a
+              regionT.setAttribute('x', svgT);
+              regionT.setAttribute('width', Math.max(0, 400 - svgT));
+
+              // 解の計算 t^2 - 3t - a = 0
+              const D = 9 + 4 * a;
+              point1.setAttribute('cx', -100); // 画面外へ隠す
+              point2.setAttribute('cx', -100);
+              
+              let validCount = 0;
+              
+              if (D > 0) {
+                const t1 = (3 - Math.sqrt(D)) / 2;
+                const t2 = (3 + Math.sqrt(D)) / 2;
+                
+                point1.setAttribute('cx', getX(t1));
+                point1.setAttribute('cy', svgY);
+                if (t1 >= a - 0.001) { point1.setAttribute('fill', '#f43f5e'); validCount++; } 
+                else { point1.setAttribute('fill', '#94a3b8'); }
+
+                point2.setAttribute('cx', getX(t2));
+                point2.setAttribute('cy', svgY);
+                if (t2 >= a - 0.001) { point2.setAttribute('fill', '#f43f5e'); validCount++; } 
+                else { point2.setAttribute('fill', '#94a3b8'); }
+                
+              } else if (Math.abs(D) < 0.01) {
+                // 重解 a = -2.25
+                const t = 1.5;
+                point1.setAttribute('cx', getX(t));
+                point1.setAttribute('cy', svgY);
+                if (t >= a - 0.001) { point1.setAttribute('fill', '#f43f5e'); validCount++; } 
+                else { point1.setAttribute('fill', '#94a3b8'); }
+              }
+
+              // ステータス表示
+              if (validCount === 1) {
+                statusBox.textContent = `条件を満たす解は ${validCount} 個（適する！）`;
+                statusBox.className = "mt-3 p-2 border rounded font-bold text-sm bg-rose-50 border-rose-300 text-rose-700";
+              } else {
+                statusBox.textContent = `条件を満たす解は ${validCount} 個（不適）`;
+                statusBox.className = "mt-3 p-2 border rounded font-bold text-sm bg-slate-50 border-slate-300 text-slate-500";
+              }
+            }
+
+            slider.addEventListener('input', update);
+            update(); // 初期描画
+          });
+        </script>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+      <div class="mt-4 space-y-4">
+        <div class="bg-red-50 border border-red-200 rounded-lg p-4 text-slate-800">
+          <p class="font-bold text-red-800">「$x$ と $t$ の1対1対応」の記述漏れ</p>
+          <p class="mt-2 text-sm">
+            $t = \log_2 x$ と置き換えた後、$t$ の方程式の解の個数と元の $x$ の方程式の解の個数が一致するのは、対数関数が単調増加関数であり「$x$ と $t$ が1対1に対応する」からです。解答の(4)(ii)冒頭にあるように、この一言を書いておかないと減点の対象になる可能性があります。
+          </p>
+        </div>
+        <div class="bg-red-50 border border-red-200 rounded-lg p-4 text-slate-800">
+          <p class="font-bold text-red-800">境界上の解のチェック漏れ（$g(a)=0$ の場合）</p>
+          <p class="mt-2 text-sm">
+            $t \ge a$ と $t < a$ に解をもつ条件として $g(a) < 0$ を思いつく人は多いですが、問題文は「$t > a$」ではなく「$t \ge a$」であるため、解の一つが $t=a$ ズバリになるケースを忘れてはいけません。方程式に等号が含まれているときは、必ず $g(a)=0$ になる $a$ の値を具体的に求め、もう一つの解が条件を満たすか個別にチェックする習慣をつけましょう。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+      <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+      <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+      
+      <div class="mt-6 space-y-4">
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            <div class="flex-1 leading-relaxed">
+              <div class="mb-1">Q1. $t = \log_2 x \ (x>0)$ と置き換えたとき、</div>
+              <div>新しい変数 $t$ のとり得る値の範囲はどうなりますか？</div>
+            </div>
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            「すべての実数」です。三角関数（$t = \sin x$ など）の場合は $-1 \le t \le 1$ と範囲が制限されますが、対数関数のグラフは $y$ 軸のマイナス無限大からプラス無限大まで伸びているため、$t$ に制限はかかりません。
+          </div>
+        </details>
+
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            <div class="flex-1 leading-relaxed">
+              <div class="mb-1">Q2. 条件「$x \ge 2^a$」は、</div>
+              <div>$t = \log_2 x$ を用いるとどのような不等式に翻訳できますか？</div>
+            </div>
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            「$t \ge a$」に翻訳できます。両辺の底2の対数をとると $\log_2 x \ge \log_2 2^a$ となり、底 $2 > 1$ より不等号の向きが変わらないためです。
+          </div>
+        </details>
+
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            <div class="flex-1 leading-relaxed">
+              <div class="mb-1">Q3. 2次方程式 $g(t) = 0$ が「$t \ge a$」の範囲にただ1つの解をもつ条件として、</div>
+              <div>どのような3つのケースを場合分けして調べる必要がありますか？</div>
+            </div>
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            ① 重解をもち、その重解が $t \ge a$ にある場合（$D=0$ かつ 軸 $\ge a$）。<br>
+            ② 異なる2つの解をもち、一方が $t > a$、他方が $t < a$ にある場合（$g(a) < 0$）。<br>
+            ③ 一方の解がズバリ $t=a$ であり、他方の解が $t < a$ にある場合（$g(a)=0$ として個別に確認）。
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+        <a href="no04.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+            ← No.4へ
+        </a>
+        <a href="no06.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+            No.6 →
+        </a>
+    </nav>
+
+  </main>
+  
+  <footer class="py-10 text-center text-sm text-slate-500">
+    自彊館(理系)　夏期数学課題 解説サイト
+  </footer>
+</body>
+</html>
