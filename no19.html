@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.19 確率 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: { matchFontHeight: false },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: .5rem; margin-bottom: .5rem; }
+        button:focus-visible, summary:focus-visible, a:focus-visible, input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+        ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+        <div class="p-7 sm:p-10">
+            <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+                <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.19</span>
+                <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+            </div>
+            <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">確率</h1>
+            <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                問題
+            </h2>
+
+            <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed">
+                <p>
+                    <span class="inline-grid h-7 min-w-7 place-items-center rounded border-2 border-slate-500 bg-white px-1 font-bold">1</span>，
+                    <span class="inline-grid h-7 min-w-7 place-items-center rounded border-2 border-slate-500 bg-white px-1 font-bold">1</span>，
+                    <span class="inline-grid h-7 min-w-7 place-items-center rounded border-2 border-slate-500 bg-white px-1 font-bold">2</span>，
+                    <span class="inline-grid h-7 min-w-7 place-items-center rounded border-2 border-slate-500 bg-white px-1 font-bold">3</span>
+                    の4枚のカードが箱の中に入っている。
+                </p>
+                <p class="mt-2">
+                    この箱の中から無作為に1枚のカードを取り出し、カードに書かれた数を記録してから元に戻す。これを $n$ 回繰り返す。
+                </p>
+
+                <ol class="mt-4 list-decimal space-y-4 pl-6">
+                    <li>
+                        $n=3$ のとき、
+                        <ol class="mt-2 list-[lower-roman] space-y-2 pl-6">
+                            <li>記録された3個の数の和が3となる確率を求めよ。</li>
+                            <li>記録された3個の数の和が4となる確率を求めよ。</li>
+                            <li>記録された3個の数の和が5となる確率を求めよ。</li>
+                        </ol>
+                    </li>
+                    <li>
+                        $n$ を3以上の整数とする。記録された $n$ 個の数の和が $n+3$ となる確率を求めよ。
+                    </li>
+                </ol>
+            </div>
+
+            <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+                <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+                    <li><strong>1回の試行：</strong> 数字1のカードは2枚あるため、
+                        \[
+                        P(1)=\frac12,\qquad P(2)=\frac14,\qquad P(3)=\frac14
+                        \]
+                        です。</li>
+                    <li><strong>元に戻す：</strong> 各回は独立であり、毎回同じ確率で1・2・3が出ます。</li>
+                    <li><strong>基準をすべて1とする：</strong> $n$ 回すべて1なら和は $n$ です。2が出ると和は1増え、3が出ると和は2増えます。</li>
+                    <li><strong>（2）の条件：</strong> 和を $n+3$ にするには、基準の $n$ から合計3だけ増やす必要があります。</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                解説
+            </h2>
+            <p class="mt-4 text-sm leading-8 text-slate-600">
+                「同じ数字が書かれたカードが複数ある」ことと、「和の増加分で場合分けする」ことがポイントです。
+            </p>
+
+            <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+                <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">同じ数字のカードが複数枚あるとき</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            記録される数字は同じでも、カードは4枚から等確率に選ばれます。したがって、数字1が出る確率は $\frac14$ ではなく <strong>$\frac24=\frac12$</strong> です。
+                        </p>
+                    </div>
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">和が「回数＋小さい定数」となっているとき</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            すべて最小値1が出た場合を基準にすると、2は「＋1」、3は「＋2」とみなせます。和の問題を、増加分の整数分割へ置き換えます。
+                        </p>
+                    </div>
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">反復試行で結果の並び方を数えるとき</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            どの回に2や3が出るかを並べます。例えば、$n$ 回のうち2が出る3回を選ぶ方法は
+                            \[
+                            \frac{n!}{3!(n-3)!}
+                            \]
+                            通りです。反復試行では、まず「どの回にその結果が現れるか」を数えることが重要です。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（1）小さい回数では、和を作る数字の組を列挙する</strong><br>
+                        和3は $(1,1,1)$、和4は $(1,1,2)$、和5は $(1,1,3)$ と $(1,2,2)$ です。順番の違いと、各数字が出る確率を掛け合わせます。
+                    </div>
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（2）すべて1の場合からの増加分を考える</strong><br>
+                        2の出た回数を $a$、3の出た回数を $b$ とすると、和の増加分は $a+2b$ です。これが3になる非負整数解だけを調べます。
+                    </div>
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>場合を漏れなく、重複なく分ける</strong><br>
+                        $a+2b=3$ の解は $(a,b)=(3,0),(1,1)$ の2通りです。つまり、「2が3回」または「2と3が1回ずつ」のどちらかです。
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+
+                <div class="mt-4 space-y-7 text-slate-700">
+                    <div>
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）(i)</p>
+                        <p class="mt-2">
+                            3個の数の和が3となるのは、3回とも1が出る場合だけである。
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \left(\frac12\right)^3=\frac18
+                            \]
+                        </div>
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$\dfrac18$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）(ii)</p>
+                        <p class="mt-2">
+                            3個の数の和が4となるのは、1が2回、2が1回出る場合である。<br>
+                            1が出る2回と2が出る1回の並べ方は
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \frac{3!}{2!1!}
+                            \]
+                        </div>
+                        <p>通りであるから、求める確率は</p>
+                        <div class="math-scroll">
+                            \[
+                            \frac{3!}{2!1!}
+                            \left(\frac12\right)^2
+                            \left(\frac14\right)
+                            =\frac3{16}
+                            \]
+                        </div>
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$\dfrac3{16}$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）(iii)</p>
+                        <p class="mt-2">
+                            3個の数の和が5となる場合は、次の2通りである。
+                        </p>
+
+                        <div class="mt-3 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                            <p class="font-bold text-slate-800">① 1が2回、3が1回出る場合</p>
+                            <p class="mt-2 text-sm">
+                                1が出る2回と3が出る1回の並べ方は
+                            </p>
+                            <div class="math-scroll mt-2">
+                                \[
+                                \frac{3!}{2!1!}
+                                \]
+                            </div>
+                            <p class="text-sm">通りであるから、確率は</p>
+                            <div class="math-scroll mt-2">
+                                \[
+                                \frac{3!}{2!1!}
+                                \left(\frac12\right)^2
+                                \left(\frac14\right)
+                                =\frac3{16}
+                                \]
+                            </div>
+                        </div>
+
+                        <div class="mt-3 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                            <p class="font-bold text-slate-800">② 1が1回、2が2回出る場合</p>
+                            <p class="mt-2 text-sm">
+                                1が出る1回と2が出る2回の並べ方は
+                            </p>
+                            <div class="math-scroll mt-2">
+                                \[
+                                \frac{3!}{1!2!}
+                                \]
+                            </div>
+                            <p class="text-sm">通りであるから、確率は</p>
+                            <div class="math-scroll mt-2">
+                                \[
+                                \frac{3!}{1!2!}
+                                \left(\frac12\right)
+                                \left(\frac14\right)^2
+                                =\frac3{32}
+                                \]
+                            </div>
+                        </div>
+
+                        <p class="mt-3">したがって、求める確率は</p>
+                        <div class="math-scroll">
+                            \[
+                            \frac3{16}+\frac3{32}
+                            =\frac6{32}+\frac3{32}
+                            =\frac9{32}
+                            \]
+                        </div>
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$\dfrac9{32}$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）</p>
+                        <p class="mt-2">
+                            $n$ 回すべて1が出たとすると、和は $n$ である。
+                            1の代わりに2が出ると和は1増え、1の代わりに3が出ると和は2増える。
+                        </p>
+
+                        <p class="mt-3">
+                            2の出た回数を $a$、3の出た回数を $b$ とすると、和が $n+3$ となる条件は
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            a+2b=3
+                            \]
+                        </div>
+                        <p>である。$a,b$ は0以上の整数であるから、</p>
+                        <div class="math-scroll">
+                            \[
+                            (a,b)=(3,0),\ (1,1)
+                            \]
+                        </div>
+                        <p>の2通りである。</p>
+
+                        <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                            <p class="font-bold text-slate-800">① 2が3回、残りの $n-3$ 回は1が出る場合</p>
+                            <p class="mt-2 text-sm">
+                                $n$ 回のうち2が出る3回を選ぶ方法は
+                                \[
+                                \frac{n!}{3!(n-3)!}
+                                \]
+                                通りであるから、確率は
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                \frac{n!}{3!(n-3)!}
+                                \left(\frac14\right)^3
+                                \left(\frac12\right)^{n-3}
+                                \]
+                            </div>
+                        </div>
+
+                        <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                            <p class="font-bold text-slate-800">② 2が1回、3が1回、残りの $n-2$ 回は1が出る場合</p>
+                            <p class="mt-2 text-sm">
+                                2が出る1回、3が出る1回、1が出る残りの $n-2$ 回の並べ方は
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                \frac{n!}{1!1!(n-2)!}
+                                \]
+                            </div>
+                            <p class="text-sm">通りであるから、確率は</p>
+                            <div class="math-scroll">
+                                \[
+                                \frac{n!}{1!1!(n-2)!}
+                                \left(\frac14\right)
+                                \left(\frac14\right)
+                                \left(\frac12\right)^{n-2}
+                                \]
+                            </div>
+                        </div>
+
+                        <p class="mt-4">したがって、求める確率は</p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            &\frac{n!}{3!(n-3)!}
+                            \left(\frac14\right)^3
+                            \left(\frac12\right)^{n-3}
+                            +
+                            \frac{n!}{1!1!(n-2)!}
+                            \left(\frac14\right)^2
+                            \left(\frac12\right)^{n-2}\\
+                            &=
+                            \frac{\frac{n!}{3!(n-3)!}}{2^{n+3}}
+                            +
+                            \frac{\frac{n!}{1!1!(n-2)!}}{2^{n+2}}\\
+                            &=
+                            \frac{
+                            \frac{n!}{3!(n-3)!}
+                            +
+                            2\frac{n!}{1!1!(n-2)!}
+                            }{2^{n+3}}\\
+                            &=
+                            \frac{\dfrac{n(n-1)(n-2)}6+2n(n-1)}{2^{n+3}}\\
+                            &=
+                            \frac{n(n-1)(n+10)}{6\cdot2^{n+3}}\\
+                            &=
+                            \frac{n(n-1)(n+10)}{3\cdot2^{n+4}}.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$\displaystyle \frac{n(n-1)(n+10)}{3\cdot2^{n+4}}$
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化</h3>
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    $n$ を動かすと、和を $n+3$ にする2つの場合の確率と、その合計が変化します。
+                    「2が3回」と「2と3が1回ずつ」の2通りしかないことを視覚的に確認してください。
+                </p>
+
+                <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="mx-auto max-w-xl">
+                        <label for="n-slider" class="mb-2 block text-sm font-medium text-slate-700">
+                            試行回数 $n$：
+                            <span id="n-display" class="text-lg font-bold text-blue-700">3</span>
+                        </label>
+                        <input id="n-slider" type="range" min="3" max="15" step="1" value="3"
+                               class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600">
+                        <div class="mt-2 flex justify-between text-xs text-slate-500">
+                            <span>3</span>
+                            <span>9</span>
+                            <span>15</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 grid gap-4 md:grid-cols-2">
+                        <div class="rounded-xl border border-violet-200 bg-white p-4">
+                            <div class="flex items-center justify-between gap-3">
+                                <h4 class="font-bold text-violet-800">2が3回</h4>
+                                <span class="rounded-full bg-violet-100 px-3 py-1 text-xs font-bold text-violet-700">増加分 $1+1+1$</span>
+                            </div>
+                            <div id="pattern-a" class="mt-4 flex min-h-14 flex-wrap gap-2"></div>
+                            <div class="mt-4 text-sm text-slate-600">
+                                場合の選び方：<span id="count-a" class="font-bold text-violet-700"></span>
+                            </div>
+                            <div class="mt-1 text-sm text-slate-600">
+                                確率：<span id="prob-a" class="font-bold text-violet-700"></span>
+                            </div>
+                        </div>
+
+                        <div class="rounded-xl border border-teal-200 bg-white p-4">
+                            <div class="flex items-center justify-between gap-3">
+                                <h4 class="font-bold text-teal-800">2と3が1回ずつ</h4>
+                                <span class="rounded-full bg-teal-100 px-3 py-1 text-xs font-bold text-teal-700">増加分 $1+2$</span>
+                            </div>
+                            <div id="pattern-b" class="mt-4 flex min-h-14 flex-wrap gap-2"></div>
+                            <div class="mt-4 text-sm text-slate-600">
+                                場合の選び方：<span id="count-b" class="font-bold text-teal-700"></span>
+                            </div>
+                            <div class="mt-1 text-sm text-slate-600">
+                                確率：<span id="prob-b" class="font-bold text-teal-700"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 rounded-xl border-2 border-blue-300 bg-blue-50 p-4 text-center">
+                        <div class="text-sm font-bold text-blue-800">合計の確率</div>
+                        <div id="prob-total" class="mt-1 text-2xl font-bold text-blue-900"></div>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const slider = document.getElementById("n-slider");
+                        const nDisplay = document.getElementById("n-display");
+                        const patternA = document.getElementById("pattern-a");
+                        const patternB = document.getElementById("pattern-b");
+                        const countA = document.getElementById("count-a");
+                        const countB = document.getElementById("count-b");
+                        const probA = document.getElementById("prob-a");
+                        const probB = document.getElementById("prob-b");
+                        const probTotal = document.getElementById("prob-total");
+
+                        function combination(n, r) {
+                            if (r < 0 || r > n) return 0;
+                            let result = 1;
+                            for (let i = 1; i <= r; i++) {
+                                result = result * (n - r + i) / i;
+                            }
+                            return result;
+                        }
+
+                        function card(value, colorClass) {
+                            return `<span class="grid h-10 w-8 place-items-center rounded-md border-2 ${colorClass} bg-white font-bold shadow-sm">${value}</span>`;
+                        }
+
+                        function fractionText(num, den) {
+                            return `${num} / ${den}`;
+                        }
+
+                        function update() {
+                            const n = parseInt(slider.value, 10);
+                            nDisplay.textContent = n;
+
+                            let aMarkup = "";
+                            for (let i = 0; i < n; i++) {
+                                aMarkup += i < 3
+                                    ? card("2", "border-violet-400 text-violet-700")
+                                    : card("1", "border-slate-300 text-slate-600");
+                            }
+                            patternA.innerHTML = aMarkup;
+
+                            let bMarkup = "";
+                            for (let i = 0; i < n; i++) {
+                                if (i === 0) bMarkup += card("2", "border-teal-400 text-teal-700");
+                                else if (i === 1) bMarkup += card("3", "border-rose-400 text-rose-700");
+                                else bMarkup += card("1", "border-slate-300 text-slate-600");
+                            }
+                            patternB.innerHTML = bMarkup;
+
+                            const waysA = combination(n, 3);
+                            const waysB = n * (n - 1);
+                            const denA = Math.pow(2, n + 3);
+                            const denB = Math.pow(2, n + 2);
+                            const pA = waysA / denA;
+                            const pB = waysB / denB;
+                            const total = pA + pB;
+
+                            countA.textContent = `${n}! ÷ (3! × ${n-3}!) = ${waysA}`;
+                            countB.textContent = `${n}! ÷ (1! × 1! × ${n-2}!) = ${waysB}`;
+                            probA.textContent = `${fractionText(waysA, denA)} ≈ ${pA.toFixed(6)}`;
+                            probB.textContent = `${fractionText(waysB, denB)} ≈ ${pB.toFixed(6)}`;
+                            probTotal.textContent = total.toFixed(6);
+                        }
+
+                        slider.addEventListener("input", update);
+                        update();
+                    });
+                </script>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解の考察：4枚のカードを区別して数える</h3>
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    2枚の1のカードを $1_{\mathrm A},1_{\mathrm B}$ と区別すると、1回ごとに4枚のうち1枚を選ぶので、$n$ 回の取り出し方はすべて等確率で $4^n$ 通りあります。
+                </p>
+                <p class="mt-3 text-sm leading-relaxed text-slate-700">
+                    「2が3回」の場合、$n$ 回のうち2が出る3回を選ぶ方法は
+                    \[
+                    \frac{n!}{3!(n-3)!}
+                    \]
+                    通りで、残りの各回では2枚の1のどちらかを選べるため、
+                </p>
+                <div class="math-scroll">
+                    \[
+                    \frac{n!}{3!(n-3)!}\,2^{n-3}
+                    \]
+                </div>
+                <p class="text-sm leading-relaxed text-slate-700">
+                    通りです。また、「2と3が1回ずつ」の場合、2が出る1回、3が出る1回、1が出る残りの $n-2$ 回の並べ方は
+                    \[
+                    \frac{n!}{1!1!(n-2)!}
+                    \]
+                    通りで、残りの各回では2枚の1のどちらかを選べるため、
+                </p>
+                <div class="math-scroll">
+                    \[
+                    \frac{n!}{1!1!(n-2)!}\,2^{n-2}
+                    \]
+                </div>
+                <p class="text-sm leading-relaxed text-slate-700">
+                    通りです。したがって、確率は
+                </p>
+                <div class="math-scroll">
+                    \[
+                    \frac{
+                    \frac{n!}{3!(n-3)!}\,2^{n-3}
+                    +
+                    \frac{n!}{1!1!(n-2)!}\,2^{n-2}
+                    }{4^n}
+                    \]
+                </div>
+                <p class="text-sm leading-relaxed text-slate-700">
+                    となり、主解法と同じ結果を得ます。
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">数字1が出る確率を $\frac14$ としてしまう</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            1のカードは2枚あるため、数字1が記録される確率は $\frac24=\frac12$ です。同じ数字のカードが複数あるときは、枚数を必ず確認します。
+                        </p>
+                    </div>
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">和が5となる場合を1通りしか挙げない</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            $(1,1,3)$ だけでなく、$(1,2,2)$ もあります。和を作る整数の組を先にすべて列挙してから確率を計算します。
+                        </p>
+                    </div>
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">（2）で「2が3回」の場合だけを考える</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            増加分3は $1+1+1$ だけでなく $1+2$ でも作れます。方程式 $a+2b=3$ を立てると、漏れを防げます。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+            <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+            <p class="mt-4 text-sm text-blue-200">質問をクリックし、答えを頭の中で作ってから開いてください。</p>
+
+            <div class="mt-6 space-y-3">
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q1. 1、1、2、3のカードから1枚を選ぶとき、数字1が出る確率はなぜ $\frac12$ ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        4枚のカードのうち、数字1が書かれたカードが2枚あるためです。したがって $2/4=1/2$ です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q2. 3回の和が5となる数字の組は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        $(1,1,3)$ と $(1,2,2)$ の2種類です。順番の違いも考えて確率を求めます。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q3. 和が $n+3$ となるとき、2の回数を $a$、3の回数を $b$ とすると、どの方程式が成り立ちますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        2は基準の1より1大きく、3は2大きいので、
+                        \[
+                        a+2b=3
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q4. $a+2b=3$ の0以上の整数解は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        $(a,b)=(3,0),(1,1)$ です。したがって、「2が3回」または「2と3が1回ずつ」の2場合です。
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+            <a href="no18.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                ← No.18へ
+            </a>
+            <a href="no20.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                No.20 →
+            </a>
+        </nav>
+    </main>
+
+    <footer class="py-10 text-center text-sm text-slate-500">
+        自彊館(理系)　夏期数学課題 解説サイト
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.15 高次方程式 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+        
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.15</span>
+                    <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">高次方程式</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 text-slate-700 leading-relaxed mt-4">
+                    <p>$x$ についての2つの方程式</p>
+                    <div class="math-scroll">
+                        \[ \begin{array}{ll} x+\dfrac{1}{x}=t& \cdots\mbox{①} \\ x^2-ax-1-\dfrac{a}{x}+\dfrac{1}{x^2}=0 & \cdots\mbox{②} \end{array} \]
+                    </div>
+                    <p>がある。ただし，$a$ ，$t$ は実数の定数とする。</p>
+                    <ol class="list-decimal pl-6 mt-3 space-y-4">
+                        <li>① が実数解をもつような $t$ の値の範囲を求めよ。</li>
+                        <li>
+                            <ol class="list-[lower-roman] pl-6 space-y-2 mt-1">
+                                <li>② を $t$ を用いて表せ。</li>
+                                <li>$a=-2$ のとき，② を解け。</li>
+                            </ol>
+                        </li>
+                        <li>② が実数解をもつような $a$ の値の範囲を求めよ。</li>
+                    </ol>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                    <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                        <li><strong>まず $x \neq 0$：</strong> ②には $\dfrac{1}{x}$ と $\dfrac{1}{x^2}$ が含まれるため、常に $x \neq 0$ です。項を組み合わせると、$x^2+\dfrac{1}{x^2}$ と $x+\dfrac{1}{x}$ の形が現れます。</li>
+                        <li><strong>置換後の範囲に注意：</strong> $t=x+\dfrac{1}{x}$ と置いたとき、実数 $x$ に対応するのは $t \le -2$ または $t \ge 2$ の範囲だけです。</li>
+                        <li><strong>(3)の核心：</strong> $t$ の方程式が実数解をもつだけでは不十分です。その解のうち少なくとも1つが、$t \le -2$ または $t \ge 2$ に入ることが必要十分条件です。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    問題を解くための考え方から、答案、検算、発展までを順に確認します。
+                </p>
+
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">$x + \dfrac{1}{x} = t$ の実数条件と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                両辺に $x$ を掛けて二次方程式 $x^2 - tx + 1 = 0$ とし、<strong>「判別式 $D \ge 0$」</strong>に帰着させます。「相加相乗平均」を使う手もありますが、$x$ が負の場合のケア（$x &lt; 0$ のとき $x + 1/x \le -2$）を忘れやすいため、判別式の方が安全です。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">対称な分数式の次数下げ</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                $x^2 + \dfrac{1}{x^2}$ は、乗法公式を用いて <strong>$\left(x + \dfrac{1}{x}\right)^2 - 2 = t^2 - 2$</strong> と変形します。これで全体が $t$ の二次方程式になります。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">解の存在範囲を図形に読み替える</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                (3)では $t^2-at-3=0$ を <strong>$t^2-3=at$</strong> と変形します。左辺を放物線 $y=t^2-3$、右辺を原点を通る直線 $y=at$ と見れば、「許された範囲 $t\le-2$ または $t\ge2$ で交点をもつか」という図形の問題になります。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(1) $t$ の範囲の決定</strong><br>
+                            $t$ の範囲を求めたいので、消去したい変数である $x$ に着目します。<br>
+                            等式を $x$ の二次方程式 $x^2 - tx + 1 = 0$ に変形することで、「$x$ が実数として存在する」という条件を「二次方程式が実数解をもつ」という条件にすり替えることができます。したがって、判別式 $D \ge 0$ を用いるのが最も確実です。<br>
+                            これを解いて $t \le -2, 2 \le t$ となります。これが以降のすべての基準となる「$t$ の定義域」です。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(2) 方程式の変形と解法</strong><br>
+                            (i) 係数が同じものをペアにして、$x^2 + \dfrac{1}{x^2} - a\left(x + \dfrac{1}{x}\right) - 1 = 0$ とし、$t$ で置き換えます。<br>
+                            (ii) $a = -2$ を代入して $t$ の二次方程式を解き、$t$ の値を出します。このとき、$x$ の方程式を解けと言われているので、<strong>出た $t$ の値を $x + 1/x = t$ に戻して $x$ の解まで出し切る</strong>ことを忘れないようにします。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(3) 実数解をもつ条件（放物線と直線の交点）</strong><br>
+                            $t^2-at-3=0$ を $t^2-3=at$ と変形し、放物線 $y=t^2-3$ と直線 $y=at$ の交点を考えます。<br>
+                            ただし、実数 $x$ に対応するのは $t\le-2$ または $t\ge2$ の部分だけです。したがって、放物線の実線部分と直線が交わるための傾き $a$ の範囲を求めます。<br>
+                            境界は、直線が端点 $(-2,1)$ または $(2,1)$ を通るときであり、それぞれの傾きは $-\dfrac12$、$\dfrac12$ です。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <!-- (1) -->
+                        <div>
+                            <p class="font-bold text-blue-800 border-b border-slate-200 pb-1">（1）</p>
+                            <p class="mt-2">
+                                方程式① $x+\dfrac{1}{x}=t$ の両辺に $x$ を掛けて整理すると、
+                            </p>
+                            <div class="math-scroll">
+                                \[ x^2 - tx + 1 = 0 \]
+                            </div>
+                            <p class="mt-2">
+                                $x$ は実数であるから、この二次方程式は実数解をもつ。<br>
+                                判別式を $D$ とすると、$D \ge 0$ であるから
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                \begin{aligned}
+                                D = (-t)^2 - 4 \cdot 1 \cdot 1 &\ge 0 \\
+                                t^2 - 4 &\ge 0 \\
+                                (t + 2)(t - 2) &\ge 0
+                                \end{aligned}
+                                \]
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答：$t \le -2, \ 2 \le t$
+                            </div>
+                        </div>
+
+                        <!-- (2) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold text-blue-800 border-b border-slate-200 pb-1">（2）(i)</p>
+                            <p class="mt-2">
+                                方程式②の項を並べ替えてくくると、
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                \begin{aligned}
+                                \left(x^2 + \frac{1}{x^2}\right) - a\left(x + \frac{1}{x}\right) - 1 &= 0
+                                \end{aligned}
+                                \]
+                            </div>
+                            <p class="mt-2">
+                                ここで、$x^2 + \dfrac{1}{x^2} = \left(x + \dfrac{1}{x}\right)^2 - 2 = t^2 - 2$ であるから、これを代入して
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                \begin{aligned}
+                                (t^2 - 2) - at - 1 &= 0 \\
+                                t^2 - at - 3 &= 0
+                                \end{aligned}
+                                \]
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答：$t^2 - at - 3 = 0$
+                            </div>
+
+                            <p class="mt-4 font-bold text-blue-800 border-b border-slate-200 pb-1">（2）(ii)</p>
+                            <p class="mt-2">
+                                $a = -2$ のとき、(i)の方程式は $t^2 + 2t - 3 = 0$ となる。
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                \begin{aligned}
+                                (t + 3)(t - 1) &= 0 \\
+                                t &= -3, 1
+                                \end{aligned}
+                                \]
+                            </div>
+                            <p class="mt-2">
+                                $t = x + \dfrac{1}{x}$ であるから、それぞれの場合について $x$ を求める。<br>
+                                ・$t = -3$ のとき<br>
+                                $x + \dfrac{1}{x} = -3 \implies x^2 + 3x + 1 = 0$<br>
+                                解の公式より、$x = \dfrac{-3 \pm \sqrt{3^2 - 4\cdot1\cdot1}}{2} = \dfrac{-3 \pm \sqrt{5}}{2}$
+                            </p>
+                            <p class="mt-3 rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-600">
+                                ※本解説では複素数の範囲まで解いています。実数解のみを求める設定であれば、(1)より $t=1$ を除きます。
+                            </p>
+                            <p class="mt-2">
+                                ・$t = 1$ のとき<br>
+                                $x + \dfrac{1}{x} = 1 \implies x^2 - x + 1 = 0$<br>
+                                解の公式より、$x = \dfrac{1 \pm \sqrt{(-1)^2 - 4\cdot1\cdot1}}{2} = \dfrac{1 \pm \sqrt{-3}}{2} = \dfrac{1 \pm \sqrt{3}i}{2}$
+                            </p>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答：$x = \dfrac{-3 \pm \sqrt{5}}{2}, \ \dfrac{1 \pm \sqrt{3}i}{2}$
+                            </div>
+                        </div>
+
+                        <!-- (3) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold text-blue-800 border-b border-slate-200 pb-1">（3）</p>
+                            <p class="mt-2">
+                                方程式②が実数解 $x$ をもつための必要十分条件は、$t$ についての方程式
+                            </p>
+                            <div class="math-scroll">
+                                \[ t^2-at-3=0 \]
+                            </div>
+                            <p class="mt-2">
+                                が、$t\le-2$ または $t\ge2$ の範囲に少なくとも1つの解をもつことである。
+                            </p>
+                            <p class="mt-2">
+                                この方程式を
+                            </p>
+                            <div class="math-scroll">
+                                \[ t^2-3=at \]
+                            </div>
+                            <p class="mt-2">
+                                と変形し、放物線 $y=t^2-3$ と直線 $y=at$ の交点を考える。
+                            </p>
+
+                            <p class="mt-4 font-semibold text-slate-800">まず、$t\ge2$ の部分で交点をもつ条件を調べる。</p>
+                            <p class="mt-2">
+                                $t=2$ のとき、放物線上の点は $(2,1)$ である。したがって、直線 $y=at$ がこの点と同じ高さ以上になる条件は
+                            </p>
+                            <div class="math-scroll">
+                                \[ 2a\ge1 \iff a\ge\frac12 \]
+                            </div>
+                            <p class="mt-2">
+                                である。$a\ge\dfrac12$ のとき、$t=2$ では直線が放物線以上の高さにあり、$t$ を十分大きくすると二次関数である放物線が直線より上になるため、両者は $t\ge2$ で交わる。
+                            </p>
+                            <p class="mt-2">
+                                一方、$a&lt;\dfrac12$ のとき、$t\ge2$ において
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                \begin{aligned}
+                                (t^2-3)-at
+                                &>t^2-3-\frac12t\\
+                                &=(t-2)\left(t+\frac32\right)\ge0
+                                \end{aligned}
+                                \]
+                            </div>
+                            <p class="mt-2">
+                                となるので、放物線は常に直線より上にあり、交点をもたない。よって、右側で交点をもつ条件は $a\ge\dfrac12$ である。
+                            </p>
+
+                            <p class="mt-4 font-semibold text-slate-800">次に、$t\le-2$ の部分で交点をもつ条件を調べる。</p>
+                            <p class="mt-2">
+                                $t=-2$ のとき、放物線上の点は $(-2,1)$ である。直線 $y=at$ がこの点と同じ高さ以上になる条件は
+                            </p>
+                            <div class="math-scroll">
+                                \[ -2a\ge1 \iff a\le-\frac12 \]
+                            </div>
+                            <p class="mt-2">
+                                である。$a\le-\dfrac12$ のとき、$t=-2$ では直線が放物線以上の高さにあり、$t$ を十分小さくすると放物線が直線より上になるため、両者は $t\le-2$ で交わる。
+                            </p>
+                            <p class="mt-2">
+                                一方、$a>-\dfrac12$ のとき、$t\le-2$ において
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                \begin{aligned}
+                                (t^2-3)-at
+                                &>t^2-3+\frac12t\\
+                                &=(t+2)\left(t-\frac32\right)\ge0
+                                \end{aligned}
+                                \]
+                            </div>
+                            <p class="mt-2">
+                                となるので交点をもたない。よって、左側で交点をもつ条件は $a\le-\dfrac12$ である。
+                            </p>
+                            <p class="mt-4">
+                                以上より、求める $a$ の範囲は
+                            </p>
+                            <div class="math-scroll">
+                                \[ a\le-\frac12 \quad\text{または}\quad a\ge\frac12 \]
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答：$a\le-\dfrac12$ または $a\ge\dfrac12$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化（放物線と直線の交点）</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        (3)の主解法を視覚的に確認します。<br>
+                        <span class="text-blue-600 font-bold">青い実線</span>は、放物線 $y=t^2-3$ のうち、実数 $x$ に対応する $t\le-2$、$t\ge2$ の部分です。中央の破線部分は、実数 $x$ に対応しません。<br>
+                        スライダーで傾き $a$ を動かし、直線 $y=at$ が青い実線部分と交わるかを確認してください。境界は $a=-\dfrac12$ と $a=\dfrac12$ です。
+                    </p>
+
+                    <div class="mt-4 bg-slate-50 p-4 sm:p-6 rounded-lg border border-slate-200 flex flex-col items-center">
+                        <div class="w-full max-w-md mb-6 px-2">
+                            <label for="a2-slider" class="block text-sm font-medium text-slate-700 mb-2">
+                                傾き $a$ の値：<span id="a2-value" class="font-bold text-emerald-600 text-lg">0.0</span>
+                            </label>
+                            <input type="range" id="a2-slider" min="-3" max="3" step="0.1" value="0" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600">
+                            <div class="flex justify-between mt-2 text-xs text-slate-500">
+                                <span>-3</span>
+                                <span>0</span>
+                                <span>3</span>
+                            </div>
+                        </div>
+
+                        <div class="relative w-full max-w-md bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden p-2 flex justify-center">
+                            <svg width="400" height="300" viewBox="-4 -5 8 18" class="w-full h-auto" preserveAspectRatio="xMidYMid meet" style="transform: scaleY(-1);">
+                                <rect x="-2" y="-5" width="4" height="18" fill="rgba(241, 245, 249, 0.8)" />
+                                <g stroke="#cbd5e1" stroke-width="0.05">
+                                    <line x1="-4" y1="0" x2="4" y2="0" stroke="#94a3b8" stroke-width="0.1"/>
+                                    <line x1="0" y1="-5" x2="0" y2="13" stroke="#94a3b8" stroke-width="0.1"/>
+                                    <line x1="-2" y1="-5" x2="-2" y2="13" stroke="#94a3b8" stroke-dasharray="0.2, 0.2"/>
+                                    <line x1="2" y1="-5" x2="2" y2="13" stroke="#94a3b8" stroke-dasharray="0.2, 0.2"/>
+                                </g>
+                                <path id="para-dashed" fill="none" stroke="#94a3b8" stroke-width="0.08" stroke-dasharray="0.2, 0.2" />
+                                <path id="para-solid-left" fill="none" stroke="#2563eb" stroke-width="0.15" />
+                                <path id="para-solid-right" fill="none" stroke="#2563eb" stroke-width="0.15" />
+                                <circle cx="2" cy="1" r="0.15" fill="#2563eb" />
+                                <circle cx="-2" cy="1" r="0.15" fill="#2563eb" />
+                                <line id="line-at" x1="-4" y1="0" x2="4" y2="0" stroke="#10b981" stroke-width="0.1" />
+                                <g id="intersection-points-at"></g>
+                            </svg>
+                            <div class="absolute text-slate-500 text-xs font-bold" style="bottom: 40%; right: 5%;">t</div>
+                            <div class="absolute text-slate-500 text-xs font-bold" style="top: 5%; left: 52%;">y</div>
+                            <div class="absolute text-slate-400 text-xs" style="bottom: 35%; left: 25%;">-2</div>
+                            <div class="absolute text-slate-400 text-xs" style="bottom: 35%; right: 26%;">2</div>
+                            <div class="absolute text-emerald-600 text-xs font-bold" style="top: 48%; left: 52%;">1</div>
+                        </div>
+
+                        <div id="status-panel-at" class="mt-4 p-3 bg-white rounded-lg text-center w-full max-w-md border border-slate-200 shadow-sm transition-colors duration-300 font-bold text-sm">
+                            ステータスを判定中...
+                        </div>
+                    </div>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const slider2 = document.getElementById('a2-slider');
+                            const aValueDisplay2 = document.getElementById('a2-value');
+                            const lineAT = document.getElementById('line-at');
+                            const intersectionPointsAT = document.getElementById('intersection-points-at');
+                            const statusPanelAT = document.getElementById('status-panel-at');
+
+                            function h(t) { return t * t - 3; }
+
+                            let pLeft = "", pRight = "", pDash = "";
+                            for (let t = -4; t <= -2; t += 0.1) pLeft += (Math.abs(t + 4) < 1e-9 ? "M" : "L") + `${t} ${h(t)} `;
+                            for (let t = 2; t <= 4; t += 0.1) pRight += (Math.abs(t - 2) < 1e-9 ? "M" : "L") + `${t} ${h(t)} `;
+                            for (let t = -1.9; t <= 1.9; t += 0.1) pDash += (Math.abs(t + 1.9) < 1e-9 ? "M" : "L") + `${t} ${h(t)} `;
+
+                            document.getElementById('para-solid-left').setAttribute("d", pLeft);
+                            document.getElementById('para-solid-right').setAttribute("d", pRight);
+                            document.getElementById('para-dashed').setAttribute("d", pDash);
+
+                            function updateVisualization2() {
+                                const a = parseFloat(slider2.value);
+                                aValueDisplay2.textContent = a.toFixed(1);
+                                lineAT.setAttribute('y1', -4 * a);
+                                lineAT.setAttribute('y2', 4 * a);
+
+                                const D = a * a + 12;
+                                const t1 = (a - Math.sqrt(D)) / 2;
+                                const t2 = (a + Math.sqrt(D)) / 2;
+                                let svgContent = '';
+                                let isValid = false;
+
+                                for (const t of [t1, t2]) {
+                                    if (t <= -2 || t >= 2) {
+                                        svgContent += `<circle cx="${t}" cy="${a * t}" r="0.2" fill="#10b981" />`;
+                                        isValid = true;
+                                    }
+                                }
+                                intersectionPointsAT.innerHTML = svgContent;
+
+                                if (isValid) {
+                                    statusPanelAT.textContent = "実線部分と交点をもつ（②は実数解をもつ）";
+                                    statusPanelAT.className = "mt-4 p-3 rounded-lg text-center w-full max-w-md border border-emerald-300 bg-emerald-50 text-emerald-700 shadow-sm transition-colors duration-300 font-bold text-sm";
+                                } else {
+                                    statusPanelAT.textContent = "実線部分と交点をもたない（②は実数解をもたない）";
+                                    statusPanelAT.className = "mt-4 p-3 rounded-lg text-center w-full max-w-md border border-slate-300 bg-slate-100 text-slate-500 transition-colors duration-300 font-bold text-sm";
+                                }
+                            }
+
+                            slider2.addEventListener('input', updateVisualization2);
+                            updateVisualization2();
+                        });
+                    </script>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解の考察：二次関数の解の配置</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        $g(t)=t^2-at-3$ とおきます。判別式は $a^2+12>0$、また解の積は $-3&lt;0$ であるため、$g(t)=0$ は常に「負の解を1つ、正の解を1つ」もちます。<br>
+                        求める条件の反対、すなわち<strong>実数 $x$ が得られない場合</strong>は、2つの解がともに $-2&lt;t&lt;2$ に入る場合です。<br>
+                        上に開く放物線で $g(0)=-3&lt;0$ であることから、2つの解がともに $-2&lt;t&lt;2$ に入るための条件は
+                    </p>
+                    <div class="math-scroll">
+                        \[
+                        g(-2)>0 \quad\text{かつ}\quad g(2)>0
+                        \]
+                    </div>
+                    <div class="math-scroll">
+                        \[
+                        \begin{aligned}
+                        g(-2)>0 &\iff 1+2a>0 \iff a>-\frac12,\\
+                        g(2)>0 &\iff 1-2a>0 \iff a<\frac12.
+                        \end{aligned}
+                        \]
+                    </div>
+                    <p class="mt-2 text-sm text-slate-700 leading-relaxed">
+                        したがって、②が実数解をもたないのは $-\dfrac12&lt;a&lt;\dfrac12$ のときです。その補集合をとると、
+                        $a\le-\dfrac12$ または $a\ge\dfrac12$ となります。境界では、$a=\dfrac12$ のとき $t=2$、$a=-\dfrac12$ のとき $t=-2$ が解となるため、等号を含みます。
+                    </p>
+
+                    <div class="mt-6">
+                        <h4 class="font-bold text-blue-900">図解・可視化（二次関数の解の配置）</h4>
+                        <p class="mt-2 text-sm text-slate-700 leading-relaxed">
+                            スライダーで $a$ を動かし、放物線 $y=g(t)$ と $t$ 軸の交点を確認します。中央の赤い帯 $-2&lt;t&lt;2$ に2つの解がともに入ると、②は実数解をもちません。
+                        </p>
+
+                        <div class="mt-4 bg-slate-50 p-4 sm:p-6 rounded-lg border border-slate-200 flex flex-col items-center">
+                            <div class="w-full max-w-md mb-5 px-2">
+                                <label for="root-a-slider" class="block text-sm font-medium text-slate-700 mb-2">
+                                    定数 $a$ の値：<span id="root-a-value" class="font-bold text-violet-600 text-lg">0.0</span>
+                                </label>
+                                <input type="range" id="root-a-slider" min="-3" max="3" step="0.1" value="0" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-violet-600">
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-3 w-full max-w-md mb-4 text-center text-xs">
+                                <div class="rounded-lg border border-slate-200 bg-white p-2">$g(-2)=$ <span id="g-minus-two" class="font-bold">1.0</span></div>
+                                <div class="rounded-lg border border-slate-200 bg-white p-2">$g(2)=$ <span id="g-plus-two" class="font-bold">1.0</span></div>
+                            </div>
+
+                            <div class="relative w-full max-w-md bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden p-2 flex justify-center">
+                                <svg width="400" height="300" viewBox="-5 -8 10 26" class="w-full h-auto" preserveAspectRatio="xMidYMid meet" style="transform: scaleY(-1);">
+                                    <rect x="-2" y="-8" width="4" height="26" fill="rgba(254, 226, 226, 0.65)" />
+                                    <rect x="-5" y="-8" width="3" height="26" fill="rgba(219, 234, 254, 0.35)" />
+                                    <rect x="2" y="-8" width="3" height="26" fill="rgba(219, 234, 254, 0.35)" />
+                                    <line x1="-5" y1="0" x2="5" y2="0" stroke="#64748b" stroke-width="0.12" />
+                                    <line x1="0" y1="-8" x2="0" y2="18" stroke="#94a3b8" stroke-width="0.08" />
+                                    <line x1="-2" y1="-8" x2="-2" y2="18" stroke="#ef4444" stroke-width="0.08" stroke-dasharray="0.2,0.2" />
+                                    <line x1="2" y1="-8" x2="2" y2="18" stroke="#ef4444" stroke-width="0.08" stroke-dasharray="0.2,0.2" />
+                                    <path id="root-parabola" fill="none" stroke="#7c3aed" stroke-width="0.15" />
+                                    <g id="root-points"></g>
+                                </svg>
+                                <div class="absolute text-slate-500 text-xs font-bold" style="bottom: 31%; right: 4%;">t</div>
+                                <div class="absolute text-slate-500 text-xs font-bold" style="top: 4%; left: 51%;">y</div>
+                                <div class="absolute text-red-500 text-xs font-bold" style="bottom: 27%; left: 28%;">-2</div>
+                                <div class="absolute text-red-500 text-xs font-bold" style="bottom: 27%; right: 29%;">2</div>
+                            </div>
+
+                            <div class="mt-3 flex flex-wrap justify-center gap-4 text-xs text-slate-600">
+                                <span><span class="inline-block h-2.5 w-2.5 rounded-full bg-emerald-500 mr-1"></span>有効な $t$</span>
+                                <span><span class="inline-block h-2.5 w-2.5 rounded-full bg-slate-400 mr-1"></span>無効な $t$</span>
+                            </div>
+
+                            <div id="root-status" class="mt-4 p-3 bg-white rounded-lg text-center w-full max-w-md border border-slate-200 shadow-sm transition-colors duration-300 font-bold text-sm">
+                                ステータスを判定中...
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const slider = document.getElementById('root-a-slider');
+                            const value = document.getElementById('root-a-value');
+                            const path = document.getElementById('root-parabola');
+                            const points = document.getElementById('root-points');
+                            const status = document.getElementById('root-status');
+                            const gMinusTwo = document.getElementById('g-minus-two');
+                            const gPlusTwo = document.getElementById('g-plus-two');
+
+                            function updateRootGraph() {
+                                const a = parseFloat(slider.value);
+                                value.textContent = a.toFixed(1);
+                                const g = t => t * t - a * t - 3;
+
+                                let d = '';
+                                for (let i = 0; i <= 200; i++) {
+                                    const t = -5 + i * 0.05;
+                                    d += (i === 0 ? 'M' : 'L') + `${t} ${g(t)} `;
+                                }
+                                path.setAttribute('d', d);
+
+                                const D = a * a + 12;
+                                const t1 = (a - Math.sqrt(D)) / 2;
+                                const t2 = (a + Math.sqrt(D)) / 2;
+                                const roots = [t1, t2];
+                                let circles = '';
+                                let validCount = 0;
+                                for (const t of roots) {
+                                    const valid = t <= -2 || t >= 2;
+                                    if (valid) validCount++;
+                                    circles += `<circle cx="${t}" cy="0" r="0.22" fill="${valid ? '#10b981' : '#94a3b8'}" stroke="white" stroke-width="0.05" />`;
+                                }
+                                points.innerHTML = circles;
+
+                                gMinusTwo.textContent = g(-2).toFixed(1);
+                                gPlusTwo.textContent = g(2).toFixed(1);
+
+                                if (validCount > 0) {
+                                    status.textContent = "少なくとも1つの解が有効範囲にある（②は実数解をもつ）";
+                                    status.className = "mt-4 p-3 rounded-lg text-center w-full max-w-md border border-emerald-300 bg-emerald-50 text-emerald-700 shadow-sm transition-colors duration-300 font-bold text-sm";
+                                } else {
+                                    status.textContent = "2つの解がともに -2 < t < 2 にある（②は実数解をもたない）";
+                                    status.className = "mt-4 p-3 rounded-lg text-center w-full max-w-md border border-red-300 bg-red-50 text-red-700 shadow-sm transition-colors duration-300 font-bold text-sm";
+                                }
+                            }
+
+                            slider.addEventListener('input', updateRootGraph);
+                            updateRootGraph();
+                        });
+                    </script>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">(2)(ii) で $t$ の値を答えて終わってしまう</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                置き換えの文字 $t$ を用いて $t=-3, 1$ と出た瞬間に安心して解答を終えてしまうミスが後を絶ちません。問題は「$x$ についての方程式」であるため、最後は必ず $x + 1/x = t$ の式に戻して、最終的な $x$ の解まで導き出さなければなりません。
+                            </p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">$t$ の方程式が実数解をもつだけで終えてしまう</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                $t^2-at-3=0$ の判別式は常に正ですが、それだけでは②が実数解 $x$ をもつとは限りません。得られた $t$ が $-2&lt;t&lt;2$ に入ると、$x+\dfrac1x=t$ は実数解をもちません。必ず $t\le-2$ または $t\ge2$ まで確認します。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+                
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. 方程式 $x + \dfrac{1}{x} = t$ が実数解 $x$ をもつための $t$ の条件はどう求めますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            両辺に $x$ を掛けて二次方程式 $x^2 - tx + 1 = 0$ とし、実数解をもつ条件として判別式 $D = t^2 - 4 \ge 0$ を解き、$t \le -2, 2 \le t$ と求めます。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. $x^2 + \dfrac{1}{x^2}$ を $t = x + \dfrac{1}{x}$ を用いて表すとどうなりますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            乗法公式を用いて $\left(x + \dfrac{1}{x}\right)^2 - 2$ と変形できるため、$t^2 - 2$ となります。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. $t^2-at-3=0$ を、放物線と直線の交点の問題として表すにはどう変形しますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            $t^2-3=at$ と変形し、放物線 $y=t^2-3$ と原点を通る直線 $y=at$ の交点として考えます。ただし、実数 $x$ に対応するのは $t\le-2$ または $t\ge2$ の部分だけです。
+                        </div>
+                    </details>
+                </div>
+            </section>
+            
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="no14.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← No.14へ
+                </a>
+                <a href="no16.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.16 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            自彊館(理系)　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>

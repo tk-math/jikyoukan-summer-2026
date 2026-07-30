@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.10 図形と計量 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+        .highlight-path { transition: fill 0.3s ease; }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+        
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.10</span>
+                    <span class="rounded-full bg-rose-100 px-3 py-1 text-xs font-bold text-rose-800">発展</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">図形と計量</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 text-slate-700 leading-relaxed mt-4">
+                    <p>円 $K$ に内接する三角形 $\mathrm{ABC}$ があり，</p>
+                    <div class="math-scroll">
+                        \[ \mathrm{AB}=6, \quad \mathrm{BC}=5, \quad \mathrm{CA}=9 \]
+                    </div>
+                    <p>である。<br>
+                    $\angle\mathrm{BAC}$ の二等分線と $\mathrm{BC}$ の交点を $\mathrm{D}$ とし，$\angle\mathrm{BAC}$ の二等分線と $K$ の交点のうち，$\mathrm{A}$ でないものを $\mathrm{E}$ とする。</p>
+                    <ol class="list-decimal pl-6 mt-3 space-y-4">
+                        <li>$\mathrm{BD}:\mathrm{DC}$ を求めよ。</li>
+                        <li>$\cos B$ の値を求めよ。</li>
+                        <li>$\mathrm{AD}$ ，$\mathrm{AE}$ の長さを求めよ。</li>
+                        <li>$\mathrm{E}$ における $K$ の接線と，直線 $\mathrm{AC}$ の交点を $\mathrm{F}$ とするとき，$\mathrm{EF}$ の長さを求めよ。</li>
+                    </ol>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4 flex flex-col sm:flex-row gap-6 items-center">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+                        <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                            <li><strong>基本の定理：</strong> (1)は「角の二等分線と対辺の比」、(2)は3辺が分かっているので「余弦定理」をストレートに使います。</li>
+                            <li><strong>交点 $\mathrm{E}$ の性質：</strong> $\angle\mathrm{BAE} = \angle\mathrm{CAE}$ であるため、弧 $\mathrm{BE}$ と弧 $\mathrm{CE}$ の長さは等しくなります。また、円周角の定理により、様々な場所に等しい角が隠れています。</li>
+                            <li><strong>円の接線：</strong> (4)で「接線」が登場したら、真っ先に<strong>「接弦定理」</strong>または<strong>「方べきの定理」</strong>を疑います。これが解法の突破口になります。</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    問題を解くための考え方から、答案、検算、発展までを順に確認します。
+                </p>
+
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">角の二等分線が円と交わるとき</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                円周角の定理（$\angle\mathrm{ABD} = \angle\mathrm{AEC}$ など）と組み合わせることで、必ず<strong>「相似な三角形」</strong>が出現します。本問では $\triangle\mathrm{ABD} \sim \triangle\mathrm{AEC}$ に気づけるかが (3) を解く鍵になります。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">接線と割線（円を突き抜ける直線）の交点</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                接点 $\mathrm{E}$ と割線 $\mathrm{FCA}$ があるとき、<strong>「接弦定理」</strong>により $\angle\mathrm{FEC} = \angle\mathrm{FAE}$ が成り立ちます。さらに $\angle\mathrm{F}$ が共通であることから、<strong>$\triangle\mathrm{FEC} \sim \triangle\mathrm{FAE}$</strong> が導かれます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(3) $\mathrm{AD}, \mathrm{AE}$ の計算手順</strong><br>
+                            $\mathrm{AD}$ は、$\triangle\mathrm{ABD}$ における余弦定理で直接求まります。<br>
+                            $\mathrm{AE}$ は、相似な三角形 $\triangle\mathrm{ABD} \sim \triangle\mathrm{AEC}$ の辺の比（$\mathrm{AB}:\mathrm{AE} = \mathrm{AD}:\mathrm{AC}$）を利用して求めます。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(4) $\mathrm{EF}$ の計算手順</strong><br>
+                            接弦定理から $\triangle\mathrm{FEC} \sim \triangle\mathrm{FAE}$ を見つけ出します。この相似比は $\mathrm{EC}:\mathrm{AE}$ となります。<br>
+                            $\mathrm{AE}$ は(3)で求まっているので、$\mathrm{EC}$ を求めれば相似比が確定します。$\mathrm{EC}$ も $\triangle\mathrm{ABD} \sim \triangle\mathrm{AEC}$ の相似比から求まります。<br>
+                            相似比がわかれば、$\mathrm{FE}=k\mathrm{FC}$、$\mathrm{FA}=k\mathrm{FE}$（$k$ は相似比）とおき、図より $\mathrm{FA} = \mathrm{FC} + \mathrm{CA} = \mathrm{FC} + 9$ であることを利用して方程式を解きます。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <!-- (1) -->
+                        <div>
+                            <p class="font-bold">（1）</p>
+                            <p class="mt-2">
+                                $\triangle\mathrm{ABC}$ において、$\mathrm{AD}$ は $\angle\mathrm{BAC}$ の二等分線であるから、角の二等分線の定理より
+                            </p>
+                            <div class="math-scroll">
+                                \[ \mathrm{BD} : \mathrm{DC} = \mathrm{AB} : \mathrm{AC} = 6 : 9 = 2 : 3 \]
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $\mathrm{BD} : \mathrm{DC} = 2 : 3$
+                            </div>
+                        </div>
+
+                        <!-- (2) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（2）</p>
+                            <p class="mt-2">
+                                $\triangle\mathrm{ABC}$ において、余弦定理より
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \mathrm{AC}^2 &= \mathrm{AB}^2 + \mathrm{BC}^2 - 2\mathrm{AB}\cdot\mathrm{BC}\cos B \\
+                                9^2 &= 6^2 + 5^2 - 2 \cdot 6 \cdot 5 \cos B \\
+                                81 &= 36 + 25 - 60\cos B \\
+                                60\cos B &= 61 - 81 = -20 \\
+                                \cos B &= -\frac{20}{60} = -\frac{1}{3}
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $\cos B = -\dfrac{1}{3}$
+                            </div>
+                        </div>
+
+                        <!-- (3) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（3）</p>
+                            <p class="mt-2">
+                                (1)より $\mathrm{BD} : \mathrm{DC} = 2 : 3$ であるから、
+                                \[ \mathrm{BD} = \mathrm{BC} \times \frac{2}{5} = 5 \times \frac{2}{5} = 2 \]
+                                $\triangle\mathrm{ABD}$ において、余弦定理より
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \mathrm{AD}^2 &= \mathrm{AB}^2 + \mathrm{BD}^2 - 2\mathrm{AB}\cdot\mathrm{BD}\cos B \\
+                                &= 6^2 + 2^2 - 2 \cdot 6 \cdot 2 \left(-\frac{1}{3}\right) \\
+                                &= 36 + 4 + 8 \\
+                                &= 48
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                $\mathrm{AD} > 0$ より、$\mathrm{AD} = \sqrt{48} = 4\sqrt{3}$。<br><br>
+                                次に、$\triangle\mathrm{ABD}$ と $\triangle\mathrm{AEC}$ において、<br>
+                                弧 $\mathrm{AC}$ に対する円周角より、$\angle\mathrm{ABD} = \angle\mathrm{AEC}$<br>
+                                仮定より、$\angle\mathrm{BAD} = \angle\mathrm{EAC}$<br>
+                                2組の角がそれぞれ等しいから、$\triangle\mathrm{ABD} \sim \triangle\mathrm{AEC}$ である。相似比から、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \mathrm{AB} : \mathrm{AE} &= \mathrm{AD} : \mathrm{AC} \\
+                                6 : \mathrm{AE} &= 4\sqrt{3} : 9 \\
+                                4\sqrt{3}\mathrm{AE} &= 54 \\
+                                \mathrm{AE} &= \frac{54}{4\sqrt{3}} = \frac{9\sqrt{3}}{2}
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $\mathrm{AD} = 4\sqrt{3}$ ， $\mathrm{AE} = \dfrac{9\sqrt{3}}{2}$
+                            </div>
+                        </div>
+
+                        <!-- (4) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（4）</p>
+                            <p class="mt-2">
+                                まず、相似な $\triangle\mathrm{ABD} \sim \triangle\mathrm{AEC}$ より、$\mathrm{EC}$ の長さを求める。
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \mathrm{BD} : \mathrm{EC} &= \mathrm{AD} : \mathrm{AC} \\
+                                2 : \mathrm{EC} &= 4\sqrt{3} : 9 \\
+                                4\sqrt{3}\mathrm{EC} &= 18 \implies \mathrm{EC} = \frac{18}{4\sqrt{3}} = \frac{3\sqrt{3}}{2}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-4">
+                                次に、$\triangle\mathrm{FEC}$ と $\triangle\mathrm{FAE}$ に注目する。<br>
+                                円の接線と弦が作る角（接弦定理）より、$\angle\mathrm{FEC} = \angle\mathrm{CAE}$。<br>
+                                また、$\angle\mathrm{F}$ は共通である。<br>
+                                2組の角がそれぞれ等しいので、$\triangle\mathrm{FEC} \sim \triangle\mathrm{FAE}$ である。<br>
+                                この相似比は対応する辺の比 $\mathrm{EC} : \mathrm{AE}$ に等しい。
+                            </p>
+                            <div class="math-scroll">
+                                \[ \mathrm{EC} : \mathrm{AE} = \frac{3\sqrt{3}}{2} : \frac{9\sqrt{3}}{2} = 1 : 3 \]
+                            </div>
+                            <p class="mt-2">
+                                したがって、対応する他の辺の比も $1 : 3$ となるから、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \mathrm{FC} : \mathrm{FE} = 1 : 3 &\implies \mathrm{FE} = 3\mathrm{FC} \\
+                                \mathrm{FE} : \mathrm{FA} = 1 : 3 &\implies \mathrm{FA} = 3\mathrm{FE} = 9\mathrm{FC}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                ここで、図より $\mathrm{FA} = \mathrm{FC} + \mathrm{CA} = \mathrm{FC} + 9$ であるから、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                9\mathrm{FC} &= \mathrm{FC} + 9 \\
+                                8\mathrm{FC} &= 9 \implies \mathrm{FC} = \frac{9}{8}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                よって、求める長さ $\mathrm{EF}$ （$= \mathrm{FE}$）は
+                            </p>
+                            <div class="math-scroll">
+                                \[ \mathrm{EF} = 3\mathrm{FC} = 3 \times \frac{9}{8} = \frac{27}{8} \]
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $\mathrm{EF} = \dfrac{27}{8}$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化（隠れた相似）</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        本問の肝は、図形の中から<strong>2組の相似な三角形</strong>を見つけ出すことです。<br>
+                        ボタンを押して、(3)の相似と(4)の接線が作る相似をそれぞれハイライト表示してみましょう。
+                    </p>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 sm:p-6 rounded-lg border border-slate-200 flex flex-col items-center">
+                        <div class="flex flex-wrap justify-center gap-3 mb-6 w-full max-w-md">
+                            <button onclick="switchView('reset')" class="flex-1 py-2 bg-white hover:bg-slate-100 border border-slate-300 rounded-lg text-sm font-bold text-slate-700 shadow-sm transition-colors">標準図</button>
+                            <button onclick="switchView('sim1')" class="flex-1 py-2 bg-blue-100 hover:bg-blue-200 border border-blue-300 rounded-lg text-sm font-bold text-blue-800 shadow-sm transition-colors">相似① (3)用</button>
+                            <button onclick="switchView('sim2')" class="flex-1 py-2 bg-rose-100 hover:bg-rose-200 border border-rose-300 rounded-lg text-sm font-bold text-rose-800 shadow-sm transition-colors">相似② (4)用</button>
+                        </div>
+
+                        <div class="relative w-full max-w-md bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden p-6 flex justify-center">
+                            <svg width="100%" height="auto" viewBox="0 0 280 230" class="mx-auto max-w-sm">
+                                <!-- 補助円 (中心130, 140 / 半径90) -->
+                                <circle cx="130" cy="140" r="90" fill="none" stroke="#e2e8f0" stroke-dasharray="4,4" />
+                                
+                                <!-- ハイライト領域 (JSで 'd' と 'fill' を操作) -->
+                                <path id="hl-1" d="" fill="transparent" class="highlight-path" />
+                                <path id="hl-2" d="" fill="transparent" class="highlight-path" />
+
+                                <!-- 直線群 -->
+                                <line x1="45" y1="110" x2="236" y2="110" stroke="#94a3b8" stroke-width="1.5" /> <!-- 直線 AC~F -->
+                                <line x1="138" y1="30" x2="260.5" y2="130" stroke="#e11d48" stroke-width="2" /> <!-- 接線 EF の延長 -->
+
+                                <!-- 三角形と割線 -->
+                                <line x1="45" y1="110" x2="142" y2="51" stroke="#334155" stroke-width="2" /> <!-- AB -->
+                                <line x1="142" y1="51" x2="215" y2="110" stroke="#334155" stroke-width="2" /> <!-- BC -->
+                                <line x1="215" y1="110" x2="45" y2="110" stroke="#334155" stroke-width="2" /> <!-- CA -->
+                                <line x1="45" y1="110" x2="187" y2="70" stroke="#64748b" stroke-width="1.5" stroke-dasharray="2,2"/> <!-- AD~E -->
+
+                                <!-- 頂点マーカーとラベル -->
+                                <g font-size="14" font-weight="bold">
+                                    <circle cx="45" cy="110" r="3" fill="#1e293b" />
+                                    <text x="32" y="115" fill="#1e293b">A</text>
+                                    
+                                    <circle cx="142" cy="51" r="3" fill="#1e293b" />
+                                    <text x="135" y="43" fill="#1e293b">B</text>
+                                    
+                                    <circle cx="215" cy="110" r="3" fill="#1e293b" />
+                                    <text x="215" y="127" fill="#1e293b">C</text>
+                                    
+                                    <circle cx="171" cy="74" r="3" fill="#64748b" />
+                                    <text x="165" y="93" fill="#64748b">D</text>
+
+                                    <circle cx="187" cy="70" r="3" fill="#1e293b" />
+                                    <text x="187" y="60" fill="#1e293b">E</text>
+
+                                    <circle cx="236" cy="110" r="3" fill="#e11d48" />
+                                    <text x="240" y="105" fill="#e11d48">F</text>
+                                </g>
+                            </svg>
+                        </div>
+                        
+                        <!-- ステータス表示パネル群 -->
+                        <div id="panel-reset" class="mt-4 p-3 bg-white border border-slate-200 rounded-lg text-sm text-center font-bold text-slate-700 w-full max-w-md block h-[72px] flex items-center justify-center transition-colors">
+                            標準図形（接線 $\mathrm{EF}$ は赤線）
+                        </div>
+                        
+                        <div id="panel-sim1" class="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg text-center w-full max-w-md hidden h-[72px] flex flex-col justify-center transition-colors">
+                            <div class="text-sm font-bold text-blue-900">$\triangle\mathrm{ABD} \sim \triangle\mathrm{AEC}$</div>
+                            <div class="text-xs text-blue-700 mt-1 font-normal">円周角 $\angle\mathrm{B} = \angle\mathrm{C}$ と、二等分線 $\angle\mathrm{A}$ が等しい。</div>
+                        </div>
+                        
+                        <div id="panel-sim2" class="mt-4 p-3 bg-rose-50 border border-rose-200 rounded-lg text-center w-full max-w-md hidden h-[72px] flex flex-col justify-center transition-colors">
+                            <div class="text-sm font-bold text-rose-900">$\triangle\mathrm{FEC} \sim \triangle\mathrm{FAE}$</div>
+                            <div class="text-xs text-rose-700 mt-1 font-normal">接弦定理より $\angle\mathrm{FEC} = \angle\mathrm{FAE}$、また $\angle\mathrm{F}$ は共通。</div>
+                        </div>
+                    </div>
+
+                    <script>
+                        function switchView(mode) {
+                            const h1 = document.getElementById('hl-1');
+                            const h2 = document.getElementById('hl-2');
+                            
+                            document.getElementById('panel-reset').style.display = 'none';
+                            document.getElementById('panel-sim1').style.display = 'none';
+                            document.getElementById('panel-sim2').style.display = 'none';
+
+                            if (mode === 'sim1') {
+                                h1.setAttribute('d', 'M45,110 L142,51 L171,74 Z');
+                                h1.setAttribute('fill', 'rgba(59, 130, 246, 0.2)');
+                                h2.setAttribute('d', 'M45,110 L187,70 L215,110 Z');
+                                h2.setAttribute('fill', 'rgba(16, 185, 129, 0.2)');
+                                document.getElementById('panel-sim1').style.display = 'flex';
+                            } else if (mode === 'sim2') {
+                                h1.setAttribute('d', 'M236,110 L187,70 L215,110 Z');
+                                h1.setAttribute('fill', 'rgba(244, 63, 94, 0.3)');
+                                h2.setAttribute('d', 'M236,110 L45,110 L187,70 Z');
+                                h2.setAttribute('fill', 'rgba(245, 158, 11, 0.2)');
+                                document.getElementById('panel-sim2').style.display = 'flex';
+                            } else {
+                                h1.setAttribute('fill', 'transparent');
+                                h2.setAttribute('fill', 'transparent');
+                                document.getElementById('panel-reset').style.display = 'flex';
+                            }
+                        }
+                    </script>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果と検算</h3>
+                    
+                    <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900">
+                        <ul class="space-y-2 font-bold">
+                            <li>(1) $\mathrm{BD}:\mathrm{DC} = 2:3$</li>
+                            <li>(2) $\cos B = -\dfrac{1}{3}$</li>
+                            <li>(3) $\mathrm{AD} = 4\sqrt{3}$ ， $\mathrm{AE} = \dfrac{9\sqrt{3}}{2}$</li>
+                            <li>(4) $\mathrm{EF} = \dfrac{27}{8}$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-slate-700">
+                        <strong>別解：方べきの定理を用いた $\mathrm{EF}$ の導出</strong><br>
+                        (4)の後半で、相似比から $\mathrm{FA} = 3\mathrm{FE}$ を導いた後、直線 $\mathrm{FA}$ が円を突き抜ける割線であり、$\mathrm{FE}$ が接線であることに着目すると、<strong>方べきの定理</strong>を用いることができます。<br>
+                        方べきの定理より $\mathrm{FE}^2 = \mathrm{FC} \cdot \mathrm{FA}$。<br>
+                        ここに $\mathrm{FA} = 3\mathrm{FE}$ を代入すると、$\mathrm{FE}^2 = \mathrm{FC} \cdot 3\mathrm{FE} \implies \mathrm{FE} = 3\mathrm{FC}$ が得られます。これは相似の比から導いた式と全く同じであり、どちらのルートを通っても同じ結論に至る（数学的に正しい）ことが確認できます。
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">相似な三角形を見つけられない</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                角度の条件を円周角の定理を使って図にすべて書き込まないため、$\triangle\mathrm{ABD} \sim \triangle\mathrm{AEC}$ や $\triangle\mathrm{FEC} \sim \triangle\mathrm{FAE}$ に気づけず手が止まるケースが頻発します。「角の二等分線」と「円周角」が揃ったら、必ず相似な図形が隠れています。
+                            </p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">接線と割線の関係から方べきの定理や接弦定理を連想できない</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                (4)で接線$\mathrm{EF}$が登場したときに、すぐに接弦定理を疑う癖がついていないと、余弦定理などで無理に長さを出そうとして泥沼化します。円と接線が絡む問題では「接弦定理」と「方べきの定理」が最強の武器になることを意識しておきましょう。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+                
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. 三角形の角の二等分線と、対辺を分ける線分の比に関する定理は何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            $\triangle\mathrm{ABC}$ において $\angle\mathrm{A}$ の二等分線と辺 $\mathrm{BC}$ の交点を $\mathrm{D}$ とするとき、$\mathrm{AB} : \mathrm{AC} = \mathrm{BD} : \mathrm{DC}$ が成り立ちます。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. 円に内接する三角形の頂点から引いた「角の二等分線」が円周と交わるとき、どのような2つの相似な三角形が現れますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            本問のように $\triangle\mathrm{ABD} \sim \triangle\mathrm{AEC}$ が現れます。「角の二等分線による等しい角」と「円周角の定理による等しい角」の2組の角が等しくなるためです。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. 「接弦定理」とはどのような定理ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            円の接線とその接点を通る弦が作る角は、その角の内部にある弧に対する円周角に等しい、という定理です。（例：$\angle\mathrm{FEC} = \angle\mathrm{CAE}$）
+                        </div>
+                    </details>
+                </div>
+            </section>
+            
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="no09.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← No.9へ
+                </a>
+                <a href="no11.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.11 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            自彊館(理系)　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>

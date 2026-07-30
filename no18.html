@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.18 図形と方程式 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: { matchFontHeight: false },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: .5rem; margin-bottom: .5rem; }
+        button:focus-visible, summary:focus-visible, a:focus-visible, input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+        ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+        <div class="p-7 sm:p-10">
+            <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+                <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.18</span>
+                <span class="rounded-full bg-rose-100 px-3 py-1 text-xs font-bold text-rose-800">発展</span>
+            </div>
+            <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">図形と方程式</h1>
+            <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                問題
+            </h2>
+
+            <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed">
+                <p>$xy$平面上に2点 $\mathrm{A}(0,2)$，$\mathrm{B}(2,6)$ がある．また，方程式</p>
+                <div class="math-scroll">
+                    \[
+                    x^2+y^2-6x-6y+a=0
+                    \qquad (a\text{ は実数の定数})
+                    \]
+                </div>
+                <p>で表される円 $K$ は，直線ABに接している．</p>
+
+                <ol class="mt-4 list-decimal space-y-4 pl-6">
+                    <li>直線ABの方程式を求めよ．また，$K$の中心の座標を求めよ．</li>
+                    <li>$a$の値と $K$ の半径を求めよ．</li>
+                    <li>
+                        点Aを通り，傾き $m$ の直線 $l$ が，円 $K$ と異なる2点P，Qで交わっている．
+                        <ol class="mt-2 list-[lower-roman] space-y-2 pl-6">
+                            <li>線分PQの長さが4以上となるとき，$m$のとり得る値の範囲を求めよ．</li>
+                            <li>$l$と $K$ の交点のうち，Aから遠い方をQとする．$m$の値が(i)で求めた範囲で変化するとき，三角形ABQの面積の最大値を求めよ．</li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+                <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+                    <li><strong>円の中心：</strong> $x^2+y^2-6x-6y+a=0$ を平方完成すると、中心は $a$ によらず決まります。</li>
+                    <li><strong>接する条件：</strong> 円の中心と直線ABとの距離が、円の半径に等しくなります。</li>
+                    <li><strong>弦PQ：</strong> 円の半径を $r$、中心から直線 $l$ までの距離を $d$ とすると、
+                        \[
+                        \mathrm{PQ}=2\sqrt{r^2-d^2}
+                        \]
+                        です。</li>
+                    <li><strong>三角形ABQ：</strong> 底辺ABは固定されているため、面積を最大にするには、Qから直線ABまでの距離を最大にすればよいと考えます。</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                解説
+            </h2>
+            <p class="mt-4 text-sm leading-8 text-slate-600">
+                円と直線の位置関係を、判別式だけに頼らず「距離」と「弦」で捉えることが中心となる問題です。
+            </p>
+
+            <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+                <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">「円が直線に接する」と来たら</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            <strong>中心と直線の距離＝半径</strong>を最優先で考えます。円の式に直線を代入して判別式を計算するより、短く安全です。
+                        </p>
+                    </div>
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">「円を直線で切った弦の長さ」と来たら</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            円の中心から弦に垂線を下ろすと、弦は二等分されます。半径、中心から直線までの距離、弦の半分で直角三角形を作ります。
+                        </p>
+                    </div>
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">固定された底辺をもつ三角形の面積</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            底辺ABが固定されているので、面積はQから直線ABまでの距離だけで決まります。円周上で接線から最も遠い点は、接点と円の中心を通る直径の反対側の端点です。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（1）（2）中心・半径・接線を結びつける</strong><br>
+                        まず直線ABの方程式を求め、円の式を平方完成します。中心はすぐに $(3,3)$ とわかります。円が直線ABに接するので、中心から直線ABまでの距離がそのまま半径になります。
+                    </div>
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（3）(i) 弦の長さを中心から直線までの距離に翻訳する</strong><br>
+                        直線 $l:y=mx+2$ と円の中心との距離を $d$ とします。弦PQの半分、距離 $d$、半径 $\sqrt5$ で直角三角形ができるため、$\mathrm{PQ}\ge4$ を $d\le1$ に置き換えられます。
+                    </div>
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（3）(ii) 面積を高さの最大化に置き換える</strong><br>
+                        三角形ABQの底辺ABは一定です。したがって、Qから直線ABまでの距離を最大にすればよいことになります。直線ABは円 $K$ の接線なので、接線から円周上の点までの最大距離は円の直径 $2\sqrt5$ です。
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+
+                <div class="mt-4 space-y-7 text-slate-700">
+                    <div>
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）</p>
+                        <p class="mt-2">
+                            2点A，Bを通る直線の傾きは
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \frac{6-2}{2-0}=2
+                            \]
+                        </div>
+                        <p>であるから、直線ABの方程式は</p>
+                        <div class="math-scroll">
+                            \[
+                            y-2=2(x-0)
+                            \]
+                            \[
+                            y=2x+2
+                            \]
+                        </div>
+
+                        <p class="mt-3">また、円 $K$ の方程式を平方完成すると、</p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            x^2-6x+y^2-6y+a&=0\\
+                            (x-3)^2-9+(y-3)^2-9+a&=0\\
+                            (x-3)^2+(y-3)^2&=18-a
+                            \end{aligned}
+                            \]
+                        </div>
+                        <p>したがって、円 $K$ の中心は $(3,3)$ である。</p>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：直線ABは $y=2x+2$，円 $K$ の中心は $(3,3)$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）</p>
+                        <p class="mt-2">
+                            円 $K$ の中心をMとする。直線ABを一般形で表すと
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            2x-y+2=0
+                            \]
+                        </div>
+                        <p>である。円 $K$ は直線ABに接しているから、半径 $r$ はM$(3,3)$ と直線ABとの距離に等しい。</p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            r
+                            &=\frac{|2\cdot3-3+2|}{\sqrt{2^2+(-1)^2}}\\
+                            &=\frac{5}{\sqrt5}\\
+                            &=\sqrt5
+                            \end{aligned}
+                            \]
+                        </div>
+                        <p>一方、平方完成した式より $r^2=18-a$ であるから、</p>
+                        <div class="math-scroll">
+                            \[
+                            18-a=5
+                            \]
+                            \[
+                            a=13
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$a=13$，半径 $\sqrt5$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）(i)</p>
+                        <p class="mt-2">
+                            直線 $l$ の方程式は
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            y=mx+2
+                            \]
+                            \[
+                            mx-y+2=0
+                            \]
+                        </div>
+                        <p>
+                            である。円 $K$ の中心M$(3,3)$ から直線 $l$ までの距離を $d$ とすると、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            d=\frac{|3m-3+2|}{\sqrt{m^2+1}}
+                            =\frac{|3m-1|}{\sqrt{m^2+1}}
+                            \]
+                        </div>
+
+                        <p>
+                            Mから弦PQに下ろした垂線はPQを二等分する。円の半径は $\sqrt5$ であるから、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \left(\frac{\mathrm{PQ}}2\right)^2+d^2=5
+                            \]
+                        </div>
+                        <p>$\mathrm{PQ}\ge4$ より $\dfrac{\mathrm{PQ}}2\ge2$ であるため、</p>
+                        <div class="math-scroll">
+                            \[
+                            5-d^2\ge4
+                            \]
+                            \[
+                            d^2\le1
+                            \]
+                        </div>
+                        <p>したがって、</p>
+                        <div class="math-scroll">
+                            \[
+                            \frac{(3m-1)^2}{m^2+1}\le1
+                            \]
+                            \[
+                            (3m-1)^2\le m^2+1
+                            \]
+                            \[
+                            8m^2-6m\le0
+                            \]
+                            \[
+                            2m(4m-3)\le0
+                            \]
+                        </div>
+                        <p>よって、</p>
+                        <div class="math-scroll">
+                            \[
+                            0\le m\le\frac34
+                            \]
+                        </div>
+                        <p class="mt-2 text-sm text-slate-600">
+                            この範囲では $d\le1<\sqrt5$ であるから、直線 $l$ は円 $K$ と必ず異なる2点で交わる。
+                        </p>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$0\le m\le\dfrac34$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）(ii)</p>
+                        <p class="mt-2">
+                            線分ABの長さは
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \mathrm{AB}
+                            =\sqrt{(2-0)^2+(6-2)^2}
+                            =\sqrt{20}
+                            =2\sqrt5
+                            \]
+                        </div>
+                        <p>
+                            である。三角形ABQの底辺ABは一定であるから、その面積はQから直線ABまでの距離が最大になるときに最大となる。
+                        </p>
+
+                        <p class="mt-3">
+                            直線ABは円 $K$ の接線であり、円 $K$ の半径は $\sqrt5$ である。したがって、円周上の点から直線ABまでの距離の最大値は、接点と円の中心を通る直径の反対側の端点で
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            2\sqrt5
+                            \]
+                        </div>
+                        <p>となる。</p>
+
+                        <p class="mt-3">
+                            実際、直線ABとの接点をTとすると、中心M$(3,3)$ から直線ABに下ろした垂線の足は
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \mathrm{T}(1,4)
+                            \]
+                        </div>
+                        <p>
+                            であり、その反対側の円周上の点は
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \mathrm{Q}=2\mathrm{M}-\mathrm{T}=(5,2)
+                            \]
+                        </div>
+                        <p>
+                            である。このとき直線AQは $y=2$、すなわち $m=0$ であり、(i)の範囲に含まれる。また、同一直線と円とのもう1つの交点は $(1,2)$ なので、Q$(5,2)$ はAから遠い方の交点である。
+                        </p>
+
+                        <p class="mt-3">よって、求める面積の最大値は</p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \frac12\cdot\mathrm{AB}\cdot2\sqrt5
+                            &=\frac12\cdot2\sqrt5\cdot2\sqrt5\\
+                            &=10
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$10$
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化</h3>
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    スライダーで傾き $m$ を変化させると、直線 $l$、交点P・Q、弦PQ、三角形ABQが動きます。
+                    $0\le m\le\dfrac34$ の範囲では弦PQの長さが4以上になります。面積の最大値は $m=0$ のときです。
+                </p>
+
+                <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="mx-auto max-w-xl">
+                        <label for="m-slider" class="mb-2 block text-sm font-medium text-slate-700">
+                            傾き $m$：
+                            <span id="m-display" class="text-lg font-bold text-blue-700">0.00</span>
+                        </label>
+                        <input id="m-slider" type="range" min="0" max="0.75" step="0.01" value="0"
+                               class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600">
+                        <div class="mt-2 flex justify-between text-xs text-slate-500">
+                            <span>$0$</span>
+                            <span>$\dfrac38$</span>
+                            <span>$\dfrac34$</span>
+                        </div>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            <button type="button" data-m="0" class="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-bold text-blue-700 hover:bg-blue-50">面積最大 $m=0$</button>
+                            <button type="button" data-m="0.375" class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-100">$m=\dfrac38$</button>
+                            <button type="button" data-m="0.75" class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-100">境界 $m=\dfrac34$</button>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 overflow-x-auto">
+                        <svg id="main-svg" width="560" height="430" viewBox="0 0 560 430" class="mx-auto h-auto w-full max-w-[560px] rounded-xl border border-slate-200 bg-white" aria-label="円Kと直線の図">
+                            <defs>
+                                <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"></path>
+                                </marker>
+                            </defs>
+
+                            <g id="grid"></g>
+                            <line id="x-axis" stroke="#64748b" stroke-width="1.4" marker-end="url(#arrow)"></line>
+                            <line id="y-axis" stroke="#64748b" stroke-width="1.4" marker-end="url(#arrow)"></line>
+
+                            <circle id="circle-k" fill="rgba(244,63,94,.10)" stroke="#e11d48" stroke-width="2.5"></circle>
+
+                            <line id="line-ab" stroke="#7c3aed" stroke-width="2.2"></line>
+                            <line id="line-l" stroke="#2563eb" stroke-width="2.4"></line>
+                            <line id="chord-pq" stroke="#0f766e" stroke-width="4" stroke-linecap="round"></line>
+                            <polygon id="triangle-abq" fill="rgba(37,99,235,.13)" stroke="rgba(37,99,235,.45)" stroke-width="1.5"></polygon>
+
+                            <line id="radius-t" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 5"></line>
+                            <!-- 面積最大（m=0）のときだけ表示する直径 T-M-Q -->
+                            <line id="max-diameter" stroke="#f59e0b" stroke-width="2.8"
+                                  stroke-dasharray="8 6" stroke-linecap="round" opacity="0"></line>
+                            <text id="max-line-label" fill="#b45309" font-size="12" font-weight="700"
+                                  opacity="0">T・M・Q は一直線</text>
+                            <circle id="point-a" r="5" fill="#111827"></circle>
+                            <circle id="point-b" r="5" fill="#111827"></circle>
+                            <circle id="point-m" r="5" fill="#e11d48"></circle>
+                            <circle id="point-t" r="5" fill="#f59e0b"></circle>
+                            <circle id="point-p" r="5" fill="#0f766e"></circle>
+                            <circle id="point-q" r="6" fill="#2563eb"></circle>
+
+                            <g id="labels" font-size="13" font-weight="700">
+                                <text id="label-a" fill="#111827">A</text>
+                                <text id="label-b" fill="#111827">B</text>
+                                <text id="label-m" fill="#e11d48">M</text>
+                                <text id="label-t" fill="#b45309">T</text>
+                                <text id="label-p" fill="#0f766e">P</text>
+                                <text id="label-q" fill="#2563eb">Q</text>
+                                <text id="label-ab" fill="#7c3aed">AB</text>
+                                <text id="label-l" fill="#2563eb">l</text>
+                                <text x="535" y="372" fill="#64748b">x</text>
+                                <text x="76" y="18" fill="#64748b">y</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="mt-4 grid gap-3 sm:grid-cols-3">
+                        <div class="rounded-lg border border-slate-200 bg-white p-3 text-center">
+                            <div class="text-xs font-bold text-slate-500">弦PQの長さ</div>
+                            <div id="chord-display" class="mt-1 text-lg font-bold text-teal-700">4.000</div>
+                        </div>
+                        <div class="rounded-lg border border-slate-200 bg-white p-3 text-center">
+                            <div class="text-xs font-bold text-slate-500">△ABQの面積</div>
+                            <div id="area-display" class="mt-1 text-lg font-bold text-blue-700">10.000</div>
+                        </div>
+                        <div id="range-status" class="rounded-lg border border-blue-200 bg-blue-50 p-3 text-center text-sm font-bold text-blue-800">
+                            PQ≧4を満たす
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const slider = document.getElementById("m-slider");
+                        const mDisplay = document.getElementById("m-display");
+                        const chordDisplay = document.getElementById("chord-display");
+                        const areaDisplay = document.getElementById("area-display");
+                        const status = document.getElementById("range-status");
+
+                        const S = 45;
+                        const ox = 75;
+                        const oy = 375;
+                        const sx = x => ox + S * x;
+                        const sy = y => oy - S * y;
+
+                        const setLine = (el, x1, y1, x2, y2) => {
+                            el.setAttribute("x1", sx(x1));
+                            el.setAttribute("y1", sy(y1));
+                            el.setAttribute("x2", sx(x2));
+                            el.setAttribute("y2", sy(y2));
+                        };
+                        const setPoint = (id, x, y) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("cx", sx(x));
+                            el.setAttribute("cy", sy(y));
+                        };
+                        const setText = (id, x, y) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("x", sx(x));
+                            el.setAttribute("y", sy(y));
+                        };
+
+                        // Grid
+                        const grid = document.getElementById("grid");
+                        let gridMarkup = "";
+                        for (let x = -1; x <= 9; x++) {
+                            gridMarkup += `<line x1="${sx(x)}" y1="${sy(-1)}" x2="${sx(x)}" y2="${sy(8)}" stroke="#e2e8f0" stroke-width="1"/>`;
+                            if (x >= 0 && x <= 8) {
+                                gridMarkup += `<text x="${sx(x)+3}" y="${sy(0)+16}" fill="#94a3b8" font-size="10">${x}</text>`;
+                            }
+                        }
+                        for (let y = -1; y <= 8; y++) {
+                            gridMarkup += `<line x1="${sx(-1)}" y1="${sy(y)}" x2="${sx(9)}" y2="${sy(y)}" stroke="#e2e8f0" stroke-width="1"/>`;
+                            if (y >= 1 && y <= 8) {
+                                gridMarkup += `<text x="${sx(0)-16}" y="${sy(y)+4}" fill="#94a3b8" font-size="10">${y}</text>`;
+                            }
+                        }
+                        grid.innerHTML = gridMarkup;
+
+                        setLine(document.getElementById("x-axis"), -1, 0, 9.4, 0);
+                        setLine(document.getElementById("y-axis"), 0, -1, 0, 8.3);
+
+                        const circle = document.getElementById("circle-k");
+                        circle.setAttribute("cx", sx(3));
+                        circle.setAttribute("cy", sy(3));
+                        circle.setAttribute("r", S * Math.sqrt(5));
+
+                        setLine(document.getElementById("line-ab"), -1.5, -1, 3, 8);
+                        setPoint("point-a", 0, 2);
+                        setPoint("point-b", 2, 6);
+                        setPoint("point-m", 3, 3);
+                        setPoint("point-t", 1, 4);
+                        setLine(document.getElementById("radius-t"), 3, 3, 1, 4);
+                        setLine(document.getElementById("max-diameter"), 1, 4, 5, 2);
+                        setText("max-line-label", 3.15, 4.25);
+
+                        setText("label-a", -0.35, 1.75);
+                        setText("label-b", 2.12, 6.2);
+                        setText("label-m", 3.12, 3.2);
+                        setText("label-t", 0.62, 4.2);
+                        setText("label-ab", 2.25, 7.15);
+
+                        function update() {
+                            const m = parseFloat(slider.value);
+                            mDisplay.textContent = m.toFixed(2);
+
+                            // line l within chart
+                            setLine(document.getElementById("line-l"), -1, 2 - m, 9, 2 + 9*m);
+                            setText("label-l", 7.8, 2 + 7.8*m + 0.22);
+
+                            const A = 1 + m*m;
+                            const disc = 16 + 24*m - 16*m*m;
+                            const rootDisc = Math.sqrt(Math.max(0, disc));
+                            const xP = (6 + 2*m - rootDisc) / (2*A);
+                            const xQ = (6 + 2*m + rootDisc) / (2*A);
+                            const yP = m*xP + 2;
+                            const yQ = m*xQ + 2;
+
+                            setPoint("point-p", xP, yP);
+                            setPoint("point-q", xQ, yQ);
+                            setText("label-p", xP - 0.38, yP - 0.18);
+                            setText("label-q", xQ + 0.12, yQ + 0.25);
+                            setLine(document.getElementById("chord-pq"), xP, yP, xQ, yQ);
+
+                            document.getElementById("triangle-abq").setAttribute(
+                                "points",
+                                `${sx(0)},${sy(2)} ${sx(2)},${sy(6)} ${sx(xQ)},${sy(yQ)}`
+                            );
+
+                            const chord = Math.hypot(xQ-xP, yQ-yP);
+                            const area = Math.abs((2*(yQ-2) - 4*xQ) / 2);
+                            chordDisplay.textContent = chord.toFixed(3);
+                            areaDisplay.textContent = area.toFixed(3);
+
+                            // 面積最大となる m=0 のとき、T-M-Q を結ぶ直径を点線で強調する
+                            const isMaximum = Math.abs(m) < 0.005;
+                            const maxDiameter = document.getElementById("max-diameter");
+                            const maxLineLabel = document.getElementById("max-line-label");
+                            maxDiameter.setAttribute("opacity", isMaximum ? "1" : "0");
+                            maxLineLabel.setAttribute("opacity", isMaximum ? "1" : "0");
+
+                            if (chord >= 4 - 1e-8) {
+                                status.textContent = "PQ≧4を満たす";
+                                status.className = "rounded-lg border border-blue-200 bg-blue-50 p-3 text-center text-sm font-bold text-blue-800";
+                            } else {
+                                status.textContent = "PQ≧4を満たさない";
+                                status.className = "rounded-lg border border-slate-300 bg-slate-100 p-3 text-center text-sm font-bold text-slate-600";
+                            }
+                        }
+
+                        slider.addEventListener("input", update);
+                        document.querySelectorAll("[data-m]").forEach(button => {
+                            button.addEventListener("click", () => {
+                                slider.value = button.dataset.m;
+                                update();
+                            });
+                        });
+                        update();
+                    });
+                </script>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">補足：中心が原点でない円のパラメータ表示</h3>
+
+                <div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed text-slate-700">
+                    <p>
+                        原点を中心とする半径1の円
+                        \[
+                        x^2+y^2=1
+                        \]
+                        上の点は、
+                        \[
+                        (x,y)=(\cos\theta,\sin\theta)
+                        \qquad (0\le\theta<2\pi)
+                        \]
+                        と表せます。
+                    </p>
+
+                    <p class="mt-3">
+                        これを、中心が $(p,q)$、半径が $r$ の円
+                        \[
+                        (x-p)^2+(y-q)^2=r^2
+                        \]
+                        に広げて考えます。中心から見た横方向・縦方向の変位を
+                        \[
+                        x-p=r\cos\theta,\qquad y-q=r\sin\theta
+                        \]
+                        と置けば、
+                    </p>
+
+                    <div class="mt-3 rounded-lg border border-indigo-300 bg-white p-4 text-center font-bold text-indigo-900">
+                        \[
+                        x=p+r\cos\theta,\qquad
+                        y=q+r\sin\theta
+                        \qquad (0\le\theta<2\pi)
+                        \]
+                    </div>
+
+                    <p class="mt-3">
+                        となります。つまり、原点中心の円を半径 $r$ 倍し、さらに中心 $(p,q)$ まで平行移動した形です。
+                        $\theta=0$ と $\theta=2\pi$ は同じ点を表すため、円周を重複なく1周させるときは
+                        <strong>$0\le\theta<2\pi$</strong> と設定します。
+                    </p>
+
+                    <p class="mt-3">
+                        本問の円 $K$ は
+                        \[
+                        (x-3)^2+(y-3)^2=5
+                        \]
+                        であるから、円周上の点Qは
+                        \[
+                        \mathrm{Q}
+                        \left(
+                        3+\sqrt5\cos\theta,\,
+                        3+\sqrt5\sin\theta
+                        \right)
+                        \qquad (0\le\theta<2\pi)
+                        \]
+                        と表せます。
+                    </p>
+
+                    <p class="mt-3 font-semibold text-indigo-900">
+                        円周上の動点を1つの変数 $\theta$ で表すと、面積・距離・内積などの最大・最小を三角関数の問題へ変換できます。
+                        この考え方は、難関大学の入試問題でも有効な手段になります。
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解の考察：（3）(ii) 点Qをパラメータ表示する</h3>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    円 $K$ 上の点Qを
+                </p>
+                <div class="math-scroll">
+                    \[
+                    \mathrm{Q}
+                    \left(
+                    3+\sqrt5\cos\theta,\,
+                    3+\sqrt5\sin\theta
+                    \right)
+                    \qquad (0\le\theta<2\pi)
+                    \]
+                </div>
+                <p class="text-sm leading-relaxed text-slate-700">
+                    とおく。以下、
+                    \[
+                    x_{\mathrm Q}=3+\sqrt5\cos\theta,\qquad
+                    y_{\mathrm Q}=3+\sqrt5\sin\theta
+                    \]
+                    とする。
+                </p>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    $\mathrm{A}(0,2)$、$\mathrm{B}(2,6)$ であるから、Aを始点とする2つのベクトルは
+                </p>
+                <div class="math-scroll">
+                    \[
+                    \overrightarrow{\mathrm{AB}}
+                    =
+                    \begin{pmatrix}
+                    2\\
+                    4
+                    \end{pmatrix},
+                    \qquad
+                    \overrightarrow{\mathrm{AQ}}
+                    =
+                    \begin{pmatrix}
+                    x_{\mathrm Q}\\
+                    y_{\mathrm Q}-2
+                    \end{pmatrix}
+                    \]
+                </div>
+                <p class="text-sm leading-relaxed text-slate-700">
+                    である。三角形ABQの面積を $S$ とすると、ベクトルの成分を利用した三角形の面積公式より
+                </p>
+                <div class="math-scroll">
+                    \[
+                    \begin{aligned}
+                    S
+                    &=\frac12
+                    \left|
+                    2(y_{\mathrm Q}-2)-4x_{\mathrm Q}
+                    \right|\\
+                    &=\left|
+                    y_{\mathrm Q}-2-2x_{\mathrm Q}
+                    \right|\\
+                    &=\left|
+                    2x_{\mathrm Q}-y_{\mathrm Q}+2
+                    \right|.
+                    \end{aligned}
+                    \]
+                </div>
+
+                <p class="text-sm leading-relaxed text-slate-700">
+                    ここにQの座標を代入すると、
+                </p>
+                <div class="math-scroll">
+                    \[
+                    \begin{aligned}
+                    2x_{\mathrm Q}-y_{\mathrm Q}+2
+                    &=
+                    2(3+\sqrt5\cos\theta)
+                    -(3+\sqrt5\sin\theta)+2\\
+                    &=5+\sqrt5(2\cos\theta-\sin\theta).
+                    \end{aligned}
+                    \]
+                </div>
+
+                <p class="text-sm leading-relaxed text-slate-700">
+                    また、コーシー・シュワルツの不等式より
+                </p>
+                <div class="math-scroll">
+                    \[
+                    \begin{aligned}
+                    -\sqrt5
+                    &\le 2\cos\theta-\sin\theta
+                    \le\sqrt5.
+                    \end{aligned}
+                    \]
+                </div>
+                <p class="text-sm leading-relaxed text-slate-700">
+                    したがって、
+                    \[
+                    5+\sqrt5(2\cos\theta-\sin\theta)\ge 5-\sqrt5\cdot\sqrt5=0
+                    \]
+                    であるから、絶対値を外して
+                </p>
+                <div class="math-scroll">
+                    \[
+                    S=5+\sqrt5(2\cos\theta-\sin\theta)
+                    \]
+                </div>
+                <p class="text-sm leading-relaxed text-slate-700">
+                    と表せる。
+                </p>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    さらに、
+                </p>
+                <div class="math-scroll">
+                    \[
+                    2\cos\theta-\sin\theta
+                    \le
+                    \sqrt{2^2+(-1)^2}
+                    \sqrt{\cos^2\theta+\sin^2\theta}
+                    =\sqrt5
+                    \]
+                </div>
+                <p class="text-sm leading-relaxed text-slate-700">
+                    であるから、
+                </p>
+                <div class="math-scroll">
+                    \[
+                    S\le 5+\sqrt5\cdot\sqrt5=10.
+                    \]
+                </div>
+
+                <p class="text-sm leading-relaxed text-slate-700">
+                    等号が成立するのは、
+                </p>
+                <div class="math-scroll">
+                    \[
+                    \cos\theta=\frac2{\sqrt5},
+                    \qquad
+                    \sin\theta=-\frac1{\sqrt5}
+                    \]
+                </div>
+                <p class="text-sm leading-relaxed text-slate-700">
+                    のときである。この条件を満たす $\theta$ は $0\le\theta<2\pi$ の範囲に1つ存在し、そのとき
+                </p>
+                <div class="math-scroll">
+                    \[
+                    \begin{aligned}
+                    \mathrm Q
+                    &=
+                    \left(
+                    3+\sqrt5\cdot\frac2{\sqrt5},\,
+                    3+\sqrt5\cdot\left(-\frac1{\sqrt5}\right)
+                    \right)\\
+                    &=(5,2).
+                    \end{aligned}
+                    \]
+                </div>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    ここで、この点Qが問題の条件を満たすことを確認する。
+                    直線AQの傾きは
+                </p>
+                <div class="math-scroll">
+                    \[
+                    m=\frac{2-2}{5-0}=0
+                    \]
+                </div>
+                <p class="text-sm leading-relaxed text-slate-700">
+                    であり、(i)で求めた
+                    \[
+                    0\le m\le\frac34
+                    \]
+                    の範囲に含まれる。
+                </p>
+
+                <p class="mt-3 text-sm leading-relaxed text-slate-700">
+                    また、$m=0$ のとき直線 $l$ は $y=2$ である。これを円 $K$ に代入すると、
+                </p>
+                <div class="math-scroll">
+                    \[
+                    \begin{aligned}
+                    (x-3)^2+(2-3)^2&=5\\
+                    (x-3)^2&=4\\
+                    x&=1,\ 5.
+                    \end{aligned}
+                    \]
+                </div>
+                <p class="text-sm leading-relaxed text-slate-700">
+                    よって2つの交点は
+                    \[
+                    \mathrm P(1,2),\qquad \mathrm Q(5,2)
+                    \]
+                    である。Aからの距離は
+                    \[
+                    \mathrm{AP}=1,\qquad \mathrm{AQ}=5
+                    \]
+                    であるから、Q$(5,2)$ は確かにAから遠い方の交点である。
+                </p>
+
+                <div class="mt-4 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                    よって、三角形ABQの面積の最大値は $10$
+                </div>
+
+                <div class="mt-6 rounded-xl border-2 border-indigo-300 bg-indigo-50 p-5">
+                    <h4 class="font-bold text-indigo-900">【確認】ベクトルの成分を利用した三角形の面積公式</h4>
+
+                    <div class="mt-4 grid gap-5 md:grid-cols-[1.1fr_1fr] md:items-center">
+                        <div class="text-sm leading-relaxed text-slate-700">
+                            <p>
+                                同じ点Aを始点とする2つのベクトルを
+                            </p>
+                            <div class="math-scroll mt-2">
+                                \[
+                                \overrightarrow{\mathrm{AB}}
+                                =
+                                \begin{pmatrix}
+                                a\\
+                                b
+                                \end{pmatrix},
+                                \qquad
+                                \overrightarrow{\mathrm{AQ}}
+                                =
+                                \begin{pmatrix}
+                                c\\
+                                d
+                                \end{pmatrix}
+                                \]
+                            </div>
+                            <p>
+                                とすると、三角形ABQの面積は
+                            </p>
+                            <div class="mt-3 rounded-lg border border-indigo-300 bg-white p-4 text-center font-bold text-indigo-950">
+                                \[
+                                \triangle\mathrm{ABQ}
+                                =
+                                \frac12|ad-bc|
+                                \]
+                            </div>
+                            <p class="mt-3">
+                                で求められます。<strong>1つ目のベクトルの横成分と2つ目の縦成分を掛けたもの</strong>から、
+                                <strong>1つ目の縦成分と2つ目の横成分を掛けたもの</strong>を引き、絶対値を取って半分にします。
+                            </p>
+                            <p class="mt-2 text-indigo-900">
+                                本問では
+                                \[
+                                a=2,\quad b=4,\quad
+                                c=x_{\mathrm Q},\quad d=y_{\mathrm Q}-2
+                                \]
+                                と対応しています。
+                            </p>
+                        </div>
+
+                        <div class="rounded-lg border border-indigo-200 bg-white p-3">
+                            <svg viewBox="0 0 360 235" class="h-auto w-full" role="img"
+                                 aria-label="点Aを始点とするベクトルABとAQ、および三角形ABQ">
+                                <defs>
+                                    <marker id="vector-arrow-indigo" viewBox="0 0 10 10" refX="8" refY="5"
+                                            markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#4f46e5"></path>
+                                    </marker>
+                                    <marker id="vector-arrow-teal" viewBox="0 0 10 10" refX="8" refY="5"
+                                            markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f766e"></path>
+                                    </marker>
+                                </defs>
+
+                                <line x1="42" y1="198" x2="330" y2="198" stroke="#cbd5e1" stroke-width="1.5"/>
+                                <line x1="42" y1="198" x2="42" y2="20" stroke="#cbd5e1" stroke-width="1.5"/>
+
+                                <polygon points="58,184 250,55 302,154"
+                                         fill="rgba(79,70,229,.12)" stroke="#818cf8" stroke-width="1.5"/>
+
+                                <line x1="58" y1="184" x2="250" y2="55"
+                                      stroke="#4f46e5" stroke-width="3"
+                                      marker-end="url(#vector-arrow-indigo)"/>
+                                <line x1="58" y1="184" x2="302" y2="154"
+                                      stroke="#0f766e" stroke-width="3"
+                                      marker-end="url(#vector-arrow-teal)"/>
+
+                                <line x1="250" y1="55" x2="302" y2="154"
+                                      stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="6 5"/>
+
+                                <circle cx="58" cy="184" r="5" fill="#111827"/>
+                                <circle cx="250" cy="55" r="5" fill="#4f46e5"/>
+                                <circle cx="302" cy="154" r="5" fill="#0f766e"/>
+
+                                <text x="42" y="178" fill="#111827" font-size="15" font-weight="700">A</text>
+                                <text x="255" y="48" fill="#4f46e5" font-size="15" font-weight="700">B</text>
+                                <text x="309" y="151" fill="#0f766e" font-size="15" font-weight="700">Q</text>
+
+                                <!-- 列ベクトル表記：AB = (a, b)^T -->
+                                <g fill="#4338ca" font-size="14" font-weight="700">
+                                    <text x="112" y="89">AB =</text>
+                                    <path d="M153 70 H148 V108 H153" fill="none" stroke="#4338ca" stroke-width="1.8"/>
+                                    <path d="M174 70 H179 V108 H174" fill="none" stroke="#4338ca" stroke-width="1.8"/>
+                                    <text x="160" y="84">a</text>
+                                    <text x="160" y="103">b</text>
+                                </g>
+
+                                <!-- 列ベクトル表記：AQ = (c, d)^T -->
+                                <g fill="#0f766e" font-size="14" font-weight="700">
+                                    <text x="157" y="181">AQ =</text>
+                                    <path d="M198 161 H193 V199 H198" fill="none" stroke="#0f766e" stroke-width="1.8"/>
+                                    <path d="M219 161 H224 V199 H219" fill="none" stroke="#0f766e" stroke-width="1.8"/>
+                                    <text x="205" y="175">c</text>
+                                    <text x="205" y="194">d</text>
+                                </g>
+
+                                <text x="163" y="132" fill="#6366f1" font-size="13" font-weight="700">面積</text>
+                            </svg>
+                            <p class="mt-2 text-center text-xs leading-relaxed text-slate-500">
+                                Aを共通の始点にして、2本のベクトルがつくる三角形を考えます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解の考察：（3）(i)を2次方程式で処理する</h3>
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    直線 $l:y=mx+2$ を円 $(x-3)^2+(y-3)^2=5$ に代入すると、
+                </p>
+                <div class="math-scroll">
+                    \[
+                    (1+m^2)x^2-(6+2m)x+5=0
+                    \]
+                </div>
+                <p class="text-sm leading-relaxed text-slate-700">
+                    となります。2つの交点の $x$ 座標を $x_1,x_2$ とすると、弦の長さは
+                </p>
+                <div class="math-scroll">
+                    \[
+                    \mathrm{PQ}
+                    =|x_1-x_2|\sqrt{1+m^2}
+                    \]
+                </div>
+                <p class="text-sm leading-relaxed text-slate-700">
+                    です。2次方程式の2解の差を用いて計算すれば同じ範囲を求められますが、計算量は「中心から直線までの距離」を使う主解法より多くなります。本問では、弦の図形的な性質を使う方が見通しがよい解法です。
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">弦PQの長さを求めるために、交点P・Qの座標を最初から求めようとする</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            座標を求めても解けますが、式が長くなります。「中心から弦に下ろした垂線は弦を二等分する」ことを使えば、交点の座標を求めずに処理できます。
+                        </p>
+                    </div>
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">（3）(ii)でQの座標を $m$ の式にしてから最大化しようとする</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            その方法では平方根を含む複雑な式になります。底辺ABが固定されていることに注目し、面積を「Qから直線ABまでの距離」に置き換えることが重要です。
+                        </p>
+                    </div>
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">円周上で接線から最も遠い点を確認しない</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            最大距離は直径 $2r$ ですが、その点を通る直線AQの傾きが、(i)で求めた範囲に入っているかを確認する必要があります。本問では $m=0$ となり、条件を満たします。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+            <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+            <p class="mt-4 text-sm text-blue-200">質問をクリックし、答えを頭の中で作ってから開いてください。</p>
+
+            <div class="mt-6 space-y-3">
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q1. 円の中心から弦までの距離を $d$、半径を $r$ とすると、弦の長さはどのように表せますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        中心から弦に下ろした垂線が弦を二等分するため、
+                        \[
+                        \text{弦の長さ}=2\sqrt{r^2-d^2}
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q2. （3）(i)で $\mathrm{PQ}\ge4$ が $d\le1$ に変わるのはなぜですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        半径が $\sqrt5$ であり、
+                        \[
+                        \left(\frac{\mathrm{PQ}}2\right)^2+d^2=5
+                        \]
+                        だからです。$\mathrm{PQ}\ge4$ より $\mathrm{PQ}/2\ge2$ なので、$5-d^2\ge4$、すなわち $d^2\le1$ となります。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q3. 三角形ABQの面積を最大にするとき、Qについて何を最大にすればよいですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        底辺ABは固定されているので、Qから直線ABまでの距離を最大にします。ABは円の接線なので、最大距離は直径 $2\sqrt5$ です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q4. 面積最大を与える点Qと、そのときの傾き $m$ は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        接点T$(1,4)$の直径の反対側にあるQ$(5,2)$です。直線AQは $y=2$ なので、$m=0$ です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q5. 中心 $(p,q)$、半径 $r$ の円周上の点を、$0\le\theta<2\pi$ を用いてどう表しますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        (x,y)=
+                        (p+r\cos\theta,\ q+r\sin\theta)
+                        \qquad (0\le\theta<2\pi)
+                        \]
+                        と表します。本問では
+                        \[
+                        \mathrm Q
+                        \left(
+                        3+\sqrt5\cos\theta,\,
+                        3+\sqrt5\sin\theta
+                        \right)
+                        \]
+                        です。
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+            <a href="no17.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                ← No.17へ
+            </a>
+            <a href="no19.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                No.19 →
+            </a>
+        </nav>
+    </main>
+
+    <footer class="py-10 text-center text-sm text-slate-500">
+        自彊館(理系)　夏期数学課題 解説サイト
+    </footer>
+</div>
+</body>
+</html>
