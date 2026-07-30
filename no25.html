@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.25 図形と方程式 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: { matchFontHeight: false },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: .5rem; margin-bottom: .5rem; }
+        button:focus-visible, summary:focus-visible, a:focus-visible, input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+        ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+        <div class="p-7 sm:p-10">
+            <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+                <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.25</span>
+                <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+            </div>
+            <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">図形と方程式</h1>
+            <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                問題
+            </h2>
+
+            <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed">
+                <p>
+                    Oを原点とする座標平面上に
+                    \[
+                    \mathrm{A}(3,0),\qquad \mathrm{B}(0,4)
+                    \]
+                    をとる。
+                </p>
+
+                <p class="mt-2">
+                    三角形OABの周上を動く2つの点P、Qが、
+                    点Pは辺OA上を $\mathrm{O}\to\mathrm{A}$ と、
+                    点Qは辺AB、BO上を $\mathrm{A}\to\mathrm{B}\to\mathrm{O}$ と動く。
+                    ただし、P、Qは同時に出発し、Qの速さはPの速さの3倍である。
+                </p>
+
+                <p class="mt-2">
+                    $\mathrm{P}(t,0)\ (0&lt;t&lt;3)$ のとき、
+                    三角形APQの面積を $S(t)$ とする。
+                </p>
+
+                <ol class="mt-4 list-decimal space-y-4 pl-6">
+                    <li>$S(1)$ を求めよ。</li>
+                    <li>$S(t)$ を $t$ で表せ。</li>
+                    <li>$S(t)$ の最大値と、そのときの $t$ の値を求めよ。</li>
+                </ol>
+            </div>
+
+            <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+                <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+                    <li>
+                        PはOからAへ進み、$\mathrm{P}(t,0)$ なので、Pが進んだ距離は $t$ です。
+                    </li>
+                    <li>
+                        Qの速さはPの3倍なので、同じ時刻までにQが進んだ距離は
+                        \[
+                        3t
+                        \]
+                        です。
+                    </li>
+                    <li>
+                        \[
+                        \mathrm{AB}=\sqrt{3^2+4^2}=5
+                        \]
+                        なので、QがBに到達するのは
+                        \[
+                        3t=5
+                        \quad\Longleftrightarrow\quad
+                        t=\frac53
+                        \]
+                        のときです。
+                    </li>
+                    <li>
+                        したがって、$S(t)$ は
+                        \[
+                        0&lt;t\le\frac53,\qquad
+                        \frac53\le t&lt;3
+                        \]
+                        の2つに場合分けします。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                解説
+            </h2>
+
+            <p class="mt-4 text-sm leading-8 text-slate-600">
+                移動距離からQの座標を求め、底辺APとQの高さから面積を表します。
+            </p>
+
+            <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+                <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">周上を一定の速さで動く点</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            座標を直接考える前に、まず「出発点から進んだ距離」を求めます。
+                            本問ではPが $t$、Qが $3t$ 進みます。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">折れ曲がる経路</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            QはAからBを経てOへ進むので、Bに着く時刻を境に座標の式が変わります。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">底辺が $x$ 軸上にある三角形</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            A、Pはともに $x$ 軸上にあるので、
+                            \[
+                            \text{面積}
+                            =
+                            \frac12\cdot\mathrm{AP}\cdot
+                            \left(\text{Qの}y\text{座標}\right)
+                            \]
+                            と求められます。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>① QがBに着く時刻を求める</strong><br>
+                        ABの長さは5、Qの移動距離は $3t$ なので、$3t=5$ から境目は $t=5/3$ です。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>② Qの座標を場合分けする</strong><br>
+                        AB上ではAからBへの内分として表し、BO上ではBから下へ進んだ距離を使います。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>③ 面積は高さだけ見ればよい</strong><br>
+                        $\mathrm{AP}=3-t$ はどちらの場合も共通です。Qの $y$ 座標だけを場合分けします。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>④ 各区間で最大値を求めて比較する</strong><br>
+                        前半は下に凸ではなく上に開かない二次関数、後半は単調減少する二次関数です。
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+
+                <div class="mt-4 space-y-7 text-slate-700">
+                    <div>
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">Qの座標を求める</p>
+
+                        <p class="mt-2">
+                            \[
+                            \mathrm{AB}=5
+                            \]
+                            であり、Qが進んだ距離は $3t$ である。
+                        </p>
+
+                        <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                            <p class="font-bold text-slate-900">① $0&lt;t\le\dfrac53$ のとき</p>
+                            <p class="mt-2 text-sm">
+                                Qは辺AB上にあり、
+                                \[
+                                \mathrm{AQ}=3t.
+                                \]
+                                よって、
+                                \[
+                                \frac{\mathrm{AQ}}{\mathrm{AB}}
+                                =\frac{3t}{5}.
+                                \]
+                            </p>
+
+                            <div class="math-scroll mt-2">
+                                \[
+                                \begin{aligned}
+                                \mathrm{Q}
+                                &=
+                                \mathrm{A}
+                                +\frac{3t}{5}
+                                (\mathrm{B}-\mathrm{A})\\
+                                &=
+                                (3,0)
+                                +\frac{3t}{5}(-3,4)\\
+                                &=
+                                \left(
+                                3-\frac{9t}{5},
+                                \frac{12t}{5}
+                                \right).
+                                \end{aligned}
+                                \]
+                            </div>
+                        </div>
+
+                        <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                            <p class="font-bold text-slate-900">② $\dfrac53\le t&lt;3$ のとき</p>
+                            <p class="mt-2 text-sm">
+                                QはBを通過し、辺BO上にある。
+                                Bに着くまでに5進んでいるので、Bからの移動距離は
+                                \[
+                                3t-5.
+                                \]
+                                したがって、
+                            </p>
+
+                            <div class="math-scroll mt-2">
+                                \[
+                                \begin{aligned}
+                                \mathrm{Q}
+                                &=
+                                \left(
+                                0,\,
+                                4-(3t-5)
+                                \right)\\
+                                &=
+                                (0,9-3t).
+                                \end{aligned}
+                                \]
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）</p>
+
+                        <p class="mt-2">
+                            $t=1$ のとき、$1&lt;5/3$ なのでQは辺AB上にある。
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \mathrm{Q}
+                            =
+                            \left(
+                            3-\frac95,\frac{12}{5}
+                            \right)
+                            =
+                            \left(
+                            \frac65,\frac{12}{5}
+                            \right).
+                            \]
+                        </div>
+
+                        <p>
+                            また、
+                            \[
+                            \mathrm{AP}=3-1=2.
+                            \]
+                            したがって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            S(1)
+                            &=
+                            \frac12\cdot2\cdot\frac{12}{5}\\
+                            &=
+                            \frac{12}{5}.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$\displaystyle \frac{12}{5}$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）</p>
+
+                        <p class="mt-2">
+                            A、Pはともに $x$ 軸上にあり、
+                            \[
+                            \mathrm{AP}=3-t.
+                            \]
+                            よって、三角形APQの面積は
+                            \[
+                            S(t)=\frac12(3-t)\times
+                            \left(\text{Qの}y\text{座標}\right)
+                            \]
+                            である。
+                        </p>
+
+                        <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                            <p class="font-bold text-slate-900">
+                                ① $0&lt;t\le\dfrac53$
+                            </p>
+
+                            <div class="math-scroll mt-2">
+                                \[
+                                \begin{aligned}
+                                S(t)
+                                &=
+                                \frac12(3-t)\cdot\frac{12t}{5}\\
+                                &=
+                                \frac65t(3-t).
+                                \end{aligned}
+                                \]
+                            </div>
+                        </div>
+
+                        <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                            <p class="font-bold text-slate-900">
+                                ② $\dfrac53\le t&lt;3$
+                            </p>
+
+                            <div class="math-scroll mt-2">
+                                \[
+                                \begin{aligned}
+                                S(t)
+                                &=
+                                \frac12(3-t)(9-3t)\\
+                                &=
+                                \frac32(3-t)^2.
+                                \end{aligned}
+                                \]
+                            </div>
+                        </div>
+
+                        <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            S(t)=
+                            \begin{cases}
+                            \dfrac65t(3-t)
+                            &
+                            \left(
+                            0&lt;t\le\dfrac53
+                            \right),\\[3mm]
+                            \dfrac32(3-t)^2
+                            &
+                            \left(
+                            \dfrac53\le t&lt;3
+                            \right).
+                            \end{cases}
+                            \]
+                        </div>
+
+                        <p class="mt-3 text-sm text-slate-600">
+                            $t=5/3$ では、どちらの式でも
+                            \[
+                            S\left(\frac53\right)=\frac83
+                            \]
+                            となり、面積は連続しています。
+                        </p>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）</p>
+
+                        <div class="mt-2 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                            <p class="font-bold text-slate-900">
+                                ① $0&lt;t\le\dfrac53$ のとき
+                            </p>
+
+                            <div class="math-scroll mt-2">
+                                \[
+                                \begin{aligned}
+                                S(t)
+                                &=
+                                \frac65t(3-t)\\
+                                &=
+                                -\frac65
+                                \left(
+                                t-\frac32
+                                \right)^2
+                                +\frac{27}{10}.
+                                \end{aligned}
+                                \]
+                            </div>
+
+                            <p class="text-sm">
+                                $t=3/2$ はこの区間に含まれるので、
+                                この区間での最大値は
+                                \[
+                                \frac{27}{10}
+                                \]
+                                である。
+                            </p>
+                        </div>
+
+                        <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                            <p class="font-bold text-slate-900">
+                                ② $\dfrac53\le t&lt;3$ のとき
+                            </p>
+
+                            <div class="math-scroll mt-2">
+                                \[
+                                S(t)=\frac32(3-t)^2.
+                                \]
+                            </div>
+
+                            <p class="text-sm">
+                                この区間では $3-t>0$ であり、$t$ が増加すると
+                                $(3-t)^2$ は減少する。
+                                よって、この区間での最大値は $t=5/3$ のときの
+                            </p>
+
+                            <div class="math-scroll">
+                                \[
+                                S\left(\frac53\right)
+                                =
+                                \frac32\left(\frac43\right)^2
+                                =
+                                \frac83.
+                                \]
+                            </div>
+                        </div>
+
+                        <p class="mt-4">
+                            \[
+                            \frac{27}{10}>\frac83
+                            \]
+                            であるから、全体の最大値は
+                            \[
+                            \frac{27}{10}
+                            \]
+                            であり、そのとき
+                            \[
+                            t=\frac32.
+                            \]
+                        </p>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：
+                            最大値 $\displaystyle \frac{27}{10}$，
+                            そのとき $\displaystyle t=\frac32$
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化</h3>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    $t$ を動かすと、PはOA上を、QはAからBを経てOへ動きます。
+                    QがBに達する $t=5/3$ で、Qの座標と面積の式が切り替わります。
+                </p>
+
+                <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="mx-auto max-w-xl">
+                        <label for="t-slider" class="mb-2 block text-sm font-medium text-slate-700">
+                            <span class="font-serif italic">t</span>：
+                            <span id="t-display" class="text-lg font-bold text-blue-700">1.000</span>
+                        </label>
+
+                        <input id="t-slider" type="range" min="0.02" max="2.98" step="0.002" value="1"
+                               class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600">
+
+                        <div class="mt-2 flex justify-between text-xs text-slate-500">
+                            <span>0</span>
+                            <span>5/3</span>
+                            <span>3</span>
+                        </div>
+
+                        <div class="mt-3 flex flex-wrap justify-center gap-2">
+                            <button type="button" data-t="1"
+                                    class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-100">
+                                t = 1
+                            </button>
+
+                            <button type="button" data-t="1.5"
+                                    class="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-bold text-blue-700 hover:bg-blue-50">
+                                最大　t = 3/2
+                            </button>
+
+                            <button type="button" data-t="1.6666666667"
+                                    class="rounded-lg border border-violet-200 bg-white px-3 py-2 text-sm font-bold text-violet-700 hover:bg-violet-50">
+                                QがB：t = 5/3
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 grid gap-6 lg:grid-cols-2">
+                        <div>
+                            <h4 class="text-center font-bold text-slate-800">点P・Qの移動</h4>
+
+                            <svg id="motion-svg" width="560" height="430" viewBox="0 0 560 430"
+                                 class="mt-3 mx-auto h-auto w-full max-w-[560px] rounded-xl border border-slate-200 bg-white"
+                                 aria-label="三角形OAB上を動く点PとQの図">
+                                <defs>
+                                    <marker id="axis-arrow-48" viewBox="0 0 10 10" refX="8" refY="5"
+                                            markerWidth="6" markerHeight="6" orient="auto">
+                                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"></path>
+                                    </marker>
+                                </defs>
+
+                                <g id="motion-grid"></g>
+
+                                <line id="motion-x-axis" stroke="#64748b" stroke-width="1.5" marker-end="url(#axis-arrow-48)"></line>
+                                <line id="motion-y-axis" stroke="#64748b" stroke-width="1.5" marker-end="url(#axis-arrow-48)"></line>
+
+                                <polygon id="triangle-oab" fill="rgba(148,163,184,.08)" stroke="#334155" stroke-width="2.5"></polygon>
+                                <polygon id="triangle-apq" fill="rgba(37,99,235,.16)" stroke="#2563eb" stroke-width="2.5"></polygon>
+
+                                <line id="q-height" stroke="#e11d48" stroke-width="2" stroke-dasharray="7 5"></line>
+
+                                <circle id="point-o" r="5" fill="#111827"></circle>
+                                <circle id="point-a" r="5" fill="#111827"></circle>
+                                <circle id="point-b" r="5" fill="#111827"></circle>
+                                <circle id="point-p" r="7" fill="#2563eb"></circle>
+                                <circle id="point-q" r="7" fill="#e11d48"></circle>
+
+                                <g font-size="14" font-weight="700">
+                                    <text id="label-o" fill="#111827">O</text>
+                                    <text id="label-a" fill="#111827">A</text>
+                                    <text id="label-b" fill="#111827">B</text>
+                                    <text id="label-p" fill="#1d4ed8">P</text>
+                                    <text id="label-q" fill="#be123c">Q</text>
+                                    <text id="label-region" fill="#1d4ed8">△APQ</text>
+                                    <text x="530" y="376" fill="#64748b">x</text>
+                                    <text x="74" y="22" fill="#64748b">y</text>
+                                </g>
+                            </svg>
+                        </div>
+
+                        <div>
+                            <h4 class="text-center font-bold text-slate-800">面積 S(t) のグラフ</h4>
+
+                            <svg id="graph-svg" width="560" height="430" viewBox="0 0 560 430"
+                                 class="mt-3 mx-auto h-auto w-full max-w-[560px] rounded-xl border border-slate-200 bg-white"
+                                 aria-label="面積S(t)のグラフ">
+                                <defs>
+                                    <marker id="graph-axis-arrow-48" viewBox="0 0 10 10" refX="8" refY="5"
+                                            markerWidth="6" markerHeight="6" orient="auto">
+                                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"></path>
+                                    </marker>
+                                </defs>
+
+                                <g id="graph-grid"></g>
+                                <line id="graph-x-axis" stroke="#64748b" stroke-width="1.5" marker-end="url(#graph-axis-arrow-48)"></line>
+                                <line id="graph-y-axis" stroke="#64748b" stroke-width="1.5" marker-end="url(#graph-axis-arrow-48)"></line>
+
+                                <path id="graph-first" fill="none" stroke="#2563eb" stroke-width="3"></path>
+                                <path id="graph-second" fill="none" stroke="#7c3aed" stroke-width="3"></path>
+
+                                <line id="boundary-line" stroke="#64748b" stroke-width="1.5" stroke-dasharray="6 5"></line>
+
+                                <circle id="graph-current" r="7" fill="#e11d48"></circle>
+                                <circle id="graph-max" r="6" fill="#059669"></circle>
+                                <circle id="graph-boundary" r="6" fill="#7c3aed"></circle>
+
+                                <g font-size="13" font-weight="700">
+                                    <text id="graph-current-label" fill="#be123c"></text>
+                                    <text id="graph-max-label" fill="#047857">最大</text>
+                                    <text id="graph-boundary-label" fill="#6d28d9">t = 5/3</text>
+                                    <text x="530" y="376" fill="#64748b">t</text>
+                                    <text x="68" y="22" fill="#64748b">S</text>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                        <div class="rounded-lg border border-slate-200 bg-white p-3 text-center">
+                            <div class="text-xs font-bold text-slate-500">Pの座標</div>
+                            <div id="p-coordinate" class="mt-1 text-sm font-bold text-blue-700"></div>
+                        </div>
+
+                        <div class="rounded-lg border border-slate-200 bg-white p-3 text-center">
+                            <div class="text-xs font-bold text-slate-500">Qの座標</div>
+                            <div id="q-coordinate" class="mt-1 text-sm font-bold text-rose-700"></div>
+                        </div>
+
+                        <div class="rounded-lg border border-violet-200 bg-violet-50 p-3 text-center">
+                            <div class="text-xs font-bold text-violet-700">Qのいる辺</div>
+                            <div id="q-side" class="mt-1 text-lg font-bold text-violet-800"></div>
+                        </div>
+
+                        <div class="rounded-lg border border-blue-200 bg-blue-50 p-3 text-center">
+                            <div class="text-xs font-bold text-blue-700">面積 S(t)</div>
+                            <div id="area-display" class="mt-1 text-lg font-bold text-blue-800"></div>
+                        </div>
+                    </div>
+
+                    <div id="status" class="mt-4 rounded-lg border border-slate-300 bg-white p-4 text-center text-sm font-bold text-slate-700">
+                        tを動かして点と面積の変化を確認してください
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const slider = document.getElementById("t-slider");
+                        const tDisplay = document.getElementById("t-display");
+
+                        const O = {x:0,y:0};
+                        const A = {x:3,y:0};
+                        const B = {x:0,y:4};
+
+                        const ox = 75;
+                        const oy = 365;
+                        const scale = 90;
+
+                        const sx = x => ox + scale*x;
+                        const sy = y => oy - scale*y;
+
+                        const setPoint = (id, p) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("cx", sx(p.x));
+                            el.setAttribute("cy", sy(p.y));
+                        };
+
+                        const setText = (id, p) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("x", sx(p.x));
+                            el.setAttribute("y", sy(p.y));
+                        };
+
+                        const setLine = (id, p1, p2) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("x1", sx(p1.x));
+                            el.setAttribute("y1", sy(p1.y));
+                            el.setAttribute("x2", sx(p2.x));
+                            el.setAttribute("y2", sy(p2.y));
+                        };
+
+                        const poly = pts => pts.map(p => `${sx(p.x)},${sy(p.y)}`).join(" ");
+
+                        const motionGrid = document.getElementById("motion-grid");
+                        let motionMarkup = "";
+
+                        for (let x = 0; x <= 5; x++) {
+                            motionMarkup += `<line x1="${sx(x)}" y1="${sy(0)}" x2="${sx(x)}" y2="${sy(4.2)}" stroke="#f1f5f9" stroke-width="1"/>`;
+                        }
+
+                        for (let y = 0; y <= 4; y++) {
+                            motionMarkup += `<line x1="${sx(0)}" y1="${sy(y)}" x2="${sx(5.1)}" y2="${sy(y)}" stroke="#f1f5f9" stroke-width="1"/>`;
+                        }
+
+                        motionGrid.innerHTML = motionMarkup;
+
+                        setLine("motion-x-axis", {x:0,y:0}, {x:5.15,y:0});
+                        setLine("motion-y-axis", {x:0,y:0}, {x:0,y:4.25});
+
+                        document.getElementById("triangle-oab").setAttribute("points", poly([O,A,B]));
+
+                        setPoint("point-o", O);
+                        setPoint("point-a", A);
+                        setPoint("point-b", B);
+
+                        setText("label-o", {x:-0.08,y:-0.08});
+                        setText("label-a", {x:3.05,y:-0.05});
+                        setText("label-b", {x:-0.10,y:4.08});
+
+                        const gxMin = 0;
+                        const gxMax = 3.1;
+                        const gyMin = 0;
+                        const gyMax = 3.1;
+                        const gLeft = 70;
+                        const gBottom = 365;
+                        const gWidth = 450;
+                        const gHeight = 330;
+
+                        const gsx = x => gLeft + (x-gxMin)/(gxMax-gxMin)*gWidth;
+                        const gsy = y => gBottom - (y-gyMin)/(gyMax-gyMin)*gHeight;
+
+                        const graphGrid = document.getElementById("graph-grid");
+                        let graphMarkup = "";
+
+                        for (let x = 0; x <= 3; x += 0.5) {
+                            graphMarkup += `<line x1="${gsx(x)}" y1="${gsy(0)}" x2="${gsx(x)}" y2="${gsy(3.05)}" stroke="#f1f5f9" stroke-width="1"/>`;
+                            graphMarkup += `<text x="${gsx(x)+3}" y="${gsy(0)+16}" fill="#94a3b8" font-size="10">${x}</text>`;
+                        }
+
+                        for (let y = 0; y <= 3; y += 0.5) {
+                            graphMarkup += `<line x1="${gsx(0)}" y1="${gsy(y)}" x2="${gsx(3.05)}" y2="${gsy(y)}" stroke="#f1f5f9" stroke-width="1"/>`;
+                            if (y > 0) {
+                                graphMarkup += `<text x="${gsx(0)+5}" y="${gsy(y)-4}" fill="#94a3b8" font-size="10">${y}</text>`;
+                            }
+                        }
+
+                        graphGrid.innerHTML = graphMarkup;
+
+                        const setGraphLine = (id, x1, y1, x2, y2) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("x1", gsx(x1));
+                            el.setAttribute("y1", gsy(y1));
+                            el.setAttribute("x2", gsx(x2));
+                            el.setAttribute("y2", gsy(y2));
+                        };
+
+                        const setGraphPoint = (id, x, y) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("cx", gsx(x));
+                            el.setAttribute("cy", gsy(y));
+                        };
+
+                        const setGraphText = (id, x, y, text) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("x", gsx(x));
+                            el.setAttribute("y", gsy(y));
+                            if (text !== undefined) el.textContent = text;
+                        };
+
+                        setGraphLine("graph-x-axis", 0, 0, 3.08, 0);
+                        setGraphLine("graph-y-axis", 0, 0, 0, 3.08);
+                        setGraphLine("boundary-line", 5/3, 0, 5/3, 3.05);
+
+                        function area(t) {
+                            if (t <= 5/3) {
+                                return 6/5*t*(3-t);
+                            }
+                            return 3/2*(3-t)*(3-t);
+                        }
+
+                        function buildPath(start, end, fn, steps) {
+                            let d = "";
+                            for (let i = 0; i <= steps; i++) {
+                                const x = start + (end-start)*i/steps;
+                                const y = fn(x);
+                                d += `${i === 0 ? "M" : "L"} ${gsx(x)} ${gsy(y)} `;
+                            }
+                            return d;
+                        }
+
+                        document.getElementById("graph-first").setAttribute(
+                            "d",
+                            buildPath(0, 5/3, t => 6/5*t*(3-t), 160)
+                        );
+
+                        document.getElementById("graph-second").setAttribute(
+                            "d",
+                            buildPath(5/3, 3, t => 3/2*(3-t)*(3-t), 140)
+                        );
+
+                        setGraphPoint("graph-max", 1.5, 2.7);
+                        setGraphText("graph-max-label", 1.55, 2.90);
+
+                        setGraphPoint("graph-boundary", 5/3, 8/3);
+                        setGraphText("graph-boundary-label", 1.72, 2.50);
+
+                        function update() {
+                            const t = parseFloat(slider.value);
+                            const P = {x:t,y:0};
+
+                            let Q;
+                            let side;
+
+                            if (t <= 5/3) {
+                                Q = {
+                                    x:3-9*t/5,
+                                    y:12*t/5
+                                };
+                                side = "辺AB";
+                            } else {
+                                Q = {
+                                    x:0,
+                                    y:9-3*t
+                                };
+                                side = "辺BO";
+                            }
+
+                            const S = area(t);
+
+                            setPoint("point-p", P);
+                            setPoint("point-q", Q);
+
+                            document.getElementById("triangle-apq").setAttribute("points", poly([A,P,Q]));
+
+                            setLine("q-height", Q, {x:Q.x,y:0});
+
+                            setText("label-p", {x:P.x+0.04,y:-0.08});
+                            setText("label-q", {x:Q.x+0.05,y:Q.y+0.08});
+                            setText("label-region", {
+                                x:(A.x+P.x+Q.x)/3,
+                                y:(A.y+P.y+Q.y)/3
+                            });
+
+                            setGraphPoint("graph-current", t, S);
+                            setGraphText("graph-current-label", t+0.05, Math.min(3.0,S+0.18), `(${t.toFixed(2)}, ${S.toFixed(2)})`);
+
+                            tDisplay.textContent = t.toFixed(3);
+                            document.getElementById("p-coordinate").textContent =
+                                `(${P.x.toFixed(3)}, 0)`;
+                            document.getElementById("q-coordinate").textContent =
+                                `(${Q.x.toFixed(3)}, ${Q.y.toFixed(3)})`;
+                            document.getElementById("q-side").textContent = side;
+                            document.getElementById("area-display").textContent = S.toFixed(5);
+
+                            const status = document.getElementById("status");
+
+                            if (Math.abs(t-1.5) < 0.004) {
+                                status.textContent = "t=3/2：面積は最大値27/10";
+                                status.className = "mt-4 rounded-lg border border-emerald-300 bg-emerald-50 p-4 text-center text-sm font-bold text-emerald-800";
+                            } else if (Math.abs(t-5/3) < 0.004) {
+                                status.textContent = "t=5/3：QがBに到達し、面積の式が切り替わる";
+                                status.className = "mt-4 rounded-lg border border-violet-300 bg-violet-50 p-4 text-center text-sm font-bold text-violet-800";
+                            } else if (Math.abs(t-1) < 0.004) {
+                                status.textContent = "t=1：S(1)=12/5";
+                                status.className = "mt-4 rounded-lg border border-blue-300 bg-blue-50 p-4 text-center text-sm font-bold text-blue-800";
+                            } else {
+                                status.textContent = side === "辺AB"
+                                    ? "Qは辺AB上：前半の式を使う"
+                                    : "Qは辺BO上：後半の式を使う";
+                                status.className = "mt-4 rounded-lg border border-slate-300 bg-white p-4 text-center text-sm font-bold text-slate-700";
+                            }
+                        }
+
+                        slider.addEventListener("input", update);
+
+                        document.querySelectorAll("[data-t]").forEach(button => {
+                            button.addEventListener("click", () => {
+                                slider.value = button.dataset.t;
+                                update();
+                            });
+                        });
+
+                        update();
+                    });
+                </script>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">補足：AB上のQの座標を内分で考える</h3>
+
+                <div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed text-slate-700">
+                    <p>
+                        $0&lt;t\le5/3$ のとき、
+                        \[
+                        \mathrm{AQ}=3t,\qquad
+                        \mathrm{QB}=5-3t.
+                        \]
+                        したがって、
+                        \[
+                        \mathrm{AQ}:\mathrm{QB}
+                        =
+                        3t:(5-3t).
+                        \]
+                    </p>
+
+                    <p class="mt-3">
+                        QはABをこの比に内分するので、内分点の公式より、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \begin{aligned}
+                        \mathrm{Q}
+                        &=
+                        \left(
+                        \frac{
+                        (5-3t)\cdot3+3t\cdot0
+                        }{5},
+                        \frac{
+                        (5-3t)\cdot0+3t\cdot4
+                        }{5}
+                        \right)\\
+                        &=
+                        \left(
+                        3-\frac{9t}{5},
+                        \frac{12t}{5}
+                        \right).
+                        \end{aligned}
+                        \]
+                    </div>
+
+                    <p class="mt-3">
+                        「AからBへ全体の何割進んだか」で考える方法と、内分点の公式を使う方法は同じ内容です。
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">Qの移動距離を $t$ としてしまう</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            Qの速さはPの3倍なので、Pが $t$ 進んだときQは $3t$ 進んでいます。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">$t=5/3$ で場合分けしない</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            QはBで進行方向が変わります。Bに着く時刻を最初に求めることが重要です。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">前半の式の頂点だけで最大値を決める</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            場合分けした問題では、各区間の最大値を求めた後に比較します。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+            <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+
+            <p class="mt-4 text-sm text-blue-200">
+                質問をクリックし、答えを頭の中で作ってから開いてください。
+            </p>
+
+            <div class="mt-6 space-y-3">
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q1. Pが $t$ 進んだとき、Qの移動距離は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        Qの速さはPの3倍なので、
+                        \[
+                        3t
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q2. QがBに着くときの $t$ は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        3t=\mathrm{AB}=5
+                        \]
+                        より、
+                        \[
+                        t=\frac53
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q3. $0&lt;t\le5/3$ のときのQの座標は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \mathrm{Q}
+                        =
+                        \left(
+                        3-\frac{9t}{5},
+                        \frac{12t}{5}
+                        \right)
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q4. $S(t)$ の場合分けを答えてください。</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        S(t)=
+                        \begin{cases}
+                        \dfrac65t(3-t)
+                        &
+                        \left(
+                        0&lt;t\le\dfrac53
+                        \right),\\[2mm]
+                        \dfrac32(3-t)^2
+                        &
+                        \left(
+                        \dfrac53\le t&lt;3
+                        \right).
+                        \end{cases}
+                        \]
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q5. $S(t)$ の最大値と、そのときの $t$ は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        S_{\max}=\frac{27}{10},
+                        \qquad
+                        t=\frac32
+                        \]
+                        です。
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+            <a href="no24.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                ← No.24へ
+            </a>
+            <a href="no26.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                No.26 →
+            </a>
+        </nav>
+    </main>
+
+    <footer class="py-10 text-center text-sm text-slate-500">
+        自彊館(理系)　夏期数学課題 解説サイト
+    </footer>
+</div>
+</body>
+</html>

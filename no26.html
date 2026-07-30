@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.26 小問集合 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: { matchFontHeight: false },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: .5rem; margin-bottom: .5rem; }
+        button:focus-visible, summary:focus-visible, a:focus-visible, input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+        ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+        <div class="p-7 sm:p-10">
+            <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+                <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.26</span>
+                <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+            </div>
+            <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">小問集合</h1>
+            <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                問題
+            </h2>
+
+            <div class="mt-4 space-y-6 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed">
+                <div>
+                    <p class="font-bold text-slate-900">（1）放物線と2つの交点</p>
+                    <p class="mt-2">
+                        $a$ を正の定数とする。Oを原点とする $xy$ 平面上の放物線
+                    </p>
+                    <div class="math-scroll">
+                        \[
+                        C:y=x^2-ax+4
+                        \]
+                    </div>
+                    <p>
+                        が、$x$ 軸と異なる2点P、Qで交わっている。
+                        ただし、Pの $x$ 座標はQの $x$ 座標より小さい。
+                    </p>
+
+                    <ol class="mt-3 list-[lower-roman] space-y-2 pl-6">
+                        <li>$a$ のとり得る値の範囲を求めよ。</li>
+                        <li>PQの長さが3となるような $a$ の値を求めよ。</li>
+                        <li>$\mathrm{OP}:\mathrm{PQ}=1:2$ となるような $a$ の値を求めよ。</li>
+                    </ol>
+                </div>
+
+                <div class="border-t border-slate-200 pt-5">
+                    <p class="font-bold text-slate-900">（2）解集合が一致する不等式</p>
+                    <p class="mt-2">
+                        $a,b$ を定数とし、$a\ne0$ とする。$x$ の連立不等式
+                    </p>
+                    <div class="math-scroll">
+                        \[
+                        \begin{cases}
+                        ax-2&lt;0,\\
+                        x-4&lt;0
+                        \end{cases}
+                        \qquad\text{①}
+                        \]
+                    </div>
+                    <p>と、$x$ の不等式</p>
+                    <div class="math-scroll">
+                        \[
+                        2x^2-7x+b&lt;0
+                        \qquad\text{②}
+                        \]
+                    </div>
+                    <p>がある。</p>
+
+                    <ol class="mt-3 list-[lower-roman] space-y-2 pl-6">
+                        <li>$a=-1$ のとき、①を解け。</li>
+                        <li>$b=6$ のとき、②を解け。</li>
+                        <li>①の解と②の解が一致するような $a,b$ の値を求めよ。</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+                <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+                    <li>
+                        （1）のP、Qの $x$ 座標は
+                        \[
+                        x^2-ax+4=0
+                        \]
+                        の2つの実数解です。
+                    </li>
+                    <li>
+                        2つの解を $p,q\ (p&lt;q)$ とすると、
+                        \[
+                        p+q=a,\qquad pq=4.
+                        \]
+                    </li>
+                    <li>
+                        （2）の①は、$a$ の正負によって
+                        \[
+                        ax&lt;2
+                        \]
+                        の不等号の向きが変わります。
+                    </li>
+                    <li>
+                        ②は上に開く二次関数なので、2つの実数解をもつとき、その解の間で負になります。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                解説
+            </h2>
+
+            <p class="mt-4 text-sm leading-8 text-slate-600">
+                前半は二次方程式の解、後半は不等式の解集合を区間として捉えます。
+            </p>
+
+            <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+                <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">放物線と $x$ 軸が異なる2点で交わる</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            方程式の判別式を $D&gt;0$ とします。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">2つの交点間の距離</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            交点がともに $x$ 軸上なら、距離は2つの解の差です。
+                            係数が1の二次方程式では、
+                            \[
+                            q-p=\sqrt D
+                            \]
+                            と表せます。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">不等式の解集合が一致する</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            まず両方の解を区間で表します。
+                            区間が一致するには、左右の端点がそれぞれ一致しなければなりません。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（1）(i)(ii) 判別式と根の差を使う</strong><br>
+                        判別式は $D=a^2-16$ です。異なる2解には $D&gt;0$、
+                        根の差が3なら $\sqrt D=3$ とします。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（1）(iii) 長さの比を根の比へ変える</strong><br>
+                        P、Qの座標を $(p,0),(q,0)$ とすると、条件から
+                        \[
+                        p:(q-p)=1:2
+                        \]
+                        です。ここから $q=3p$ を得ます。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（2）(iii) ①が有界な区間になる条件を先に考える</strong><br>
+                        ②の解が存在する場合は2つの解の間です。①も有界な区間になるには $a&lt;0$ が必要です。
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+
+                <div class="mt-4 space-y-8 text-slate-700">
+                    <div>
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）(i)</p>
+
+                        <p class="mt-2">
+                            P、Qの $x$ 座標は
+                            \[
+                            x^2-ax+4=0
+                            \]
+                            の異なる2つの実数解である。
+                        </p>
+
+                        <p>
+                            判別式を $D$ とすると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            D=a^2-16.
+                            \]
+                        </div>
+
+                        <p>
+                            異なる2つの実数解をもつため、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            a^2-16&gt;0
+                            \]
+                            \[
+                            a&lt;-4
+                            \quad\text{または}\quad
+                            a&gt;4.
+                            \]
+                        </div>
+
+                        <p>
+                            $a$ は正の定数なので、
+                        </p>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$\displaystyle a&gt;4$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）(ii)</p>
+
+                        <p class="mt-2">
+                            P、Qの $x$ 座標をそれぞれ $p,q\ (p&lt;q)$ とする。
+                            二次方程式の解の公式より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            p=\frac{a-\sqrt{a^2-16}}2,
+                            \qquad
+                            q=\frac{a+\sqrt{a^2-16}}2.
+                            \]
+                        </div>
+
+                        <p>
+                            したがって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \mathrm{PQ}=q-p=\sqrt{a^2-16}.
+                            \]
+                        </div>
+
+                        <p>
+                            $\mathrm{PQ}=3$ より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \sqrt{a^2-16}=3
+                            \]
+                            \[
+                            a^2=25.
+                            \]
+                        </div>
+
+                        <p>
+                            $a&gt;4$ であるから、
+                        </p>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$\displaystyle a=5$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）(iii)</p>
+
+                        <p class="mt-2">
+                            $p,q$ は正である。実際、
+                            \[
+                            p+q=a&gt;0,\qquad pq=4&gt;0
+                            \]
+                            より、2つの解はともに正である。
+                        </p>
+
+                        <p>
+                            したがって、
+                            \[
+                            \mathrm{OP}=p,\qquad
+                            \mathrm{PQ}=q-p.
+                            \]
+                            条件
+                            \[
+                            \mathrm{OP}:\mathrm{PQ}=1:2
+                            \]
+                            より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            p:(q-p)=1:2.
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            q-p=2p
+                            \]
+                            \[
+                            q=3p.
+                            \]
+                        </div>
+
+                        <p>
+                            また、解と係数の関係より
+                            \[
+                            pq=4
+                            \]
+                            なので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            3p^2=4.
+                            \]
+                        </div>
+
+                        <p>
+                            $p&gt;0$ より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            p=\frac2{\sqrt3},
+                            \qquad
+                            q=2\sqrt3.
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            a
+                            &=p+q\\
+                            &=
+                            \frac2{\sqrt3}+2\sqrt3\\
+                            &=
+                            \frac8{\sqrt3}\\
+                            &=
+                            \frac{8\sqrt3}{3}.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$\displaystyle a=\frac{8\sqrt3}{3}$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）(i)</p>
+
+                        <p class="mt-2">
+                            $a=-1$ のとき、①は
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{cases}
+                            -x-2&lt;0,\\
+                            x-4&lt;0
+                            \end{cases}
+                        \]
+                    </div>
+
+                        <p>
+                            である。各不等式を解くと、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            x&gt;-2,\qquad x&lt;4.
+                            \]
+                        </div>
+
+                        <p>
+                            よって、共通範囲は
+                        </p>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$\displaystyle -2&lt;x&lt;4$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）(ii)</p>
+
+                        <p class="mt-2">
+                            $b=6$ のとき、②は
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            2x^2-7x+6&lt;0.
+                            \]
+                        </div>
+
+                        <p>
+                            左辺を因数分解すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            (2x-3)(x-2)&lt;0.
+                            \]
+                        </div>
+
+                        <p>
+                            上に開く二次関数なので、2つの解の間で負になる。
+                        </p>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$\displaystyle \frac32&lt;x&lt;2$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）(iii)</p>
+
+                        <p class="mt-2">
+                            まず①の解を $a$ の符号で場合分けする。
+                        </p>
+
+                        <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                            <p class="font-bold text-slate-900">$a&gt;0$ のとき</p>
+                            <div class="math-scroll mt-2">
+                                \[
+                                ax-2&lt;0
+                                \quad\Longleftrightarrow\quad
+                                x&lt;\frac2a.
+                                \]
+                            </div>
+                            <p class="text-sm">
+                                ①の解は
+                                \[
+                                x&lt;\min\left(\frac2a,4\right)
+                                \]
+                                という半直線である。②の解と同じ有界な開区間にはならない。
+                            </p>
+                        </div>
+
+                        <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                            <p class="font-bold text-slate-900">$a&lt;0$ のとき</p>
+                            <div class="math-scroll mt-2">
+                                \[
+                                ax-2&lt;0
+                                \quad\Longleftrightarrow\quad
+                                x&gt;\frac2a.
+                                \]
+                            </div>
+                            <p class="text-sm">
+                                よって、①の解は
+                                \[
+                                \frac2a&lt;x&lt;4.
+                                
+                                \]
+                            </p>
+                        </div>
+
+                        <p class="mt-4">
+                            ①と②の解が一致するには、②の2つの解が
+                            \[
+                            \frac2a,\quad4
+                            \]
+                            でなければならない。
+                        </p>
+
+                        <p>
+                            したがって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            2x^2-7x+b
+                            =
+                            2\left(x-\frac2a\right)(x-4).
+                            \]
+                        </div>
+
+                        <p>
+                            右辺を展開すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            2\left(x-\frac2a\right)(x-4)
+                            &=
+                            2x^2
+                            -2\left(4+\frac2a\right)x
+                            +\frac{16}{a}.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>
+                            係数を比較すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            -2\left(4+\frac2a\right)=-7,
+                            \qquad
+                            b=\frac{16}{a}.
+                            \]
+                        </div>
+
+                        <p>
+                            第1式より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            4+\frac2a=\frac72
+                            \]
+                            \[
+                            \frac2a=-\frac12
+                            \]
+                            \[
+                            a=-4.
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            b=\frac{16}{-4}=-4.
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            実際、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            2x^2-7x-4
+                            =
+                            (2x+1)(x-4)
+                            \]
+                        </div>
+
+                        <p>
+                            なので、②の解は
+                            \[
+                            -\frac12&lt;x&lt;4.
+                            \]
+                            また、$a=-4$ のとき①の解も
+                            \[
+                            -\frac12&lt;x&lt;4
+                            \]
+                            となり、一致する。
+                        </p>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$\displaystyle a=-4,\quad b=-4$
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化① 放物線と2つの交点</h3>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    $a$ を動かすと、放物線と $x$ 軸との交点P、Qが動きます。
+                    $a=5$ のときPQの長さが3、
+                    $a=8\sqrt3/3$ のとき $\mathrm{OP}:\mathrm{PQ}=1:2$ です。
+                </p>
+
+                <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="mx-auto max-w-xl">
+                        <label for="a-slider" class="mb-2 block text-sm font-medium text-slate-700">
+                            a：
+                            <span id="a-display" class="text-lg font-bold text-blue-700">5.000</span>
+                        </label>
+
+                        <input id="a-slider" type="range" min="4.01" max="8" step="0.002" value="5"
+                               class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600">
+
+                        <div class="mt-3 flex flex-wrap justify-center gap-2">
+                            <button type="button" data-a="5"
+                                    class="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-bold text-blue-700 hover:bg-blue-50">
+                                PQ = 3
+                            </button>
+                            <button type="button" data-a="4.6188021535"
+                                    class="rounded-lg border border-violet-200 bg-white px-3 py-2 text-sm font-bold text-violet-700 hover:bg-violet-50">
+                                OP : PQ = 1 : 2
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 overflow-x-auto">
+                        <svg id="parabola-svg" width="680" height="440" viewBox="0 0 680 440"
+                             class="mx-auto h-auto w-full max-w-[680px] rounded-xl border border-slate-200 bg-white"
+                             aria-label="放物線とx軸との交点P、Qの可視化">
+                            <g id="grid-one"></g>
+                            <line id="x-axis-one" stroke="#64748b" stroke-width="1.5"></line>
+                            <line id="y-axis-one" stroke="#64748b" stroke-width="1.5"></line>
+                            <path id="parabola-path" fill="none" stroke="#2563eb" stroke-width="3"></path>
+                            <line id="pq-segment" stroke="#e11d48" stroke-width="7" stroke-linecap="round"></line>
+
+                            <circle id="point-p" r="7" fill="#e11d48"></circle>
+                            <circle id="point-q" r="7" fill="#7c3aed"></circle>
+                            <circle id="point-o" r="5" fill="#111827"></circle>
+
+                            <g font-size="14" font-weight="700">
+                                <text id="label-p" fill="#be123c">P</text>
+                                <text id="label-q" fill="#6d28d9">Q</text>
+                                <text id="label-o" fill="#111827">O</text>
+                                <text id="label-pq" fill="#be123c">PQ</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                        <div class="rounded-lg border border-slate-200 bg-white p-3 text-center">
+                            <div class="text-xs font-bold text-slate-500">Pのx座標</div>
+                            <div id="p-root" class="mt-1 text-lg font-bold text-rose-700"></div>
+                        </div>
+                        <div class="rounded-lg border border-slate-200 bg-white p-3 text-center">
+                            <div class="text-xs font-bold text-slate-500">Qのx座標</div>
+                            <div id="q-root" class="mt-1 text-lg font-bold text-violet-700"></div>
+                        </div>
+                        <div class="rounded-lg border border-blue-200 bg-blue-50 p-3 text-center">
+                            <div class="text-xs font-bold text-blue-700">PQ</div>
+                            <div id="pq-length" class="mt-1 text-lg font-bold text-blue-800"></div>
+                        </div>
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-center">
+                            <div class="text-xs font-bold text-emerald-700">OP : PQ</div>
+                            <div id="ratio-display" class="mt-1 text-lg font-bold text-emerald-800"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const slider = document.getElementById("a-slider");
+                        const aDisplay = document.getElementById("a-display");
+
+                        const W = 680;
+                        const H = 440;
+                        const xMin = -0.8;
+                        const xMax = 8.5;
+                        const yMin = -10;
+                        const yMax = 13;
+
+                        const sx = x => (x-xMin)/(xMax-xMin)*W;
+                        const sy = y => H-(y-yMin)/(yMax-yMin)*H;
+
+                        const setPoint = (id, x, y) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("cx", sx(x));
+                            el.setAttribute("cy", sy(y));
+                        };
+
+                        const setText = (id, x, y, text) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("x", sx(x));
+                            el.setAttribute("y", sy(y));
+                            if (text !== undefined) el.textContent = text;
+                        };
+
+                        const setLine = (id, x1, y1, x2, y2) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("x1", sx(x1));
+                            el.setAttribute("y1", sy(y1));
+                            el.setAttribute("x2", sx(x2));
+                            el.setAttribute("y2", sy(y2));
+                        };
+
+                        let gridMarkup = "";
+                        for (let x = 0; x <= 8; x++) {
+                            gridMarkup += `<line x1="${sx(x)}" y1="0" x2="${sx(x)}" y2="${H}" stroke="#f1f5f9" stroke-width="1"/>`;
+                        }
+                        for (let y = -10; y <= 12; y += 2) {
+                            gridMarkup += `<line x1="0" y1="${sy(y)}" x2="${W}" y2="${sy(y)}" stroke="#f1f5f9" stroke-width="1"/>`;
+                        }
+                        document.getElementById("grid-one").innerHTML = gridMarkup;
+
+                        setLine("x-axis-one", xMin, 0, xMax, 0);
+                        setLine("y-axis-one", 0, yMin, 0, yMax);
+                        setPoint("point-o", 0, 0);
+                        setText("label-o", -0.18, -0.7);
+
+                        function updateParabola() {
+                            const a = parseFloat(slider.value);
+                            const D = a*a-16;
+                            const rootD = Math.sqrt(D);
+                            const p = (a-rootD)/2;
+                            const q = (a+rootD)/2;
+
+                            let d = "";
+                            const steps = 320;
+                            for (let i = 0; i <= steps; i++) {
+                                const x = xMin+(xMax-xMin)*i/steps;
+                                const y = x*x-a*x+4;
+                                d += `${i === 0 ? "M" : "L"} ${sx(x)} ${sy(y)} `;
+                            }
+                            document.getElementById("parabola-path").setAttribute("d", d);
+
+                            setPoint("point-p", p, 0);
+                            setPoint("point-q", q, 0);
+                            setLine("pq-segment", p, 0, q, 0);
+                            setText("label-p", p-0.10, -0.8);
+                            setText("label-q", q+0.08, -0.8);
+                            setText("label-pq", (p+q)/2-0.15, 1.0);
+
+                            aDisplay.textContent = a.toFixed(3);
+                            document.getElementById("p-root").textContent = p.toFixed(5);
+                            document.getElementById("q-root").textContent = q.toFixed(5);
+                            document.getElementById("pq-length").textContent = (q-p).toFixed(5);
+                            document.getElementById("ratio-display").textContent =
+                                `1 : ${((q-p)/p).toFixed(4)}`;
+                        }
+
+                        slider.addEventListener("input", updateParabola);
+                        document.querySelectorAll("[data-a]").forEach(button => {
+                            button.addEventListener("click", () => {
+                                slider.value = button.dataset.a;
+                                updateParabola();
+                            });
+                        });
+
+                        updateParabola();
+                    });
+                </script>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化② 解集合の一致</h3>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    $a=-4,\ b=-4$ のとき、①と②はいずれも
+                    \[
+                    -\frac12&lt;x&lt;4
+                    \]
+                    となります。
+                </p>
+
+                <div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5">
+                    <div class="overflow-x-auto">
+                        <svg width="700" height="250" viewBox="0 0 700 250"
+                             class="mx-auto h-auto w-full max-w-[700px] rounded-xl border border-indigo-200 bg-white"
+                             aria-label="2つの不等式の解区間が一致する図">
+                            <line x1="70" y1="85" x2="640" y2="85" stroke="#64748b" stroke-width="2"/>
+                            <line x1="70" y1="175" x2="640" y2="175" stroke="#64748b" stroke-width="2"/>
+
+                            <line x1="198" y1="85" x2="550" y2="85" stroke="#2563eb" stroke-width="9" stroke-linecap="round"/>
+                            <line x1="198" y1="175" x2="550" y2="175" stroke="#10b981" stroke-width="9" stroke-linecap="round"/>
+
+                            <circle cx="198" cy="85" r="8" fill="white" stroke="#2563eb" stroke-width="3"/>
+                            <circle cx="550" cy="85" r="8" fill="white" stroke="#2563eb" stroke-width="3"/>
+                            <circle cx="198" cy="175" r="8" fill="white" stroke="#10b981" stroke-width="3"/>
+                            <circle cx="550" cy="175" r="8" fill="white" stroke="#10b981" stroke-width="3"/>
+
+                            <g font-size="15" font-weight="700">
+                                <text x="25" y="91" fill="#1d4ed8">①</text>
+                                <text x="25" y="181" fill="#047857">②</text>
+                                <text x="172" y="55" fill="#475569">-1/2</text>
+                                <text x="544" y="55" fill="#475569">4</text>
+                                <text x="172" y="225" fill="#475569">-1/2</text>
+                                <text x="544" y="225" fill="#475569">4</text>
+                                <text x="300" y="28" fill="#1e293b">両方とも同じ開区間</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                        <div class="rounded-lg border border-blue-200 bg-white p-4 text-center">
+                            <div class="text-sm font-bold text-blue-800">①の解</div>
+                            <div class="mt-2 text-lg font-bold text-slate-900">-1/2 &lt; x &lt; 4</div>
+                        </div>
+                        <div class="rounded-lg border border-emerald-200 bg-white p-4 text-center">
+                            <div class="text-sm font-bold text-emerald-800">②の解</div>
+                            <div class="mt-2 text-lg font-bold text-slate-900">-1/2 &lt; x &lt; 4</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">判別式の条件だけで $a&gt;4$ としない</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            $D&gt;0$ からは $a&lt;-4$ または $a&gt;4$ です。
+                            最後に「$a$ は正の定数」を使います。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">OPを根の絶対値と考えずに進める</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            本問では2つの根がともに正なので $\mathrm{OP}=p$ です。
+                            根の符号を確認してから長さへ読み替えます。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">$a&lt;0$ で不等号を反転し忘れる</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            $ax&lt;2$ を負の数 $a$ で割ると、
+                            \[
+                            x&gt;\frac2a
+                            \]
+                            となります。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+            <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+
+            <p class="mt-4 text-sm text-blue-200">
+                質問をクリックし、答えを頭の中で作ってから開いてください。
+            </p>
+
+            <div class="mt-6 space-y-3">
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q1. 放物線がx軸と異なる2点で交わる条件は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        D=a^2-16&gt;0
+                        \]
+                        と、$a&gt;0$ より
+                        \[
+                        a&gt;4
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q2. PQの長さを判別式で表すとどうなりますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \mathrm{PQ}=\sqrt{a^2-16}
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q3. OP : PQ = 1 : 2 から、2つの根にはどんな関係が得られますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        根を $p&lt;q$ とすると、
+                        \[
+                        p:(q-p)=1:2
+                        \]
+                        より
+                        \[
+                        q=3p
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q4. a=-1のとき、①の解は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        -2&lt;x&lt;4
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q5. ①と②の解が一致するa、bは何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        a=-4,\qquad b=-4
+                        \]
+                        です。
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+            <a href="no25.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                ← No.25へ
+            </a>
+            <a href="no27.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                No.27 →
+            </a>
+        </nav>
+    </main>
+
+    <footer class="py-10 text-center text-sm text-slate-500">
+        自彊館(理系)　夏期数学課題 解説サイト
+    </footer>
+</div>
+</body>
+</html>
