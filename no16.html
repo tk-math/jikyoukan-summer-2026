@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.16 確率と期待値 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+        .box-card { transition: transform .18s ease, border-color .18s ease, background-color .18s ease; }
+        .box-card.is-match { transform: translateY(-3px); border-color: #10b981; background: #ecfdf5; }
+        .ball-chip { transition: transform .22s ease; }
+        .bar-fill { transition: width .35s ease; }
+        button:focus-visible, summary:focus-visible, a:focus-visible, input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.16</span>
+                    <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">基礎</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">確率と期待値</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+
+                <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed">
+                    <p>
+                        1，2，3，4，5 の番号がつけられた5個の箱と，1，2，3，4，5 の番号がつけられた5個の球があり，球を各箱に1個ずつ無作為に入れるとする．番号 $k$ の箱に入る球の番号を $X_k\ (1\leq k\leq5)$ とする．
+                    </p>
+                    <ol class="mt-4 list-decimal space-y-4 pl-6">
+                        <li>$X_1=3$ となる確率を求めよ．</li>
+                        <li>$X_1=3$ かつ $X_2=4$ かつ $X_3=5$ となる確率を求めよ．</li>
+                        <li>
+                            $X_k=k+2$ となる $k$ の個数を $Y$ とする．例えば，(2) は $Y=3$ の場合である．$Y$ の期待値を求めよ．
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                    <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+                    <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+                        <li><strong>1つの箱に1つの球：</strong> 球の入れ方は、5個の球を5個の箱に並べる順列と同じです。したがって、すべての配置は $5!$ 通りで、どの配置も同様に確からしいと考えられます。</li>
+                        <li><strong>$X_k$ の意味：</strong> $X_k$ は「箱 $k$ に入った球の番号」です。添字 $k$ は箱の番号であり、値は球の番号を表します。</li>
+                        <li><strong>(3)で条件を満たし得るのは3つ：</strong> $X_k=k+2$ は、$k=1,2,3$ のときだけ可能です。$k=4,5$ では右辺が6,7となり、その番号の球は存在しません。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    まず配置の確率を確認し、その考えを期待値へつなげます。
+                </p>
+
+                <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                            <p class="text-sm font-bold text-amber-900">異なる球を異なる箱へ1個ずつ入れる</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                これは「球の並べ方」と同じです。全事象は <strong>$5!$ 通り</strong>。特定の箱に入る球を固定したら、残りを並べる方法を数えます。
+                            </p>
+                        </div>
+                        <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                            <p class="text-sm font-bold text-amber-900">複数の箱の中身を順に指定する</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                「箱1に球3、そのうえ箱2に球4、そのうえ箱3に球5」と考え、<strong>条件付き確率を順に掛ける</strong>こともできます。
+                            </p>
+                        </div>
+                        <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                            <p class="text-sm font-bold text-amber-900">確率変数の期待値を求める</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                まず $Y$ がとり得る値を確認し、それぞれの値をとる配置を数えます。<strong>$Y$ の確率分布を作り、$E[Y]=\sum yP(Y=y)$</strong> を用いるのが基本の解法です。
+                            </p>
+                        </div>
+                        <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                            <p class="text-sm font-bold text-amber-900">別解：数学Bの期待値の性質を使う</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                条件が成立したとき1、成立しないとき0となる指示変数を作ると、期待値の線形性によって短く計算できます。これは<strong>数学Bの知識を利用する解法</strong>です。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                            <strong>(1) 1つの箱だけを見る</strong><br>
+                            箱1に入る可能性のある球は1〜5の5個で、どの球も同じ確率です。したがって、球3が入る確率は $1/5$ です。
+                        </div>
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                            <strong>(2) 指定された3個を固定する</strong><br>
+                            箱1・2・3に入る球をそれぞれ3・4・5に固定すると、残った球1・2を箱4・5に入れる方法は $2!$ 通りです。全配置 $5!$ 通りと比較します。
+                        </div>
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                            <strong>(3) $Y$ の確率分布を作る</strong><br>
+                            条件 $X_1=3$、$X_2=4$、$X_3=5$ のうち、成立する個数が $Y$ です。したがって、$Y$ のとり得る値は $0,1,2,3$ です。<br>
+                            まず数えやすい $Y=3$、$Y=2$、$Y=1$ の順に配置数を求め、最後に全 $5!=120$ 通りから引いて $Y=0$ の配置数を求めます。その後、確率分布から $E[Y]$ を計算します。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <div>
+                            <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）</p>
+                            <p class="mt-2">
+                                箱1に入る球は1，2，3，4，5のいずれも同様に確からしい。したがって、
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                P(X_1=3)=\frac{1}{5}
+                                \]
+                            </div>
+                            <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                                答：$\dfrac{1}{5}$
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）</p>
+                            <p class="mt-2">
+                                球の入れ方は全部で $5!$ 通りである。<br>
+                                $X_1=3,\ X_2=4,\ X_3=5$ とすると、残りの球1，2を箱4，5に入れる方法は $2!$ 通りである。よって、
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                P(X_1=3,\ X_2=4,\ X_3=5)
+                                =\frac{2!}{5!}
+                                =\frac{1}{60}
+                                \]
+                            </div>
+                            <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                                答：$\dfrac{1}{60}$
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）</p>
+                            <p class="mt-2">
+                                $X_k=k+2$ が起こり得るのは $k=1,2,3$ のときだけであるから、$Y$ のとり得る値は $0,1,2,3$ である。球の入れ方は全部で $5!=120$ 通りである。
+                            </p>
+
+                            <p class="mt-4 font-bold text-slate-800">$Y=3$ のとき</p>
+                            <p class="mt-1">
+                                $X_1=3,\ X_2=4,\ X_3=5$ をすべて満たす。残りの球1，2を箱4，5に入れる方法は
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                2!=2\text{通り}
+                                \]
+                            </div>
+
+                            <p class="mt-4 font-bold text-slate-800">$Y=2$ のとき</p>
+                            <p class="mt-1">
+                                成立する2条件の選び方は ${}_3C_2=3$ 通りである。例えば $X_1=3,\ X_2=4$ のみが成立するとき、残りの球1，2，5を箱3，4，5に入れる方法は $3!$ 通りあるが、$X_3=5$ も成立する $2!$ 通りを除く必要がある。よって、
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                {}_3C_2(3!-2!)=3\cdot4=12\text{通り}
+                                \]
+                            </div>
+
+                            <p class="mt-4 font-bold text-slate-800">$Y=1$ のとき</p>
+                            <p class="mt-1">
+                                成立する1条件の選び方は $3$ 通りである。例えば $X_1=3$ のみが成立するとき、残り4球の配置 $4!$ 通りから、$X_2=4$ または $X_3=5$ となる配置を除く。両方が成立する配置を一度戻すと、
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                4!-2\cdot3!+2!=24-12+2=14\text{通り}
+                                \]
+                            </div>
+                            <p class="mt-1">したがって、$Y=1$ となるのは</p>
+                            <div class="math-scroll">
+                                \[
+                                3\cdot14=42\text{通り}
+                                \]
+                            </div>
+
+                            <p class="mt-4 font-bold text-slate-800">$Y=0$ のとき</p>
+                            <p class="mt-1">
+                                全配置から $Y=1,2,3$ の場合を除けばよいから、
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                120-42-12-2=64\text{通り}
+                                \]
+                            </div>
+
+                            <p class="mt-4">よって、$Y$ の確率分布は次のようになる。</p>
+                            <div class="math-scroll">
+                                \[
+                                \begin{array}{c|cccc}
+                                Y&0&1&2&3\\ \hline
+                                P&\dfrac{64}{120}&\dfrac{42}{120}&\dfrac{12}{120}&\dfrac{2}{120}
+                                \end{array}
+                                \]
+                            </div>
+                            <p class="mt-2">したがって、</p>
+                            <div class="math-scroll">
+                                \[
+                                \begin{aligned}
+                                E[Y]
+                                &=0\cdot\frac{64}{120}
+                                +1\cdot\frac{42}{120}
+                                +2\cdot\frac{12}{120}
+                                +3\cdot\frac{2}{120}\\
+                                &=\frac{72}{120}\\
+                                &=\frac35
+                                \end{aligned}
+                                \]
+                            </div>
+                            <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                                答：$\dfrac{3}{5}$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化（条件を満たす個数 $Y$）</h3>
+                    <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                        「無作為に配置」ボタンを押すと、球1〜5が箱1〜5に1個ずつ入ります。<br>
+                        緑色になる箱は $X_k=k+2$ を満たしています。条件を満たす箱の個数が $Y$ です。
+                    </p>
+
+                    <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                        <div class="flex flex-wrap justify-center gap-3">
+                            <button id="shuffle-button" type="button" class="rounded-lg bg-blue-700 px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-blue-800">
+                                無作為に配置
+                            </button>
+                            <button id="example-button" type="button" class="rounded-lg border border-emerald-300 bg-emerald-50 px-4 py-2 text-sm font-bold text-emerald-800 hover:bg-emerald-100">
+                                (2) の配置を見る
+                            </button>
+                            <button id="identity-button" type="button" class="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-700 hover:bg-slate-100">
+                                初期配置
+                            </button>
+                        </div>
+
+                        <div id="box-container" class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-5" aria-live="polite"></div>
+
+                        <div id="y-panel" class="mt-5 rounded-xl border border-slate-200 bg-white p-4 text-center shadow-sm">
+                            <div class="text-sm font-bold text-slate-500">現在の値</div>
+                            <div class="mt-1 text-2xl font-bold text-blue-800">$Y=$ <span id="y-value">0</span></div>
+                            <div id="indicator-text" class="mt-2 text-sm text-slate-600">$I_1+I_2+I_3=0+0+0$</div>
+                        </div>
+
+                        <div class="mt-4 grid gap-2 text-xs text-slate-600 sm:grid-cols-3">
+                            <div class="rounded-lg border border-slate-200 bg-white p-3 text-center">箱1：球3なら成立</div>
+                            <div class="rounded-lg border border-slate-200 bg-white p-3 text-center">箱2：球4なら成立</div>
+                            <div class="rounded-lg border border-slate-200 bg-white p-3 text-center">箱3：球5なら成立</div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const boxContainer = document.getElementById('box-container');
+                        const yValue = document.getElementById('y-value');
+                        const indicatorText = document.getElementById('indicator-text');
+                        const shuffleButton = document.getElementById('shuffle-button');
+                        const exampleButton = document.getElementById('example-button');
+                        const identityButton = document.getElementById('identity-button');
+
+                        let arrangement = [1, 2, 3, 4, 5];
+
+                        function shuffle(values) {
+                            const result = values.slice();
+                            for (let i = result.length - 1; i > 0; i--) {
+                                const j = Math.floor(Math.random() * (i + 1));
+                                [result[i], result[j]] = [result[j], result[i]];
+                            }
+                            return result;
+                        }
+
+                        function render() {
+                            boxContainer.innerHTML = '';
+                            const indicators = [];
+
+                            arrangement.forEach(function (ball, index) {
+                                const k = index + 1;
+                                const possible = k <= 3;
+                                const target = k + 2;
+                                const isMatch = possible && ball === target;
+                                if (possible) indicators.push(isMatch ? 1 : 0);
+
+                                const card = document.createElement('div');
+                                card.className = 'box-card rounded-xl border-2 border-slate-200 bg-white p-3 text-center shadow-sm' + (isMatch ? ' is-match' : '');
+
+                                const status = possible
+                                    ? (isMatch
+                                        ? '<span class="mt-2 inline-flex rounded-full bg-emerald-100 px-2 py-1 text-xs font-bold text-emerald-800">条件成立</span>'
+                                        : '<span class="mt-2 inline-flex rounded-full bg-slate-100 px-2 py-1 text-xs font-bold text-slate-500">条件不成立</span>')
+                                    : '<span class="mt-2 inline-flex rounded-full bg-amber-50 px-2 py-1 text-xs font-bold text-amber-700">対象外</span>';
+
+                                card.innerHTML =
+                                    '<div class="text-xs font-bold text-slate-500">箱 ' + k + '</div>' +
+                                    '<div class="ball-chip mx-auto mt-2 grid h-12 w-12 place-items-center rounded-full bg-blue-700 text-xl font-bold text-white shadow">' + ball + '</div>' +
+                                    '<div class="mt-2 text-xs text-slate-500">$X_' + k + '=' + ball + '$</div>' +
+                                    status;
+
+                                boxContainer.appendChild(card);
+                            });
+
+                            const y = indicators.reduce(function (sum, value) { return sum + value; }, 0);
+                            yValue.textContent = String(y);
+                            indicatorText.textContent = '$I_1+I_2+I_3=' + indicators.join('+') + '$';
+
+                            if (window.MathJax && window.MathJax.typesetPromise) {
+                                window.MathJax.typesetPromise([boxContainer, indicatorText]).catch(function () {});
+                            }
+                        }
+
+                        shuffleButton.addEventListener('click', function () {
+                            arrangement = shuffle([1, 2, 3, 4, 5]);
+                            render();
+                        });
+
+                        exampleButton.addEventListener('click', function () {
+                            arrangement = [3, 4, 5, 1, 2];
+                            render();
+                        });
+
+                        identityButton.addEventListener('click', function () {
+                            arrangement = [1, 2, 3, 4, 5];
+                            render();
+                        });
+
+                        render();
+                    });
+                </script>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化（主解法：$Y$ の確率分布）</h3>
+                    <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                        全 $120$ 通りを $Y$ の値ごとに分類すると、$Y=0,1,2,3$ の配置数はそれぞれ $64,42,12,2$ 通りです。棒の長さで割合を比較し、期待値が「値×確率」の和で求められることを確認しましょう。
+                    </p>
+
+                    <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex items-center justify-between text-sm font-bold text-slate-700"><span>$Y=0$</span><span>64通り</span></div>
+                                <div class="mt-2 h-4 overflow-hidden rounded-full bg-slate-200"><div class="bar-fill h-full rounded-full bg-blue-700" style="width:53.333%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex items-center justify-between text-sm font-bold text-slate-700"><span>$Y=1$</span><span>42通り</span></div>
+                                <div class="mt-2 h-4 overflow-hidden rounded-full bg-slate-200"><div class="bar-fill h-full rounded-full bg-blue-700" style="width:35%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex items-center justify-between text-sm font-bold text-slate-700"><span>$Y=2$</span><span>12通り</span></div>
+                                <div class="mt-2 h-4 overflow-hidden rounded-full bg-slate-200"><div class="bar-fill h-full rounded-full bg-blue-700" style="width:10%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex items-center justify-between text-sm font-bold text-slate-700"><span>$Y=3$</span><span>2通り</span></div>
+                                <div class="mt-2 h-4 overflow-hidden rounded-full bg-slate-200"><div class="bar-fill h-full rounded-full bg-blue-700" style="width:1.667%"></div></div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 rounded-xl border border-blue-200 bg-blue-50 p-4 text-sm text-slate-700">
+                            <div class="math-scroll">
+                                \[
+                                \begin{aligned}
+                                E[Y]
+                                &=0\cdot\frac{64}{120}
+                                +1\cdot\frac{42}{120}
+                                +2\cdot\frac{12}{120}
+                                +3\cdot\frac{2}{120}\\
+                                &=\frac{72}{120}
+                                =\frac35
+                                \end{aligned}
+                                \]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解の考察（数学Bの知識を利用）：指示変数による解法</h3>
+                    <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                        数学Bで学ぶ期待値の性質を利用すると、$Y$ の確率分布をすべて求めなくても計算できます。条件が成立したかどうかを表す0・1の確率変数に分解するのがポイントです。
+                    </p>
+                    <div class="mt-4 rounded-lg border border-emerald-200 bg-emerald-50 p-5 text-sm leading-relaxed text-slate-700">
+                        <p>$k=1,2,3$ に対して、確率変数 $I_k$ を</p>
+                        <div class="math-scroll">
+                            \[
+                            I_k=
+                            \begin{cases}
+                            1 & (X_k=k+2)\\
+                            0 & (X_k\ne k+2)
+                            \end{cases}
+                            \]
+                        </div>
+                        <p>と定める。$k=4,5$ では $X_k=k+2$ は起こり得ないので、</p>
+                        <div class="math-scroll">
+                            \[
+                            Y=I_1+I_2+I_3
+                            \]
+                        </div>
+                        <p>である。また、各 $k=1,2,3$ について、箱 $k$ に指定された球 $k+2$ が入る確率は $1/5$ であるから、</p>
+                        <div class="math-scroll">
+                            \[
+                            E[I_k]=1\cdot\frac15+0\cdot\frac45=\frac15
+                            \]
+                        </div>
+                        <p>期待値の線形性より、</p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            E[Y]
+                            &=E[I_1+I_2+I_3]\\
+                            &=E[I_1]+E[I_2]+E[I_3]\\
+                            &=\frac15+\frac15+\frac15\\
+                            &=\frac35
+                            \end{aligned}
+                            \]
+                        </div>
+                        <p class="mt-2 font-bold text-emerald-900">
+                            $I_1,I_2,I_3$ は独立ではありませんが、期待値の線形性を使うために独立性は必要ありません。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                            <p class="text-sm font-bold text-red-900">箱と球の番号を逆に読む</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                $X_2=4$ は「球2が箱4に入る」ではなく、<strong>箱2に球4が入る</strong>という意味です。添字が箱、値が球です。
+                            </p>
+                        </div>
+                        <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                            <p class="text-sm font-bold text-red-900">$Y=1$ の場合に、ほかの条件まで成立する配置を含めてしまう</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                例えば「$X_1=3$ のみが成立」と数えるときは、$X_2=4$ と $X_3=5$ を除かなければなりません。$4!-2\cdot3!+2!$ と、重なりを戻すことが重要です。
+                            </p>
+                        </div>
+                        <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                            <p class="text-sm font-bold text-red-900">$Y=0$ を最初から直接数えようとする</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                3条件がすべて不成立となる配置を直接数えると複雑です。先に $Y=1,2,3$ を数え、全 $120$ 通りから引く方が安全です。
+                            </p>
+                        </div>
+                        <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                            <p class="text-sm font-bold text-red-900">別解で、独立でないから期待値を足せないと思う</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                指示変数 $I_1,I_2,I_3$ は独立ではありませんが、期待値の線形性 $E[I_1+I_2+I_3]=E[I_1]+E[I_2]+E[I_3]$ は独立性を必要としません。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">質問をクリックし、答えを思い出してから確認してください。</p>
+
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. 球を5個の箱に1個ずつ入れる配置は全部で何通りですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            5個の異なる球を5個の箱に並べるので、$5!=120$ 通りです。
+                        </div>
+                    </details>
+
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. (2)の確率を、順に球を入れる考え方で表すとどうなりますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            箱1に球3が入る確率が $1/5$、その後に箱2へ球4が入る確率が $1/4$、さらに箱3へ球5が入る確率が $1/3$ なので、$\dfrac15\cdot\dfrac14\cdot\dfrac13=\dfrac1{60}$ です。
+                        </div>
+                    </details>
+
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. (3)で $k=4,5$ を数えなくてよいのはなぜですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            $k=4$ なら $X_4=6$、$k=5$ なら $X_5=7$ が必要ですが、球の番号は1〜5しかないため、どちらも起こり得ないからです。
+                        </div>
+                    </details>
+
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q4. 主解法で得られる $Y$ の分布と期待値はどうなりますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            $Y=0,1,2,3$ となる配置はそれぞれ $64,42,12,2$ 通りです。したがって、$E[Y]=0\cdot\frac{64}{120}+1\cdot\frac{42}{120}+2\cdot\frac{12}{120}+3\cdot\frac{2}{120}=\frac35$ です。
+                        </div>
+                    </details>
+
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q5. 数学Bの知識を利用する別解では、$Y$ をどのように表しますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            $X_k=k+2$ が成立するとき1、成立しないとき0となる $I_k\ (k=1,2,3)$ を定めると、$Y=I_1+I_2+I_3$ です。各 $E[I_k]=1/5$ なので、期待値の線形性から $E[Y]=3/5$ です。
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="no15.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← No.15へ
+                </a>
+                <a href="no17.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.17 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            自彊館(理系)　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>

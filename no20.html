@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.20 高次方程式と剰余の定理 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: { matchFontHeight: false },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: .5rem; margin-bottom: .5rem; }
+        button:focus-visible, summary:focus-visible, a:focus-visible, input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+        ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+        <div class="p-7 sm:p-10">
+            <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+                <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.20</span>
+                <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+            </div>
+            <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">高次方程式と剰余の定理</h1>
+            <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                問題
+            </h2>
+
+            <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed">
+                <p>$x$ の2つの整式</p>
+                <div class="math-scroll">
+                    \[
+                    \begin{aligned}
+                    f(x)&=x^2+x-3,\\
+                    g(x)&=2x^4+x^3+(p-7)x^2+(p+q+3)x-4p
+                    \end{aligned}
+                    \]
+                </div>
+                <p>がある。ただし、$p,q$ は実数の定数とする。</p>
+
+                <ol class="mt-4 list-decimal space-y-4 pl-6">
+                    <li>
+                        方程式 $f(x)=0$ を解け。また、$f(x)=0$ の2解を $\alpha,\beta$ とするとき、
+                        $\alpha+\beta,\alpha\beta$ の値をそれぞれ求めよ。
+                    </li>
+                    <li>$g(x)$ を $f(x)$ で割ったときの商と余りを求めよ。</li>
+                    <li>
+                        （1）で定めた $\alpha,\beta$ に対して、
+                        \[
+                        g(\alpha)=\alpha^2-\alpha,\qquad
+                        g(\beta)=\beta^2-\beta
+                        \]
+                        が成り立つ。このとき、定数 $p,q$ の値を求め、方程式 $g(x)=0$ を解け。
+                    </li>
+                </ol>
+            </div>
+
+            <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+                <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+                    <li><strong>2次方程式：</strong> 解の公式で $\alpha,\beta$ を求めると同時に、解と係数の関係も確認します。</li>
+                    <li><strong>整式の割り算：</strong> $g(x)$ を2次式 $f(x)$ で割るので、余りは1次以下です。</li>
+                    <li><strong>$f(\alpha)=f(\beta)=0$：</strong> $g(x)=f(x)Q(x)+R(x)$ なら、
+                        \[
+                        g(\alpha)=R(\alpha),\qquad g(\beta)=R(\beta)
+                        \]
+                        となります。</li>
+                    <li><strong>次数を下げる：</strong> $\alpha^2+\alpha-3=0$ より、
+                        \[
+                        \alpha^2=3-\alpha
+                        \]
+                        と置き換えられます。$\beta$ についても同様です。</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                解説
+            </h2>
+            <p class="mt-4 text-sm leading-8 text-slate-600">
+                「割った余りは、割る式の解を代入したときの値を支配する」という性質を利用します。
+            </p>
+
+            <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+                <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">「2次式で割った余り」と来たら</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            余りは $ax+b$ の形です。割る式の解を代入すると、商を含む項が0になり、余りだけが残ります。
+                        </p>
+                    </div>
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">$\alpha$ が2次方程式の解であるとき</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            $\alpha$ の高い次数を、その2次方程式を使って1次以下に下げます。本問では
+                            $\alpha^2=3-\alpha$ が基本です。
+                        </p>
+                    </div>
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">同じ一次式が異なる2点で0になるとき</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            一次式は異なる2つの解をもてません。したがって、その一次式は恒等的に0であり、$x$ の係数と定数項がともに0です。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（1）解そのものと、解の和・積を区別する</strong><br>
+                        解は解の公式で求めます。一方、和と積は解と係数の関係からすぐに得られます。
+                    </div>
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（2）割り算は次数の高い項から消す</strong><br>
+                        $2x^4$ を消すために $2x^2$、次に $-x$、最後に $p$ を商に加えます。余りが1次以下になったところで終了です。
+                    </div>
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（3）条件を余りの値に翻訳する</strong><br>
+                        （2）より $g(\alpha)=q\alpha-p$ です。また、$\alpha^2-\alpha=3-2\alpha$ です。両者を等しくし、$\beta$ についても同じ式を作ります。
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+
+                <div class="mt-4 space-y-7 text-slate-700">
+                    <div>
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）</p>
+                        <p class="mt-2">
+                            $f(x)=0$、すなわち
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            x^2+x-3=0
+                            \]
+                        </div>
+                        <p>を解の公式で解くと、</p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            x
+                            &=\frac{-1\pm\sqrt{1^2-4\cdot1\cdot(-3)}}{2}\\
+                            &=\frac{-1\pm\sqrt{13}}2
+                            \end{aligned}
+                            \]
+                        </div>
+                        <p>
+                            よって、必要なら
+                            \[
+                            \alpha=\frac{-1-\sqrt{13}}2,\qquad
+                            \beta=\frac{-1+\sqrt{13}}2
+                            \]
+                            とおくことができる。
+                        </p>
+
+                        <p class="mt-3">また、解と係数の関係より、</p>
+                        <div class="math-scroll">
+                            \[
+                            \alpha+\beta=-1,\qquad
+                            \alpha\beta=-3
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：
+                            $x=\dfrac{-1\pm\sqrt{13}}2$，
+                            $\alpha+\beta=-1$，
+                            $\alpha\beta=-3$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）</p>
+                        <p class="mt-2">
+                            $g(x)$ を $f(x)=x^2+x-3$ で割る。
+                        </p>
+
+                        <div class="mt-4 overflow-x-auto rounded-xl border border-slate-200 bg-slate-50 p-4">
+                            <div class="min-w-[650px] font-mono text-sm leading-8 text-slate-800">
+                                <div class="grid grid-cols-[95px_repeat(5,105px)] text-center">
+                                    <div></div>
+                                    <div class="col-span-5 border-b-2 border-slate-700 font-bold">$2x^2-x+p$</div>
+
+                                    <div class="text-right font-bold">$x^2+x-3\;)$</div>
+                                    <div>$2x^4$</div>
+                                    <div>$+x^3$</div>
+                                    <div>$+(p-7)x^2$</div>
+                                    <div>$+(p+q+3)x$</div>
+                                    <div>$-4p$</div>
+
+                                    <div></div>
+                                    <div class="border-b border-slate-400">$2x^4$</div>
+                                    <div class="border-b border-slate-400">$+2x^3$</div>
+                                    <div class="border-b border-slate-400">$-6x^2$</div>
+                                    <div class="border-b border-slate-400"></div>
+                                    <div class="border-b border-slate-400"></div>
+
+                                    <div></div>
+                                    <div></div>
+                                    <div>$-x^3$</div>
+                                    <div>$+(p-1)x^2$</div>
+                                    <div>$+(p+q+3)x$</div>
+                                    <div>$-4p$</div>
+
+                                    <div></div>
+                                    <div></div>
+                                    <div class="border-b border-slate-400">$-x^3$</div>
+                                    <div class="border-b border-slate-400">$-x^2$</div>
+                                    <div class="border-b border-slate-400">$+3x$</div>
+                                    <div class="border-b border-slate-400"></div>
+
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div>$+px^2$</div>
+                                    <div>$+(p+q)x$</div>
+                                    <div>$-4p$</div>
+
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div class="border-b border-slate-400">$+px^2$</div>
+                                    <div class="border-b border-slate-400">$+px$</div>
+                                    <div class="border-b border-slate-400">$-3p$</div>
+
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div class="font-bold text-blue-700">$qx$</div>
+                                    <div class="font-bold text-blue-700">$-p$</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="mt-4">
+                            したがって、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            g(x)
+                            =f(x)(2x^2-x+p)+(qx-p)
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：商 $2x^2-x+p$，余り $qx-p$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）$p,q$ を求める</p>
+                        <p class="mt-2">
+                            （2）より、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            g(x)=f(x)(2x^2-x+p)+(qx-p)
+                            \]
+                        </div>
+                        <p>
+                            である。$f(\alpha)=0$ であるから、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            g(\alpha)=q\alpha-p
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            一方、$\alpha$ は $\alpha^2+\alpha-3=0$ を満たすので、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \alpha^2=3-\alpha
+                            \]
+                            \[
+                            \alpha^2-\alpha=3-2\alpha
+                            \]
+                        </div>
+
+                        <p>
+                            条件 $g(\alpha)=\alpha^2-\alpha$ より、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            q\alpha-p=3-2\alpha
+                            \]
+                            \[
+                            (q+2)\alpha-(p+3)=0
+                            \tag{1}
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            同様に、$f(\beta)=0$ と
+                            $g(\beta)=\beta^2-\beta$ より、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            (q+2)\beta-(p+3)=0
+                            \tag{2}
+                            \]
+                        </div>
+
+                        <p>
+                            (1)から(2)を引くと、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            (q+2)(\alpha-\beta)=0
+                            \]
+                        </div>
+                        <p>
+                            $\alpha\ne\beta$ であるから、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            q+2=0
+                            \]
+                            \[
+                            q=-2
+                            \]
+                        </div>
+                        <p>
+                            これを(1)に代入すると、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            -(p+3)=0
+                            \]
+                            \[
+                            p=-3
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            $p=-3,\quad q=-2$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）方程式 $g(x)=0$ を解く</p>
+                        <p class="mt-2">
+                            $p=-3,\ q=-2$ を $g(x)$ に代入すると、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            g(x)
+                            &=2x^4+x^3+(-3-7)x^2\\
+                            &\qquad+(-3-2+3)x-4(-3)\\
+                            &=2x^4+x^3-10x^2-2x+12
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            整数解の候補を調べると、$g(-2)=0$ であるから、$x+2$ を因数にもつ。
+                            $g(x)$ を $x+2$ で割ると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            g(x)=(x+2)(2x^3-3x^2-4x+6)
+                            \]
+                        </div>
+
+                        <p>
+                            さらに、括弧内を前半と後半に分けてまとめると、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            2x^3-3x^2-4x+6
+                            &=x^2(2x-3)-2(2x-3)\\
+                            &=(2x-3)(x^2-2)
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>よって、</p>
+                        <div class="math-scroll">
+                            \[
+                            g(x)=(x+2)(2x-3)(x^2-2)
+                            \]
+                        </div>
+                        <p>
+                            したがって、$g(x)=0$ の解は
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            x=-2,\quad \frac32,\quad \pm\sqrt2
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：
+                            $p=-3,\ q=-2$，
+                            $x=-2,\ \dfrac32,\ \pm\sqrt2$
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化：異なる2点で0になる一次式</h3>
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    条件を整理すると、
+                    \[
+                    h(x)=(q+2)x-(p+3)
+                    \]
+                    が $x=\alpha,\beta$ の両方で0になる必要があります。
+                    スライダーで $p,q$ を動かし、一次式のグラフが2点 $(\alpha,0),(\beta,0)$ を同時に通る条件を確認してください。
+                </p>
+
+                <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="grid gap-5 md:grid-cols-2">
+                        <div>
+                            <label for="p-slider" class="mb-2 block text-sm font-medium text-slate-700">
+                                $p$：
+                                <span id="p-display" class="text-lg font-bold text-blue-700">0.0</span>
+                            </label>
+                            <input id="p-slider" type="range" min="-6" max="3" step="0.1" value="0"
+                                   class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600">
+                        </div>
+                        <div>
+                            <label for="q-slider" class="mb-2 block text-sm font-medium text-slate-700">
+                                $q$：
+                                <span id="q-display" class="text-lg font-bold text-violet-700">0.0</span>
+                            </label>
+                            <input id="q-slider" type="range" min="-5" max="2" step="0.1" value="0"
+                                   class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-violet-600">
+                        </div>
+                    </div>
+
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <button id="answer-button" type="button"
+                                class="rounded-lg border border-blue-200 bg-white px-4 py-2 text-sm font-bold text-blue-700 hover:bg-blue-50">
+                            正解 $p=-3,\ q=-2$
+                        </button>
+                        <button id="reset-button" type="button"
+                                class="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-700 hover:bg-slate-100">
+                            初期化
+                        </button>
+                    </div>
+
+                    <div class="mt-5 overflow-x-auto">
+                        <svg id="line-svg" width="600" height="360" viewBox="0 0 600 360"
+                             class="mx-auto h-auto w-full max-w-[600px] rounded-xl border border-slate-200 bg-white"
+                             aria-label="一次式h(x)のグラフ">
+                            <g id="line-grid"></g>
+                            <line id="line-x-axis" stroke="#64748b" stroke-width="1.5"></line>
+                            <line id="line-y-axis" stroke="#64748b" stroke-width="1.5"></line>
+                            <line id="h-line" stroke="#2563eb" stroke-width="3"></line>
+
+                            <circle id="alpha-point" r="6" fill="#e11d48"></circle>
+                            <circle id="beta-point" r="6" fill="#e11d48"></circle>
+                            <circle id="alpha-value-point" r="6" fill="#2563eb"></circle>
+                            <circle id="beta-value-point" r="6" fill="#7c3aed"></circle>
+
+                            <g font-size="13" font-weight="700">
+                                <text id="alpha-label" fill="#be123c">α</text>
+                                <text id="beta-label" fill="#be123c">β</text>
+                                <text id="alpha-value-label" fill="#2563eb"></text>
+                                <text id="beta-value-label" fill="#7c3aed"></text>
+                                <text x="570" y="194" fill="#64748b">x</text>
+                                <text x="306" y="18" fill="#64748b">y</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div id="line-status" class="mt-4 rounded-lg border border-amber-300 bg-amber-50 p-4 text-center text-sm font-bold text-amber-800">
+                        2点での値を確認してください
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const pSlider = document.getElementById("p-slider");
+                        const qSlider = document.getElementById("q-slider");
+                        const pDisplay = document.getElementById("p-display");
+                        const qDisplay = document.getElementById("q-display");
+                        const status = document.getElementById("line-status");
+
+                        const alpha = (-1 - Math.sqrt(13)) / 2;
+                        const beta = (-1 + Math.sqrt(13)) / 2;
+
+                        const W = 600, H = 360;
+                        const xMin = -4, xMax = 3;
+                        const yMin = -10, yMax = 10;
+                        const sx = x => (x - xMin) / (xMax - xMin) * W;
+                        const sy = y => H - (y - yMin) / (yMax - yMin) * H;
+
+                        const grid = document.getElementById("line-grid");
+                        let markup = "";
+                        for (let x = -4; x <= 3; x++) {
+                            markup += `<line x1="${sx(x)}" y1="0" x2="${sx(x)}" y2="${H}" stroke="#e2e8f0" stroke-width="1"/>`;
+                            markup += `<text x="${sx(x)+3}" y="${sy(0)+17}" fill="#94a3b8" font-size="10">${x}</text>`;
+                        }
+                        for (let y = -10; y <= 10; y += 2) {
+                            markup += `<line x1="0" y1="${sy(y)}" x2="${W}" y2="${sy(y)}" stroke="#e2e8f0" stroke-width="1"/>`;
+                            if (y !== 0) {
+                                markup += `<text x="${sx(0)+5}" y="${sy(y)-4}" fill="#94a3b8" font-size="10">${y}</text>`;
+                            }
+                        }
+                        grid.innerHTML = markup;
+
+                        const setLine = (id, x1, y1, x2, y2) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("x1", sx(x1));
+                            el.setAttribute("y1", sy(y1));
+                            el.setAttribute("x2", sx(x2));
+                            el.setAttribute("y2", sy(y2));
+                        };
+                        const setPoint = (id, x, y) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("cx", sx(x));
+                            el.setAttribute("cy", sy(y));
+                        };
+                        const setText = (id, x, y, text) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("x", sx(x));
+                            el.setAttribute("y", sy(y));
+                            if (text !== undefined) el.textContent = text;
+                        };
+
+                        setLine("line-x-axis", xMin, 0, xMax, 0);
+                        setLine("line-y-axis", 0, yMin, 0, yMax);
+                        setPoint("alpha-point", alpha, 0);
+                        setPoint("beta-point", beta, 0);
+                        setText("alpha-label", alpha - 0.2, -0.8);
+                        setText("beta-label", beta + 0.08, -0.8);
+
+                        function update() {
+                            const p = parseFloat(pSlider.value);
+                            const q = parseFloat(qSlider.value);
+                            pDisplay.textContent = p.toFixed(1);
+                            qDisplay.textContent = q.toFixed(1);
+
+                            const h = x => (q + 2) * x - (p + 3);
+                            const y1 = h(xMin);
+                            const y2 = h(xMax);
+                            setLine("h-line", xMin, y1, xMax, y2);
+
+                            const ha = h(alpha);
+                            const hb = h(beta);
+                            setPoint("alpha-value-point", alpha, ha);
+                            setPoint("beta-value-point", beta, hb);
+                            setText("alpha-value-label", alpha - 0.75, Math.min(yMax - 0.6, ha + 0.8), `h(α)=${ha.toFixed(2)}`);
+                            setText("beta-value-label", beta + 0.12, Math.min(yMax - 0.6, hb + 0.8), `h(β)=${hb.toFixed(2)}`);
+
+                            const solved = Math.abs(p + 3) < 0.051 && Math.abs(q + 2) < 0.051;
+                            if (solved) {
+                                status.textContent = "h(x)=0となり、αとβの両方で0になる";
+                                status.className = "mt-4 rounded-lg border border-emerald-300 bg-emerald-50 p-4 text-center text-sm font-bold text-emerald-800";
+                            } else {
+                                status.textContent = "異なる2点で同時に0にするには、一次の係数と定数項をともに0にする";
+                                status.className = "mt-4 rounded-lg border border-amber-300 bg-amber-50 p-4 text-center text-sm font-bold text-amber-800";
+                            }
+                        }
+
+                        pSlider.addEventListener("input", update);
+                        qSlider.addEventListener("input", update);
+                        document.getElementById("answer-button").addEventListener("click", () => {
+                            pSlider.value = -3;
+                            qSlider.value = -2;
+                            update();
+                        });
+                        document.getElementById("reset-button").addEventListener("click", () => {
+                            pSlider.value = 0;
+                            qSlider.value = 0;
+                            update();
+                        });
+                        update();
+                    });
+                </script>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解の考察：高い次数を直接下げる</h3>
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    $\alpha^2+\alpha-3=0$ より $\alpha^2=3-\alpha$ です。これを繰り返し使うと、
+                </p>
+                <div class="math-scroll">
+                    \[
+                    \begin{aligned}
+                    \alpha^3
+                    &=\alpha(3-\alpha)\\
+                    &=3\alpha-(3-\alpha)\\
+                    &=4\alpha-3,
+                    \end{aligned}
+                    \]
+                    \[
+                    \begin{aligned}
+                    \alpha^4
+                    &=\alpha(4\alpha-3)\\
+                    &=4(3-\alpha)-3\alpha\\
+                    &=12-7\alpha.
+                    \end{aligned}
+                    \]
+                </div>
+
+                <p class="text-sm leading-relaxed text-slate-700">
+                    これらを $g(\alpha)$ に直接代入すると、
+                </p>
+                <div class="math-scroll">
+                    \[
+                    \begin{aligned}
+                    g(\alpha)
+                    &=2(12-7\alpha)+(4\alpha-3)\\
+                    &\quad +(p-7)(3-\alpha)
+                    +(p+q+3)\alpha-4p\\
+                    &=q\alpha-p.
+                    \end{aligned}
+                    \]
+                </div>
+
+                <p class="text-sm leading-relaxed text-slate-700">
+                    （2）の余り $qx-p$ が、そのまま得られました。この計算は余りの意味を確認するうえで有効ですが、
+                    一度割り算を済ませている本問では、主解法の方が短くなります。
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">2次式で割った余りを定数だと思ってしまう</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            2次式で割った余りは、割る式より次数が低ければよいので、一般に1次式 $ax+b$ です。
+                        </p>
+                    </div>
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">$\alpha^2-\alpha$ に具体的な根号を代入して計算する</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            $\alpha^2=3-\alpha$ を使えば、$\alpha^2-\alpha=3-2\alpha$ と一瞬で1次式にできます。根号を展開する必要はありません。
+                        </p>
+                    </div>
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">$p,q$ を求めた後、4次方程式を解くところで止まる</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            整数解の候補を代入し、1つ因数を見つけます。本問では $x=-2$ が解で、その後の3次式はグループ分けで因数分解できます。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+            <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+            <p class="mt-4 text-sm text-blue-200">質問をクリックし、答えを頭の中で作ってから開いてください。</p>
+
+            <div class="mt-6 space-y-3">
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q1. 2次式で割った余りは、何次以下ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        1次以下です。一般に $ax+b$ と置きます。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q2. $g(x)=f(x)Q(x)+R(x)$ で $f(\alpha)=0$ のとき、$g(\alpha)$ は何になりますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        $g(\alpha)=R(\alpha)$ です。$f(\alpha)Q(\alpha)=0$ となるため、余りだけが残ります。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q3. $\alpha^2+\alpha-3=0$ のとき、$\alpha^2-\alpha$ を1次式で表すとどうなりますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        $\alpha^2=3-\alpha$ より、
+                        \[
+                        \alpha^2-\alpha=3-2\alpha
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q4. 一次式 $(q+2)x-(p+3)$ が異なる2つの値 $\alpha,\beta$ で0になるとき、何がいえますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        一次式が異なる2解をもつことはできないので、恒等的に0です。したがって
+                        \[
+                        q+2=0,\qquad p+3=0
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q5. $2x^3-3x^2-4x+6$ は、どのようにグループ分けして因数分解しますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        x^2(2x-3)-2(2x-3)
+                        =(2x-3)(x^2-2)
+                        \]
+                        とします。
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+            <a href="no19.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                ← No.19へ
+            </a>
+            <a href="no21.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                No.21 →
+            </a>
+        </nav>
+    </main>
+
+    <footer class="py-10 text-center text-sm text-slate-500">
+        自彊館(理系)　夏期数学課題 解説サイト
+    </footer>
+</div>
+</body>
+</html>

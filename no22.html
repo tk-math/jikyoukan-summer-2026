@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.22 三角関数と図形 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: { matchFontHeight: false },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: .5rem; margin-bottom: .5rem; }
+        button:focus-visible, summary:focus-visible, a:focus-visible, input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+        ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+        <div class="p-7 sm:p-10">
+            <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+                <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.22</span>
+                <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">基礎</span>
+            </div>
+            <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">三角関数と図形</h1>
+            <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                問題
+            </h2>
+
+            <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed">
+                <p>
+                    $0<\theta<\dfrac{\pi}{2}$ とする。Oを原点とする $xy$ 平面上に点
+                    \[
+                    \mathrm{P}(\cos\theta,\sin\theta)
+                    \]
+                    があり、Pから $x$ 軸に引いた垂線と $x$ 軸との交点をQとする。
+                </p>
+
+                <ol class="mt-4 list-decimal space-y-4 pl-6">
+                    <li>
+                        $\theta=\dfrac{\pi}{3}$ のとき、点Pの座標を求めよ。
+                        また、このときの三角形OPQの面積を求めよ。
+                    </li>
+                    <li>
+                        三角形OPQの面積を $S$ とする。$S$ を $\theta$ を用いて表せ。
+                        また、$\theta$ が $0<\theta<\dfrac{\pi}{2}$ の範囲で変化するとき、$S$ の最大値を求めよ。
+                    </li>
+                    <li>
+                        $y$ 軸上に点
+                        \[
+                        \mathrm{R}(0,\sqrt3\sin\theta+\cos\theta)
+                        \]
+                        をとる。
+                        <ol class="mt-2 list-[lower-roman] space-y-2 pl-6">
+                            <li>$\mathrm{OR}=\sqrt2$ となるような $\theta$ の値を求めよ。</li>
+                            <li>
+                                三角形OQRの面積を $T$ とする。
+                                $\theta$ が $0<\theta<\dfrac{\pi}{2}$ の範囲で変化するとき、$T$ の最大値を求めよ。
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+                <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+                    <li>
+                        Pは単位円上の点なので、
+                        \[
+                        \mathrm{OP}=1
+                        \]
+                        です。
+                    </li>
+                    <li>
+                        QはPから $x$ 軸に下ろした垂線の足なので、
+                        \[
+                        \mathrm{Q}(\cos\theta,0)
+                        \]
+                        です。
+                    </li>
+                    <li>
+                        三角形OPQはQを直角とする直角三角形で、
+                        \[
+                        \mathrm{OQ}=\cos\theta,\qquad
+                        \mathrm{PQ}=\sin\theta
+                        \]
+                        です。
+                    </li>
+                    <li>
+                        Rは $y$ 軸上にあるため、三角形OQRはOを直角とする直角三角形です。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                解説
+            </h2>
+            <p class="mt-4 text-sm leading-8 text-slate-600">
+                座標と三角比を結びつけ、面積の最大値を合成によって求めます。
+            </p>
+
+            <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+                <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">点Pが $(\cos\theta,\sin\theta)$ と与えられたら</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            Pは単位円上の点です。横の長さが $\cos\theta$、縦の長さが $\sin\theta$ である直角三角形をすぐに描きます。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">$\sin\theta\cos\theta$ が現れたら</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            倍角公式
+                            \[
+                            2\sin\theta\cos\theta=\sin2\theta
+                            \]
+                            を使い、最大値を考えやすい形にします。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">$a\sin x+b\cos x$ が現れたら</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            1つの三角関数に合成します。振幅は $\sqrt{a^2+b^2}$ です。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（1）座標から底辺と高さを読む</strong><br>
+                        Qは $(\cos\theta,0)$ なので、底辺OQは $\cos\theta$、高さPQは $\sin\theta$ です。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（2）面積を倍角公式で整理する</strong><br>
+                        $S=\frac12\sin\theta\cos\theta$ を
+                        $S=\frac14\sin2\theta$ に変形します。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（3）ORを合成し、面積Tも合成する</strong><br>
+                        $\sqrt3\sin\theta+\cos\theta$ は
+                        $2\sin(\theta+\pi/6)$ に合成できます。
+                        面積Tではさらに2倍角を使います。
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+
+                <div class="mt-4 space-y-7 text-slate-700">
+                    <div>
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）</p>
+                        <p class="mt-2">
+                            $\theta=\dfrac{\pi}{3}$ のとき、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \mathrm{P}
+                            &=
+                            \left(
+                            \cos\frac{\pi}{3},
+                            \sin\frac{\pi}{3}
+                            \right)\\
+                            &=
+                            \left(
+                            \frac12,
+                            \frac{\sqrt3}{2}
+                            \right).
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            また、
+                            \[
+                            \mathrm{Q}\left(\frac12,0\right)
+                            \]
+                            であるから、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            [\triangle\mathrm{OPQ}]
+                            &=
+                            \frac12\cdot\mathrm{OQ}\cdot\mathrm{PQ}\\
+                            &=
+                            \frac12\cdot\frac12\cdot\frac{\sqrt3}{2}\\
+                            &=
+                            \frac{\sqrt3}{8}.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：
+                            $\displaystyle
+                            \mathrm{P}\left(\frac12,\frac{\sqrt3}{2}\right)$，
+                            面積 $\displaystyle \frac{\sqrt3}{8}$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）</p>
+                        <p class="mt-2">
+                            三角形OPQの底辺は $\mathrm{OQ}=\cos\theta$、
+                            高さは $\mathrm{PQ}=\sin\theta$ であるから、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            S
+                            &=
+                            \frac12\sin\theta\cos\theta\\
+                            &=
+                            \frac14\sin2\theta.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            $0<\theta<\dfrac{\pi}{2}$ より、
+                            \[
+                            0<2\theta<\pi.
+                            \]
+                            この範囲で $\sin2\theta$ の最大値は1であり、
+                            $2\theta=\dfrac{\pi}{2}$、すなわち
+                            $\theta=\dfrac{\pi}{4}$ のときにとる。
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            S_{\max}
+                            =
+                            \frac14.
+                            \]
+                        </div>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：
+                            $\displaystyle S=\frac14\sin2\theta$，
+                            最大値 $\displaystyle \frac14$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）(i)</p>
+                        <p class="mt-2">
+                            Rは $y$ 軸上にあり、
+                            $0<\theta<\pi/2$ では
+                            $\sqrt3\sin\theta+\cos\theta>0$ であるから、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \mathrm{OR}
+                            =
+                            \sqrt3\sin\theta+\cos\theta.
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            加法定理より、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \sqrt3\sin\theta+\cos\theta
+                            &=
+                            2\left(
+                            \frac{\sqrt3}{2}\sin\theta
+                            +\frac12\cos\theta
+                            \right)\\
+                            &=
+                            2\sin\left(\theta+\frac{\pi}{6}\right).
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>
+                            $\mathrm{OR}=\sqrt2$ より、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            2\sin\left(\theta+\frac{\pi}{6}\right)
+                            =
+                            \sqrt2
+                            \]
+                            \[
+                            \sin\left(\theta+\frac{\pi}{6}\right)
+                            =
+                            \frac{\sqrt2}{2}.
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            $0<\theta<\dfrac{\pi}{2}$ より、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \frac{\pi}{6}
+                            <
+                            \theta+\frac{\pi}{6}
+                            <
+                            \frac{2\pi}{3}.
+                            \]
+                        </div>
+                        <p>
+                            この範囲で正弦が $\sqrt2/2$ となるのは
+                            $\theta+\pi/6=\pi/4$ のときなので、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \theta
+                            =
+                            \frac{\pi}{4}-\frac{\pi}{6}
+                            =
+                            \frac{\pi}{12}.
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$\displaystyle \theta=\frac{\pi}{12}$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）(ii)</p>
+                        <p class="mt-2">
+                            三角形OQRはOを直角とする直角三角形である。
+                            $\mathrm{OQ}=\cos\theta$、
+                            $\mathrm{OR}=\sqrt3\sin\theta+\cos\theta$ であるから、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            T
+                            &=
+                            \frac12\cos\theta
+                            \left(
+                            \sqrt3\sin\theta+\cos\theta
+                            \right)\\
+                            &=
+                            \frac{\sqrt3}{2}\sin\theta\cos\theta
+                            +\frac12\cos^2\theta.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            倍角公式
+                            \[
+                            \sin\theta\cos\theta=\frac12\sin2\theta,
+                            \qquad
+                            \cos^2\theta=\frac{1+\cos2\theta}{2}
+                            \]
+                            を用いると、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            T
+                            &=
+                            \frac{\sqrt3}{4}\sin2\theta
+                            +\frac14(1+\cos2\theta)\\
+                            &=
+                            \frac14
+                            +\frac14
+                            \left(
+                            \sqrt3\sin2\theta+\cos2\theta
+                            \right).
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            ここで、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \sqrt3\sin2\theta+\cos2\theta
+                            =
+                            2\sin\left(2\theta+\frac{\pi}{6}\right)
+                            \]
+                        </div>
+                        <p>であるから、</p>
+                        <div class="math-scroll">
+                            \[
+                            T
+                            =
+                            \frac14
+                            +\frac12
+                            \sin\left(2\theta+\frac{\pi}{6}\right).
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            $0<\theta<\dfrac{\pi}{2}$ より、
+                        \[
+                        \frac{\pi}{6}
+                        <
+                        2\theta+\frac{\pi}{6}
+                        <
+                        \frac{7\pi}{6}.
+                        \]
+                        この範囲で正弦の最大値1は
+                        \[
+                        2\theta+\frac{\pi}{6}
+                        =
+                        \frac{\pi}{2}
+                        \]
+                        のときにとる。
+                        したがって、
+                        \[
+                        \theta=\frac{\pi}{6}.
+                        \]
+                        よって、
+                        \[
+                        T_{\max}
+                        =
+                        \frac14+\frac12
+                        =
+                        \frac34.
+                        \]
+                        </p>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：最大値 $\displaystyle \frac34$
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化</h3>
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    $\theta$ を動かすと、P・Q・Rの位置と、三角形OPQ・OQRの面積が変化します。
+                    $S$ は $\theta=\pi/4$、$T$ は $\theta=\pi/6$ のとき最大になります。
+                </p>
+
+                <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="mx-auto max-w-xl">
+                        <label for="theta-slider" class="mb-2 block text-sm font-medium text-slate-700">
+                            $\theta$：
+                            <span id="theta-display" class="text-lg font-bold text-blue-700">$\pi/6$</span>
+                        </label>
+                        <input id="theta-slider" type="range" min="0.02" max="1.5508" step="0.002" value="0.5235987756"
+                               class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600">
+                        <div class="mt-2 flex justify-between text-xs text-slate-500">
+                            <span>$0$</span>
+                            <span>$\pi/4$</span>
+                            <span>$\pi/2$</span>
+                        </div>
+
+                        <div class="mt-3 flex flex-wrap justify-center gap-2">
+                            <button type="button" data-theta="0.2617993878"
+                                    class="rounded-lg border border-violet-200 bg-white px-3 py-2 text-sm font-bold text-violet-700 hover:bg-violet-50">
+                                $\theta=\pi/12$
+                            </button>
+                            <button type="button" data-theta="0.5235987756"
+                                    class="rounded-lg border border-amber-200 bg-white px-3 py-2 text-sm font-bold text-amber-700 hover:bg-amber-50">
+                                $T$最大 $\theta=\pi/6$
+                            </button>
+                            <button type="button" data-theta="0.7853981634"
+                                    class="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-bold text-blue-700 hover:bg-blue-50">
+                                $S$最大 $\theta=\pi/4$
+                            </button>
+                            <button type="button" data-theta="1.0471975512"
+                                    class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-100">
+                                $\theta=\pi/3$
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 overflow-x-auto">
+                        <svg id="main-svg" width="620" height="470" viewBox="0 0 620 470"
+                             class="mx-auto h-auto w-full max-w-[620px] rounded-xl border border-slate-200 bg-white"
+                             aria-label="単位円上の点P、点Q、点Rの可視化">
+                            <defs>
+                                <marker id="axis-arrow-46" viewBox="0 0 10 10" refX="8" refY="5"
+                                        markerWidth="6" markerHeight="6" orient="auto">
+                                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"></path>
+                                </marker>
+                            </defs>
+
+                            <g id="grid"></g>
+                            <line id="x-axis" stroke="#64748b" stroke-width="1.5" marker-end="url(#axis-arrow-46)"></line>
+                            <line id="y-axis" stroke="#64748b" stroke-width="1.5" marker-end="url(#axis-arrow-46)"></line>
+
+                            <path id="quarter-circle" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 5"></path>
+
+                            <polygon id="triangle-opq" fill="rgba(37,99,235,.14)" stroke="#2563eb" stroke-width="2"></polygon>
+                            <polygon id="triangle-oqr" fill="rgba(16,185,129,.14)" stroke="#10b981" stroke-width="2"></polygon>
+
+                            <line id="op-line" stroke="#334155" stroke-width="2.5"></line>
+                            <line id="pq-line" stroke="#e11d48" stroke-width="2.5"></line>
+                            <line id="or-line" stroke="#059669" stroke-width="2.5"></line>
+                            <line id="qr-line" stroke="#7c3aed" stroke-width="2.5"></line>
+
+                            <circle id="point-o" r="5" fill="#111827"></circle>
+                            <circle id="point-p" r="7" fill="#2563eb"></circle>
+                            <circle id="point-q" r="6" fill="#e11d48"></circle>
+                            <circle id="point-r" r="6" fill="#059669"></circle>
+
+                            <g font-size="14" font-weight="700">
+                                <text id="label-o" fill="#111827">O</text>
+                                <text id="label-p" fill="#1d4ed8">P</text>
+                                <text id="label-q" fill="#be123c">Q</text>
+                                <text id="label-r" fill="#047857">R</text>
+                                <text id="label-theta" fill="#2563eb">θ</text>
+                                <text id="label-s" fill="#1d4ed8">S</text>
+                                <text id="label-t" fill="#047857">T</text>
+                                <text x="590" y="392" fill="#64748b">x</text>
+                                <text x="72" y="20" fill="#64748b">y</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                        <div class="rounded-lg border border-slate-200 bg-white p-3 text-center">
+                            <div class="text-xs font-bold text-slate-500">Pの座標</div>
+                            <div id="p-coord" class="mt-1 text-sm font-bold text-blue-700"></div>
+                        </div>
+                        <div class="rounded-lg border border-slate-200 bg-white p-3 text-center">
+                            <div class="text-xs font-bold text-slate-500">OR</div>
+                            <div id="or-display" class="mt-1 text-lg font-bold text-emerald-700"></div>
+                        </div>
+                        <div class="rounded-lg border border-blue-200 bg-blue-50 p-3 text-center">
+                            <div class="text-xs font-bold text-blue-700">面積S</div>
+                            <div id="s-display" class="mt-1 text-lg font-bold text-blue-800"></div>
+                        </div>
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-center">
+                            <div class="text-xs font-bold text-emerald-700">面積T</div>
+                            <div id="t-display" class="mt-1 text-lg font-bold text-emerald-800"></div>
+                        </div>
+                    </div>
+
+                    <div id="status" class="mt-4 rounded-lg border border-slate-300 bg-white p-4 text-center text-sm font-bold text-slate-700">
+                        スライダーを動かして変化を確認してください
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const slider = document.getElementById("theta-slider");
+                        const thetaDisplay = document.getElementById("theta-display");
+
+                        const ox = 80;
+                        const oy = 390;
+                        const scale = 210;
+                        const sx = x => ox + scale*x;
+                        const sy = y => oy - scale*y;
+
+                        const O = {x:0,y:0};
+
+                        const setPoint = (id, p) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("cx", sx(p.x));
+                            el.setAttribute("cy", sy(p.y));
+                        };
+
+                        const setText = (id, p) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("x", sx(p.x));
+                            el.setAttribute("y", sy(p.y));
+                        };
+
+                        const setLine = (id, p1, p2) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("x1", sx(p1.x));
+                            el.setAttribute("y1", sy(p1.y));
+                            el.setAttribute("x2", sx(p2.x));
+                            el.setAttribute("y2", sy(p2.y));
+                        };
+
+                        const poly = pts => pts.map(p => `${sx(p.x)},${sy(p.y)}`).join(" ");
+
+                        const grid = document.getElementById("grid");
+                        let markup = "";
+                        for (let x = 0; x <= 2.4; x += 0.2) {
+                            markup += `<line x1="${sx(x)}" y1="${sy(0)}" x2="${sx(x)}" y2="${sy(1.75)}" stroke="#f1f5f9" stroke-width="1"/>`;
+                        }
+                        for (let y = 0; y <= 1.75; y += 0.2) {
+                            markup += `<line x1="${sx(0)}" y1="${sy(y)}" x2="${sx(2.4)}" y2="${sy(y)}" stroke="#f1f5f9" stroke-width="1"/>`;
+                        }
+                        grid.innerHTML = markup;
+
+                        setLine("x-axis", {x:0,y:0}, {x:2.45,y:0});
+                        setLine("y-axis", {x:0,y:0}, {x:0,y:1.82});
+                        setPoint("point-o", O);
+                        setText("label-o", {x:-0.05,y:-0.05});
+
+                        document.getElementById("quarter-circle").setAttribute(
+                            "d",
+                            `M ${sx(1)} ${sy(0)} A ${scale} ${scale} 0 0 0 ${sx(0)} ${sy(1)}`
+                        );
+
+                        function thetaName(t) {
+                            const values = [
+                                [Math.PI/12, "π/12"],
+                                [Math.PI/6, "π/6"],
+                                [Math.PI/4, "π/4"],
+                                [Math.PI/3, "π/3"]
+                            ];
+                            for (const [v, name] of values) {
+                                if (Math.abs(t-v) < 0.004) return name;
+                            }
+                            return `${(t/Math.PI).toFixed(3)}π`;
+                        }
+
+                        function update() {
+                            const t = parseFloat(slider.value);
+
+                            const P = {x:Math.cos(t), y:Math.sin(t)};
+                            const Q = {x:Math.cos(t), y:0};
+                            const rY = Math.sqrt(3)*Math.sin(t)+Math.cos(t);
+                            const R = {x:0, y:rY};
+
+                            setPoint("point-p", P);
+                            setPoint("point-q", Q);
+                            setPoint("point-r", R);
+
+                            setLine("op-line", O, P);
+                            setLine("pq-line", P, Q);
+                            setLine("or-line", O, R);
+                            setLine("qr-line", Q, R);
+
+                            document.getElementById("triangle-opq").setAttribute("points", poly([O,P,Q]));
+                            document.getElementById("triangle-oqr").setAttribute("points", poly([O,Q,R]));
+
+                            setText("label-p", {x:P.x+0.04,y:P.y+0.04});
+                            setText("label-q", {x:Q.x+0.03,y:-0.06});
+                            setText("label-r", {x:-0.10,y:R.y+0.03});
+                            setText("label-theta", {x:0.23*Math.cos(t/2), y:0.23*Math.sin(t/2)});
+                            setText("label-s", {x:(P.x+Q.x)/3, y:P.y/3});
+                            setText("label-t", {x:Q.x/3, y:R.y/3});
+
+                            const S = 0.5*Math.sin(t)*Math.cos(t);
+                            const T = 0.5*Math.cos(t)*rY;
+
+                            thetaDisplay.textContent = thetaName(t);
+                            document.getElementById("p-coord").textContent =
+                                `(${P.x.toFixed(4)}, ${P.y.toFixed(4)})`;
+                            document.getElementById("or-display").textContent = rY.toFixed(5);
+                            document.getElementById("s-display").textContent = S.toFixed(5);
+                            document.getElementById("t-display").textContent = T.toFixed(5);
+
+                            const status = document.getElementById("status");
+                            if (Math.abs(t-Math.PI/6) < 0.004) {
+                                status.textContent = "θ=π/6：Tは最大値3/4";
+                                status.className = "mt-4 rounded-lg border border-emerald-300 bg-emerald-50 p-4 text-center text-sm font-bold text-emerald-800";
+                            } else if (Math.abs(t-Math.PI/4) < 0.004) {
+                                status.textContent = "θ=π/4：Sは最大値1/4";
+                                status.className = "mt-4 rounded-lg border border-blue-300 bg-blue-50 p-4 text-center text-sm font-bold text-blue-800";
+                            } else if (Math.abs(t-Math.PI/12) < 0.004) {
+                                status.textContent = "θ=π/12：OR=√2";
+                                status.className = "mt-4 rounded-lg border border-violet-300 bg-violet-50 p-4 text-center text-sm font-bold text-violet-800";
+                            } else if (Math.abs(t-Math.PI/3) < 0.004) {
+                                status.textContent = "θ=π/3：P=(1/2, √3/2)";
+                                status.className = "mt-4 rounded-lg border border-amber-300 bg-amber-50 p-4 text-center text-sm font-bold text-amber-800";
+                            } else {
+                                status.textContent = "スライダーを動かして変化を確認してください";
+                                status.className = "mt-4 rounded-lg border border-slate-300 bg-white p-4 text-center text-sm font-bold text-slate-700";
+                            }
+                        }
+
+                        slider.addEventListener("input", update);
+                        document.querySelectorAll("[data-theta]").forEach(button => {
+                            button.addEventListener("click", () => {
+                                slider.value = button.dataset.theta;
+                                update();
+                            });
+                        });
+
+                        update();
+                    });
+                </script>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">補足：三角関数の合成の確認</h3>
+
+                <div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed text-slate-700">
+                    <p>
+                        一般に、
+                        \[
+                        a\sin x+b\cos x
+                        \]
+                        は、振幅
+                        \[
+                        \sqrt{a^2+b^2}
+                        \]
+                        をもつ1つの三角関数に合成できます。
+                    </p>
+
+                    <p class="mt-3">
+                        本問では、
+                        \[
+                        \sqrt3\sin x+\cos x
+                        \]
+                        に対して
+                        \[
+                        \sqrt{(\sqrt3)^2+1^2}=2
+                        \]
+                        なので、
+                    </p>
+                    <div class="mt-3 rounded-lg border border-indigo-300 bg-white p-4 text-center font-bold text-indigo-950">
+                        \[
+                        \sqrt3\sin x+\cos x
+                        =
+                        2\sin\left(x+\frac{\pi}{6}\right)
+                        \]
+                    </div>
+
+                    <p class="mt-3">
+                        と表せます。係数が
+                        \[
+                        2\cos\frac{\pi}{6}=\sqrt3,\qquad
+                        2\sin\frac{\pi}{6}=1
+                        \]
+                        になることを確認しましょう。
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">Qの座標を $(0,\sin\theta)$ としてしまう</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            Pから $x$ 軸に下ろした垂線の足なので、$x$ 座標はPと同じ、$y$ 座標は0です。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">$S=\frac12\sin\theta\cos\theta$ のまま最大値を考える</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            倍角公式で $\frac14\sin2\theta$ とすれば、最大値がすぐにわかります。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">合成後の角の範囲を確認しない</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            三角方程式や最大値では、合成した角がどの範囲を動くかを必ず書きます。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+            <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+            <p class="mt-4 text-sm text-blue-200">質問をクリックし、答えを頭の中で作ってから開いてください。</p>
+
+            <div class="mt-6 space-y-3">
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q1. 点Qの座標は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \mathrm{Q}(\cos\theta,0)
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q2. 三角形OPQの面積 $S$ はどう表されますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        S=\frac12\sin\theta\cos\theta
+                        =\frac14\sin2\theta
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q3. $S$ の最大値と、そのときの $\theta$ は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        S_{\max}=\frac14,\qquad
+                        \theta=\frac{\pi}{4}
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q4. $\sqrt3\sin\theta+\cos\theta$ を合成するとどうなりますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \sqrt3\sin\theta+\cos\theta
+                        =
+                        2\sin\left(\theta+\frac{\pi}{6}\right)
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q5. 三角形OQRの面積 $T$ の最大値は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        T_{\max}=\frac34
+                        \]
+                        です。$\theta=\pi/6$ のときにとります。
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+            <a href="no21.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                ← No.21へ
+            </a>
+            <a href="no23.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                No.23 →
+            </a>
+        </nav>
+    </main>
+
+    <footer class="py-10 text-center text-sm text-slate-500">
+        自彊館(理系)　夏期数学課題 解説サイト
+    </footer>
+</div>
+</body>
+</html>
