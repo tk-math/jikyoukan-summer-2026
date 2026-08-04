@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.31 高次方程式 - 自彊館(理系)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: { matchFontHeight: false },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: .5rem; margin-bottom: .5rem; }
+        button:focus-visible, summary:focus-visible, a:focus-visible, input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+    </style>
+
+    <style id="jikyoukan-unified-design">
+        /* 全ページ共通デザイン（2026-07-20統一版） */
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        }
+        .nav-button {
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+        }
+        .math-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        button:focus-visible,
+        summary:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+        /* 最終答案は囲み枠を使わず、文字色と太字で統一 */
+        .border-2.border-blue-500.bg-blue-50 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+            color: rgb(30 64 175) !important;
+            display: block !important;
+        }
+        div.rounded-lg.border.border-blue-200.bg-blue-50.p-4.font-bold.text-blue-900 {
+            border: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: .25rem 0 !important;
+        }
+        @media (max-width: 640px) {
+            mjx-container[display="true"] {
+                min-width: max-content;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+        ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+        <div class="p-7 sm:p-10">
+            <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">自彊館(理系)</span>
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+                <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.31</span>
+                <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+            </div>
+            <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">高次方程式</h1>
+            <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                問題
+            </h2>
+
+            <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed">
+                <p>
+                    $a,b$ を実数の定数とする。
+                </p>
+
+                <div class="math-scroll">
+                    \[
+                    f(x)=x^2-x+1,
+                    \qquad
+                    g(x)=x^3+ax^2+bx-1
+                    \]
+                </div>
+
+                <p>
+                    があり、2次方程式 $f(x)=0$ と3次方程式 $g(x)=0$ は共通の解をもつ。
+                </p>
+
+                <ol class="mt-4 list-decimal space-y-4 pl-6">
+                    <li>2次方程式 $f(x)=0$ を解け。</li>
+                    <li>$a,b$ の値を求め、3次方程式 $g(x)=0$ を解け。</li>
+                    <li>$x^{2028}$ を $g(x)$ で割った余りを求めよ。</li>
+                </ol>
+            </div>
+
+            <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+
+                <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+                    <li>
+                        $f(x)=0$ の判別式は負なので、2つの解は互いに共役な非実数です。
+                    </li>
+                    <li>
+                        $g(x)$ の係数はすべて実数なので、非実数解を1つもつと、その共役複素数も解になります。
+                    </li>
+                    <li>
+                        したがって、$f(x)$ の2つの解はともに $g(x)=0$ の解であり、$f(x)$ は $g(x)$ の因数です。
+                    </li>
+                    <li>
+                        大きな指数の余りでは、余りを2次以下の式として設定し、
+                        $g(x)=0$ の3つの解を代入します。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                解説
+            </h2>
+
+            <p class="mt-4 text-sm leading-8 text-slate-600">
+                共役複素数、因数定理、指数の周期性をつなげて処理します。
+            </p>
+
+            <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+                <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">実数係数の方程式が非実数解をもつ</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            非実数解 $\alpha$ が解なら、その共役複素数 $\overline{\alpha}$ も解です。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">2次式と3次式が2つの解を共有する</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            2次式全体が3次式の因数になります。
+                            3次式は
+                            \[
+                            g(x)=f(x)(x-c)
+                            \]
+                            と置けます。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">3次式で割った余りを設定する</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            余りは2次以下なので、
+                            \[
+                            x^{2028}
+                            =
+                            g(x)Q(x)+kx^2+lx+m
+                            \]
+                            と置きます。$g(x)=0$ の3つの解を代入し、$k,l,m$ を決定します。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（1）解の形だけでなく6乗すると1になることも確認する</strong><br>
+                        $f(x)=0$ の解は単位円上にあり、6乗すると1になります。これは（3）の周期につながります。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（2）共通解が1つだけとは限らない</strong><br>
+                        係数が実数なので、共通の非実数解の共役も共通解です。したがって $f(x)$ 全体が因数になります。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（3）解を代入する前に累乗を6乗まで調べる</strong><br>
+                        \[
+                        \alpha^2=\alpha-1
+                        \]
+                        を繰り返し使うと、
+                        \[
+                        \alpha^6=1,
+                        \qquad
+                        \overline{\alpha}^{\,6}=1
+                        \]
+                        が得られます。$2028=6\cdot338$ を利用して、3つの解を余りの式へ代入します。
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+
+                <div class="mt-4 space-y-8 text-slate-700">
+                    <div>
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）</p>
+
+                        <p class="mt-2">
+                            2次方程式
+                            \[
+                            x^2-x+1=0
+                            \]
+                            に解の公式を用いると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            x
+                            &=
+                            \frac{1\pm\sqrt{(-1)^2-4\cdot1\cdot1}}{2}\\
+                            &=
+                            \frac{1\pm\sqrt{-3}}{2}\\
+                            &=
+                            \frac{1\pm\sqrt3\,i}{2}.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            x=\frac{1+\sqrt3\,i}{2},
+                            \qquad
+                            \frac{1-\sqrt3\,i}{2}
+                            \]
+                        </div>
+
+                        <p class="mt-3 text-sm text-slate-600">
+                            これらは
+                            \[
+                            \cos\frac{\pi}{3}\pm i\sin\frac{\pi}{3}
+                            \]
+                            であり、どちらも6乗すると1になります。
+                        </p>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）$a,b$ を求める</p>
+
+                        <p class="mt-2">
+                            （1）より、共通解は虚数 $\alpha$ であり、
+                            $g(x)=0$ は実数係数方程式なので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \alpha\text{ が解}
+                            \quad\Longleftrightarrow\quad
+                            \overline{\alpha}\text{ も解}.
+                            \]
+                        </div>
+
+                        <p>
+                            したがって、$g(x)=0$ は $f(x)=0$ の解を両方もつ。
+                            よって、$f(x)$ は $g(x)$ の因数である。
+                        </p>
+
+                        <p class="mt-3">
+                            $g(x)$ は最高次係数が1の3次式なので、実数 $c$ を用いて
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            g(x)
+                            =
+                            (x^2-x+1)(x-c)
+                            \]
+                        </div>
+
+                        <p>
+                            と表せる。定数項を比較すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            -c=-1
+                            \]
+                            \[
+                            c=1.
+                            \]
+                        </div>
+
+                        <p>よって、</p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            g(x)
+                            &=(x^2-x+1)(x-1)\\
+                            &=x^3-2x^2+2x-1.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>係数を比較すると、</p>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            a=-2,
+                            \qquad
+                            b=2
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-indigo-200 pb-1 font-bold text-indigo-800">別解：解と係数の関係を用いる</p>
+
+                        <p class="mt-2">
+                            $g(x)=0$ の3つの解を
+                            \[
+                            \alpha,
+                            \qquad
+                            \overline{\alpha},
+                            \qquad
+                            k
+                            \]
+                            とする。
+                        </p>
+
+                        <p>
+                            $f(x)=x^2-x+1$ の解と係数の関係より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \alpha+\overline{\alpha}=1,
+                            \qquad
+                            \alpha\overline{\alpha}=1.
+                            \]
+                        </div>
+
+                        <p>
+                            一方、
+                            \[
+                            g(x)=x^3+ax^2+bx-1
+                            \]
+                            なので、3次方程式の解と係数の関係より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \alpha+\overline{\alpha}+k=-a,
+                            \]
+                            \[
+                            \alpha\overline{\alpha}
+                            +k(\alpha+\overline{\alpha})
+                            =b,
+                            \]
+                            \[
+                            \alpha\overline{\alpha}k=1.
+                            \]
+                        </div>
+
+                        <p>
+                            第3式と $\alpha\overline{\alpha}=1$ より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            k=1.
+                            \]
+                        </div>
+
+                        <p>これを第1式に代入すると、</p>
+
+                        <div class="math-scroll">
+                            \[
+                            1+1=-a
+                            \]
+                            \[
+                            a=-2.
+                            \]
+                        </div>
+
+                        <p>また、第2式より、</p>
+
+                        <div class="math-scroll">
+                            \[
+                            b=1+1\cdot1=2.
+                            \]
+                        </div>
+
+                        <div class="mt-2 rounded-xl border-2 border-indigo-400 bg-indigo-50 p-3 font-bold text-slate-900">
+                            \[
+                            a=-2,
+                            \qquad
+                            b=2
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）$g(x)=0$ を解く</p>
+
+                        <p class="mt-2">
+                            \[
+                            g(x)=(x-1)(x^2-x+1)
+                            \]
+                            なので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            x-1=0
+                            \]
+                            または
+                            \[
+                            x^2-x+1=0.
+                            \]
+                        </div>
+
+                        <p>（1）の結果より、</p>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            x=1,
+                            \qquad
+                            \alpha=\frac{1+\sqrt3\,i}{2},
+                            \qquad
+                            \overline{\alpha}=\frac{1-\sqrt3\,i}{2}
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）$\alpha$ の累乗を6乗まで調べる</p>
+
+                        <p class="mt-2">
+                            $\alpha$ は
+                            \[
+                            \alpha^2-\alpha+1=0
+                            \]
+                            を満たすので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \alpha^2=\alpha-1.
+                            \]
+                        </div>
+
+                        <p>この関係を使って次数を下げると、</p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \alpha^1&=\alpha,\\
+                            \alpha^2&=\alpha-1,\\
+                            \alpha^3&=\alpha(\alpha-1)\\
+                            &=\alpha^2-\alpha\\
+                            &=(\alpha-1)-\alpha\\
+                            &=-1,\\
+                            \alpha^4&=-\alpha,\\
+                            \alpha^5&=-\alpha^2\\
+                            &=-(\alpha-1)\\
+                            &=1-\alpha,\\
+                            \alpha^6&=\alpha(1-\alpha)\\
+                            &=\alpha-\alpha^2\\
+                            &=\alpha-(\alpha-1)\\
+                            &=1.
+                            \end{aligned}
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）$\overline{\alpha}$ の累乗を6乗まで調べる</p>
+
+                        <p class="mt-2">
+                            $\overline{\alpha}$ も
+                            \[
+                            x^2-x+1=0
+                            \]
+                            の解なので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \overline{\alpha}^{\,2}=\overline{\alpha}-1.
+                            \]
+                        </div>
+
+                        <p>同様に次数を下げると、</p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \overline{\alpha}^{\,1}&=\overline{\alpha},\\
+                            \overline{\alpha}^{\,2}&=\overline{\alpha}-1,\\
+                            \overline{\alpha}^{\,3}
+                            &=\overline{\alpha}(\overline{\alpha}-1)\\
+                            &=\overline{\alpha}^{\,2}-\overline{\alpha}\\
+                            &=(\overline{\alpha}-1)-\overline{\alpha}\\
+                            &=-1,\\
+                            \overline{\alpha}^{\,4}&=-\overline{\alpha},\\
+                            \overline{\alpha}^{\,5}&=-\overline{\alpha}^{\,2}\\
+                            &=-(\overline{\alpha}-1)\\
+                            &=1-\overline{\alpha},\\
+                            \overline{\alpha}^{\,6}
+                            &=\overline{\alpha}(1-\overline{\alpha})\\
+                            &=\overline{\alpha}-\overline{\alpha}^{\,2}\\
+                            &=\overline{\alpha}-(\overline{\alpha}-1)\\
+                            &=1.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p class="mt-3">よって、</p>
+
+                        <div class="math-scroll">
+                            \[
+                            \alpha^6=1,
+                            \qquad
+                            \overline{\alpha}^{\,6}=1.
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）余りを設定して3つの解を代入する</p>
+
+                        <p class="mt-2">
+                            $x^{2028}$ を $g(x)$ で割った商を $Q(x)$、余りを
+                            \[
+                            kx^2+lx+m
+                            \]
+                            とすると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            x^{2028}=g(x)Q(x)+kx^2+lx+m.
+                            \]
+                        </div>
+
+                        <p>また、</p>
+
+                        <div class="math-scroll">
+                            \[
+                            2028=6\cdot338
+                            \]
+                        </div>
+
+                        <p>なので、</p>
+
+                        <div class="math-scroll">
+                            \[
+                            \alpha^{2028}=(\alpha^6)^{338}=1,
+                            \]
+                            \[
+                            \overline{\alpha}^{\,2028}
+                            =\left(\overline{\alpha}^{\,6}\right)^{338}
+                            =1.
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            $g(x)$ と $x^{2028}$ は実数係数の多項式なので、
+                            多項式の割り算によって得られる余りの係数
+                            
+                            \[
+                            k,\ l,\ m
+                            \]
+                            
+                            はすべて実数である。
+                        </p>
+
+                        <p class="mt-3">
+                            （1）より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \alpha=\frac{1+\sqrt3\,i}{2},
+                            \qquad
+                            \alpha^2=\alpha-1
+                            =\frac{-1+\sqrt3\,i}{2},
+                            \]
+                            \[
+                            \overline{\alpha}
+                            =\frac{1-\sqrt3\,i}{2},
+                            \qquad
+                            \overline{\alpha}^{\,2}
+                            =\overline{\alpha}-1
+                            =\frac{-1-\sqrt3\,i}{2}.
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            $x=\alpha$ を代入すると、$g(\alpha)=0$ より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            k\alpha^2+l\alpha+m=1.
+                            \]
+                        </div>
+
+                        <p>
+                            $\alpha,\alpha^2$ の値を代入すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            k\frac{-1+\sqrt3\,i}{2}
+                            +l\frac{1+\sqrt3\,i}{2}
+                            +m
+                            =1,
+                            \]
+                            \[
+                            \left(\frac{-k+l}{2}+m\right)
+                            +\frac{\sqrt3}{2}(k+l)i
+                            =1.
+                            \]
+                        </div>
+
+                        <p>
+                            $k,l,m$ は実数なので、実部と虚部をそれぞれ比較して、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac{-k+l}{2}+m=1,
+                            \qquad
+                            k+l=0.
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            次に、$x=\overline{\alpha}$ を代入すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            k\overline{\alpha}^{\,2}
+                            +l\overline{\alpha}
+                            +m
+                            =1.
+                            \]
+                        </div>
+
+                        <p>
+                            $\overline{\alpha},\overline{\alpha}^{\,2}$ の値を代入すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            k\frac{-1-\sqrt3\,i}{2}
+                            +l\frac{1-\sqrt3\,i}{2}
+                            +m
+                            =1,
+                            \]
+                            \[
+                            \left(\frac{-k+l}{2}+m\right)
+                            -\frac{\sqrt3}{2}(k+l)i
+                            =1.
+                            \]
+                        </div>
+
+                        <p>
+                            $k,l,m$ は実数なので、実部と虚部をそれぞれ比較すると、同じく
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac{-k+l}{2}+m=1,
+                            \qquad
+                            k+l=0.
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            また、$x=1$ を代入すると、$g(1)=0$ より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            k+l+m=1.
+                            \]
+                        </div>
+
+                        <p>
+                            $k+l=0$ と $k+l+m=1$ より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            m=1.
+                            \]
+                        </div>
+
+                        <p>
+                            これを
+                            \[
+                            \frac{-k+l}{2}+m=1
+                            \]
+                            に代入すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            -k+l=0.
+                            \]
+                        </div>
+
+                        <p>
+                            したがって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{cases}
+                            k+l=0,\\
+                            -k+l=0
+                            \end{cases}
+                            \]
+                        </div>
+
+                        <p>
+                            より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            k=0,
+                            \qquad
+                            l=0.
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            k=0,
+                            \qquad
+                            l=0,
+                            \qquad
+                            m=1.
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$1$
+                        </div>
+                    </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化① 余りの6周期</h3>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    指数 $n$ を動かすと、$x^n$ を $g(x)$ で割った余りが6周期で変化します。
+                    これは、3つの解について6乗すると1になることに対応しています。
+                </p>
+
+                <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="mx-auto max-w-xl">
+                        <label for="n-slider" class="mb-2 block text-sm font-medium text-slate-700">
+                            n：<span id="n-display" class="text-lg font-bold text-blue-700">2028</span>
+                        </label>
+                        <input id="n-slider" type="range" min="0" max="2030" step="1" value="2028"
+                               class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600">
+                        <div class="mt-3 flex flex-wrap justify-center gap-2">
+                            <button type="button" data-n="5" class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-100">n = 5</button>
+                            <button type="button" data-n="6" class="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-bold text-blue-700 hover:bg-blue-50">n = 6</button>
+                            <button type="button" data-n="2028" class="rounded-lg border border-emerald-200 bg-white px-3 py-2 text-sm font-bold text-emerald-700 hover:bg-emerald-50">n = 2028</button>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 overflow-x-auto">
+                        <table class="mx-auto min-w-[720px] border-collapse text-center text-sm">
+                            <thead>
+                                <tr class="bg-slate-100">
+                                    <th class="border border-slate-300 px-3 py-3">$n$ を6で割った余り</th>
+                                    <th class="border border-slate-300 px-3 py-3">0</th>
+                                    <th class="border border-slate-300 px-3 py-3">1</th>
+                                    <th class="border border-slate-300 px-3 py-3">2</th>
+                                    <th class="border border-slate-300 px-3 py-3">3</th>
+                                    <th class="border border-slate-300 px-3 py-3">4</th>
+                                    <th class="border border-slate-300 px-3 py-3">5</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-slate-300 bg-slate-50 px-3 py-3 font-bold">余り</td>
+                                    <td id="cycle-0" class="border border-slate-300 px-3 py-3">$1$</td>
+                                    <td id="cycle-1" class="border border-slate-300 px-3 py-3">$x$</td>
+                                    <td id="cycle-2" class="border border-slate-300 px-3 py-3">$x^2$</td>
+                                    <td id="cycle-3" class="border border-slate-300 px-3 py-3">$2x^2-2x+1$</td>
+                                    <td id="cycle-4" class="border border-slate-300 px-3 py-3">$2x^2-3x+2$</td>
+                                    <td id="cycle-5" class="border border-slate-300 px-3 py-3">$x^2-2x+2$</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mt-5 grid gap-3 sm:grid-cols-3">
+                        <div class="rounded-lg border border-slate-200 bg-white p-4 text-center">
+                            <div class="text-xs font-bold text-slate-500">n mod 6</div>
+                            <div id="mod-display" class="mt-1 text-2xl font-bold text-slate-800"></div>
+                        </div>
+                        <div class="rounded-lg border border-blue-200 bg-blue-50 p-4 text-center sm:col-span-2">
+                            <div class="text-xs font-bold text-blue-700">現在の余り</div>
+                            <div id="remainder-display" class="mt-2 text-xl font-bold text-blue-900"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const slider = document.getElementById("n-slider");
+                        const remainders = ["1", "x", "x²", "2x² - 2x + 1", "2x² - 3x + 2", "x² - 2x + 2"];
+                        function updateRemainder() {
+                            const n = Number(slider.value);
+                            const r = n % 6;
+                            document.getElementById("n-display").textContent = n;
+                            document.getElementById("mod-display").textContent = r;
+                            document.getElementById("remainder-display").textContent = remainders[r];
+                            for (let i = 0; i < 6; i++) {
+                                const cell = document.getElementById(`cycle-${i}`);
+                                cell.className = i === r
+                                    ? "border border-emerald-400 bg-emerald-100 px-3 py-3 font-bold text-emerald-900"
+                                    : "border border-slate-300 bg-white px-3 py-3";
+                            }
+                        }
+                        slider.addEventListener("input", updateRemainder);
+                        document.querySelectorAll("[data-n]").forEach(button => {
+                            button.addEventListener("click", () => {
+                                slider.value = button.dataset.n;
+                                updateRemainder();
+                            });
+                        });
+                        updateRemainder();
+                    });
+                </script>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化② $\alpha^n$ と $\overline{\alpha}^{\,n}$ の動き</h3>
+
+                <div class="mt-4 rounded-xl border border-violet-200 bg-violet-50 p-4 text-sm leading-relaxed text-violet-900">
+                    詳しくは数学Cの「複素数平面」で学習します。
+                    ここでは、$\alpha$ と $\overline{\alpha}$ の絶対値が1であるため、
+                    その累乗も単位円周上を動くことを確認します。
+                </div>
+
+                <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="mx-auto max-w-xl">
+                        <label for="power-slider" class="mb-2 block text-sm font-medium text-slate-700">
+                            累乗 n：<span id="power-display" class="text-lg font-bold text-blue-700">1</span>
+                        </label>
+                        <input id="power-slider" type="range" min="0" max="6" step="1" value="1"
+                               class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600">
+                        <div class="mt-3 flex flex-wrap justify-center gap-2">
+                            <button type="button" data-power="0" class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-100">0乗</button>
+                            <button type="button" data-power="1" class="rounded-lg border border-violet-200 bg-white px-3 py-2 text-sm font-bold text-violet-700 hover:bg-violet-50">1乗</button>
+                            <button type="button" data-power="3" class="rounded-lg border border-rose-200 bg-white px-3 py-2 text-sm font-bold text-rose-700 hover:bg-rose-50">3乗</button>
+                            <button type="button" data-power="6" class="rounded-lg border border-emerald-200 bg-white px-3 py-2 text-sm font-bold text-emerald-700 hover:bg-emerald-50">6乗</button>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 overflow-x-auto">
+                        <svg id="complex-power-svg" width="650" height="520" viewBox="0 0 650 520"
+                             class="mx-auto h-auto w-full max-w-[650px] rounded-xl border border-slate-200 bg-white"
+                             aria-label="アルファと共役複素数の累乗を示す単位円">
+                            <line x1="70" y1="260" x2="580" y2="260" stroke="#64748b" stroke-width="1.8"></line>
+                            <line x1="325" y1="35" x2="325" y2="485" stroke="#64748b" stroke-width="1.8"></line>
+                            <circle cx="325" cy="260" r="185" fill="rgba(37,99,235,.03)" stroke="#2563eb" stroke-width="2.5"></circle>
+                            <g id="orbit-points"></g>
+                            <line id="alpha-radius" x1="325" y1="260" stroke="#7c3aed" stroke-width="3"></line>
+                            <line id="bar-radius" x1="325" y1="260" stroke="#e11d48" stroke-width="3"></line>
+                            <circle id="alpha-point" r="10" fill="#7c3aed"></circle>
+                            <circle id="bar-point" r="6" fill="#e11d48"></circle>
+                            <g font-size="14" font-weight="700">
+                                <text id="alpha-label" fill="#6d28d9"></text>
+                                <text id="bar-label" fill="#be123c"></text>
+                                <text x="570" y="247" fill="#64748b">実軸</text>
+                                <text x="335" y="48" fill="#64748b">虚軸</text>
+                                <text x="455" y="92" fill="#6d28d9">αⁿ：反時計回り</text>
+                                <text x="455" y="435" fill="#be123c">ᾱⁿ：時計回り</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                        <div class="rounded-lg border border-violet-200 bg-white p-4 text-center">
+                            <div class="text-xs font-bold text-violet-700">$\alpha^n$</div>
+                            <div id="alpha-value" class="mt-2 text-lg font-bold text-violet-900"></div>
+                        </div>
+                        <div class="rounded-lg border border-rose-200 bg-white p-4 text-center">
+                            <div class="text-xs font-bold text-rose-700">$\overline{\alpha}^{\,n}$</div>
+                            <div id="bar-value" class="mt-2 text-lg font-bold text-rose-900"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const slider = document.getElementById("power-slider");
+                        const cx = 325, cy = 260, radius = 185;
+                        const alphaValues = ["1", "α", "α - 1", "-1", "-α", "1 - α = ᾱ", "1"];
+                        const barValues = ["1", "ᾱ", "ᾱ - 1", "-1", "-ᾱ", "1 - ᾱ = α", "1"];
+                        let orbitMarkup = "";
+                        for (let j = 0; j < 6; j++) {
+                            const angle = j * Math.PI / 3;
+                            const x = cx + radius * Math.cos(angle);
+                            const y = cy - radius * Math.sin(angle);
+                            orbitMarkup += `<circle cx="${x}" cy="${y}" r="4.5" fill="#cbd5e1"/>`;
+                        }
+                        document.getElementById("orbit-points").innerHTML = orbitMarkup;
+                        function setDynamicPoint(pointId, lineId, labelId, angle, label, labelDy) {
+                            const x = cx + radius * Math.cos(angle);
+                            const y = cy - radius * Math.sin(angle);
+                            const point = document.getElementById(pointId);
+                            point.setAttribute("cx", x);
+                            point.setAttribute("cy", y);
+                            const line = document.getElementById(lineId);
+                            line.setAttribute("x2", x);
+                            line.setAttribute("y2", y);
+                            const text = document.getElementById(labelId);
+                            text.setAttribute("x", x + 12);
+                            text.setAttribute("y", y + labelDy);
+                            text.textContent = label;
+                        }
+                        function updatePower() {
+                            const n = Number(slider.value);
+                            setDynamicPoint("alpha-point", "alpha-radius", "alpha-label", n * Math.PI / 3, `α^${n}`, -12);
+                            setDynamicPoint("bar-point", "bar-radius", "bar-label", -n * Math.PI / 3, `ᾱ^${n}`, 24);
+                            document.getElementById("power-display").textContent = n;
+                            document.getElementById("alpha-value").textContent = alphaValues[n];
+                            document.getElementById("bar-value").textContent = barValues[n];
+                        }
+                        slider.addEventListener("input", updatePower);
+                        document.querySelectorAll("[data-power]").forEach(button => {
+                            button.addEventListener("click", () => {
+                                slider.value = button.dataset.power;
+                                updatePower();
+                            });
+                        });
+                        updatePower();
+                    });
+                </script>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">補足：なぜ実数係数なら共役も解になるのか</h3>
+
+                <div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed text-slate-700">
+                    <p>
+                        実数係数の多項式を
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        h(x)=c_nx^n+\cdots+c_1x+c_0
+                        \qquad
+                        (c_0,\ldots,c_n\text{ は実数})
+                        \]
+                    </div>
+
+                    <p>
+                        とします。$h(\alpha)=0$ なら、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \begin{aligned}
+                        h(\overline{\alpha})
+                        &=
+                        c_n\overline{\alpha}^{\,n}
+                        +\cdots
+                        +c_1\overline{\alpha}
+                        +c_0\\
+                        &=
+                        \overline{
+                        c_n\alpha^n+\cdots+c_1\alpha+c_0
+                        }\\
+                        &=
+                        \overline{h(\alpha)}\\
+                        &=
+                        0.
+                        \end{aligned}
+                        \]
+                    </div>
+
+                    <p>
+                        よって、$\overline{\alpha}$ も解です。
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">共通解を1つだけ使って終える</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            共通解は非実数です。実数係数の $g(x)$ では共役複素数も解になるため、$f(x)$ の2解がともに共通解です。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">$g(x)=f(x)(x-c)$ の定数項の符号を誤る</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            定数項は
+                            \[
+                            1\cdot(-c)=-c
+                            \]
+                            です。$-c=-1$ から $c=1$ となります。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">$\alpha^6=1$ と $x^6=1$ を混同する</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            $\alpha^6=1$、$\overline{\alpha}^{\,6}=1$ は、特定の解を代入したときの関係です。
+                            多項式として常に $x^6=1$ が成り立つわけではありません。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+            <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+
+            <p class="mt-4 text-sm text-blue-200">
+                質問をクリックし、答えを頭の中で作ってから開いてください。
+            </p>
+
+            <div class="mt-6 space-y-3">
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q1. $f(x)=0$ の2つの解は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \frac{1+\sqrt3\,i}{2},
+                        \qquad
+                        \frac{1-\sqrt3\,i}{2}
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q2. なぜ $f(x)$ は $g(x)$ の因数になりますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        共通解は非実数であり、$g(x)$ は実数係数なので、その共役複素数も共通解になります。
+                        したがって、$f(x)=0$ の2解がともに $g(x)=0$ の解になるためです。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q3. $a,b$ の値は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        a=-2,
+                        \qquad
+                        b=2
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q4. $\alpha^6$ と $\overline{\alpha}^{\,6}$ の値は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \alpha^6=1,
+                        \qquad
+                        \overline{\alpha}^{\,6}=1
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q5. $x^{2028}$ を $g(x)$ で割った余りは何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        余りを $kx^2+lx+m$ と置き、
+                        $x=\alpha,\overline{\alpha},1$ を代入すると
+                        \[
+                        k=l=0,
+                        \qquad
+                        m=1
+                        \]
+                        となるので、答えは
+                        \[
+                        1
+                        \]
+                        です。
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+            <a href="no30.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                ← No.30へ
+            </a>
+            <a href="no32.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                No.32 →
+            </a>
+        </nav>
+    </main>
+
+    <footer class="py-10 text-center text-sm text-slate-500">
+        自彊館(理系)　夏期数学課題 解説サイト
+    </footer>
+</div>
+</body>
+</html>
